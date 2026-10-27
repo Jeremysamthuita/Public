@@ -1,0 +1,268 @@
+.site-header {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 1000;
+    width: 100%;
+    height: 80px;
+    padding: 0 5%;
+    background: linear-gradient(to right, #8e44ad, #e74c3c);
+    color: #fff;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+}
+
+.site-header > .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1400px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.site-header .logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.site-header .logo1 {
+    width: 50px;
+    height: 50px;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.site-header .church-name {
+    color: #fff;
+    font-weight: 700;
+}
+
+.site-header nav ul.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.site-header nav ul.nav-links > li {
+    margin: 0;
+    padding: 0;
+}
+
+.site-header nav ul.nav-links > li > a {
+    display: block;
+    padding: 12px 14px;
+    border-radius: 30px;
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.site-header nav ul.nav-links > li > a:hover,
+.site-header nav ul.nav-links > li > a:focus-visible,
+.site-header nav ul.nav-links > li > a.active {
+    background: rgba(255, 255, 255, 0.16);
+    color: #fff;
+}
+
+.site-header .menu-toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    padding: 8px;
+    border: 0;
+    background: transparent;
+    color: #fff;
+}
+
+.site-header .menu-toggle:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+}
+
+.site-header .donate-btn {
+    padding: 11px 20px;
+    border: 0;
+    border-radius: 30px;
+    background: linear-gradient(to right, #ff416c, #ff4b2b);
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.site-footer {
+    margin-top: 50px;
+    padding: 60px 0 30px;
+    background: linear-gradient(to bottom, #1a1a2e, #000);
+    color: #fff;
+}
+
+.site-footer .footer-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 40px;
+    width: min(100% - 40px, 1200px);
+    margin: 0 auto;
+    padding: 0;
+}
+
+.site-footer .footer-col {
+    min-width: 0;
+    margin: 0;
+}
+
+.site-footer .footer-col h4 {
+    position: relative;
+    margin: 0 0 25px;
+    padding-bottom: 10px;
+    color: #ffae00;
+    font-size: 1.4rem;
+}
+
+.site-footer .footer-col p {
+    margin-bottom: 15px;
+    color: #bbb;
+    line-height: 1.8;
+}
+
+.site-footer .quick-links {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.site-footer .quick-links li {
+    margin: 0 0 12px;
+    padding: 0;
+}
+
+.site-footer .quick-links a {
+    display: block;
+    padding: 5px 0;
+    color: #ddd;
+    text-decoration: none;
+}
+
+.site-footer .quick-links a:hover,
+.site-footer .quick-links a:focus-visible {
+    color: #ff416c;
+}
+
+.site-footer .social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.site-footer .social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 1.2rem;
+}
+
+.site-footer .footer-map {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    background: #1a1a2e;
+}
+
+.site-footer .footer-map iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.site-footer .copyright {
+    margin: 40px 20px 0;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #aaa;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.site-footer .copyright a {
+    color: #ffae00;
+    text-decoration: none;
+}
+
+@media (max-width: 850px) {
+    .site-header {
+        height: 70px;
+        padding: 0 4%;
+    }
+
+    .site-header .menu-toggle {
+        display: flex;
+    }
+
+    .site-header nav ul.nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        width: min(320px, 88vw);
+        height: 100vh;
+        height: 100dvh;
+        overflow-y: auto;
+        padding: 90px 24px 30px;
+        background: linear-gradient(135deg, rgba(142, 68, 173, 0.98), rgba(231, 76, 60, 0.98));
+        box-shadow: -10px 0 40px rgba(0, 0, 0, 0.3);
+        transition: right 0.3s ease;
+    }
+
+    .site-header nav ul.nav-links.active {
+        right: 0;
+    }
+
+    .site-header nav ul.nav-links > li > a {
+        padding: 14px 18px;
+        background: rgba(255, 255, 255, 0.1);
+        text-align: center;
+    }
+
+    .site-header nav ul.nav-links > li > .donate-btn {
+        width: 100%;
+        padding: 14px 18px;
+    }
+}
+
+@media (max-width: 768px) {
+    .site-footer .footer-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .site-footer .footer-map {
+        height: 200px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .site-header nav ul.nav-links {
+        transition: none;
+    }
+}

@@ -1,0 +1,19 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Church",
+  "name": "AIC Egerton Chapel",
+  "url": "https://aicegertonchapel.netlify.app/",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Njoro",
+    "addressRegion": "Nakuru County",
+    "addressCountry": "KE"
+  },
+  "sameAs": [
+    "https://www.fb.com/@aicegertonchapel",
+    "https://www.youtube.com/@aicegertonchapel",
+    "https://www.tiktok.com/@aicegertonchapel"
+  ]
+}
+</script>

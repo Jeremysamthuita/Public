@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Listen and read inspiring sermons from AIC Egerton Chapel. Stay connected with the word of God through powerful teachings and biblical messages by Rev Dr William Chesaine Kipkoros.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sermons - AIC Egerton Chapel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa, #e4e7f1);
+            color: #333;
+            min-height: 100vh;
+            padding-top: 100px;
+            padding-bottom: 50px;
+        }
+        
+        /* Enhanced Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to right, #8e44ad, #e74c3c);
+            color: #fff;
+            padding: 0 5%;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s ease;
+            height: 80px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo1 {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: linear-gradient(135deg, #8e44ad, #e74c3c);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            object-fit: cover;
+        }
+
+        .logo1:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .church-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            letter-spacing: 0.5px;
+        }
+
+        /* Enhanced Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 5px;
+            align-items: center;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.9);
+            padding: 12px 18px;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            font-size: 1rem;
+            white-space: nowrap;
+            display: block;
+        }
+
+        nav ul li a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 30px;
+            transform: scale(0.9);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+
+        nav ul li a:hover {
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        nav ul li a:hover::before {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        /* ACTIVE STATE FOR NAVIGATION */
+        nav ul li a.active {
+            background: rgba(255, 255, 255, 0.2);
+            font-weight: 600;
+        }
+
+        .donate-btn {
+            background: linear-gradient(to right, #ff416c, #ff4b2b);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            font-size: 1rem;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .donate-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-100%);
+            transition: transform 0.4s ease;
+        }
+
+        .donate-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .donate-btn:hover::after {
+            transform: translateX(100%);
+        }
+
+        /* Modern Menu Toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 36px;
+            height: 24px;
+            cursor: pointer;
+            z-index: 1001;
+            position: relative;
+        }
+
+        .menu-toggle span {
+            height: 3px;
+            width: 100%;
+            background-color: white;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: translateY(10px) rotate(45deg);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: translateY(-10px) rotate(-45deg);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 1100px) {
+            nav ul li a {
+                padding: 10px 14px;
+                font-size: 0.95rem;
+            }
+            
+            .donate-btn {
+                padding: 10px 20px;
+            }
+        }
+        
+        @media (max-width: 950px) {
+            nav ul li a {
+                padding: 8px 12px;
+                font-size: 0.9rem;
+            }
+            
+            .church-name {
+                font-size: 1.2rem;
+            }
+            
+            .logo1 {
+                width: 45px;
+                height: 45px;
+            }
+        }
+        
+        /* Tablet and below */
+        @media (max-width: 850px) {
+            header {
+                height: 70px;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                flex-direction: column;
+                background: linear-gradient(135deg, rgba(142, 68, 173, 0.98) 0%, rgba(231, 76, 60, 0.98) 100%);
+                width: 320px;
+                height: 100vh;
+                padding: 100px 25px 30px;
+                gap: 15px;
+                z-index: 998;
+                box-shadow: -10px 0 40px rgba(0, 0, 0, 0.3);
+                backdrop-filter: blur(10px);
+                transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                overflow-y: auto;
+            }
+            
+            .nav-links.active {
+                right: 0;
+                display: flex;
+            }
+            
+            .nav-links li {
+                opacity: 0;
+                transform: translateX(30px);
+                transition: all 0.4s ease;
+            }
+            
+            .nav-links.active li {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            
+            .nav-links.active li:nth-child(1) { transition-delay: 0.1s; }
+            .nav-links.active li:nth-child(2) { transition-delay: 0.2s; }
+            .nav-links.active li:nth-child(3) { transition-delay: 0.3s; }
+            .nav-links.active li:nth-child(4) { transition-delay: 0.4s; }
+            .nav-links.active li:nth-child(5) { transition-delay: 0.5s; }
+            .nav-links.active li:nth-child(6) { transition-delay: 0.6s; }
+            .nav-links.active li:nth-child(7) { transition-delay: 0.7s; }
+            
+            .nav-links li a {
+                display: block;
+                padding: 16px 20px;
+                border-radius: 15px;
+                background: rgba(255, 255, 255, 0.1);
+                margin-bottom: 8px;
+                text-align: center;
+                font-size: 1.1rem;
+                backdrop-filter: blur(5px);
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                transition: all 0.3s ease;
+            }
+            
+            .nav-links li a:hover {
+                background: rgba(255, 255, 255, 0.2);
+                transform: translateX(8px);
+            }
+            
+            .donate-btn {
+                padding: 16px;
+                font-size: 1.1rem;
+                margin-top: 10px;
+                width: 100%;
+            }
+            
+            .close-menu {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                font-size: 28px;
+                color: white;
+                cursor: pointer;
+                transition: transform 0.3s ease;
+                z-index: 999;
+            }
+            
+            .close-menu:hover {
+                transform: rotate(90deg);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            header {
+                padding: 0 4%;
+                height: 65px;
+            }
+            
+            .logo {
+                gap: 10px;
+            }
+            
+            .logo1 {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .church-name {
+                font-size: 1.1rem;
+            }
+            
+            .nav-links {
+                width: 280px;
+                padding: 90px 20px 25px;
+            }
+        }
+        
+        /* Enhanced Modal Styling */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1002;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            padding: 35px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            text-align: left;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+            position: relative;
+            transform: scale(0.9);
+            opacity: 0;
+            animation: modalAppear 0.4s forwards 0.1s;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        @keyframes modalAppear {
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 32px;
+            cursor: pointer;
+            color: #8e44ad;
+            transition: all 0.3s ease;
+        }
+
+        .close:hover {
+            color: #ff416c;
+            transform: rotate(90deg);
+        }
+
+        .modal h2 {
+            margin-bottom: 25px;
+            color: #2c3e50;
+            font-size: 28px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .modal h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #8e44ad, #e74c3c);
+            border-radius: 2px;
+        }
+
+        .modal p {
+            margin: 18px 0;
+            color: #333;
+            font-size: 17px;
+            line-height: 1.6;
+        }
+
+        .donation-instructions {
+            background: rgba(142, 68, 173, 0.05);
+            padding: 22px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border: 1px solid rgba(142, 68, 173, 0.1);
+        }
+
+        .donation-instructions p {
+            font-weight: bold;
+            margin-top: 0;
+            color: #8e44ad;
+            font-size: 18px;
+        }
+
+        .donation-instructions ol {
+            padding-left: 25px;
+            margin-bottom: 0;
+        }
+
+        .donation-instructions li {
+            margin-bottom: 12px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        label {
+            display: block;
+            margin: 20px 0 8px;
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 16px;
+        }
+
+        input[type="text"], input[type="date"] {
+            width: 100%;
+            padding: 15px;
+            margin-top: 5px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus, input[type="date"]:focus {
+            border-color: #8e44ad;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(142, 68, 173, 0.2);
+        }
+
+        button {
+            background: linear-gradient(to right, #8e44ad, #e74c3c);
+            color: white;
+            padding: 16px 20px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 17px;
+            width: 100%;
+            transition: all 0.3s ease;
+            margin-top: 25px;
+            box-shadow: 0 6px 15px rgba(142, 68, 173, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-100%);
+            transition: transform 0.4s ease;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(142, 68, 173, 0.4);
+        }
+
+        button:hover::after {
+            transform: translateX(100%);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Sermons Section */
+        .sermons {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .sermons h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .sermons h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, #8e44ad, #e74c3c);
+            border-radius: 2px;
+        }
+
+        /* Search and Filters */
+        .search-filter {
+            background: rgba(142, 68, 173, 0.05);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+        }
+
+        .search-filter input[type="text"] {
+            flex: 1;
+            min-width: 250px;
+            padding: 12px 15px 12px 45px;
+            background: #fff url('https://cdn-icons-png.flaticon.com/512/622/622669.png') no-repeat 15px center;
+            background-size: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .date-filters {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .date-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .date-group label {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .date-group input[type="date"] {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* Sermon Grid */
+        .sermon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .sermon-card {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .sermon-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .sermon-header {
+            background: linear-gradient(to right, #8e44ad, #e74c3c);
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+        }
+
+        .sermon-header h3 {
+            font-size: 1.4rem;
+            margin: 0;
+        }
+
+        .sermon-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sermon-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .sermon-meta div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sermon-meta strong {
+            color: #8e44ad;
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+        }
+
+        .sermon-meta span {
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        .sermon-downloads {
+            margin-top: auto;
+        }
+
+        .sermon-downloads h4 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .download-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .download-links a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #8e44ad;
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            flex: 1;
+            min-width: 120px;
+            justify-content: center;
+        }
+
+        .download-links a:hover {
+            background: #e74c3c;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 40px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .no-results i {
+            font-size: 3rem;
+            color: #8e44ad;
+            margin-bottom: 20px;
+        }
+
+        .no-results h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .no-results p {
+            color: #555;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Loading Spinner */
+        .spinner-container {
+            grid-column: 1 / -1;
+            display: flex;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(142, 68, 173, 0.2);
+            border-top: 5px solid #8e44ad;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Skeleton Loader */
+        .skeleton-card {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            height: 100%;
+        }
+
+        .skeleton-header {
+            height: 60px;
+            background: linear-gradient(90deg, #f0f0f0 25%, #e4e4e4 37%, #f0f0f0 63%);
+            background-size: 400% 100%;
+            animation: shimmer 1.2s ease-in-out infinite;
+        }
+
+        .skeleton-content {
+            padding: 20px;
+        }
+
+        .skeleton-title {
+            height: 24px;
+            width: 70%;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #f0f0f0 25%, #e4e4e4 37%, #f0f0f0 63%);
+            background-size: 400% 100%;
+            animation: shimmer 1.2s ease-in-out infinite;
+            border-radius: 4px;
+        }
+
+        .skeleton-meta {
+            height: 16px;
+            width: 50%;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, #f0f0f0 25%, #e4e4e4 37%, #f0f0f0 63%);
+            background-size: 400% 100%;
+            animation: shimmer 1.2s ease-in-out infinite;
+            border-radius: 4px;
+        }
+
+        .skeleton-download {
+            height: 16px;
+            width: 40%;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, #f0f0f0 25%, #e4e4e4 37%, #f0f0f0 63%);
+            background-size: 400% 100%;
+            animation: shimmer 1.2s ease-in-out infinite;
+            border-radius: 4px;
+        }
+
+        .skeleton-button {
+            height: 40px;
+            width: 100%;
+            margin-top: 10px;
+            background: linear-gradient(90deg, #f0f0f0 25%, #e4e4e4 37%, #f0f0f0 63%);
+            background-size: 400% 100%;
+            animation: shimmer 1.2s ease-in-out infinite;
+            border-radius: 8px;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -400px 0; }
+            100% { background-position: 400px 0; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .sermon-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .search-filter {
+                flex-direction: column;
+            }
+            
+            .date-filters {
+                width: 100%;
+            }
+            
+            .date-group {
+                width: 100%;
+            }
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(to bottom, #1a1a2e, #000);
+            color: white;
+            padding: 60px 0 30px;
+            margin-top: 50px;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            gap: 40px;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+        }
+
+        .footer-col h4 {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+            color: #ffae00;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background: #ff416c;
+        }
+
+        .quick-links {
+            list-style: none;
+        }
+
+        .quick-links li {
+            margin-bottom: 12px;
+        }
+
+        .quick-links a {
+            text-decoration: none;
+            color: #ddd;
+            display: block;
+            transition: all 0.3s ease;
+            padding: 5px 0;
+        }
+
+        .quick-links a:hover {
+            color: #ff416c;
+            transform: translateX(5px);
+        }
+
+        .footer-col p {
+            color: #bbb;
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .social-icons a:hover {
+            background: #ff416c;
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 40px;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        .copyright a {
+            color: #ffae00;
+            text-decoration: none;
+        }
+
+        .copyright a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Footer */
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .footer-col {
+                min-width: 100%;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="site-chrome.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">
+                <img loading="lazy" class="logo1" src="logo.jpg" alt="Church Logo" width="50" height="50">
+                <div class="church-name">AIC EGERTON CHAPEL</div>
+            </div>
+            <button type="button" class="menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-controls="navLinks" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </button>
+            <nav>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="https://ecschools.netlify.app">Chapel Community Academy</a></li>
+                    <li><a href="sermons.html" class="active" aria-current="page">Sermons</a></li>
+                    <li><a href="Ministries.html">Ministries</a></li>
+                    <li><a href="contact form.html">Contact Us</a></li>
+                    <li><button type="button" class="donate-btn" onclick="openDonationModal()"><i class="fas fa-donate" aria-hidden="true"></i> Donate</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Donation Modal -->
+    <div id="donationModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-content">
+            <span class="close" onclick="closeDonationModal()" aria-label="Close modal">&times;</span>
+            <h2 id="modalTitle">Church Donation</h2>
+            <p>Contact us on WhatsApp for current donation details.</p>
+            <label for="donationReason">Reason for Donation:</label>
+            <input type="text" id="donationReason" placeholder="E.g., Church Project, Tithe, Offering">
+            <button id="donateNowBtn" onclick="submitDonation()">Get Donation Details on WhatsApp</button>
+        </div>
+    </div>
+
+    <main class="sermons">
+        <h1>Recent Sermons</h1>
+        
+        <!-- Search and Filters -->
+        <div class="search-filter">
+            <input type="text" id="searchInput" placeholder="Search sermons...">
+            
+            <div class="date-filters">
+                <div class="date-group">
+                    <label for="startDate">From:</label>
+                    <input type="date" id="startDate">
+                </div>
+                
+                <div class="date-group">
+                    <label for="endDate">To:</label>
+                    <input type="date" id="endDate">
+                </div>
+            </div>
+        </div>
+        
+        <!-- Sermon Grid -->
+        <div id="sermon-container" class="sermon-grid">
+            <!-- Skeleton loaders will be shown here initially -->
+            <div class="skeleton-card">
+                <div class="skeleton-header"></div>
+                <div class="skeleton-content">
+                    <div class="skeleton-title"></div>
+                    <div class="skeleton-meta"></div>
+                    <div class="skeleton-download"></div>
+                    <div class="skeleton-button"></div>
+                    <div class="skeleton-button"></div>
+                </div>
+            </div>
+            <div class="skeleton-card">
+                <div class="skeleton-header"></div>
+                <div class="skeleton-content">
+                    <div class="skeleton-title"></div>
+                    <div class="skeleton-meta"></div>
+                    <div class="skeleton-download"></div>
+                    <div class="skeleton-button"></div>
+                    <div class="skeleton-button"></div>
+                </div>
+            </div>
+            <div class="skeleton-card">
+                <div class="skeleton-header"></div>
+                <div class="skeleton-content">
+                    <div class="skeleton-title"></div>
+                    <div class="skeleton-meta"></div>
+                    <div class="skeleton-download"></div>
+                    <div class="skeleton-button"></div>
+                    <div class="skeleton-button"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h4>About Us</h4>
+                <p>AIC Egerton Chapel is a vibrant community of believers dedicated to worship, spiritual growth, and serving others. Join us on our journey of faith.</p>
+                <div class="social-icons">
+                    <a href="https://www.fb.com/@aicegertonchapel" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@aicegertonchapel" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@aicegertonchapel" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+                    <a href="https://wa.me/254799522418" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="quick-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="sermons.html">Sermons</a></li>
+                    <li><a href="Ministries.html">Ministries</a></li>
+                    <li><a href="https://ecschools.netlify.app">Chapel Community Academy</a></li>
+                    <li><a href="contact form.html">Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Contact Info</h4>
+                <p><i class="fas fa-map-marker-alt"></i> Egerton University, Njoro, Kenya</p>
+                <p><i class="fas fa-phone"></i> +254 799 522 418</p>
+                <p><i class="fas fa-envelope"></i> aicegertonchapel@gmail.com</p>
+                <p><i class="fas fa-clock"></i> Sunday Services: 8:00 AM - 12:00 PM</p>
+                <div class="footer-map">
+                    <iframe src="https://www.google.com/maps?q=Egerton+University%2C+Njoro%2C+Kenya&amp;output=embed" title="Map showing Egerton University, Njoro, Kenya" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; <span id="copyrightYear"></span> AIC Egerton Chapel. All rights reserved.</p>
+            <p>Developed and maintained by: <a href="#">Eng. Jeremiah Thuita [DCE]</a></p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('copyrightYear').textContent = new Date().getFullYear();
+
+        // Contentful API configuration
+        const spaceID = 'em08252vzuh6';
+        const accessToken = 'ooQsmSp49pSYFtEwn52S4U_sdjD6Tojr7KCTnWHPO8I';
+        const environment = 'Church-Website';
+        
+        // Global variables
+        let allSermons = [];
+        let allAssets = [];
+        
+        // DOM elements
+        const searchInput = document.getElementById('searchInput');
+        const startDate = document.getElementById('startDate');
+        const endDate = document.getElementById('endDate');
+        const sermonContainer = document.getElementById('sermon-container');
+        
+        // Format date to readable format
+        function formatDate(dateString) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString('en-US', options);
+        }
+        
+        // Load sermons from Contentful
+        async function loadSermons() {
+            try {
+                // Show loading state
+                sermonContainer.innerHTML = `
+                    <div class="spinner-container">
+                        <div class="spinner"></div>
+                    </div>
+                `;
+                
+                const res = await fetch(`https://cdn.contentful.com/spaces/${spaceID}/environments/${environment}/entries?access_token=${accessToken}&content_type=sermons&include=2`);
+                
+                if (!res.ok) {
+                    throw new Error(`Failed to fetch sermons: ${res.status} ${res.statusText}`);
+                }
+                
+                const data = await res.json();
+                
+                // Cache assets
+                allAssets = data.includes?.Asset || [];
+                
+                // Map sermons to our structure
+                allSermons = data.items.map(item => {
+                    const { title, preacher, date, powerpoint = [] } = item.fields;
+                    
+                    // Get download links
+                    const pptLinks = powerpoint.map(file => {
+                        const asset = allAssets.find(asset => asset.sys.id === file.sys.id);
+                        return {
+                            url: asset?.fields?.file?.url ? `https:${asset.fields.file.url}` : '',
+                            name: asset?.fields?.title || 'Download File',
+                            type: asset?.fields?.file?.contentType || ''
+                        };
+                    });
+                    
+                    return { 
+                        title, 
+                        preacher, 
+                        date: new Date(date).toISOString().split('T')[0], 
+                        pptLinks 
+                    };
+                });
+                
+                // Display sermons
+                displaySermons(allSermons);
+                
+            } catch (error) {
+                console.error('Failed to load sermons:', error);
+                sermonContainer.innerHTML = `
+                    <div class="no-results">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h3>Error Loading Sermons</h3>
+                        <p>We're unable to load sermons at the moment. Please try again later.</p>
+                    </div>
+                `;
+            }
+        }
+        
+        // Display sermons in the grid
+        function displaySermons(sermons) {
+            if (sermons.length === 0) {
+                sermonContainer.innerHTML = `
+                    <div class="no-results">
+                        <i class="fas fa-search"></i>
+                        <h3>No Sermons Found</h3>
+                        <p>Try adjusting your search filters or check back later for new sermons.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            // Sort sermons by date (newest first)
+            sermons.sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            sermonContainer.innerHTML = sermons.map(sermon => {
+                const formattedDate = formatDate(sermon.date);
+                
+                // Get icon based on file type
+                const getIcon = (type) => {
+                    if (type.includes('pdf')) return 'fa-file-pdf';
+                    if (type.includes('word')) return 'fa-file-word';
+                    if (type.includes('powerpoint') || type.includes('presentation')) return 'fa-file-powerpoint';
+                    return 'fa-file-download';
+                };
+                
+                return `
+                    <div class="sermon-card">
+                        <div class="sermon-header">
+                            <h3>${sermon.title}</h3>
+                        </div>
+                        <div class="sermon-content">
+                            <div class="sermon-meta">
+                                <div>
+                                    <strong>Preacher</strong>
+                                    <span>${sermon.preacher}</span>
+                                </div>
+                                <div>
+                                    <strong>Date</strong>
+                                    <span>${formattedDate}</span>
+                                </div>
+                            </div>
+                            
+                            <div class="sermon-downloads">
+                                <h4>Downloads:</h4>
+                                <div class="download-links">
+                                    ${sermon.pptLinks.map(link => `
+                                        <a href="${link.url}" target="_blank">
+                                            <i class="fas ${getIcon(link.type)}"></i>
+                                            ${link.name}
+                                        </a>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        // Apply filters based on search and date range
+        function applyFilters() {
+            const query = searchInput.value.toLowerCase();
+            const start = startDate.value;
+            const end = endDate.value;
+            
+            const filtered = allSermons.filter(sermon => {
+                // Date filter
+                const dateMatch = (!start || sermon.date >= start) &&
+                                 (!end || sermon.date <= end);
+                
+                // Search filter
+                const queryMatch =
+                    sermon.title.toLowerCase().includes(query) ||
+                    sermon.preacher.toLowerCase().includes(query);
+                
+                return dateMatch && queryMatch;
+            });
+            
+            displaySermons(filtered);
+        }
+        
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load sermons
+            loadSermons();
+            
+            // Set up event listeners
+            searchInput.addEventListener('input', applyFilters);
+            startDate.addEventListener('change', applyFilters);
+            endDate.addEventListener('change', applyFilters);
+            
+            // Set today as default end date
+            endDate.value = new Date().toISOString().split('T')[0];
+            
+            // Set start date to 1 year ago
+            const oneYearAgo = new Date();
+            oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
+            startDate.value = oneYearAgo.toISOString().split('T')[0];
+        });
+        
+        // Menu functionality
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            const isExpanded = navLinks.classList.contains('active');
+            menuToggle.setAttribute('aria-expanded', String(isExpanded));
+            document.body.style.overflow = isExpanded ? 'hidden' : '';
+        });
+        
+        // Close menu when clicking outside on mobile
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 850 && 
+                !menuToggle.contains(e.target) && 
+                !navLinks.contains(e.target) && 
+                navLinks.classList.contains('active')) {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            }
+        });
+        
+        // Close menu when a link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 850) {
+                    menuToggle.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+        
+        // Modal functionality
+        function openDonationModal() {
+            document.getElementById('donationModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            document.getElementById('donationReason').focus();
+        }
+
+        function closeDonationModal() {
+            document.getElementById('donationModal').style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        function submitDonation() {
+            const reason = document.getElementById('donationReason').value.trim();
+            const message = `Hello AIC Egerton Chapel, please share the current donation details${reason ? ` for ${reason}` : ''}.`;
+            window.location.href = `https://wa.me/254799522418?text=${encodeURIComponent(message)}`;
+        }
+        
+        // Close modals when clicking outside or pressing ESC
+        window.onclick = function(event) {
+            const modal = document.getElementById('donationModal');
+            if (event.target === modal) {
+                closeDonationModal();
+            }
+        };
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeDonationModal();
+        });
+
+        // Sticky header effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.padding = '10px 20px';
+                header.style.boxShadow = '0px 8px 25px rgba(0, 0, 0, 0.2)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.padding = '12px 20px';
+            }
+        });
+    </script>
+</body>
+</html>

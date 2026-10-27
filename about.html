@@ -1,0 +1,1748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Learn more about AIC Egerton Chapel – our mission, vision, leadership, and history. Discover how we serve our community through faith and worship.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - AIC Egerton Chapel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ====== BASE STYLES ====== */
+        :root {
+            --primary: #8e44ad;
+            --secondary: #e74c3c;
+            --accent: #ff416c;
+            --light: #f8f9fa;
+            --dark: #2c3e50;
+            --maroon: #800000;
+            --green: #28a745;
+            --cream: #f5f5dc;
+        }
+        
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa, #e4e7f1);
+            color: #333;
+            min-height: 100vh;
+            padding-top: 100px;
+            padding-bottom: 50px;
+        }
+        
+        /* Enhanced Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to right, #8e44ad, #e74c3c);
+            color: #fff;
+            padding: 0 5%;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s ease;
+            height: 80px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo1 {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: linear-gradient(135deg, #8e44ad, #e74c3c);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .logo1:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .church-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            letter-spacing: 0.5px;
+        }
+
+        /* Enhanced Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 5px;
+            align-items: center;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.9);
+            padding: 12px 18px;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            font-size: 1rem;
+            white-space: nowrap;
+            display: block;
+        }
+
+        nav ul li a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 30px;
+            transform: scale(0.9);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+
+        nav ul li a:hover {
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        nav ul li a:hover::before {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .donate-btn {
+            background: linear-gradient(to right, #ff416c, #ff4b2b);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            font-size: 1rem;
+            white-space: nowrap;
+        }
+
+        .donate-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-100%);
+            transition: transform 0.4s ease;
+        }
+
+        .donate-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .donate-btn:hover::after {
+            transform: translateX(100%);
+        }
+
+        /* Modern Menu Toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 36px;
+            height: 24px;
+            cursor: pointer;
+            z-index: 1001;
+            position: relative;
+        }
+
+        .menu-toggle span {
+            height: 3px;
+            width: 100%;
+            background-color: white;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: translateY(10px) rotate(45deg);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: translateY(-10px) rotate(-45deg);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 1100px) {
+            nav ul li a {
+                padding: 10px 14px;
+                font-size: 0.95rem;
+            }
+            
+            .donate-btn {
+                padding: 10px 20px;
+            }
+        }
+        
+        @media (max-width: 950px) {
+            nav ul li a {
+                padding: 8px 12px;
+                font-size: 0.9rem;
+            }
+            
+            .church-name {
+                font-size: 1.2rem;
+            }
+            
+            .logo1 {
+                width: 45px;
+                height: 45px;
+            }
+        }
+        
+        /* Tablet and below */
+        @media (max-width: 850px) {
+            header {
+                height: 70px;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                flex-direction: column;
+                background: linear-gradient(135deg, rgba(142, 68, 173, 0.98) 0%, rgba(231, 76, 60, 0.98) 100%);
+                width: 320px;
+                height: 100vh;
+                padding: 100px 25px 30px;
+                gap: 15px;
+                z-index: 998;
+                box-shadow: -10px 0 40px rgba(0, 0, 0, 0.3);
+                backdrop-filter: blur(10px);
+                transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                overflow-y: auto;
+            }
+            
+            .nav-links.active {
+                right: 0;
+                display: flex;
+            }
+            
+            .nav-links li {
+                opacity: 0;
+                transform: translateX(30px);
+                transition: all 0.4s ease;
+            }
+            
+            .nav-links.active li {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            
+            .nav-links.active li:nth-child(1) { transition-delay: 0.1s; }
+            .nav-links.active li:nth-child(2) { transition-delay: 0.2s; }
+            .nav-links.active li:nth-child(3) { transition-delay: 0.3s; }
+            .nav-links.active li:nth-child(4) { transition-delay: 0.4s; }
+            .nav-links.active li:nth-child(5) { transition-delay: 0.5s; }
+            .nav-links.active li:nth-child(6) { transition-delay: 0.6s; }
+            .nav-links.active li:nth-child(7) { transition-delay: 0.7s; }
+            
+            .nav-links li a {
+                display: block;
+                padding: 16px 20px;
+                border-radius: 15px;
+                background: rgba(255, 255, 255, 0.1);
+                margin-bottom: 8px;
+                text-align: center;
+                font-size: 1.1rem;
+                backdrop-filter: blur(5px);
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                transition: all 0.3s ease;
+            }
+            
+            .nav-links li a:hover {
+                background: rgba(255, 255, 255, 0.2);
+                transform: translateX(8px);
+            }
+            
+            .donate-btn {
+                padding: 16px;
+                font-size: 1.1rem;
+                margin-top: 10px;
+                width: 100%;
+            }
+            
+            .close-menu {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                font-size: 28px;
+                color: white;
+                cursor: pointer;
+                transition: transform 0.3s ease;
+                z-index: 999;
+            }
+            
+            .close-menu:hover {
+                transform: rotate(90deg);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            header {
+                padding: 0 4%;
+                height: 65px;
+            }
+            
+            .logo {
+                gap: 10px;
+            }
+            
+            .logo1 {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .church-name {
+                font-size: 1.1rem;
+            }
+            
+            .nav-links {
+                width: 280px;
+                padding: 90px 20px 25px;
+            }
+        }
+        
+        /* Enhanced Modal Styling */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1002;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            padding: 35px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            text-align: left;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+            position: relative;
+            transform: scale(0.9);
+            opacity: 0;
+            animation: modalAppear 0.4s forwards 0.1s;
+        }
+
+        @keyframes modalAppear {
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 32px;
+            cursor: pointer;
+            color: #8e44ad;
+            transition: all 0.3s ease;
+        }
+
+        .close:hover {
+            color: #ff416c;
+            transform: rotate(90deg);
+        }
+
+        .modal h2 {
+            margin-bottom: 25px;
+            color: #2c3e50;
+            font-size: 28px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .modal h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #8e44ad, #e74c3c);
+            border-radius: 2px;
+        }
+
+        .modal p {
+            margin: 18px 0;
+            color: #333;
+            font-size: 17px;
+            line-height: 1.6;
+        }
+
+        .donation-instructions {
+            background: rgba(142, 68, 173, 0.05);
+            padding: 22px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border: 1px solid rgba(142, 68, 173, 0.1);
+        }
+
+        .donation-instructions p {
+            font-weight: bold;
+            margin-top: 0;
+            color: #8e44ad;
+            font-size: 18px;
+        }
+
+        .donation-instructions ol {
+            padding-left: 25px;
+            margin-bottom: 0;
+        }
+
+        .donation-instructions li {
+            margin-bottom: 12px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        label {
+            display: block;
+            margin: 20px 0 8px;
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 16px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            margin-top: 5px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            border-color: #8e44ad;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(142, 68, 173, 0.2);
+        }
+
+        button {
+            background: linear-gradient(to right, #8e44ad, #e74c3c);
+            color: white;
+            padding: 16px 20px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 17px;
+            width: 100%;
+            transition: all 0.3s ease;
+            margin-top: 25px;
+            box-shadow: 0 6px 15px rgba(142, 68, 173, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-100%);
+            transition: transform 0.4s ease;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(142, 68, 173, 0.4);
+        }
+
+        button:hover::after {
+            transform: translateX(100%);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        /* Dropdown Styling */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: rgba(180, 60, 0, 0.95); /* Improved contrast */
+            border-radius: 10px;
+            padding: 10px;
+            min-width: 220px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            z-index: 1000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px 15px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #fff;
+            color: #e67e22;
+        }
+
+        /* Mobile dropdown toggle indicator */
+        .dropdown > a::after {
+            content: '▾';
+            margin-left: 5px;
+            display: inline-block;
+        }
+
+        @media (max-width: 850px) {
+            .dropdown-content {
+                position: static;
+                background: rgba(180, 60, 0, 0.85); /* Improved contrast */
+                box-shadow: none;
+                margin-top: 10px;
+                display: none;
+            }
+
+            .dropdown-content.show {
+                display: block;
+            }
+        }
+
+        /* ====== CAROUSEL STYLES - NO CROPPING ====== */
+        .carousel {
+            border-radius: 30px;
+            position: relative;
+            max-width: 100%;
+            overflow: hidden;
+            background: linear-gradient(145deg, #ffe3f9, #ffeaf2);
+            margin: 100px auto 30px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            font-family: 'Poppins', sans-serif;
+            max-width: 1200px;
+        }
+
+        .carousel h1 {
+            color: var(--maroon);
+            margin-bottom: 20px;
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        .carousel-image-wrapper {
+            width: 100%;
+            height: 50vh; /* Responsive height */
+            min-height: 300px;
+            max-height: 500px;
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            background: #eee;
+            margin: 0 auto;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            display: flex; /* Added for non-cropping layout */
+            align-items: center; /* Center vertically */
+            justify-content: center; /* Center horizontally */
+        }
+
+        .carousel img {
+            max-width: 100%; /* Changed for non-cropping */
+            max-height: 100%; /* Changed for non-cropping */
+            object-fit: contain; /* Changed to prevent cropping */
+            display: none;
+            border-radius: 20px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        .carousel img.active {
+            display: block;
+        }
+
+        .carousel .prev,
+        .carousel .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--maroon);
+            padding: 10px 15px;
+            cursor: pointer;
+            color: white;
+            font-size: 24px;
+            z-index: 2;
+            border-radius: 50%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: background 0.3s ease;
+        }
+
+        .carousel .prev:hover,
+        .carousel .next:hover {
+            background: #a30000;
+        }
+
+        .carousel .prev {
+            left: 10px;
+        }
+
+        .carousel .next {
+            right: 10px;
+        }
+
+        .dots {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .dot {
+            height: 16px; /* Larger for touch screens */
+            width: 16px;  /* Larger for touch screens */
+            background: #ccc;
+            display: inline-block;
+            margin: 8px; /* Increased margin */
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .dot.active {
+            background: var(--maroon); /* Better color */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* ====== ABOUT CONTENT STYLES ====== */
+        .container-about {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 2rem;
+            display: grid;
+            gap: 2.5rem;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .container-about h2 {
+            color: var(--maroon);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            border-left: 6px solid var(--green);
+            padding-left: 15px;
+            animation: slideInLeft 0.7s ease-in-out;
+        }
+
+        .container-about p, .container-about li {
+            font-size: 1.1rem;
+            color: #444;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .container-about ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 1rem;
+        }
+
+        .container-about li {
+            padding-left: 30px;
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .container-about li::before {
+            content: '✔';
+            color: var(--green);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        section {
+            padding: 25px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+
+        section:hover {
+            background-color: #fafafa;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            transform: translateY(-5px);
+        }
+
+        /* Leaders Section */
+        .leaders-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .leader-card {
+            background-color: #fdf8f3;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .leader-card:hover {
+            background-color: #fff7ef;
+            transform: scale(1.05);
+        }
+
+        .leader-icon {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .male .leader-icon {
+            color: var(--maroon);
+        }
+
+        .female .leader-icon {
+            color: var(--green);
+        }
+
+        .leader-card p {
+            font-weight: 500;
+            color: #444;
+            margin-top: 10px;
+        }
+
+        /* Women Ministry */
+        #women-ministry {
+            padding: 2rem;
+            background-color: #fef8f8;
+            border-radius: 12px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        #women-ministry h2 {
+            font-size: 2rem;
+            color: var(--maroon);
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .group-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            background-color: #fff0f0;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(128, 0, 0, 0.1);
+        }
+
+        @media (max-width: 500px) {
+            .group-card {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        .group-icon {
+            font-size: 3rem;
+            color: #c0392b;
+            margin-top: 5px;
+        }
+
+        .group-description p {
+            margin: 0.5rem 0;
+            font-size: 1.05rem;
+            color: #444;
+        }
+
+        .leaders-grid.women {
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            margin-top: 2rem;
+        }
+
+        .leader-name {
+            background: #fff;
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            text-align: center;
+            font-weight: 500;
+            font-size: 1rem;
+            color: #5a2d2d;
+        }
+
+        /* Pastoral Section */
+        #pastoral {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 1rem 2rem;
+            color: #4b4b4b;
+        }
+
+        #pastoral h2 {
+            font-size: 2.2rem;
+            color: var(--maroon);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .pastoral-content {
+            display: flex;
+            gap: 2.5rem;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        @media (max-width: 650px) {
+            .pastoral-content {
+                flex-direction: column;
+            }
+            
+            .pastoral-content img {
+                max-width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+
+        .pastoral-content img {
+            max-width: 300px;
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            object-fit: cover;
+        }
+
+        .pastoral-message {
+            max-width: 500px;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #3a3a3a;
+        }
+
+        .pastoral-message p {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(to bottom, #1a1a2e, #000);
+            color: white;
+            padding: 60px 0 30px;
+            margin-top: 50px;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            gap: 40px;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+        }
+
+        .footer-col h4 {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+            color: #ffae00;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background: #ff416c;
+        }
+
+        .quick-links {
+            list-style: none;
+        }
+
+        .quick-links li {
+            margin-bottom: 12px;
+        }
+
+        .quick-links a {
+            text-decoration: none;
+            color: #ddd;
+            display: block;
+            transition: all 0.3s ease;
+            padding: 5px 0;
+        }
+
+        .quick-links a:hover {
+            color: #ff416c;
+            transform: translateX(5px);
+        }
+
+        .footer-col p {
+            color: #bbb;
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .social-icons a:hover {
+            background: #ff416c;
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 40px;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        .copyright a {
+            color: #ffae00;
+            text-decoration: none;
+        }
+
+        .copyright a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Footer */
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .footer-col {
+                min-width: 100%;
+            }
+        }
+
+        /* Content Styles */
+        .content-section {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: var(--green);
+            border-radius: 20px;
+        }
+
+        /* ====== DONATION MODAL ====== */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1002;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            padding: 35px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            text-align: left;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+            position: relative;
+            transform: scale(0.9);
+            opacity: 0;
+            animation: modalAppear 0.4s forwards 0.1s;
+        }
+
+        @keyframes modalAppear {
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 32px;
+            cursor: pointer;
+            color: #8e44ad;
+            transition: all 0.3s ease;
+        }
+
+        .close:hover {
+            color: #ff416c;
+            transform: rotate(90deg);
+        }
+
+        .modal h2 {
+            margin-bottom: 25px;
+            color: #2c3e50;
+            font-size: 28px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .modal h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #8e44ad, #e74c3c);
+            border-radius: 2px;
+        }
+
+        .modal p {
+            margin: 18px 0;
+            color: #333;
+            font-size: 17px;
+            line-height: 1.6;
+        }
+
+        .donation-instructions {
+            background: rgba(142, 68, 173, 0.05);
+            padding: 22px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border: 1px solid rgba(142, 68, 173, 0.1);
+        }
+
+        .donation-instructions p {
+            font-weight: bold;
+            margin-top: 0;
+            color: #8e44ad;
+            font-size: 18px;
+        }
+
+        .donation-instructions ol {
+            padding-left: 25px;
+            margin-bottom: 0;
+        }
+
+        .donation-instructions li {
+            margin-bottom: 12px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        label {
+            display: block;
+            margin: 20px 0 8px;
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 16px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            margin-top: 5px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            border-color: #8e44ad;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(142, 68, 173, 0.2);
+        }
+
+        button {
+            background: linear-gradient(to right, #8e44ad, #e74c3c);
+            color: white;
+            padding: 16px 20px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 17px;
+            width: 100%;
+            transition: all 0.3s ease;
+            margin-top: 25px;
+            box-shadow: 0 6px 15px rgba(142, 68, 173, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-100%);
+            transition: transform 0.4s ease;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(142, 68, 173, 0.4);
+        }
+
+        button:hover::after {
+            transform: translateX(100%);
+        }
+
+        /* Success message styling */
+        .success-message {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .success-message i {
+            font-size: 4rem;
+            color: var(--green);
+            margin: 20px 0;
+        }
+
+        .success-message h2 {
+            color: var(--maroon);
+            margin: 20px 0;
+        }
+
+        .success-message button {
+            margin-top: 20px;
+        }
+
+        /* Loading spinner */
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-left-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .loading-text {
+            text-align: center;
+            margin-top: 15px;
+            color: var(--primary);
+            font-weight: 500;
+        }
+    </style>
+    <link rel="stylesheet" href="site-chrome.css">
+</head>
+<body>
+    <!-- Site navigation -->
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">
+                <img loading="lazy" class="logo1" src="logo.jpg" alt="Church Logo">
+                <div class="church-name">AIC EGERTON CHAPEL</div>
+            </div>
+            <button type="button" class="menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-controls="navLinks" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </button>
+            <nav>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html" class="active" aria-current="page">About</a></li>
+                    <li><a href="https://ecschools.netlify.app">Chapel Community Academy</a></li>
+                    <li><a href="sermons.html">Sermons</a></li>
+                    <li><a href="Ministries.html">Ministries</a></li>
+                    <li><a href="contact form.html">Contact Us</a></li>
+                    <li><button type="button" class="donate-btn" onclick="openDonationModal()"><i class="fas fa-donate" aria-hidden="true"></i> Donate</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Carousel -->
+    <div class="carousel">
+        <h1>AIC EGERTON CHAPEL GALLERY</h1>
+        <div class="carousel-image-wrapper" id="carousel-images">
+            <div class="loading">
+                <div class="spinner"></div>
+                <p class="loading-text">Loading gallery images...</p>
+            </div>
+        </div>
+        <div class="prev" onclick="changeSlide(-1)">&#10094;</div>
+        <div class="next" onclick="changeSlide(1)">&#10095;</div>
+        <div class="dots" id="dots"></div>
+    </div>
+
+    <!-- About Content -->
+    <div class="container-about">
+        <section id="history">
+            <h2>Church History</h2>
+            <p>AIC Egerton Chapel was started in April 2008 through a merger of two like-minded groups of christians;
+                one from AIC Lochorai and other from Egerton Community Chapel. This is mainstream church run by a Local Church Council
+                (LCC), and held accountable by the DCC, RCC, ACC all the way to the CCC.
+            </p>
+            <p>The church recognizes the fact that the church's mission as the light of the world and salt of the earth is not only to provide
+                the spiritual needs but also to take care of the physical needs of the world in its immediate vicinity as well as those of the 
+                world that she does not touch directly. 
+            </p>
+            <p>Over the years, it has grown to become a beacon of faith, hope, and love, impacting countless lives through worship, outreach, and discipleship...</p>
+        </section>
+        
+        <section id="mission">
+            <h2>Mission</h2>
+            <p>To Know Christ, experience His power, and be true witnesses of christ in a fallen world according to <b>2 Timothy 2:2</b></p>
+            <ol>
+                <li>Help people to know christ</li>
+                <li>Help believers to experience the power of Christ</li>
+                <li>Be the ambassadors of Christ on earth</li>
+                <li>Fulfil the great commission by:
+                    <ul>
+                        <li>Reaching out to the lost</li>
+                        <li>Making disciples</li>
+                        <li>Teaching to obedience</li>
+                    </ul>
+                </li>
+            </ol>
+        </section>
+        <section id="motto">
+            <h2>Motto</h2>
+            <p><b>Becoming a Beacon of Hope</b></p>
+        </section>
+        
+        <section id="vision">
+            <h2>Vision</h2>
+            <p>To become a beacon of hope as Christ-centered church transforming lives through faith, love, and service, empowering generations to live out the Gospel and impact the world for God's Kingdom.</p>
+        </section>
+        
+        <section id="values">
+            <h2>Values</h2>
+            <ul>
+                <li>Biblical Foundation - Commitment to Scripture as our ultimate authority</li>
+                <li>Christ-Centered Worship - Glorifying God in spirit and truth</li>
+                <li>Discipleship & Spiritual Growth - Nurturing believers to maturity</li>
+                <li>Community & Fellowship - Building authentic relationships</li>
+                <li>Evangelism & Outreach - Sharing the Gospel locally and globally</li>
+                <li>Integrity & Stewardship - Managing resources with accountability</li>
+                <li>Compassion & Service - Meeting needs with Christ-like love</li>
+            </ul>
+        </section>
+        
+        <section id="elders">
+            <h2>Our Elders & Church Leaders</h2>
+            <div class="leaders-grid">
+                <div class="leader-card male">
+                    <i class="fas fa-user-tie leader-icon"></i>
+                    <p><strong>Chairman</strong><br>Dr. Stephine Mutie</p>
+                </div>
+                <div class="leader-card male">
+                    <i class="fas fa-user-tie leader-icon"></i>
+                    <p><strong>Vice Chairman</strong><br>Isaack Kariithi</p>
+                </div>
+                <div class="leader-card male">
+                    <i class="fas fa-user-tie leader-icon"></i>
+                    <p><strong>Secretary</strong><br>Jonathan Mwangi Nduati</p>
+                </div>
+                <div class="leader-card male">
+                    <i class="fas fa-user-tie leader-icon"></i>
+                    <p><strong>Treasurer</strong><br>Patrick M. Mboma</p>
+                </div>
+                <div class="leader-card male">
+                    <i class="fas fa-user-tie leader-icon"></i>
+                    <p><strong>LCC Member</strong><br>Richard Mose</p>
+                </div>
+                <div class="leader-card male">
+                    <i class="fas fa-user-tie leader-icon"></i>
+                    <p><strong>Development Chair</strong><br>Stephine Njogu</p>
+                </div>
+                <div class="leader-card male">
+                    <i class="fas fa-user-tie leader-icon"></i>
+                    <p><strong>LCC Member</strong><br>Mutisya</p>
+                </div>
+                <div class="leader-card male">
+                    <i class="fas fa-user-tie leader-icon"></i>
+                    <p><strong>LCC Member</strong><br>Githinji</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="women-ministry">
+            <h2>Women Ministry Leaders</h2>
+            <div class="group-card">
+                <i class="fas fa-users leader-icon group-icon"></i>
+                <div class="group-description">
+                    <p><strong>Empowering Women in Christ</strong></p>
+                    <p>United in purpose and faith, the Women Ministry leadership team serves as a cornerstone of AIC Egerton Chapel’s community life. These women exemplify strength, compassion, and spiritual depth as they mentor, guide, and empower fellow women to thrive in their personal walk with Christ and their service to others.</p>
+                    <p>Through prayer, discipleship, and organized fellowships, they nurture growth among women of all ages—offering counsel, leadership, and unity within the body of Christ.</p>
+                </div>
+            </div>
+            <div class="leaders-grid women">
+                <div class="leader-name">Lily Mwangi</div>
+                <div class="leader-name">Esther Lugusi</div>
+                <div class="leader-name">Janet Owit</div>
+                <div class="leader-name">Aska Masita</div>
+                <div class="leader-name">Dr. Muthoka</div>
+                <div class="leader-name">Lucy Rwigi</div>
+                <div class="leader-name">Ms. Karithii</div>
+                <div class="leader-name">Philomena Kamau</div>
+            </div>
+        </section>
+        
+        <section id="pastoral">
+            <h2>Pastoral Team</h2>
+            <div class="pastoral-content">
+                <img src="rev.JPG" alt="Rev. Dr. William Chesaine Kipkoros" />
+                <div class="pastoral-message">
+                    <p>“Beloved in Christ, welcome to AIC Egerton Chapel! It is a great joy to serve and journey with you in faith. As we gather in worship and fellowship, let us be reminded of our divine calling to grow in grace, walk in love, and serve with purpose.</p>
+                    <p>Our mission is not just to be hearers of the Word, but doers—impacting lives, strengthening families, and building a Christ-centered community. In these times, let us hold fast to God’s promises, encourage one another, and be the light that the world desperately needs.</p>
+                    <p>May God’s peace, wisdom, and strength abound in your lives. We look forward to growing together in faith as one family in Christ.”</p>
+                    <p>We invite you to join us in our journey of faith, to worship together, and to serve as one body in Christ. May God bless you abundantly as you walk this path of faith with us!</p>
+                    <p><strong>– Rev. Dr. William Chesaine Kipkoros</strong></p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Donation Modal -->
+    <div id="donationModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeDonationModal()">&times;</span>
+            <h2>Church Donation</h2>
+            <p>Contact us on WhatsApp for current donation details.</p>
+            <label for="donationReason">Reason for Donation:</label>
+            <input type="text" id="donationReason" placeholder="E.g., Church Project, Tithe, Offering">
+            <button onclick="submitDonation()">Get Donation Details on WhatsApp</button>
+        </div>
+    </div>
+    
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h4>About Us</h4>
+                <p>AIC Egerton Chapel is a vibrant community of believers dedicated to worship, spiritual growth, and serving others. Join us on our journey of faith.</p>
+                <div class="social-icons">
+                    <a href="https://www.fb.com/@aicegertonchapel" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                    <a href="https://www.youtube.com/@aicegertonchapel" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                    <a href="https://www.tiktok.com/@aicegertonchapel" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
+                    <a href="https://wa.me/254799522418" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="quick-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="sermons.html">Sermons</a></li>
+                    <li><a href="Ministries.html">Ministries</a></li>
+                    <li><a href="https://ecschools.netlify.app">Chapel Community Academy</a></li>
+                    <li><a href="contact form.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Info</h4>
+                <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Egerton University, Njoro, Kenya</p>
+                <p><i class="fas fa-phone" aria-hidden="true"></i> +254 799 522 418</p>
+                <p><i class="fas fa-envelope" aria-hidden="true"></i> aicegertonchapel@gmail.com</p>
+                <p><i class="fas fa-clock" aria-hidden="true"></i> Sunday Services: 8:00 AM - 12:00 PM</p>
+                <div class="footer-map">
+                    <iframe src="https://www.google.com/maps?q=Egerton+University%2C+Njoro%2C+Kenya&amp;output=embed" title="Map showing Egerton University, Njoro, Kenya" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; <span id="copyrightYear"></span> AIC Egerton Chapel. All rights reserved.</p>
+            <p>Developed and maintained by: <a href="#">Eng. Jeremiah Thuita [DCE]</a></p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('copyrightYear').textContent = new Date().getFullYear();
+
+        // ====== MENU FUNCTIONALITY ======
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        menuToggle.addEventListener('click', () => {
+            const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            menuToggle.setAttribute('aria-expanded', String(!isExpanded));
+            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!menuToggle.contains(e.target) && !navLinks.contains(e.target)) {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Close mobile menu when clicking links
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Mobile dropdown toggle
+        document.querySelectorAll('.dropdown > a').forEach(dropdownLink => {
+            dropdownLink.addEventListener('click', function(e) {
+                if (window.innerWidth <= 850) {
+                    e.preventDefault();
+                    const dropdownContent = this.nextElementSibling;
+                    dropdownContent.classList.toggle('show');
+                }
+            });
+        });
+
+        // ====== DONATION MODAL FUNCTIONALITY ======
+        const donationModal = document.getElementById('donationModal');
+        const reasonInput = document.getElementById('donationReason');
+        
+        function openDonationModal() {
+            donationModal.style.display = "flex";
+            reasonInput.style.borderColor = "#e0e0e0";
+        }
+        
+        function closeDonationModal() {
+            donationModal.style.display = "none";
+            reasonInput.value = "";
+        }
+        
+        function submitDonation() {
+            const reason = reasonInput.value.trim();
+            const message = `Hello AIC Egerton Chapel, please share the current donation details${reason ? ` for ${reason}` : ''}.`;
+            window.location.href = `https://wa.me/254799522418?text=${encodeURIComponent(message)}`;
+        }
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', (event) => {
+            if (event.target === donationModal) {
+                closeDonationModal();
+            }
+        });
+
+        // ====== CAROUSEL FUNCTIONALITY ======
+        let currentSlide = 0;
+        let slides = [];
+        let dots = [];
+        let autoSlideInterval;
+
+        function initCarousel() {
+            const dotsContainer = document.getElementById('dots');
+            dotsContainer.innerHTML = '';
+            
+            // Create dots
+            slides.forEach((_, i) => {
+                const dot = document.createElement('span');
+                dot.classList.add('dot');
+                dot.addEventListener('click', () => {
+                    goToSlide(i);
+                });
+                dotsContainer.appendChild(dot);
+            });
+            
+            dots = document.querySelectorAll('.dot');
+            updateCarousel();
+            
+            // Auto-advance slides
+            startAutoSlide();
+        }
+
+        function changeSlide(n) {
+            currentSlide += n;
+            if (currentSlide < 0) {
+                currentSlide = slides.length - 1;
+            } else if (currentSlide >= slides.length) {
+                currentSlide = 0;
+            }
+            updateCarousel();
+            resetAutoSlide();
+        }
+
+        function goToSlide(n) {
+            currentSlide = n;
+            updateCarousel();
+            resetAutoSlide();
+        }
+
+        function updateCarousel() {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === currentSlide);
+            });
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentSlide);
+            });
+        }
+
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(() => {
+                changeSlide(1);
+            }, 5000);
+        }
+
+        function resetAutoSlide() {
+            clearInterval(autoSlideInterval);
+            startAutoSlide();
+        }
+
+        // ====== CONTENTFUL IMAGE LOADING ======
+        const spaceID = 'em08252vzuh6';
+        const accessToken = 'ooQsmSp49pSYFtEwn52S4U_sdjD6Tojr7KCTnWHPO8I';
+        const environment = 'Church-Website';
+
+        async function loadGallery() {
+            try {
+                const res = await fetch(`https://cdn.contentful.com/spaces/${spaceID}/environments/${environment}/entries?access_token=${accessToken}&content_type=galleryImage&include=1`);
+                const data = await res.json();
+
+                const assets = data.includes.Asset;
+                const container = document.getElementById('carousel-images');
+                container.innerHTML = ''; // Clear loading indicator
+                
+                const images = [];
+                
+                data.items.forEach((item, i) => {
+                    const imgIds = item.fields.img.map(link => link.sys.id);
+
+                    imgIds.forEach((imgId, j) => {
+                        const asset = assets.find(a => a.sys.id === imgId);
+                        if (asset && asset.fields.file.url) {
+                            const img = document.createElement('img');
+                            img.src = `https:${asset.fields.file.url}`;
+                            img.alt = asset.fields.title || `Gallery Image ${i}-${j}`;
+                            container.appendChild(img);
+                            images.push(img);
+                        }
+                    });
+                });
+
+                if (images.length === 0) {
+                    container.innerHTML = '<p>No gallery images found</p>';
+                    return;
+                }
+                
+                // Initialize carousel after images load
+                slides = document.querySelectorAll('#carousel-images img');
+                
+                // Show first image immediately
+                if (slides.length > 0) {
+                    slides[0].classList.add('active');
+                }
+                
+                initCarousel();
+            } catch (error) {
+                console.error('Error loading gallery:', error);
+                document.getElementById('carousel-images').innerHTML = '<p>Unable to load gallery images at this time.</p>';
+            }
+        }
+
+        // ====== SMOOTH SCROLLING ======
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href') === '#') return;
+                
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (window.innerWidth <= 850) {
+                        menuToggle.classList.remove('active');
+                        navLinks.classList.remove('active');
+                    }
+                }
+            });
+        });
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            loadGallery();
+            
+            // Highlight active section in dropdown
+            const dropdownLinks = document.querySelectorAll('.dropdown-content a');
+            const sections = document.querySelectorAll('section');
+            
+            function highlightActiveSection() {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                dropdownLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', highlightActiveSection);
+            highlightActiveSection(); // Initial call
+        });
+    </script>
+</body>
+</html>
