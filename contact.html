@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - AIC Egerton Chapel</title>
+    <link rel="canonical" href="https://aicegertonchapel.netlify.app/contact.html">
+    <link rel="stylesheet" href="/site-chrome.css">
+    <link rel="stylesheet" href="/assets/css/contact.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
 <style>
 
@@ -614,6 +617,22 @@
             line-height: 1.6;
         }
 
+        .contact-map {
+            height: 260px;
+            margin-top: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(44, 62, 80, 0.18);
+            border-radius: 12px;
+            background: #1a1a2e;
+        }
+
+        .contact-map iframe {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
         /* Input Rows */
         .field {
             display: flex;
@@ -835,281 +854,607 @@
                 gap: 8px;
             }
         }
+
+        #container.contact-page {
+            width: min(100% - 32px, 1200px);
+            max-width: 1200px;
+            margin: 30px auto 60px;
+            padding: 0;
+            background: transparent;
+            box-shadow: none;
+        }
+
+        #container .contact-welcome h1 {
+            margin: 0 0 18px;
+            color: #2c3e50;
+            text-align: left;
+        }
+
+        #container .contact-welcome p {
+            margin: 0 0 16px;
+            color: #4b5563;
+            text-align: left;
+        }
+
+        .contact-top-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.22fr) minmax(0, 1fr);
+            gap: 30px;
+            align-items: stretch;
+            margin-bottom: 32px;
+        }
+
+        .contact-map-panel,
+        .contact-welcome,
+        .contact-detail-panel,
+        .contact-form-panel {
+            min-width: 0;
+            border: 1px solid rgba(142, 68, 173, 0.14);
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.94);
+            box-shadow: 0 8px 24px rgba(44, 62, 80, 0.09);
+        }
+
+        .contact-map-panel {
+            min-height: 340px;
+            overflow: hidden;
+        }
+
+        .contact-map-panel iframe {
+            display: block;
+            width: 100%;
+            height: 100%;
+            min-height: 340px;
+            border: 0;
+        }
+
+        .contact-welcome {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: clamp(24px, 4vw, 42px);
+        }
+
+        .contact-welcome h1 {
+            margin: 0 0 18px;
+            color: #2c3e50;
+            font-size: clamp(2rem, 3.2vw, 2.8rem);
+            line-height: 1.12;
+            text-align: left;
+        }
+
+        .contact-welcome p {
+            margin: 0 0 16px;
+            color: #4b5563;
+            line-height: 1.75;
+        }
+
+        .contact-welcome-links {
+            display: grid;
+            gap: 12px;
+            width: 100%;
+            margin-top: auto;
+            padding-top: 12px;
+        }
+
+        .contact-welcome-links a {
+            color: #8e44ad;
+            font-weight: 700;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .contact-welcome-links a:hover,
+        .contact-welcome-links a:focus-visible {
+            color: #e74c3c;
+        }
+
+        .contact-lower-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+            align-items: stretch;
+        }
+
+        .contact-detail-panel,
+        .contact-form-panel {
+            padding: 24px;
+        }
+
+        .contact-detail-panel h2,
+        .contact-form-panel h2 {
+            margin: 0 0 22px;
+            color: #2c3e50;
+            font-size: 1.35rem;
+        }
+
+        .contact-detail-list {
+            display: grid;
+            gap: 22px;
+        }
+
+        .contact-detail {
+            display: grid;
+            grid-template-columns: 24px minmax(0, 1fr);
+            gap: 12px;
+            align-items: start;
+            color: #4b5563;
+            line-height: 1.6;
+        }
+
+        .contact-detail > i {
+            padding-top: 3px;
+            color: #8e44ad;
+            text-align: center;
+        }
+
+        .contact-detail strong {
+            display: block;
+            margin-bottom: 4px;
+            color: #2c3e50;
+        }
+
+        .contact-detail a {
+            color: #8e44ad;
+            overflow-wrap: anywhere;
+        }
+
+        .contact-form-panel {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-form-panel h2 {
+            margin-bottom: 18px;
+        }
+
+        .contact-form-panel .google-mail-form {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            gap: 13px;
+        }
+
+        .contact-form-panel .contact-field {
+            margin: 0;
+        }
+
+        .contact-form-panel .contact-field > label,
+        .contact-form-panel fieldset > legend {
+            display: block;
+            margin: 0 0 6px;
+            color: #2c3e50;
+            font-size: 0.92rem;
+            font-weight: 700;
+        }
+
+        .contact-form-panel input:not([type="hidden"]):not([type="radio"]),
+        .contact-form-panel select,
+        .contact-form-panel textarea {
+            width: 100%;
+            margin: 0;
+            padding: 10px 12px;
+            border: 1px solid #d6dbe1;
+            border-radius: 7px;
+            background: #fff;
+            color: #333;
+            font: inherit;
+        }
+
+        .contact-form-panel input:focus,
+        .contact-form-panel select:focus,
+        .contact-form-panel textarea:focus {
+            border-color: #8e44ad;
+            outline: 0;
+            box-shadow: 0 0 0 3px rgba(142, 68, 173, 0.12);
+        }
+
+        .contact-form-panel textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        .contact-form-panel fieldset {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+
+        .contact-form-panel fieldset > legend {
+            width: 100%;
+        }
+
+        .contact-form-panel .radio-option {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            margin: 0;
+            color: #4b5563;
+            font-weight: 400;
+        }
+
+        .contact-form-panel input[type="radio"] {
+            width: 16px;
+            height: 16px;
+            margin: 0;
+            accent-color: #8e44ad;
+        }
+
+        .contact-form-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+            padding-top: 8px;
+        }
+
+        .contact-form-actions button {
+            width: auto;
+            min-width: 100px;
+            margin: 0;
+            padding: 10px 18px;
+            border-radius: 24px;
+            font: inherit;
+            font-weight: 700;
+        }
+
+        .contact-form-actions .contact-clear {
+            border: 1px solid #8e44ad;
+            background: #fff;
+            color: #8e44ad;
+            box-shadow: none;
+        }
+
+        .contact-form-actions .contact-send {
+            background: linear-gradient(to right, #8e44ad, #e74c3c);
+            color: #fff;
+        }
+
+        .contact-form-actions button::after {
+            display: none;
+        }
+
+        .contact-form-status {
+            min-height: 1.5em;
+            margin: 0;
+            color: #555;
+            font-size: 0.88rem;
+            line-height: 1.45;
+        }
+
+        .contact-form-status.form-status-warning,
+        .contact-form-status.form-status-error {
+            color: #9c2c20;
+            font-weight: 600;
+        }
+
+        .contact-form-status.form-status-success {
+            color: #276749;
+            font-weight: 600;
+        }
+
+        @media (max-width: 900px) {
+            .contact-top-grid {
+                grid-template-columns: 1.1fr 0.9fr;
+                gap: 18px;
+            }
+
+            .contact-lower-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .contact-detail-panel {
+                grid-row: span 2;
+            }
+        }
+
+        @media (max-width: 650px) {
+            #container.contact-page {
+                width: min(100% - 24px, 520px);
+                margin-top: 18px;
+            }
+
+            .contact-top-grid,
+            .contact-lower-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-top-grid {
+                gap: 16px;
+                margin-bottom: 18px;
+            }
+
+            .contact-map-panel,
+            .contact-map-panel iframe {
+                min-height: 280px;
+            }
+
+            .contact-detail-panel {
+                grid-row: auto;
+            }
+
+            .contact-welcome,
+            .contact-detail-panel,
+            .contact-form-panel {
+                padding: 22px;
+            }
+        }
 </style>
-    <link rel="stylesheet" href="site-chrome.css">
+    <link rel="stylesheet" href="/site-chrome.css">
 </head>
 <body>
     <!-- Header Section -->
-    <header class="site-header">
-        <div class="container">
-            <div class="logo">
-                <img loading="lazy" class="logo1" src="logo.jpg" alt="Church Logo" width="50" height="50">
-                <div class="church-name">AIC EGERTON CHAPEL</div>
-            </div>
-            <button type="button" class="menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-controls="navLinks" aria-expanded="false">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-            </button>
-            <nav>
-                <ul class="nav-links" id="navLinks">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="https://ecschools.netlify.app">Chapel Community Academy</a></li>
-                    <li><a href="sermons.html">Sermons</a></li>
-                    <li><a href="Ministries.html">Ministries</a></li>
-                    <li><a href="contact form.html" class="active" aria-current="page">Contact Us</a></li>
-                    <li><button type="button" class="donate-btn" onclick="openDonationModal()"><i class="fas fa-donate" aria-hidden="true"></i> Donate</button></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <!--CHROME:HEADER:START-->
+<a href="#main" class="aic-skip-link">Skip to content</a>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/index.html" aria-label="AIC Egerton Chapel — home">
+      <img class="logo1" src="/logo.jpg" alt="" width="46" height="46">
+      <span class="church-name">AIC EGERTON CHAPEL</span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation menu" aria-controls="navLinks" aria-expanded="false">
+      <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+    </button>
+    <nav aria-label="Main navigation">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="https://ecschools.netlify.app" target="_blank" rel="noopener noreferrer">Academy</a></li>
+        <li><a href="/sermons.html">Sermons</a></li>
+        <li><a href="/ministries.html">Ministries</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+        <li><a class="donate-btn" href="/give.html" data-open-donate><i class="fas fa-donate" aria-hidden="true"></i> Donate</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<!--CHROME:HEADER:END-->
 
     <!-- Donation Modal -->
     <div id="donationModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
         <div class="modal-content">
-            <span class="close" onclick="closeDonationModal()" aria-label="Close modal">&times;</span>
+            <button type="button" class="close" data-action="donation-close" aria-label="Close donation dialog">&times;</button>
             <h2 id="modalTitle">Church Donation</h2>
-            <p>Contact us on WhatsApp for current donation details.</p>
+            <p>Use the M-Pesa details below to make your donation. Contact us on WhatsApp if you need help.</p>
+            <p><strong>Paybill Number:</strong> 522522</p>
+            <p><strong>Account Number:</strong> 7506439</p>
+            <div class="donation-instructions">
+                <p>How to donate:</p>
+                <ol>
+                    <li>Go to the M-Pesa menu</li>
+                    <li>Select Lipa na M-Pesa</li>
+                    <li>Select Paybill</li>
+                    <li>Enter the Paybill number above</li>
+                    <li>Enter the account number above and confirm your donation</li>
+                </ol>
+            </div>
             <label for="donationReason">Reason for Donation:</label>
             <input type="text" id="donationReason" placeholder="E.g., Church Project, Tithe, Offering">
-            <button id="donateNowBtn" onclick="submitDonation()">Get Donation Details on WhatsApp</button>
+            <button id="donateNowBtn" type="button" data-action="donation-submit">Get Help on WhatsApp</button>
         </div>
     </div>
-    
-    <div id="container">
-        <h1><i class="fa fa-address-book" aria-hidden="true"></i><u> Contact Us</u></h1>
-        <p>You can get in-touch with us via email, calls, our social media pages, text messages or by visiting our Church. <br>Thank You</p>
-        
-        <div class="contact-box">
-            <div class="contact-left">
-                <h3>Inquire/Place Your Order</h3>
-                <form id="form">
-                    <div class="field">
-                      <label for="from_name">Full Name</label>
-                      <input type="text" name="from_name" id="from_name" placeholder="Jesus Christ" required>
+
+    <main class="contact-page" id="main">
+        <section class="contact-top-grid" aria-label="Contact and location">
+            <div class="contact-map-panel">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7356577284563!2d35.94114277582281!3d-0.3688216353133254!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182987bf970d254d%3A0x385834a695a103c7!2sA.I.C%20Egerton%20Chapel!5e0!3m2!1sen!2ske!4v1793572628423!5m2!1sen!2ske"
+                    title="Map showing AIC Egerton Chapel, Njoro, Kenya"
+                    loading="lazy"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <div class="contact-welcome">
+                <h1><i class="fa fa-address-book" aria-hidden="true"></i> Contact Us</h1>
+                <p>Thank you for your interest in AIC Egerton Chapel. Connect with our ministry leaders, submit prayer requests, or visit our church in Njoro, Kenya.</p>
+                <p>We are a community committed to worship, spiritual growth, fellowship, and serving others. Whether you have a question or need pastoral care, we would be glad to hear from you.</p>
+                <div class="contact-welcome-links">
+                    <a href="/ministries.html">To learn more about our ministries, please click here.</a>
+                    <a class="btn-get-directions" href="#" target="_blank" rel="noopener noreferrer">For directions to the chapel, please click here.</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-lower-grid" aria-label="Contact details and message forms">
+            <section class="contact-detail-panel" aria-labelledby="contact-details-heading">
+                <h2 id="contact-details-heading">Reach Us</h2>
+                <div class="contact-detail-list">
+                    <div class="contact-detail">
+                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                        <div>
+                            <strong>Physical Location</strong>
+                            <span>AIC Egerton Chapel<br>Opposite Egerton University Main Gate, Njoro, Kenya</span>
+                        </div>
                     </div>
-                    <div class="field">
-                      <label for="phone">Phone</label>
-                      <input type="tel" name="phone" id="phone" placeholder="+254712345678" required>
+                    <div class="contact-detail">
+                        <i class="fas fa-building" aria-hidden="true"></i>
+                        <div>
+                            <strong>Office / Mailing</strong>
+                            <span>AIC Egerton Chapel<br>Egerton University, Njoro, Kenya</span>
+                        </div>
                     </div>
-                    <div class="field">
-                      <label for="from_email">Email</label>
-                      <input type="email" name="from_email" id="from_email" placeholder="username@gmail.com" required>
+                    <div class="contact-detail">
+                        <i class="fas fa-phone-alt" aria-hidden="true"></i>
+                        <div>
+                            <strong>Telephone & Pastoral Care</strong>
+                            <a href="tel:+254799522418">+254 799 522 418</a><br>
+                            <a href="https://wa.me/254799522418" target="_blank" rel="noopener noreferrer">WhatsApp Pastoral Care</a>
+                        </div>
                     </div>
-                    <div class="field">
-                      <label for="subject">Subject</label>
-                      <input type="text" name="subject" id="subject" placeholder="Prayer request, Inquiry, Admission etc." required>
+                    <div class="contact-detail">
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
+                        <div>
+                            <strong>Support Email</strong>
+                            <a href="mailto:aicegertonchapel@gmail.com">aicegertonchapel@gmail.com</a><br>
+                            <a href="mailto:echapelschools@gmail.com">Chapel Academy: echapelschools@gmail.com</a>
+                        </div>
                     </div>
-                    <div class="field">
-                      <label for="message">Message</label>
-                      <textarea name="message" id="message" placeholder="How can we be of assistance to you?" required></textarea>
+                    <div class="contact-detail">
+                        <i class="fas fa-clock" aria-hidden="true"></i>
+                        <div>
+                            <strong>Gathering Hours</strong>
+                            <span>Sunday Worship: 8:00 AM – 12:00 PM<br>Wednesday Mid-Week Prayers: 5:30 PM – 7:00 PM<br>Youth & Campus Fellowship: Fridays 6:00 PM – 8:00 PM</span>
+                        </div>
                     </div>
-                    <input type="submit" id="button" value="Submit">
+                </div>
+            </section>
+
+            <section class="contact-form-panel" aria-labelledby="prayer-form-heading">
+                <h2 id="prayer-form-heading">Prayer Requests</h2>
+                <form class="google-mail-form contact-form" data-status-id="prayerFormStatus" method="post">
+                    <input type="hidden" name="formType" value="prayer">
+                    <div class="form-honeypot" aria-hidden="true">
+                        <label for="prayerWebsite">Leave this field empty</label>
+                        <input type="text" name="website" id="prayerWebsite" tabindex="-1" autocomplete="off">
+                    </div>
+                    <div class="contact-field">
+                        <label for="prayerName">Name or Anonymous *</label>
+                        <input type="text" name="name" id="prayerName" placeholder="Your name or Anonymous" autocomplete="name" required maxlength="120">
+                    </div>
+                    <div class="contact-field">
+                        <label for="prayerCategory">Ministry Category *</label>
+                        <select name="category" id="prayerCategory" required>
+                            <option value="Prayer Request" selected>Prayer Request</option>
+                            <option value="Counseling">Pastoral Counseling</option>
+                            <option value="General Inquiry">General Inquiry</option>
+                            <option value="Admissions">Chapel Community Academy Admissions</option>
+                            <option value="Thanksgiving">Praise & Thanksgiving Testimony</option>
+                        </select>
+                    </div>
+                    <div class="contact-field">
+                        <label for="prayerMessage">Message *</label>
+                        <textarea name="message" id="prayerMessage" rows="4" maxlength="2000" placeholder="Please share details so our pastoral team can stand in prayer with you..." required></textarea>
+                    </div>
+                    <label class="radio-option"><input type="checkbox" name="private" value="true"> Keep this request private to the pastoral team</label>
+                    <div class="cf-turnstile" data-theme="light"></div>
+                    <div class="contact-form-actions">
+                        <button class="contact-clear" type="reset">Clear</button>
+                        <button class="contact-send" type="submit">Send</button>
+                    </div>
+                    <p class="contact-form-status form-status" id="prayerFormStatus" role="status" aria-live="polite"></p>
                 </form>
-            </div>
-            
-            <div class="contact-right">
-                <h3><u>Reach Us</u></h3>
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <p><strong>Email</strong></p>
-                            <p>aicegertonchapel@gmail.com</p>
-                            <p>echapelschools@gmail.com</p>
-                        </div>
+            </section>
+
+            <section class="contact-form-panel" aria-labelledby="contact-form-heading">
+                <h2 id="contact-form-heading">Contact Form</h2>
+                <form class="google-mail-form contact-form" data-status-id="generalFormStatus" method="post">
+                    <input type="hidden" name="formType" value="contact">
+                    <div class="form-honeypot" aria-hidden="true">
+                        <label for="generalWebsite">Leave this field empty</label>
+                        <input type="text" name="website" id="generalWebsite" tabindex="-1" autocomplete="off">
                     </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone-alt"></i>
-                        <div>
-                            <p><strong>Phone</strong></p>
-                            <p>+254-799-522-418</p>
-                        </div>
+                    <div class="contact-field">
+                        <label for="generalName">Name *</label>
+                        <input type="text" name="from_name" id="generalName" placeholder="Your full name" autocomplete="name" required>
                     </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <p><strong>Address</strong></p>
-                            <p>Opposite Egerton University Njoro Campus main gate</p>
-                            <p>200 meters off the main road</p>
-                            <p>P.O BOX 17-20114</p>
-                            <p>Egerton, Nakuru Kenya</p>
-                        </div>
+                    <div class="contact-field">
+                        <label for="generalPhone">Phone Number *</label>
+                        <input type="tel" name="phone" id="generalPhone" placeholder="0712 345 678 or +254..." autocomplete="tel" required>
                     </div>
-                </div>
-            </div>
-        </div>
+                    <div class="contact-field">
+                        <label for="generalEmail">Email *</label>
+                        <input type="email" name="from_email" id="generalEmail" placeholder="you@example.com" autocomplete="email" required>
+                    </div>
+                    <div class="contact-field">
+                        <label for="generalCategory">Ministry Category *</label>
+                        <select name="category" id="generalCategory" required>
+                            <option value="Prayer Request">Prayer Request</option>
+                            <option value="Counseling">Pastoral Counseling</option>
+                            <option value="General Inquiry" selected>General Inquiry</option>
+                            <option value="Admissions">Chapel Community Academy Admissions</option>
+                            <option value="Thanksgiving">Praise & Thanksgiving Testimony</option>
+                        </select>
+                    </div>
+                    <div class="contact-field">
+                        <label for="generalSubject">Subject *</label>
+                        <input type="text" name="subject" id="generalSubject" placeholder="How can we help?" required>
+                    </div>
+                    <fieldset>
+                        <legend>May we contact you about this request?</legend>
+                        <label class="radio-option"><input type="radio" name="follow_up" value="Yes" required> Yes</label>
+                        <label class="radio-option"><input type="radio" name="follow_up" value="No" required> No</label>
+                    </fieldset>
+                    <div class="contact-field">
+                        <label for="generalMessage">Message *</label>
+                        <textarea name="message" id="generalMessage" rows="4" placeholder="Please share how we can help..." required></textarea>
+                    </div>
+                    <div class="cf-turnstile" data-theme="light"></div>
+                    <div class="contact-form-actions">
+                        <button class="contact-clear" type="reset">Clear</button>
+                        <button class="contact-send" type="submit">Send</button>
+                    </div>
+                    <p class="contact-form-status form-status" id="generalFormStatus" role="status" aria-live="polite"></p>
+                </form>
+            </section>
+        </section>
+    </main>
+
+    <!--CHROME:FOOTER:START-->
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-col">
+      <h4>About Us</h4>
+      <p>AIC Egerton Chapel is a vibrant community of believers dedicated to worship, spiritual growth, and serving others.</p>
     </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul class="quick-links">
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/ministries.html">Ministries</a></li>
+        <li><a href="/sermons.html">Sermons</a></li>
+        <li><a href="/live.html">Live Stream</a></li>
+        <li><a href="/prayer-wall.html">Prayer Wall</a></li>
+        <li><a href="/contact.html">Contact Us</a></li>
+        <li><a href="/give.html">Give</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Service Times</h4>
+      <div class="footer-service-times" data-service-times>
+        <p><strong>Sunday</strong><br>Main Worship Service — 8:00 AM – 12:00 PM EAT</p>
+        <p><strong>Wednesday</strong><br>Mid-Week Prayer — 5:30 PM – 7:00 PM EAT</p>
+        <p><strong>Friday</strong><br>Youth Fellowship — 6:00 PM – 8:00 PM EAT</p>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>Egerton University, Njoro, Kenya</p>
+      <p><a href="tel:+254799522418">+254 799 522 418</a></p>
+      <p><a href="mailto:aicegertonchapel@gmail.com">aicegertonchapel@gmail.com</a></p>
+      <p><a href="https://wa.me/254799522418" target="_blank" rel="noopener noreferrer">WhatsApp</a></p>
+    </div>
+    <div class="footer-col">
+      <h4>Follow us</h4>
+      <div class="social-icons">
+        <a href="https://www.youtube.com/@aicegertonchapel" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+        <a href="https://www.facebook.com/@aicegertonchapel" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+        <a href="https://www.tiktok.com/@aicegertonchapel" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
+      </div>
+    </div>
+    <div class="footer-col footer-map">
+      <h4>Find us</h4>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7356577284563!2d35.94114277582281!3d-0.3688216353133254!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182987bf970d254d%3A0x385834a695a103c7!2sA.I.C%20Egerton%20Chapel!5e0!3m2!1sen!2ske!4v1793572628423!5m2!1sen!2ske" title="Map showing AIC Egerton Chapel" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <a class="btn-get-directions btn-secondary" href="https://www.google.com/maps/dir/?api=1&amp;destination=-0.3688216353133254%2C35.94114277582281" target="_blank" rel="noopener noreferrer">Get directions</a>
+    </div>
+  </div>
+  <div class="copyright">
+    <p>© <span id="copyrightYear"></span> AIC Egerton Chapel. All rights reserved. <a href="/privacy.html">Privacy</a> · <a href="/accessibility.html">Accessibility</a></p>
+    <p class="site-attribution">Website maintained and developed by Eng. Jeremiah Thuita (Dip CE, BSC CS).</p>
+  </div>
+</footer>
+<script type="module" src="/assets/js/content/content-cards.js"></script>
+<!--CHROME:FOOTER:END-->
 
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-col">
-                <h4>About Us</h4>
-                <p>AIC Egerton Chapel is a vibrant community of believers dedicated to worship, spiritual growth, and serving others. Join us on our journey of faith.</p>
-                <div class="social-icons">
-                     <a href="https://www.fb.com/@aicegertonchapel" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="https://www.youtube.com/@aicegertonchapel" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-                    <i class="fab fa-youtube"></i>
-                </a>
-                <a href="https://www.tiktok.com/@aicegertonchapel" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-                    <i class="fa-brands fa-tiktok"></i>
-                </a>
-                <a href="https://wa.me/254799522418" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-                    <i class="fab fa-whatsapp"></i></a>
-                </div>
-            </div>
-            
-            <div class="footer-col">
-                <h4>Quick Links</h4>
-                <ul class="quick-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="sermons.html">Sermons</a></li>
-                    <li><a href="Ministries.html">Ministries</a></li>
-                    <li><a href="https://ecschools.netlify.app">Chapel Community Academy</a></li>
-                    <li><a href="contact form.html">Contact Us</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-col">
-                <h4>Contact Info</h4>
-                <p><i class="fas fa-map-marker-alt"></i> Egerton University, Njoro, Kenya</p>
-                <p><i class="fas fa-phone"></i> +254 799 522 418</p>
-                <p><i class="fas fa-envelope"></i> aicegertonchapel@gmail.com</p>
-                <p><i class="fas fa-clock"></i> Sunday Services: 8:00 AM - 12:00 PM</p>
-                <div class="footer-map">
-                    <iframe src="https://www.google.com/maps?q=Egerton+University%2C+Njoro%2C+Kenya&amp;output=embed" title="Map showing Egerton University, Njoro, Kenya" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
-                </div>
-            </div>
-        </div>
-        
-        <div class="copyright">
-            <p>&copy; <span id="copyrightYear"></span> AIC Egerton Chapel. All rights reserved.</p>
-            <p>Developed and maintained by: <a href="#">Eng. Jeremiah Thuita [DCE]</a></p>
-        </div>
-    </footer>
-
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script type="text/javascript">
-        document.getElementById('copyrightYear').textContent = new Date().getFullYear();
-        emailjs.init('4L5CxJRePZtUhxeYY');
-
-        const btn = document.getElementById('button');
-
-        document.getElementById('form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            
-            // Basic validation
-            const phone = document.getElementById('phone').value;
-            if (!/^\+?[0-9\s\-]+$/.test(phone)) {
-                alert('Please enter a valid phone number');
-                return;
-            }
-            
-            btn.value = 'Sending...';
-            btn.classList.add('sending');
-            btn.disabled = true;
-
-            const serviceID = 'default_service';
-            const templateID = 'Temp-001id';
-
-            emailjs.sendForm(serviceID, templateID, this)
-                .then(() => {
-                    btn.value = 'Submit';
-                    btn.classList.remove('sending');
-                    btn.disabled = false;
-                    alert('Thank you for contacting us! We will get back to you soon.');
-                    this.reset();
-                }, (err) => {
-                    btn.value = 'Submit';
-                    btn.classList.remove('sending');
-                    btn.disabled = false;
-                    alert('Failed to send. Please try again or contact us directly.');
-                    console.error('EmailJS Error:', err);
-                });
-        });
-
-        // Menu functionality
-        const menuToggle = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
-        
-        menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('active');
-            navLinks.classList.toggle('active');
-            const isExpanded = navLinks.classList.contains('active');
-            menuToggle.setAttribute('aria-expanded', String(isExpanded));
-            document.body.style.overflow = isExpanded ? 'hidden' : '';
-        });
-        
-        // Close menu when clicking outside on mobile
-        document.addEventListener('click', (e) => {
-            if (window.innerWidth <= 850 && 
-                !menuToggle.contains(e.target) && 
-                !navLinks.contains(e.target) && 
-                navLinks.classList.contains('active')) {
-                menuToggle.classList.remove('active');
-                navLinks.classList.remove('active');
-                menuToggle.setAttribute('aria-expanded', 'false');
-                document.body.style.overflow = '';
-            }
-        });
-        
-        // Close menu when a link is clicked
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth <= 850) {
-                    menuToggle.classList.remove('active');
-                    navLinks.classList.remove('active');
-                    menuToggle.setAttribute('aria-expanded', 'false');
-                    document.body.style.overflow = '';
-                }
-            });
-        });
-        
-        // Modal functionality
-        function openDonationModal() {
-            document.getElementById('donationModal').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-            document.getElementById('donationReason').focus();
-        }
-
-        function closeDonationModal() {
-            document.getElementById('donationModal').style.display = 'none';
-            document.body.style.overflow = '';
-        }
-
-        function submitDonation() {
-            const reason = document.getElementById('donationReason').value.trim();
-            const message = `Hello AIC Egerton Chapel, please share the current donation details${reason ? ` for ${reason}` : ''}.`;
-            window.location.href = `https://wa.me/254799522418?text=${encodeURIComponent(message)}`;
-        }
-
-        // Close modal when clicking outside or pressing ESC
-        window.onclick = function(event) {
-            const modal = document.getElementById('donationModal');
-            if (event.target === modal) {
-                closeDonationModal();
-            }
-        };
-        
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeDonationModal();
-        });
-
-        // Sticky header effect
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.padding = '10px 20px';
-                header.style.boxShadow = '0px 8px 25px rgba(0, 0, 0, 0.2)';
-                header.style.backdropFilter = 'blur(10px)';
-            } else {
-                header.style.padding = '12px 20px';
-            }
-        });
-    </script>
+    <!-- Supabase CDN, Master Config & Dynamic Features -->
+    <script src="/site-config.js"></script>
+    <script type="module" src="/assets/js/main-app.js"></script>
+    <script src="/assets/js/forms.js"></script>
+    <script src="/assets/js/page-scripts/contact-1.js"></script>
+    <script src="/assets/js/site-chrome.js"></script>
 </body>
 </html>

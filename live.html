@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Watch AIC Egerton Chapel Sunday services live on YouTube. Join worship from anywhere in the world — Sundays 8:00 AM EAT.">
+    <title>Live Stream — AIC Egerton Chapel</title>
+    <link rel="canonical" href="https://aicegertonchapel.netlify.app/live.html">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="manifest" href="/manifest.webmanifest">
+    <meta property="og:title" content="Live Stream — AIC Egerton Chapel">
+    <meta property="og:description" content="Watch AIC Egerton Chapel Sunday services live on YouTube. Join worship from anywhere.">
+    <meta property="og:image" content="https://aicegertonchapel.netlify.app/theme.png">
+    <meta property="og:url" content="https://aicegertonchapel.netlify.app/live.html">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+    <link rel="stylesheet" href="/site-chrome.css">
+    <link rel="stylesheet" href="/assets/css/live.css">
+</head>
+<body class="live-page">
+    
+
+    <!--CHROME:HEADER:START-->
+<a href="#main" class="aic-skip-link">Skip to content</a>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/index.html" aria-label="AIC Egerton Chapel — home">
+      <img class="logo1" src="/logo.jpg" alt="" width="46" height="46">
+      <span class="church-name">AIC EGERTON CHAPEL</span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation menu" aria-controls="navLinks" aria-expanded="false">
+      <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+    </button>
+    <nav aria-label="Main navigation">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="https://ecschools.netlify.app" target="_blank" rel="noopener noreferrer">Academy</a></li>
+        <li><a href="/sermons.html">Sermons</a></li>
+        <li><a href="/ministries.html">Ministries</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+        <li><a class="donate-btn" href="/give.html" data-open-donate><i class="fas fa-donate" aria-hidden="true"></i> Donate</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<!--CHROME:HEADER:END-->
+
+    <main class="live-main" id="main">
+        <!-- Live status badge -->
+        <div class="live-status" id="liveStatus" role="status" aria-live="polite" data-state="checking">
+            <span class="live-status__dot" aria-hidden="true"></span>
+            <span id="liveStatusText">Checking broadcast status…</span>
+        </div>
+
+        <div style="text-align:center;margin-bottom:1.5rem;">
+            <h1 style="font-size:clamp(1.8rem,4vw,2.8rem);color:var(--aic-purple-dark,#33205a);margin-bottom:.5rem;">Worship With Us, Live</h1>
+            <p style="color:var(--aic-muted,#6b6580);max-width:520px;margin:0 auto;">
+                Sunday services stream live at 8:00 AM EAT. Join us from anywhere in the world.
+            </p>
+        </div>
+
+        <!-- YouTube embed — channel ID injected from site-config -->
+        <div class="live-player" id="livePlayer">
+            <iframe
+                id="liveIframe"
+                src="about:blank"
+                title="AIC Egerton Chapel live worship stream"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+                loading="lazy">
+            </iframe>
+        </div>
+
+        <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:1.25rem;">
+            <a href="https://www.youtube.com/@aicegertonchapel/streams" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                <i class="fab fa-youtube" aria-hidden="true"></i> Open on YouTube
+            </a>
+            <a href="https://wa.me/254799522418?text=Hi%20AIC%20Egerton%20Chapel%2C%20I%20need%20help%20with%20the%20live%20stream" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+                <i class="fab fa-whatsapp" aria-hidden="true"></i> Get help on WhatsApp
+            </a>
+        </div>
+
+        <!-- Weekly schedule -->
+        <section class="live-schedule" aria-labelledby="scheduleHeading">
+            <h2 id="scheduleHeading">Weekly Service Schedule</h2>
+            <div class="live-schedule__grid">
+                <div class="live-service" data-day="0" data-start-h="8" data-end-h="12">
+                    <p class="live-service__label">Sunday</p>
+                    <p class="live-service__time">Main Worship Service — 8:00 AM – 12:00 PM EAT</p>
+                </div>
+                <div class="live-service" data-day="3" data-start-h="17" data-start-m="30" data-end-h="19">
+                    <p class="live-service__label">Wednesday</p>
+                    <p class="live-service__time">Mid-Week Prayer — 5:30 PM – 7:00 PM EAT</p>
+                </div>
+                <div class="live-service" data-day="5" data-start-h="18" data-end-h="20">
+                    <p class="live-service__label">Friday</p>
+                    <p class="live-service__time">Youth Fellowship — 6:00 PM – 8:00 PM EAT</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Past recordings placeholder — populated if YouTube configured -->
+        <section class="live-past" aria-labelledby="pastHeading">
+            <h2 id="pastHeading">Recent Recordings</h2>
+            <p class="live-past__empty" id="pastEmpty">
+                Visit our <a href="https://www.youtube.com/@aicegertonchapel" target="_blank" rel="noopener noreferrer">YouTube channel</a> for past service recordings.
+            </p>
+        </section>
+    </main>
+
+    <!--CHROME:FOOTER:START-->
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-col">
+      <h4>About Us</h4>
+      <p>AIC Egerton Chapel is a vibrant community of believers dedicated to worship, spiritual growth, and serving others.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul class="quick-links">
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/ministries.html">Ministries</a></li>
+        <li><a href="/sermons.html">Sermons</a></li>
+        <li><a href="/live.html">Live Stream</a></li>
+        <li><a href="/prayer-wall.html">Prayer Wall</a></li>
+        <li><a href="/contact.html">Contact Us</a></li>
+        <li><a href="/give.html">Give</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Service Times</h4>
+      <div class="footer-service-times" data-service-times>
+        <p><strong>Sunday</strong><br>Main Worship Service — 8:00 AM – 12:00 PM EAT</p>
+        <p><strong>Wednesday</strong><br>Mid-Week Prayer — 5:30 PM – 7:00 PM EAT</p>
+        <p><strong>Friday</strong><br>Youth Fellowship — 6:00 PM – 8:00 PM EAT</p>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>Egerton University, Njoro, Kenya</p>
+      <p><a href="tel:+254799522418">+254 799 522 418</a></p>
+      <p><a href="mailto:aicegertonchapel@gmail.com">aicegertonchapel@gmail.com</a></p>
+      <p><a href="https://wa.me/254799522418" target="_blank" rel="noopener noreferrer">WhatsApp</a></p>
+    </div>
+    <div class="footer-col">
+      <h4>Follow us</h4>
+      <div class="social-icons">
+        <a href="https://www.youtube.com/@aicegertonchapel" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+        <a href="https://www.facebook.com/@aicegertonchapel" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+        <a href="https://www.tiktok.com/@aicegertonchapel" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
+      </div>
+    </div>
+    <div class="footer-col footer-map">
+      <h4>Find us</h4>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7356577284563!2d35.94114277582281!3d-0.3688216353133254!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182987bf970d254d%3A0x385834a695a103c7!2sA.I.C%20Egerton%20Chapel!5e0!3m2!1sen!2ske!4v1793572628423!5m2!1sen!2ske" title="Map showing AIC Egerton Chapel" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <a class="btn-get-directions btn-secondary" href="https://www.google.com/maps/dir/?api=1&amp;destination=-0.3688216353133254%2C35.94114277582281" target="_blank" rel="noopener noreferrer">Get directions</a>
+    </div>
+  </div>
+  <div class="copyright">
+    <p>© <span id="copyrightYear"></span> AIC Egerton Chapel. All rights reserved. <a href="/privacy.html">Privacy</a> · <a href="/accessibility.html">Accessibility</a></p>
+    <p class="site-attribution">Website maintained and developed by Eng. Jeremiah Thuita (Dip CE, BSC CS).</p>
+  </div>
+</footer>
+<script type="module" src="/assets/js/content/content-cards.js"></script>
+<!--CHROME:FOOTER:END-->
+
+    <script src="/site-config.js"></script>
+    <script src="/assets/js/site-chrome.js"></script>
+    <script src="/assets/js/live.js"></script>
+</body>
+</html>

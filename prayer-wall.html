@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Submit a prayer request and stand with the AIC Egerton Chapel community. Pray for one another.">
+    <title>Prayer Wall — AIC Egerton Chapel</title>
+    <link rel="canonical" href="https://aicegertonchapel.netlify.app/prayer-wall.html">
+    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+    <link rel="stylesheet" href="/site-chrome.css">
+    <style>
+        .pw-hero {
+            padding: 48px 20px 24px;
+            text-align: center;
+            background: radial-gradient(circle at 50% 0%, rgba(124,58,237,0.10), transparent 60%), var(--aic-bg);
+        }
+        .pw-hero h1 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 10px; }
+        .pw-layout {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px 20px 60px;
+            display: grid;
+            grid-template-columns: minmax(0, 380px) minmax(0, 1fr);
+            gap: 28px;
+            align-items: start;
+        }
+        @media (max-width: 900px) { .pw-layout { grid-template-columns: 1fr; } }
+        .pw-form {
+            position: sticky;
+            top: calc(var(--aic-header-h) + 20px);
+            padding: 28px;
+            border-radius: var(--aic-r-lg);
+            background: #fff;
+            border: 1px solid var(--aic-line);
+            box-shadow: var(--aic-shadow-md);
+        }
+        .pw-form h2 { font-size: 1.3rem; margin-bottom: 6px; }
+        .pw-form > p { color: var(--aic-muted); font-size: 0.92rem; margin-bottom: 16px; }
+        .pw-form button[type="submit"] {
+            width: 100%;
+            margin-top: 16px;
+            padding: 14px;
+            border: 0;
+            border-radius: var(--aic-r-pill);
+            background: var(--aic-grad-brand);
+            color: #fff;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .pw-form button[type="submit"]:disabled { opacity: 0.6; cursor: wait; }
+        .pw-form .pw-status {
+            margin-top: 12px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            padding: 10px 14px;
+            border-radius: var(--aic-r-md);
+            display: none;
+        }
+        .pw-form .pw-status.ok { display: block; background: var(--aic-green-light); color: #065f46; }
+        .pw-form .pw-status.err { display: block; background: #fee2e2; color: #991b1b; }
+        .pw-list { display: grid; gap: 16px; }
+        .pw-list-header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 4px 6px;
+        }
+        .pw-list-header h2 { font-size: 1.3rem; }
+        .pw-count { font-size: 0.9rem; color: var(--aic-muted); font-weight: 600; }
+        .pw-item {
+            padding: 20px;
+            border-radius: var(--aic-r-md);
+            background: #fff;
+            border: 1px solid var(--aic-line);
+            box-shadow: var(--aic-shadow-xs);
+            transition: all var(--aic-transition);
+        }
+        .pw-item:hover { box-shadow: var(--aic-shadow-md); transform: translateY(-2px); }
+        .pw-item-header {
+            display: flex; align-items: center; gap: 10px;
+            margin-bottom: 10px;
+        }
+        .pw-avatar {
+            width: 36px; height: 36px; border-radius: 50%;
+            display: grid; place-items: center;
+            background: var(--aic-grad-brand);
+            color: #fff; font-weight: 800; font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+        .pw-meta { flex: 1; min-width: 0; }
+        .pw-meta strong { display: block; font-size: 0.92rem; color: var(--aic-ink); }
+        .pw-meta small { color: var(--aic-muted); font-size: 0.78rem; }
+        .pw-msg { color: var(--aic-ink-2); line-height: 1.6; margin: 8px 0 14px; font-size: 0.96rem; }
+        .pw-actions { display: flex; align-items: center; gap: 10px; }
+        .pw-pray-btn {
+            display: inline-flex; align-items: center; gap: 7px;
+            padding: 8px 16px;
+            border-radius: var(--aic-r-pill);
+            border: 1.5px solid var(--aic-purple);
+            background: transparent;
+            color: var(--aic-purple);
+            font-weight: 700; font-size: 0.85rem;
+            cursor: pointer;
+            transition: all var(--aic-transition);
+        }
+        .pw-pray-btn:hover:not(:disabled) { background: var(--aic-purple); color: #fff; }
+        .pw-pray-btn:disabled { opacity: 0.6; cursor: default; }
+        .pw-pray-btn.prayed { background: var(--aic-green); border-color: var(--aic-green); color: #fff; }
+        .pw-category {
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            padding: 3px 10px;
+            border-radius: var(--aic-r-pill);
+            background: var(--aic-purple-light);
+            color: var(--aic-purple-dark);
+            text-transform: uppercase;
+        }
+        .pw-empty {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 48px 20px;
+            color: var(--aic-muted);
+        }
+        .pw-empty i { font-size: 2.4rem; color: var(--aic-purple); margin-bottom: 14px; display: block; }
+    </style>
+</head>
+<body>
+    
+    <!--CHROME:HEADER:START-->
+<a href="#main" class="aic-skip-link">Skip to content</a>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/index.html" aria-label="AIC Egerton Chapel — home">
+      <img class="logo1" src="/logo.jpg" alt="" width="46" height="46">
+      <span class="church-name">AIC EGERTON CHAPEL</span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation menu" aria-controls="navLinks" aria-expanded="false">
+      <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+    </button>
+    <nav aria-label="Main navigation">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="https://ecschools.netlify.app" target="_blank" rel="noopener noreferrer">Academy</a></li>
+        <li><a href="/sermons.html">Sermons</a></li>
+        <li><a href="/ministries.html">Ministries</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+        <li><a class="donate-btn" href="/give.html" data-open-donate><i class="fas fa-donate" aria-hidden="true"></i> Donate</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<!--CHROME:HEADER:END-->
+
+    <main id="main">
+        <section class="pw-hero">
+            <div class="aic-eyebrow">Community</div>
+            <h1>Prayer Wall</h1>
+            <p class="aic-lead" style="margin:0 auto;">"Pray for one another, that you may be healed." — James 5:16</p>
+        </section>
+
+        <div class="pw-layout">
+            <form class="pw-form" id="prayerForm" novalidate>
+                <h2>Share a prayer request</h2>
+                <p>Your request is reviewed by our pastoral team before being published.</p>
+
+                <label for="pwName">Your name *</label>
+                <input type="text" id="pwName" name="name" placeholder="First name or 'Anonymous'" required maxlength="80" autocomplete="name">
+
+                <label for="pwCategory">Category</label>
+                <select id="pwCategory" name="category">
+                    <option value="Healing">Healing</option>
+                    <option value="Family">Family</option>
+                    <option value="Provision">Provision & Work</option>
+                    <option value="Guidance">Guidance & Wisdom</option>
+                    <option value="Thanksgiving">Thanksgiving</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <label for="pwMessage">Prayer request *</label>
+                <textarea id="pwMessage" name="message" rows="4" placeholder="Please share your request…" required maxlength="600"></textarea>
+
+                <label class="pw-private-option">
+                    <input type="checkbox" id="pwPrivate" name="private" value="true">
+                    Keep this request private to the pastoral team
+                </label>
+                <div class="cf-turnstile" data-theme="light"></div>
+                <button type="submit" id="pwSubmit"><i class="fas fa-paper-plane"></i> Submit request</button>
+                <div class="pw-status" id="pwStatus" role="status" aria-live="polite"></div>
+            </form>
+
+            <section aria-label="Published prayer requests">
+                <div class="pw-list-header">
+                    <h2>Recent requests</h2>
+                    <span class="pw-count" id="pwCount">—</span>
+                </div>
+                <div class="pw-list" id="pwList">
+                    <div class="pw-empty"><i class="fas fa-circle-notch fa-spin"></i> Loading prayer requests…</div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!--CHROME:FOOTER:START-->
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-col">
+      <h4>About Us</h4>
+      <p>AIC Egerton Chapel is a vibrant community of believers dedicated to worship, spiritual growth, and serving others.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul class="quick-links">
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/ministries.html">Ministries</a></li>
+        <li><a href="/sermons.html">Sermons</a></li>
+        <li><a href="/live.html">Live Stream</a></li>
+        <li><a href="/prayer-wall.html">Prayer Wall</a></li>
+        <li><a href="/contact.html">Contact Us</a></li>
+        <li><a href="/give.html">Give</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Service Times</h4>
+      <div class="footer-service-times" data-service-times>
+        <p><strong>Sunday</strong><br>Main Worship Service — 8:00 AM – 12:00 PM EAT</p>
+        <p><strong>Wednesday</strong><br>Mid-Week Prayer — 5:30 PM – 7:00 PM EAT</p>
+        <p><strong>Friday</strong><br>Youth Fellowship — 6:00 PM – 8:00 PM EAT</p>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>Egerton University, Njoro, Kenya</p>
+      <p><a href="tel:+254799522418">+254 799 522 418</a></p>
+      <p><a href="mailto:aicegertonchapel@gmail.com">aicegertonchapel@gmail.com</a></p>
+      <p><a href="https://wa.me/254799522418" target="_blank" rel="noopener noreferrer">WhatsApp</a></p>
+    </div>
+    <div class="footer-col">
+      <h4>Follow us</h4>
+      <div class="social-icons">
+        <a href="https://www.youtube.com/@aicegertonchapel" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+        <a href="https://www.facebook.com/@aicegertonchapel" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+        <a href="https://www.tiktok.com/@aicegertonchapel" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
+      </div>
+    </div>
+    <div class="footer-col footer-map">
+      <h4>Find us</h4>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7356577284563!2d35.94114277582281!3d-0.3688216353133254!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182987bf970d254d%3A0x385834a695a103c7!2sA.I.C%20Egerton%20Chapel!5e0!3m2!1sen!2ske!4v1793572628423!5m2!1sen!2ske" title="Map showing AIC Egerton Chapel" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <a class="btn-get-directions btn-secondary" href="https://www.google.com/maps/dir/?api=1&amp;destination=-0.3688216353133254%2C35.94114277582281" target="_blank" rel="noopener noreferrer">Get directions</a>
+    </div>
+  </div>
+  <div class="copyright">
+    <p>© <span id="copyrightYear"></span> AIC Egerton Chapel. All rights reserved. <a href="/privacy.html">Privacy</a> · <a href="/accessibility.html">Accessibility</a></p>
+    <p class="site-attribution">Website maintained and developed by Eng. Jeremiah Thuita (Dip CE, BSC CS).</p>
+  </div>
+</footer>
+<script type="module" src="/assets/js/content/content-cards.js"></script>
+<!--CHROME:FOOTER:END-->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="/site-config.js"></script>
+    <script src="/assets/js/site-chrome.js"></script>
+    <script type="module" src="/assets/js/prayer-wall.js"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "name": "AIC Egerton Chapel",
+  "short_name": "AIC Chapel",
+  "description": "Worship, sermons, ministries and community at AIC Egerton Chapel, Njoro, Kenya.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#f8fafc",
+  "theme_color": "#7c3aed",
+  "icons": [
+    { "src": "/assets/img/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/assets/img/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/assets/img/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Sermons", "url": "/sermons.html" },
+    { "name": "Live Stream", "url": "/live.html" },
+    { "name": "Prayer Wall", "url": "/prayer-wall.html" },
+    { "name": "Give", "url": "/give.html" }
+  ]
+}

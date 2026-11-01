@@ -1,0 +1,48 @@
+.sermons-page {
+  --s-bg-alt: var(--aic-surface-alt, #f7f5fb);
+  --s-border: var(--aic-border, #e5e3ef);
+  --s-text: var(--aic-text, #1f1b2e);
+  --s-muted: var(--aic-text-muted, #6b6580);
+  --s-purple: var(--aic-purple, #4a2d7a);
+  --s-purple-d: var(--aic-purple-dark, #33205a);
+  --s-focus: var(--aic-focus, #ffb703);
+  color: var(--s-text); background: var(--aic-bg, #fbfaff);
+}
+.sermons-main { max-width: 1100px; margin: 0 auto; padding: clamp(1.75rem,3.5vw,3rem) 1.25rem clamp(2.5rem,5vw,4rem); }
+.sermons-hero { text-align: center; margin-bottom: 1.5rem; }
+.sermons-hero h1 { color: var(--s-purple-d); margin: 0 0 .5rem; }
+.sermons-hero p { color: var(--s-muted); max-width: 65ch; margin: 0 auto; line-height: 1.6; }
+
+.sermons-filters {
+  display: flex; flex-wrap: wrap; gap: .5rem; align-items: center;
+  padding: .85rem 1rem; margin-bottom: 1.25rem;
+  background: var(--aic-surface, #fff);
+  border: 1px solid var(--s-border);
+  border-radius: var(--aic-radius, 14px);
+}
+.sermons-filters label { font-weight: 600; font-size: .9rem; color: var(--s-text); }
+.sermons-filters input,
+.sermons-filters select {
+  font: inherit; font-size: .9rem; padding: .5rem .7rem;
+  border: 1px solid var(--s-border); border-radius: 8px; background: #fff;
+}
+.sermons-filters :focus-visible { outline: none; border-color: var(--s-purple); box-shadow: 0 0 0 3px var(--s-focus); }
+
+.sermons-search { flex: 1 1 220px; min-width: 180px; }
+
+.sermons-grid-wrap { position: relative; }
+.sermons-grid-wrap[aria-busy="true"] { opacity: .6; pointer-events: none; }
+.sermons-grid__empty { text-align: center; padding: 2rem 1rem; color: var(--s-muted); background: var(--s-bg-alt); border-radius: var(--aic-radius, 14px); }
+
+.sermons-loadmore { display: flex; justify-content: center; margin-top: 1.5rem; }
+.sermons-loadmore button {
+  font: inherit; font-weight: 600; font-size: .95rem;
+  padding: .65rem 1.25rem; border-radius: 999px;
+  border: 1px solid var(--s-border); background: var(--aic-surface, #fff);
+  color: var(--s-purple); cursor: pointer;
+}
+.sermons-loadmore button:hover { background: var(--s-bg-alt); }
+.sermons-loadmore button:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--s-focus); }
+.sermons-loadmore button[disabled] { opacity: .5; cursor: default; }
+
+mark.sermon-hl { background: color-mix(in srgb, var(--s-focus) 55%, transparent); color: inherit; border-radius: 3px; padding: 0 .15em; }

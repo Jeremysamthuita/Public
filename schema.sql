@@ -1,0 +1,2 @@
+-- The complete application schema and RLS policies are in supabase/schema.sql.
+-- Local development applies its version through supabase/migrations.

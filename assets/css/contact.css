@@ -1,0 +1,457 @@
+/* ==========================================================================
+   assets/css/contact.css
+   Page-scoped layout for contact.html.
+   Extracted from the old inline <style> block and re-tokenised with --aic-*.
+   Loaded only on contact.html — do not import from site-chrome.css.
+   ========================================================================== */
+
+/* ---------- 1. Page shell ------------------------------------------------- */
+
+.contact-page {
+  --contact-gap: clamp(1.5rem, 3vw, 2.5rem);
+  --contact-card-radius: var(--aic-radius, 14px);
+  --contact-field-radius: var(--aic-radius-sm, 8px);
+  --contact-border: var(--aic-border, #e5e3ef);
+  --contact-surface: var(--aic-surface, #ffffff);
+  --contact-surface-alt: var(--aic-surface-alt, #f7f5fb);
+  --contact-text: var(--aic-text, #1f1b2e);
+  --contact-muted: var(--aic-text-muted, #6b6580);
+  --contact-purple: var(--aic-purple, #4a2d7a);
+  --contact-purple-dark: var(--aic-purple-dark, #33205a);
+  --contact-coral: var(--aic-coral, #e74c3c);
+  --contact-coral-dark: var(--aic-coral-dark, #c0392b);
+  --contact-focus: var(--aic-focus, #ffb703);
+  --contact-shadow-sm: var(--aic-shadow-sm, 0 1px 2px rgba(31, 27, 46, .06), 0 2px 6px rgba(31, 27, 46, .06));
+  --contact-shadow-md: var(--aic-shadow, 0 10px 30px rgba(31, 27, 46, .10));
+
+  color: var(--contact-text);
+  background: var(--aic-bg, #fbfaff);
+}
+
+/* ---------- 2. Hero ------------------------------------------------------- */
+
+.contact-hero {
+  padding: clamp(2.5rem, 5vw, 4rem) 1.25rem clamp(1.5rem, 3vw, 2.5rem);
+  text-align: center;
+  background:
+    radial-gradient(1200px 400px at 50% -20%,
+      color-mix(in srgb, var(--contact-purple) 14%, transparent),
+      transparent 70%),
+    var(--contact-surface-alt);
+}
+
+.contact-hero__inner {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.contact-hero__eyebrow {
+  display: inline-block;
+  margin: 0 0 .75rem;
+  padding: .35rem .8rem;
+  font-size: .8rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--contact-purple);
+  background: color-mix(in srgb, var(--contact-purple) 10%, transparent);
+  border-radius: 999px;
+}
+
+.contact-hero h1 {
+  margin: 0 0 .75rem;
+  font-size: clamp(1.75rem, 3.4vw, 2.5rem);
+  line-height: 1.15;
+  color: var(--contact-purple-dark);
+}
+
+.contact-hero p {
+  margin: 0 auto;
+  max-width: 60ch;
+  color: var(--contact-muted);
+  font-size: 1.02rem;
+  line-height: 1.6;
+}
+
+/* ---------- 3. Two-column shell ------------------------------------------ */
+
+.contact-main {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: clamp(2rem, 4vw, 3.5rem) 1.25rem clamp(3rem, 6vw, 5rem);
+}
+
+.contact-grid {
+  display: grid;
+  gap: var(--contact-gap);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 960px) {
+  .contact-grid {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+    align-items: start;
+  }
+}
+
+/* ---------- 4. Contact form card ----------------------------------------- */
+
+.contact-form-card {
+  padding: clamp(1.25rem, 3vw, 2rem);
+  background: var(--contact-surface);
+  border: 1px solid var(--contact-border);
+  border-radius: var(--contact-card-radius);
+  box-shadow: var(--contact-shadow-sm);
+}
+
+.contact-form-card h2 {
+  margin: 0 0 .35rem;
+  font-size: 1.35rem;
+  color: var(--contact-purple-dark);
+}
+
+.contact-form-card > p {
+  margin: 0 0 1.5rem;
+  color: var(--contact-muted);
+  font-size: .95rem;
+  line-height: 1.55;
+}
+
+/* Form grid – two columns on wider screens for name/email/phone */
+
+.contact-form {
+  display: grid;
+  gap: 1rem 1.25rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .contact-form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .contact-form .form-row--full { grid-column: 1 / -1; }
+}
+
+/* ---------- 5. Form fields ------------------------------------------------ */
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+  min-width: 0;
+}
+
+.form-field label {
+  font-size: .9rem;
+  font-weight: 600;
+  color: var(--contact-text);
+}
+
+.form-field .req {
+  color: var(--contact-coral-dark);
+  margin-left: .15rem;
+}
+
+.form-field .hint {
+  font-size: .8rem;
+  color: var(--contact-muted);
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: .7rem .85rem;
+  font: inherit;
+  font-size: .97rem;
+  color: var(--contact-text);
+  background: var(--contact-surface);
+  border: 1px solid var(--contact-border);
+  border-radius: var(--contact-field-radius);
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+
+.form-field textarea {
+  min-height: 8rem;
+  resize: vertical;
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+  color: color-mix(in srgb, var(--contact-muted) 70%, transparent);
+}
+
+.form-field input:hover,
+.form-field select:hover,
+.form-field textarea:hover {
+  border-color: color-mix(in srgb, var(--contact-purple) 40%, var(--contact-border));
+}
+
+.form-field input:focus-visible,
+.form-field select:focus-visible,
+.form-field textarea:focus-visible {
+  outline: none;
+  border-color: var(--contact-purple);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--contact-focus) 55%, transparent);
+}
+
+/* Invalid state (set by forms.js via aria-invalid="true") */
+
+.form-field input[aria-invalid="true"],
+.form-field select[aria-invalid="true"],
+.form-field textarea[aria-invalid="true"] {
+  border-color: var(--contact-coral-dark);
+}
+
+.form-field input[aria-invalid="true"]:focus-visible,
+.form-field textarea[aria-invalid="true"]:focus-visible {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--contact-coral) 35%, transparent);
+}
+
+.form-field .field-error {
+  font-size: .82rem;
+  color: var(--contact-coral-dark);
+  min-height: 1em;
+}
+
+/* Honeypot – visually hidden but not display:none (some bots skip display:none) */
+
+.hp-field {
+  position: absolute !important;
+  left: -10000px !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* ---------- 6. Turnstile wrapper ----------------------------------------- */
+
+.turnstile-wrap {
+  grid-column: 1 / -1;
+  min-height: 65px;
+  display: flex;
+  align-items: center;
+}
+
+/* ---------- 7. Submit row + status --------------------------------------- */
+
+.contact-form__actions {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .75rem 1rem;
+  margin-top: .25rem;
+}
+
+.btn-contact-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  padding: .8rem 1.4rem;
+  min-height: 44px;
+  font: inherit;
+  font-weight: 600;
+  color: #fff;
+  background: var(--contact-purple);
+  border: 0;
+  border-radius: var(--contact-field-radius);
+  cursor: pointer;
+  transition: background-color .15s ease, transform .1s ease;
+}
+
+.btn-contact-submit:hover { background: var(--contact-purple-dark); }
+.btn-contact-submit:active { transform: translateY(1px); }
+
+.btn-contact-submit:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--contact-focus);
+}
+
+.btn-contact-submit[disabled],
+.btn-contact-submit[aria-busy="true"] {
+  opacity: .65;
+  cursor: progress;
+}
+
+/* Per-form status area (forms.js writes textContent, never innerHTML) */
+
+.contact-form__status {
+  flex: 1 1 220px;
+  min-height: 1.25rem;
+  font-size: .92rem;
+  line-height: 1.4;
+  color: var(--contact-muted);
+}
+
+.contact-form__status[data-state="success"] {
+  color: var(--aic-success, #1e7a3e);
+  font-weight: 600;
+}
+
+.contact-form__status[data-state="error"] {
+  color: var(--contact-coral-dark);
+  font-weight: 600;
+}
+
+.contact-form__status[data-state="info"] {
+  color: var(--contact-purple);
+}
+
+/* ---------- 8. Side rail: info cards + map ------------------------------- */
+
+.contact-side {
+  display: grid;
+  gap: 1rem;
+  align-content: start;
+}
+
+.contact-info-card {
+  display: flex;
+  gap: .9rem;
+  padding: 1rem 1.1rem;
+  background: var(--contact-surface);
+  border: 1px solid var(--contact-border);
+  border-radius: var(--contact-card-radius);
+  box-shadow: var(--contact-shadow-sm);
+}
+
+.contact-info-card__icon {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  color: #fff;
+  background: var(--contact-purple);
+  font-size: 1rem;
+}
+
+.contact-info-card__body { min-width: 0; }
+
+.contact-info-card__body h3 {
+  margin: 0 0 .15rem;
+  font-size: .95rem;
+  color: var(--contact-purple-dark);
+}
+
+.contact-info-card__body p,
+.contact-info-card__body a {
+  margin: 0;
+  font-size: .93rem;
+  color: var(--contact-muted);
+  text-decoration: none;
+  word-break: break-word;
+}
+
+.contact-info-card__body a:hover { color: var(--contact-purple); text-decoration: underline; }
+
+.contact-info-card__body a:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--contact-focus);
+  border-radius: 4px;
+}
+
+/* WhatsApp card variant */
+
+.contact-info-card--whatsapp .contact-info-card__icon {
+  background: #25d366;
+}
+
+/* Map card */
+
+.contact-map {
+  overflow: hidden;
+  background: var(--contact-surface);
+  border: 1px solid var(--contact-border);
+  border-radius: var(--contact-card-radius);
+  box-shadow: var(--contact-shadow-sm);
+}
+
+.contact-map iframe {
+  display: block;
+  width: 100%;
+  height: clamp(220px, 32vw, 320px);
+  border: 0;
+}
+
+.contact-map__foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: .75rem;
+  padding: .75rem 1rem;
+  border-top: 1px solid var(--contact-border);
+  font-size: .9rem;
+  color: var(--contact-muted);
+}
+
+.contact-map__foot a {
+  color: var(--contact-purple);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.contact-map__foot a:hover { text-decoration: underline; }
+
+.contact-map__foot a:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--contact-focus);
+  border-radius: 4px;
+}
+
+/* ---------- 9. Privacy / crisis notice ----------------------------------- */
+
+.contact-notice {
+  grid-column: 1 / -1;
+  margin-top: 1.25rem;
+  padding: .85rem 1rem;
+  font-size: .88rem;
+  line-height: 1.5;
+  color: var(--contact-muted);
+  background: var(--contact-surface-alt);
+  border-left: 3px solid var(--contact-purple);
+  border-radius: 6px;
+}
+
+.contact-notice strong { color: var(--contact-text); }
+
+/* ---------- 10. Small screens -------------------------------------------- */
+
+@media (max-width: 480px) {
+  .contact-info-card { padding: .9rem; }
+  .contact-form__actions { flex-direction: column; align-items: stretch; }
+  .btn-contact-submit { width: 100%; }
+  .contact-map__foot { flex-direction: column; align-items: flex-start; }
+}
+
+/* ---------- 11. Motion & contrast safety --------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-contact-submit,
+  .form-field input,
+  .form-field select,
+  .form-field textarea {
+    transition: none;
+  }
+  .btn-contact-submit:active { transform: none; }
+}
+
+/* High-contrast / forced-colours fallbacks */
+
+@media (forced-colors: active) {
+  .btn-contact-submit,
+  .contact-info-card__icon {
+    border: 1px solid ButtonText;
+  }
+  .form-field input:focus-visible,
+  .form-field textarea:focus-visible,
+  .form-field select:focus-visible,
+  .btn-contact-submit:focus-visible {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}

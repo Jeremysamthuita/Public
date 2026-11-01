@@ -5,6 +5,10 @@
     <meta name="description" content="Listen and read inspiring sermons from AIC Egerton Chapel. Stay connected with the word of God through powerful teachings and biblical messages by Rev Dr William Chesaine Kipkoros.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sermons - AIC Egerton Chapel</title>
+    <link rel="canonical" href="https://aicegertonchapel.netlify.app/sermons.html">
+    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <meta name="theme-color" content="#7c3aed">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
     <style>
         /* General Styles */
@@ -615,7 +619,7 @@
         /* Sermon Grid */
         .sermon-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            grid-template-columns: repeat(4, minmax(0, 1fr));
             gap: 25px;
         }
 
@@ -635,16 +639,47 @@
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
         }
 
-        .sermon-header {
-            background: linear-gradient(to right, #8e44ad, #e74c3c);
-            color: white;
-            padding: 15px 20px;
+        .sermon-preview {
+            position: relative;
+            aspect-ratio: 16 / 10;
+            overflow: hidden;
+            background: linear-gradient(135deg, #342044, #8e44ad);
+        }
+
+        .sermon-preview img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .sermon-preview-placeholder {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 3rem;
             text-align: center;
         }
 
-        .sermon-header h3 {
-            font-size: 1.4rem;
-            margin: 0;
+        .sermon-preview-placeholder span {
+            max-width: 80%;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .sermon-title-overlay {
+            position: absolute;
+            inset: auto 0 0;
+            padding: 30px 16px 14px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.82));
+            color: #fff;
+            font-size: 1.15rem;
+            line-height: 1.35;
         }
 
         .sermon-content {
@@ -656,7 +691,8 @@
 
         .sermon-meta {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
+            gap: 9px;
             margin-bottom: 15px;
             padding-bottom: 15px;
             border-bottom: 1px solid #eee;
@@ -682,38 +718,100 @@
             margin-top: auto;
         }
 
-        .sermon-downloads h4 {
-            color: #2c3e50;
-            margin-bottom: 15px;
+        .sermon-actions {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 9px;
+        }
+
+        .sermon-actions a,
+        .sermon-actions button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-height: 42px;
+            padding: 10px 12px;
+            border: 0;
+            border-radius: 8px;
+            background: #8e44ad;
+            color: #fff;
+            font: inherit;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .sermon-actions a:hover,
+        .sermon-actions button:hover {
+            background: #e74c3c;
+            transform: translateY(-2px);
+        }
+
+        .sermon-actions a:focus-visible,
+        .sermon-actions button:focus-visible {
+            outline: 3px solid #ffae00;
+            outline-offset: 2px;
+        }
+
+        .sermon-actions .sermon-download-link {
+            background: #2c3e50;
+        }
+
+        .sermon-preview-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 1100;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.82);
+        }
+
+        .sermon-preview-modal.is-open {
+            display: flex;
+        }
+
+        .sermon-preview-dialog {
+            display: flex;
+            flex-direction: column;
+            width: min(1100px, 100%);
+            height: min(90vh, 900px);
+            overflow: hidden;
+            border-radius: 12px;
+            background: #fff;
+        }
+
+        .sermon-preview-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 12px 18px;
+            color: #222;
+        }
+
+        .sermon-preview-toolbar h2 {
+            margin: 0;
             font-size: 1.1rem;
         }
 
-        .download-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
+        .sermon-preview-close {
+            width: auto;
+            min-width: 44px;
+            min-height: 44px;
+            margin: 0;
+            padding: 8px 14px;
+            background: #2c3e50;
         }
 
-        .download-links a {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: #8e44ad;
-            color: white;
-            text-decoration: none;
-            padding: 10px 15px;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
+        .sermon-preview-dialog iframe {
+            width: 100%;
             flex: 1;
-            min-width: 120px;
-            justify-content: center;
-        }
-
-        .download-links a:hover {
-            background: #e74c3c;
-            transform: translateY(-3px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            border: 0;
         }
 
         .no-results {
@@ -830,13 +928,45 @@
         }
 
         /* Responsive Design */
-        @media (max-width: 768px) {
+        @media (max-width: 1100px) {
             .sermon-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
             }
-            
+        }
+
+        @media (max-width: 850px) {
+            .sermon-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
             .search-filter {
                 flex-direction: column;
+            }
+
+            @media (max-width: 560px) {
+                .sermon-grid {
+                    grid-template-columns: 1fr;
+                }
+
+                .sermons {
+                    padding: 28px 14px;
+                }
+
+                .sermon-preview-modal {
+                    padding: 8px;
+                }
+
+                .sermon-preview-dialog {
+                    height: 94vh;
+                }
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                .sermon-card,
+                .sermon-actions a,
+                .sermon-actions button {
+                    transition: none;
+                }
             }
             
             .date-filters {
@@ -972,63 +1102,90 @@
             }
         }
     </style>
-    <link rel="stylesheet" href="site-chrome.css">
+    <link rel="stylesheet" href="/site-chrome.css">
+    <link rel="stylesheet" href="/sermon-cards.css">
 </head>
 <body>
+    
     <!-- Header Section -->
-    <header class="site-header">
-        <div class="container">
-            <div class="logo">
-                <img loading="lazy" class="logo1" src="logo.jpg" alt="Church Logo" width="50" height="50">
-                <div class="church-name">AIC EGERTON CHAPEL</div>
-            </div>
-            <button type="button" class="menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-controls="navLinks" aria-expanded="false">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-            </button>
-            <nav>
-                <ul class="nav-links" id="navLinks">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="https://ecschools.netlify.app">Chapel Community Academy</a></li>
-                    <li><a href="sermons.html" class="active" aria-current="page">Sermons</a></li>
-                    <li><a href="Ministries.html">Ministries</a></li>
-                    <li><a href="contact form.html">Contact Us</a></li>
-                    <li><button type="button" class="donate-btn" onclick="openDonationModal()"><i class="fas fa-donate" aria-hidden="true"></i> Donate</button></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <!--CHROME:HEADER:START-->
+<a href="#main" class="aic-skip-link">Skip to content</a>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/index.html" aria-label="AIC Egerton Chapel — home">
+      <img class="logo1" src="/logo.jpg" alt="" width="46" height="46">
+      <span class="church-name">AIC EGERTON CHAPEL</span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation menu" aria-controls="navLinks" aria-expanded="false">
+      <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+    </button>
+    <nav aria-label="Main navigation">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="https://ecschools.netlify.app" target="_blank" rel="noopener noreferrer">Academy</a></li>
+        <li><a href="/sermons.html">Sermons</a></li>
+        <li><a href="/ministries.html">Ministries</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+        <li><a class="donate-btn" href="/give.html" data-open-donate><i class="fas fa-donate" aria-hidden="true"></i> Donate</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<!--CHROME:HEADER:END-->
 
     <!-- Donation Modal -->
     <div id="donationModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
         <div class="modal-content">
-            <span class="close" onclick="closeDonationModal()" aria-label="Close modal">&times;</span>
+            <button type="button" class="close" data-action="donation-close" aria-label="Close donation dialog">&times;</button>
             <h2 id="modalTitle">Church Donation</h2>
-            <p>Contact us on WhatsApp for current donation details.</p>
+            <p>Use the M-Pesa details below to make your donation. Contact us on WhatsApp if you need help.</p>
+            <p><strong>Paybill Number:</strong> 522522</p>
+            <p><strong>Account Number:</strong> 7506439</p>
+            <div class="donation-instructions">
+                <p>How to donate:</p>
+                <ol>
+                    <li>Go to the M-Pesa menu</li>
+                    <li>Select Lipa na M-Pesa</li>
+                    <li>Select Paybill</li>
+                    <li>Enter the Paybill number above</li>
+                    <li>Enter the account number above and confirm your donation</li>
+                </ol>
+            </div>
             <label for="donationReason">Reason for Donation:</label>
             <input type="text" id="donationReason" placeholder="E.g., Church Project, Tithe, Offering">
-            <button id="donateNowBtn" onclick="submitDonation()">Get Donation Details on WhatsApp</button>
+            <button id="donateNowBtn" type="button" data-action="donation-submit">Get Help on WhatsApp</button>
         </div>
     </div>
 
-    <main class="sermons">
+    <main class="sermons" id="main">
         <h1>Recent Sermons</h1>
         
+<div class="ai-sermon-search-container">
+    <div class="search-box-wrapper">
+        <i class="fas fa-wand-magic-sparkles ai-indicator-icon" aria-hidden="true"></i>
+        <input type="search" id="aiSermonSearch" placeholder="Ask in your own words: 'sermons on healing by Pastor Thura last month'" aria-label="AI-powered sermon search">
+    </div>
+    <div class="ai-suggestions-panel" id="aiSermonResults" style="display:none;" role="status" aria-live="polite"></div>
+</div>
+
         <!-- Search and Filters -->
         <div class="search-filter">
             <input type="text" id="searchInput" placeholder="Search sermons...">
             
             <div class="date-filters">
                 <div class="date-group">
-                    <label for="startDate">From:</label>
-                    <input type="date" id="startDate">
+                    <label for="monthFilter">Month:</label>
+                    <select id="monthFilter">
+                        <option value="">All months</option>
+                    </select>
                 </div>
                 
                 <div class="date-group">
-                    <label for="endDate">To:</label>
-                    <input type="date" id="endDate">
+                    <label for="yearFilter">Year:</label>
+                    <select id="yearFilter">
+                        <option value="">All years</option>
+                    </select>
                 </div>
             </div>
         </div>
@@ -1068,320 +1225,83 @@
             </div>
         </div>
     </main>
+
+    <div class="sermon-preview-modal" id="sermonPreviewModal" role="dialog" aria-modal="true" aria-labelledby="sermonPreviewTitle">
+        <div class="sermon-preview-dialog">
+            <div class="sermon-preview-toolbar">
+                <h2 id="sermonPreviewTitle">Sermon preview</h2>
+                <button type="button" class="sermon-preview-close" id="sermonPreviewClose" aria-label="Close sermon preview">Close</button>
+            </div>
+            <iframe id="sermonPreviewFrame" title="Full sermon PDF preview"></iframe>
+        </div>
+    </div>
     
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-col">
-                <h4>About Us</h4>
-                <p>AIC Egerton Chapel is a vibrant community of believers dedicated to worship, spiritual growth, and serving others. Join us on our journey of faith.</p>
-                <div class="social-icons">
-                    <a href="https://www.fb.com/@aicegertonchapel" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="https://www.youtube.com/@aicegertonchapel" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                    <a href="https://www.tiktok.com/@aicegertonchapel" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-                        <i class="fa-brands fa-tiktok"></i>
-                    </a>
-                    <a href="https://wa.me/254799522418" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-                        <i class="fab fa-whatsapp"></i>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="footer-col">
-                <h4>Quick Links</h4>
-                <ul class="quick-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="sermons.html">Sermons</a></li>
-                    <li><a href="Ministries.html">Ministries</a></li>
-                    <li><a href="https://ecschools.netlify.app">Chapel Community Academy</a></li>
-                    <li><a href="contact form.html">Contact Us</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-col">
-                <h4>Contact Info</h4>
-                <p><i class="fas fa-map-marker-alt"></i> Egerton University, Njoro, Kenya</p>
-                <p><i class="fas fa-phone"></i> +254 799 522 418</p>
-                <p><i class="fas fa-envelope"></i> aicegertonchapel@gmail.com</p>
-                <p><i class="fas fa-clock"></i> Sunday Services: 8:00 AM - 12:00 PM</p>
-                <div class="footer-map">
-                    <iframe src="https://www.google.com/maps?q=Egerton+University%2C+Njoro%2C+Kenya&amp;output=embed" title="Map showing Egerton University, Njoro, Kenya" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
-                </div>
-            </div>
-        </div>
-        
-        <div class="copyright">
-            <p>&copy; <span id="copyrightYear"></span> AIC Egerton Chapel. All rights reserved.</p>
-            <p>Developed and maintained by: <a href="#">Eng. Jeremiah Thuita [DCE]</a></p>
-        </div>
-    </footer>
+    <!--CHROME:FOOTER:START-->
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-col">
+      <h4>About Us</h4>
+      <p>AIC Egerton Chapel is a vibrant community of believers dedicated to worship, spiritual growth, and serving others.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul class="quick-links">
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/ministries.html">Ministries</a></li>
+        <li><a href="/sermons.html">Sermons</a></li>
+        <li><a href="/live.html">Live Stream</a></li>
+        <li><a href="/prayer-wall.html">Prayer Wall</a></li>
+        <li><a href="/contact.html">Contact Us</a></li>
+        <li><a href="/give.html">Give</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Service Times</h4>
+      <div class="footer-service-times" data-service-times>
+        <p><strong>Sunday</strong><br>Main Worship Service — 8:00 AM – 12:00 PM EAT</p>
+        <p><strong>Wednesday</strong><br>Mid-Week Prayer — 5:30 PM – 7:00 PM EAT</p>
+        <p><strong>Friday</strong><br>Youth Fellowship — 6:00 PM – 8:00 PM EAT</p>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>Egerton University, Njoro, Kenya</p>
+      <p><a href="tel:+254799522418">+254 799 522 418</a></p>
+      <p><a href="mailto:aicegertonchapel@gmail.com">aicegertonchapel@gmail.com</a></p>
+      <p><a href="https://wa.me/254799522418" target="_blank" rel="noopener noreferrer">WhatsApp</a></p>
+    </div>
+    <div class="footer-col">
+      <h4>Follow us</h4>
+      <div class="social-icons">
+        <a href="https://www.youtube.com/@aicegertonchapel" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+        <a href="https://www.facebook.com/@aicegertonchapel" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+        <a href="https://www.tiktok.com/@aicegertonchapel" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
+      </div>
+    </div>
+    <div class="footer-col footer-map">
+      <h4>Find us</h4>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7356577284563!2d35.94114277582281!3d-0.3688216353133254!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182987bf970d254d%3A0x385834a695a103c7!2sA.I.C%20Egerton%20Chapel!5e0!3m2!1sen!2ske!4v1793572628423!5m2!1sen!2ske" title="Map showing AIC Egerton Chapel" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <a class="btn-get-directions btn-secondary" href="https://www.google.com/maps/dir/?api=1&amp;destination=-0.3688216353133254%2C35.94114277582281" target="_blank" rel="noopener noreferrer">Get directions</a>
+    </div>
+  </div>
+  <div class="copyright">
+    <p>© <span id="copyrightYear"></span> AIC Egerton Chapel. All rights reserved. <a href="/privacy.html">Privacy</a> · <a href="/accessibility.html">Accessibility</a></p>
+    <p class="site-attribution">Website maintained and developed by Eng. Jeremiah Thuita (Dip CE, BSC CS).</p>
+  </div>
+</footer>
+<script type="module" src="/assets/js/content/content-cards.js"></script>
+<!--CHROME:FOOTER:END-->
 
-    <script>
-        document.getElementById('copyrightYear').textContent = new Date().getFullYear();
-
-        // Contentful API configuration
-        const spaceID = 'em08252vzuh6';
-        const accessToken = 'ooQsmSp49pSYFtEwn52S4U_sdjD6Tojr7KCTnWHPO8I';
-        const environment = 'Church-Website';
-        
-        // Global variables
-        let allSermons = [];
-        let allAssets = [];
-        
-        // DOM elements
-        const searchInput = document.getElementById('searchInput');
-        const startDate = document.getElementById('startDate');
-        const endDate = document.getElementById('endDate');
-        const sermonContainer = document.getElementById('sermon-container');
-        
-        // Format date to readable format
-        function formatDate(dateString) {
-            const options = { year: 'numeric', month: 'long', day: 'numeric' };
-            return new Date(dateString).toLocaleDateString('en-US', options);
-        }
-        
-        // Load sermons from Contentful
-        async function loadSermons() {
-            try {
-                // Show loading state
-                sermonContainer.innerHTML = `
-                    <div class="spinner-container">
-                        <div class="spinner"></div>
-                    </div>
-                `;
-                
-                const res = await fetch(`https://cdn.contentful.com/spaces/${spaceID}/environments/${environment}/entries?access_token=${accessToken}&content_type=sermons&include=2`);
-                
-                if (!res.ok) {
-                    throw new Error(`Failed to fetch sermons: ${res.status} ${res.statusText}`);
-                }
-                
-                const data = await res.json();
-                
-                // Cache assets
-                allAssets = data.includes?.Asset || [];
-                
-                // Map sermons to our structure
-                allSermons = data.items.map(item => {
-                    const { title, preacher, date, powerpoint = [] } = item.fields;
-                    
-                    // Get download links
-                    const pptLinks = powerpoint.map(file => {
-                        const asset = allAssets.find(asset => asset.sys.id === file.sys.id);
-                        return {
-                            url: asset?.fields?.file?.url ? `https:${asset.fields.file.url}` : '',
-                            name: asset?.fields?.title || 'Download File',
-                            type: asset?.fields?.file?.contentType || ''
-                        };
-                    });
-                    
-                    return { 
-                        title, 
-                        preacher, 
-                        date: new Date(date).toISOString().split('T')[0], 
-                        pptLinks 
-                    };
-                });
-                
-                // Display sermons
-                displaySermons(allSermons);
-                
-            } catch (error) {
-                console.error('Failed to load sermons:', error);
-                sermonContainer.innerHTML = `
-                    <div class="no-results">
-                        <i class="fas fa-exclamation-triangle"></i>
-                        <h3>Error Loading Sermons</h3>
-                        <p>We're unable to load sermons at the moment. Please try again later.</p>
-                    </div>
-                `;
-            }
-        }
-        
-        // Display sermons in the grid
-        function displaySermons(sermons) {
-            if (sermons.length === 0) {
-                sermonContainer.innerHTML = `
-                    <div class="no-results">
-                        <i class="fas fa-search"></i>
-                        <h3>No Sermons Found</h3>
-                        <p>Try adjusting your search filters or check back later for new sermons.</p>
-                    </div>
-                `;
-                return;
-            }
-            
-            // Sort sermons by date (newest first)
-            sermons.sort((a, b) => new Date(b.date) - new Date(a.date));
-            
-            sermonContainer.innerHTML = sermons.map(sermon => {
-                const formattedDate = formatDate(sermon.date);
-                
-                // Get icon based on file type
-                const getIcon = (type) => {
-                    if (type.includes('pdf')) return 'fa-file-pdf';
-                    if (type.includes('word')) return 'fa-file-word';
-                    if (type.includes('powerpoint') || type.includes('presentation')) return 'fa-file-powerpoint';
-                    return 'fa-file-download';
-                };
-                
-                return `
-                    <div class="sermon-card">
-                        <div class="sermon-header">
-                            <h3>${sermon.title}</h3>
-                        </div>
-                        <div class="sermon-content">
-                            <div class="sermon-meta">
-                                <div>
-                                    <strong>Preacher</strong>
-                                    <span>${sermon.preacher}</span>
-                                </div>
-                                <div>
-                                    <strong>Date</strong>
-                                    <span>${formattedDate}</span>
-                                </div>
-                            </div>
-                            
-                            <div class="sermon-downloads">
-                                <h4>Downloads:</h4>
-                                <div class="download-links">
-                                    ${sermon.pptLinks.map(link => `
-                                        <a href="${link.url}" target="_blank">
-                                            <i class="fas ${getIcon(link.type)}"></i>
-                                            ${link.name}
-                                        </a>
-                                    `).join('')}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-        }
-        
-        // Apply filters based on search and date range
-        function applyFilters() {
-            const query = searchInput.value.toLowerCase();
-            const start = startDate.value;
-            const end = endDate.value;
-            
-            const filtered = allSermons.filter(sermon => {
-                // Date filter
-                const dateMatch = (!start || sermon.date >= start) &&
-                                 (!end || sermon.date <= end);
-                
-                // Search filter
-                const queryMatch =
-                    sermon.title.toLowerCase().includes(query) ||
-                    sermon.preacher.toLowerCase().includes(query);
-                
-                return dateMatch && queryMatch;
-            });
-            
-            displaySermons(filtered);
-        }
-        
-        // Initialize the page
-        document.addEventListener('DOMContentLoaded', () => {
-            // Load sermons
-            loadSermons();
-            
-            // Set up event listeners
-            searchInput.addEventListener('input', applyFilters);
-            startDate.addEventListener('change', applyFilters);
-            endDate.addEventListener('change', applyFilters);
-            
-            // Set today as default end date
-            endDate.value = new Date().toISOString().split('T')[0];
-            
-            // Set start date to 1 year ago
-            const oneYearAgo = new Date();
-            oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
-            startDate.value = oneYearAgo.toISOString().split('T')[0];
-        });
-        
-        // Menu functionality
-        const menuToggle = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
-        
-        menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('active');
-            navLinks.classList.toggle('active');
-            const isExpanded = navLinks.classList.contains('active');
-            menuToggle.setAttribute('aria-expanded', String(isExpanded));
-            document.body.style.overflow = isExpanded ? 'hidden' : '';
-        });
-        
-        // Close menu when clicking outside on mobile
-        document.addEventListener('click', (e) => {
-            if (window.innerWidth <= 850 && 
-                !menuToggle.contains(e.target) && 
-                !navLinks.contains(e.target) && 
-                navLinks.classList.contains('active')) {
-                menuToggle.classList.remove('active');
-                navLinks.classList.remove('active');
-                menuToggle.setAttribute('aria-expanded', 'false');
-                document.body.style.overflow = '';
-            }
-        });
-        
-        // Close menu when a link is clicked
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth <= 850) {
-                    menuToggle.classList.remove('active');
-                    navLinks.classList.remove('active');
-                    menuToggle.setAttribute('aria-expanded', 'false');
-                    document.body.style.overflow = '';
-                }
-            });
-        });
-        
-        // Modal functionality
-        function openDonationModal() {
-            document.getElementById('donationModal').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-            document.getElementById('donationReason').focus();
-        }
-
-        function closeDonationModal() {
-            document.getElementById('donationModal').style.display = 'none';
-            document.body.style.overflow = '';
-        }
-
-        function submitDonation() {
-            const reason = document.getElementById('donationReason').value.trim();
-            const message = `Hello AIC Egerton Chapel, please share the current donation details${reason ? ` for ${reason}` : ''}.`;
-            window.location.href = `https://wa.me/254799522418?text=${encodeURIComponent(message)}`;
-        }
-        
-        // Close modals when clicking outside or pressing ESC
-        window.onclick = function(event) {
-            const modal = document.getElementById('donationModal');
-            if (event.target === modal) {
-                closeDonationModal();
-            }
-        };
-        
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeDonationModal();
-        });
-
-        // Sticky header effect
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.padding = '10px 20px';
-                header.style.boxShadow = '0px 8px 25px rgba(0, 0, 0, 0.2)';
-                header.style.backdropFilter = 'blur(10px)';
-            } else {
-                header.style.padding = '12px 20px';
-            }
-        });
-    </script>
+    <!-- Supabase CDN, Master Config & Dynamic Features -->
+    <script src="/site-config.js"></script>
+    <script src="/sermon-cards.js"></script>
+    <script type="module" src="/assets/js/main-app.js"></script>
+    <script src="/assets/js/forms.js"></script>
+    <script src="/assets/js/page-scripts/sermons-1.js"></script>
+    <script src="/assets/js/site-chrome.js"></script>
 </body>
+
+<script type="module" src="/assets/js/page-scripts/sermons-2.js"></script>
+
 </html>

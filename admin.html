@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex,nofollow">
+    <title>Admin — AIC Egerton Chapel</title>
+    <link rel="canonical" href="https://aicegertonchapel.netlify.app/admin.html">
+    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+    <link rel="stylesheet" href="/site-chrome.css">
+    <style>
+        .adm-shell { max-width: 1300px; margin: 0 auto; padding: 40px 20px 80px; }
+        .adm-login {
+            max-width: 420px; margin: 60px auto; padding: 40px;
+            border-radius: var(--aic-r-lg); background: #fff;
+            border: 1px solid var(--aic-line); box-shadow: var(--aic-shadow-lg);
+        }
+        .adm-login h1 { font-size: 1.6rem; margin-bottom: 8px; text-align: center; }
+        .adm-login p { color: var(--aic-muted); text-align: center; margin-bottom: 24px; font-size: 0.92rem; }
+        .adm-login button[type="submit"] {
+            width: 100%; padding: 13px; margin-top: 16px; border: 0;
+            border-radius: var(--aic-r-pill); background: var(--aic-grad-brand);
+            color: #fff; font-weight: 700; cursor: pointer;
+        }
+        .adm-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px; flex-wrap: wrap; gap: 12px; }
+        .adm-header h1 { font-size: 1.6rem; }
+        .adm-user { font-size: 0.9rem; color: var(--aic-muted); }
+        .adm-tabs { display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; border-bottom: 1px solid var(--aic-line); }
+        .adm-tab { padding: 12px 20px; border: 0; background: transparent; cursor: pointer; font-weight: 700; color: var(--aic-muted); border-bottom: 3px solid transparent; font-family: var(--aic-font-sans); font-size: 0.92rem; }
+        .adm-tab.active { color: var(--aic-purple); border-bottom-color: var(--aic-purple); }
+        .adm-panel { display: none; }
+        .adm-panel.active { display: block; }
+        .adm-toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; gap: 12px; flex-wrap: wrap; }
+        .adm-toolbar button { padding: 10px 20px; border: 0; border-radius: var(--aic-r-pill); background: var(--aic-purple); color: #fff; font-weight: 700; cursor: pointer; font-family: var(--aic-font-sans); }
+        .adm-table { width: 100%; border-collapse: collapse; background: #fff; border-radius: var(--aic-r-md); overflow: hidden; box-shadow: var(--aic-shadow-sm); font-size: 0.9rem; }
+        .adm-table th, .adm-table td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--aic-line); vertical-align: top; }
+        .adm-table th { background: #f8fafc; font-weight: 700; color: var(--aic-ink-2); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        .adm-table tr:hover td { background: #fafbfd; }
+        .adm-badge { display: inline-block; padding: 3px 10px; border-radius: var(--aic-r-pill); font-size: 0.75rem; font-weight: 700; }
+        .adm-badge.ok { background: var(--aic-green-light); color: #065f46; }
+        .adm-badge.warn { background: #fef3c7; color: #92400e; }
+        .adm-badge.err { background: #fee2e2; color: #991b1b; }
+        .adm-badge.info { background: #dbeafe; color: #1e40af; }
+        .adm-actions { display: flex; gap: 6px; }
+        .adm-actions button { padding: 6px 12px; border: 1px solid var(--aic-line); background: #fff; border-radius: 6px; font-size: 0.8rem; cursor: pointer; color: var(--aic-ink-2); font-family: var(--aic-font-sans); }
+        .adm-actions button:hover { background: var(--aic-bg); }
+        .adm-actions button.danger { color: #b91c1c; border-color: #fecaca; }
+        .adm-actions button.danger:hover { background: #fee2e2; }
+        .adm-modal { position: fixed; inset: 0; z-index: 10000; display: none; align-items: center; justify-content: center; background: rgba(15,23,42,0.72); backdrop-filter: blur(6px); padding: 16px; }
+        .adm-modal.open { display: flex; }
+        .adm-modal-card { background: #fff; border-radius: var(--aic-r-lg); padding: 28px; width: 100%; max-width: 620px; max-height: 90vh; overflow-y: auto; }
+        .adm-modal-card h2 { font-size: 1.3rem; margin-bottom: 16px; }
+        .adm-modal-card .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .adm-modal-card .row.full { grid-template-columns: 1fr; }
+        .adm-modal-card .actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px; }
+        .adm-modal-card .actions button { padding: 10px 22px; border-radius: var(--aic-r-pill); border: 0; cursor: pointer; font-weight: 700; font-family: var(--aic-font-sans); }
+        .adm-modal-card .actions .cancel { background: var(--aic-bg); color: var(--aic-ink-2); }
+        .adm-modal-card .actions .save { background: var(--aic-grad-brand); color: #fff; }
+        .adm-hint { font-size: 0.85rem; color: var(--aic-muted); margin-top: 8px; }
+        .adm-connection { max-width: 620px; margin: 0 auto 24px; padding: 24px; border: 1px solid var(--aic-line); border-radius: var(--aic-r-lg); background: #fff; box-shadow: var(--aic-shadow-sm); }
+        .adm-connection h2 { font-size: 1.15rem; margin-bottom: 6px; }
+        .adm-connection p { color: var(--aic-muted); font-size: 0.9rem; margin-bottom: 14px; }
+        .adm-connection .field { margin-bottom: 12px; }
+        .adm-connection button { padding: 11px 18px; border: 0; border-radius: var(--aic-r-pill); background: var(--aic-purple); color: #fff; font-weight: 700; cursor: pointer; font-family: var(--aic-font-sans); }
+        .adm-connection-status { min-height: 1.4em; margin: 12px 0 0 !important; }
+        .cms-section { max-width: 1000px; margin: 0 auto 30px; }
+        .cms-section h1 { margin-bottom: 8px; }
+        .cms-section > p { color: var(--aic-muted); margin-bottom: 16px; }
+        .cms-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 16px; }
+        .cms-card { display: flex; flex-direction: column; gap: 10px; padding: 22px; background: #fff; border: 1px solid var(--aic-line); border-radius: var(--aic-r-lg); box-shadow: var(--aic-shadow-sm); color: var(--aic-ink); text-decoration: none; transition: transform 180ms ease, box-shadow 180ms ease; }
+        .cms-card:hover { transform: translateY(-2px); box-shadow: var(--aic-shadow-md); color: var(--aic-ink); }
+        .cms-card strong { color: var(--aic-purple); font-size: 1.15rem; }
+        .cms-card span { color: var(--aic-muted); font-size: .92rem; }
+        .cms-card em { color: var(--aic-ink-2); font-size: .82rem; font-style: normal; font-weight: 700; }
+        .cms-admin-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 16px 0; }
+        .cms-admin-toolbar select, .cms-admin-upload input, .cms-admin-upload select { min-height: 42px; padding: 8px; }
+        .cms-admin-status { min-height: 1.5em; color: var(--aic-purple); }
+        .cms-admin-form { max-width: 760px; padding: 20px; margin-top: 20px; background: #fff; border: 1px solid var(--aic-line); border-radius: var(--aic-r-lg); }
+        .cms-admin-form .field { margin: 12px 0; }
+        .cms-admin-form textarea, .cms-admin-form input, .cms-admin-form select { width: 100%; }
+        .cms-admin-form input[type="checkbox"] { width: auto; margin: 8px; }
+        .cms-admin-upload { display: grid; gap: 10px; margin: 20px 0; }
+        .cms-status { min-height: 1.4em; margin-top: 12px; color: var(--aic-muted); font-size: .88rem; }
+    </style>
+</head>
+<body>
+    
+    <!--CHROME:HEADER:START-->
+<a href="#main" class="aic-skip-link">Skip to content</a>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/index.html" aria-label="AIC Egerton Chapel — home">
+      <img class="logo1" src="/logo.jpg" alt="" width="46" height="46">
+      <span class="church-name">AIC EGERTON CHAPEL</span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation menu" aria-controls="navLinks" aria-expanded="false">
+      <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+    </button>
+    <nav aria-label="Main navigation">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="https://ecschools.netlify.app" target="_blank" rel="noopener noreferrer">Academy</a></li>
+        <li><a href="/sermons.html">Sermons</a></li>
+        <li><a href="/ministries.html">Ministries</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+        <li><a class="donate-btn" href="/give.html" data-open-donate><i class="fas fa-donate" aria-hidden="true"></i> Donate</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<!--CHROME:HEADER:END-->
+    <main class="adm-shell" id="main">
+        <section class="cms-section" aria-labelledby="cmsHeading">
+            <h1 id="cmsHeading">Content management</h1>
+            <p>Contentful supplies the primary editorial content. Supabase can hold locally managed content and serves as an independent fallback; published entries are merged and deduplicated on the website.</p>
+            <div class="cms-grid">
+                <a class="cms-card" data-cms="contentful" href="https://app.contentful.com/" aria-label="Open primary Contentful content management">
+                    <em>Primary CMS</em>
+                    <strong>Contentful</strong>
+                    <span>Manage the primary editorial content and publish content updates.</span>
+                </a>
+                <a class="cms-card" data-cms="supabase" href="https://supabase.com/dashboard/" aria-label="Open Supabase backup content management">
+                    <em>Backup CMS</em>
+                    <strong>Supabase</strong>
+                    <span>Manage native content, media, and mirrored-content visibility in the authenticated dashboard below.</span>
+                </a>
+            </div>
+            <p class="cms-status" data-cms-status role="status" aria-live="polite"></p>
+        </section>
+
+        <div id="loginView">
+            <section class="adm-connection" aria-labelledby="connectionTitle" id="connectionCard">
+                <h2 id="connectionTitle">Supabase connection</h2>
+                <p>For local development, use the API URL and anon or publishable key shown by <code>supabase status</code>.</p>
+                <form id="connectionForm">
+                    <div class="field">
+                        <label for="supabaseUrl">Project URL</label>
+                        <input type="url" id="supabaseUrl" placeholder="http://127.0.0.1:54321" required>
+                    </div>
+                    <div class="field">
+                        <label for="supabaseAnonKey">Anon / publishable key</label>
+                        <input type="password" id="supabaseAnonKey" autocomplete="off" required>
+                    </div>
+                    <button type="submit" id="connectionBtn">Test and save connection</button>
+                    <p class="adm-connection-status" id="connectionStatus" role="status" aria-live="polite"></p>
+                </form>
+            </section>
+            <form class="adm-login" id="loginForm">
+                <h1><i class="fas fa-lock" style="color:var(--aic-purple)"></i> Church Admin</h1>
+                <p>Sign in with your admin email. We'll send you a magic link.</p>
+                <label for="adminEmail">Email address</label>
+                <input type="email" id="adminEmail" required autocomplete="email" placeholder="you@example.com">
+                <button type="submit" id="loginBtn">Send magic link</button>
+                <p class="adm-hint" id="loginStatus" style="text-align:center;margin-top:14px;"></p>
+            </form>
+        </div>
+
+        <div id="dashView" style="display:none;">
+            <div class="adm-header">
+                <div>
+                    <h1>Admin Dashboard</h1>
+                    <p class="adm-user" id="adminUser"></p>
+                </div>
+                <button class="adm-toolbar" style="padding:10px 18px;border-radius:var(--aic-r-pill);border:1px solid var(--aic-line);background:#fff;cursor:pointer;font-weight:700;font-family:var(--aic-font-sans);" id="logoutBtn">Sign out</button>
+            </div>
+
+            <div class="adm-tabs" role="tablist">
+                <button class="adm-tab active" data-panel="inquiries" role="tab">Inquiries</button>
+                <button class="adm-tab" data-panel="payments" role="tab">Payments</button>
+                <button class="adm-tab" data-panel="prayers" role="tab">Prayer Wall</button>
+            </div>
+
+            <section class="adm-panel active" id="panel-inquiries">
+                <div class="adm-toolbar"><h2>Inquiries</h2></div>
+                <table class="adm-table" id="inquiriesTable">
+                    <thead><tr><th>Name</th><th>Category</th><th>Urgency</th><th>Message</th><th>Created</th></tr></thead>
+                    <tbody></tbody>
+                </table>
+            </section>
+
+            <section class="adm-panel" id="panel-payments">
+                <div class="adm-toolbar"><h2>M-Pesa Payments</h2></div>
+                <table class="adm-table" id="paymentsTable">
+                    <thead><tr><th>Receipt</th><th>Phone</th><th>Amount</th><th>Purpose</th><th>Status</th><th>Date</th></tr></thead>
+                    <tbody></tbody>
+                </table>
+            </section>
+
+            <section class="adm-panel" id="panel-prayers">
+                <div class="adm-toolbar"><h2>Prayer Wall Moderation</h2></div>
+                <table class="adm-table" id="prayersTable">
+                    <thead><tr><th>Name</th><th>Category</th><th>Request</th><th>Approved</th><th></th></tr></thead>
+                    <tbody></tbody>
+                </table>
+            </section>
+        </div>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="/site-config.js"></script>
+    <script src="/assets/js/site-chrome.js"></script>
+    <script type="module" src="/assets/js/page-scripts/admin-1.js"></script>
+    <aside id="local-override-card" hidden>
+  <!-- only shown on localhost -->
+</aside>
+    <footer class="admin-attribution">Website maintained and developed by Eng. Jeremiah Thuita (Dip CE, BSC CS).</footer>
+<script type="module" src="/assets/js/page-scripts/admin-2.js"></script>
+</body>
+</html>

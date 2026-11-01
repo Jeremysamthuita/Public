@@ -1,0 +1,27 @@
+.home-page { color: var(--aic-text, #1f1b2e); background: var(--aic-bg, #fbfaff); }
+
+/* Announcement banner slot — populated from Contentful `announcement` model (Phase 5) */
+.home-banner { display: none; }
+.home-banner[data-active="true"] {
+  display: flex; align-items: center; gap: .75rem;
+  padding: .6rem 1rem; font-size: .9rem;
+  background: color-mix(in srgb, var(--aic-focus, #ffb703) 25%, var(--aic-surface, #fff));
+  color: var(--aic-text, #1f1b2e);
+  border-bottom: 1px solid var(--aic-border, #e5e3ef);
+}
+.home-banner__link { margin-left: auto; color: var(--aic-purple, #4a2d7a); font-weight: 600; }
+.home-banner__close {
+  background: none; border: 0; font-size: 1.1rem; color: inherit;
+  cursor: pointer; padding: .25rem .4rem; border-radius: 4px;
+}
+.home-banner__close:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--aic-focus, #ffb703); }
+
+.home-hero { padding: clamp(2rem,5vw,4rem) 1.25rem; text-align: center; }
+.home-hero h1 { color: var(--aic-purple-dark, #33205a); margin: 0 0 .75rem; font-size: clamp(1.75rem,3.4vw,2.5rem); }
+.home-hero p  { color: var(--aic-text-muted, #6b6580); max-width: 65ch; margin: 0 auto; line-height: 1.6; }
+
+.home-sermons-latest { max-width: 1100px; margin: 0 auto; padding: 2rem 1.25rem 3rem; }
+.home-sermons-latest h2 { color: var(--aic-purple-dark, #33205a); margin: 0 0 1rem; }
+.home-sermons-latest__more { display: inline-block; margin-top: 1rem; color: var(--aic-purple, #4a2d7a); font-weight: 600; text-decoration: none; }
+.home-sermons-latest__more:hover { text-decoration: underline; }
+.home-sermons-latest__more:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--aic-focus, #ffb703); border-radius: 4px; }

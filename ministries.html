@@ -5,6 +5,7 @@
     <meta name="description" content="Explore various ministries at AIC Egerton Chapel, including youth, women, men, and community outreach programs. Get involved and grow spiritually.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ministries - AIC Egerton Chapel</title>
+    <link rel="canonical" href="https://aicegertonchapel.netlify.app/ministries.html">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
     <style>
         /* General Styles */
@@ -546,6 +547,20 @@
             position: relative;
         }
 
+        .ministries-intro {
+            max-width: 760px;
+            margin: 0 auto 22px;
+        }
+
+        .ministries-intro p {
+            color: #4c4652;
+            line-height: 1.65;
+        }
+
+        .join-btn {
+            margin: 8px auto 28px;
+        }
+
         /* Title Styling */
         .ministries h1 {
             font-size: 2.5rem;
@@ -562,7 +577,7 @@
         /* Ministries Grid */
         .ministries-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 30px;
             justify-content: center;
             padding: 20px;
@@ -688,7 +703,7 @@
         /* Responsive Design for Small Screens */
         @media (max-width: 768px) {
             .ministries-container {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
             }
             
             .ministry {
@@ -700,6 +715,18 @@
             .ministries h1 {
                 font-size: 2rem;
                 padding: 12px 25px;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .ministries-container {
+                grid-template-columns: 1fr;
+                padding: 10px 0;
+            }
+
+            .ministries {
+                width: calc(100% - 24px);
+                padding: 24px 14px;
             }
         }
 
@@ -864,58 +891,74 @@
             cursor: not-allowed;
         }
     </style>
-    <link rel="stylesheet" href="site-chrome.css">
+    <link rel="stylesheet" href="/site-chrome.css">
 </head>
 <body>
     <!-- Header Section -->
-    <header class="site-header">
-        <div class="container">
-            <div class="logo">
-                <img loading="lazy" class="logo1" src="logo.jpg" alt="Church Logo" width="50" height="50">
-                <div class="church-name">AIC EGERTON CHAPEL</div>
-            </div>
-            <button type="button" class="menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-controls="navLinks" aria-expanded="false">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-            </button>
-            <nav>
-                <ul class="nav-links" id="navLinks">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="https://ecschools.netlify.app">Chapel Community Academy</a></li>
-                    <li><a href="sermons.html">Sermons</a></li>
-                    <li><a href="Ministries.html" class="active" aria-current="page">Ministries</a></li>
-                    <li><a href="contact form.html">Contact Us</a></li>
-                    <li><button type="button" class="donate-btn" onclick="openDonationModal()"><i class="fas fa-donate" aria-hidden="true"></i> Donate</button></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <!--CHROME:HEADER:START-->
+<a href="#main" class="aic-skip-link">Skip to content</a>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/index.html" aria-label="AIC Egerton Chapel — home">
+      <img class="logo1" src="/logo.jpg" alt="" width="46" height="46">
+      <span class="church-name">AIC EGERTON CHAPEL</span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation menu" aria-controls="navLinks" aria-expanded="false">
+      <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+    </button>
+    <nav aria-label="Main navigation">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="https://ecschools.netlify.app" target="_blank" rel="noopener noreferrer">Academy</a></li>
+        <li><a href="/sermons.html">Sermons</a></li>
+        <li><a href="/ministries.html">Ministries</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+        <li><a class="donate-btn" href="/give.html" data-open-donate><i class="fas fa-donate" aria-hidden="true"></i> Donate</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<!--CHROME:HEADER:END-->
 
     <!-- Donation Modal -->
     <div id="donationModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
         <div class="modal-content">
-            <span class="close" onclick="closeDonationModal()" aria-label="Close modal">&times;</span>
+            <button type="button" class="close" data-action="donation-close" aria-label="Close donation dialog">&times;</button>
             <h2 id="modalTitle">Church Donation</h2>
-            <p>Contact us on WhatsApp for current donation details.</p>
+            <p>Use the M-Pesa details below to make your donation. Contact us on WhatsApp if you need help.</p>
+            <p><strong>Paybill Number:</strong> 522522</p>
+            <p><strong>Account Number:</strong> 7506439</p>
+            <div class="donation-instructions">
+                <p>How to donate:</p>
+                <ol>
+                    <li>Go to the M-Pesa menu</li>
+                    <li>Select Lipa na M-Pesa</li>
+                    <li>Select Paybill</li>
+                    <li>Enter the Paybill number above</li>
+                    <li>Enter the account number above and confirm your donation</li>
+                </ol>
+            </div>
             <label for="donationReason">Reason for Donation:</label>
             <input type="text" id="donationReason" placeholder="E.g., Church Project, Tithe, Offering">
-            <button id="donateNowBtn" onclick="submitDonation()">Get Donation Details on WhatsApp</button>
+            <button id="donateNowBtn" type="button" data-action="donation-submit">Get Help on WhatsApp</button>
         </div>
     </div>
 
-    <main>
+    <main id="main">
         <section class="ministries">
-            <h1>Church Ministries</h1>
-            <button class="join-btn" onclick="openJoinModal()">Join a Ministry</button>
+            <div class="ministries-intro">
+                <h1>Find Your Place to Serve</h1>
+                <p>Explore a ministry, meet the team, and use the form to send your interest directly to the church team.</p>
+                <button class="join-btn" type="button" data-action="join-open">Join a Ministry</button>
+            </div>
             
             <div class="ministries-container">
                 <!-- Ministry 1 -->
                 <div class="ministry">
                     <i class="fa fa-music"></i>
                     <h2>Praise and Worship</h2>
-                    <img src="w team.jpg" alt="Praise and Worship Group" class="ministry-img">
+                    <div class="ministry-photo-placeholder" role="img" aria-label="Praise and worship ministry photo">Photo coming soon</div>
                     <p><strong>Motto:</strong> To lead the congregation in genuine worship of God.</p>
                     <p><strong>Mission:</strong> To glorify God through music and songs of praise.</p>
                     <p><strong>Weekly Meetup:</strong></p>
@@ -929,7 +972,7 @@
                 <div class="ministry">
                     <i class="fa fa-microphone"></i>
                     <h2>Choir</h2>
-                    <img src="wleaders.JPG" alt="Choir Group" class="ministry-img">
+                    <div class="ministry-photo-placeholder" role="img" aria-label="Choir ministry photo">Photo coming soon</div>
                     <p><strong>Mission:</strong> To enhance worship through harmonious singing.</p>
                     <p><strong>Weekly Meetup:</strong></p>
                     <ul>
@@ -941,7 +984,7 @@
                 <div class="ministry">
                     <i class="fa fa-users"></i>
                     <h2>Youth Ministry</h2>
-                    <img src="youth.jpg" alt="Youth Group" class="ministry-img">
+                    <div class="ministry-photo-placeholder" role="img" aria-label="Youth ministry photo">Photo coming soon</div>
                     <p><strong>Motto:</strong> Do not let anyone look down on you because you are young!</p>
                     <p><strong>Mission:</strong> To empower young believers in their faith journey.</p>
                 </div>
@@ -950,7 +993,7 @@
                 <div class="ministry">
                     <i class="fa fa-child"></i>
                     <h2>Sunday School</h2>
-                    <img src="children.JPG" alt="Sunday School Children" class="ministry-img">
+                    <div class="ministry-photo-placeholder" role="img" aria-label="Sunday School photo">Photo coming soon</div>
                     <p><strong>Vision:</strong> To nurture children in the ways of the Lord.</p>
                     <p><strong>Mission:</strong> Teaching biblical truths in an engaging way.</p>
                 </div>
@@ -959,7 +1002,7 @@
                 <div class="ministry">
                     <i class="fa fa-male"></i>
                     <h2>Christian Men Fellowship (CMF)</h2>
-                    <img src="cmf.jpg" alt="CMF Group" class="ministry-img">
+                    <div class="ministry-photo-placeholder" role="img" aria-label="Christian Men Fellowship photo">Photo coming soon</div>
                     <p><strong>Vision:</strong> To build godly men for Christ.</p>
                     <p><strong>Mission:</strong> Strengthening men through fellowship and discipleship.</p>
                 </div>
@@ -968,7 +1011,7 @@
                 <div class="ministry">
                     <i class="fa fa-female"></i>
                     <h2>Christian Women Fellowship (CWF)</h2>
-                    <img src="cwf.JPG" alt="CWF Group" class="ministry-img">
+                    <div class="ministry-photo-placeholder" role="img" aria-label="Christian Women Fellowship photo">Photo coming soon</div>
                     <p><strong>Vision:</strong> To empower women in faith and service.</p>
                     <p><strong>Mission:</strong> Supporting women through prayer and community.</p>
                 </div>
@@ -977,7 +1020,7 @@
                 <div class="ministry">
                     <i class="fa fa-shield"></i>
                     <h2>Cadette</h2>
-                    <img src="cadette.jpg" alt="Cadette Group" class="ministry-img">
+                    <div class="ministry-photo-placeholder" role="img" aria-label="Cadette ministry photo">Photo coming soon</div>
                     <p><strong>Vision:</strong> Training young believers for service.</p>
                     <p><strong>Mission:</strong> Developing character and leadership skills.</p>
                 </div>
@@ -986,7 +1029,7 @@
                 <div class="ministry">
                     <i class="fa fa-star"></i>
                     <h2>Star</h2>
-                    <img src="star.JPG" alt="Star Group" class="ministry-img">
+                    <div class="ministry-photo-placeholder" role="img" aria-label="Star ministry photo">Photo coming soon</div>
                     <p><strong>Vision:</strong> Shining God's light in our community.</p>
                     <p><strong>Mission:</strong> Outreach and evangelism programs.</p>
                 </div>
@@ -995,9 +1038,33 @@
                 <div class="ministry">
                     <i class="fa fa-bookmark"></i>
                     <h2>Battalion</h2>
-                    <img src="battalion.jpg" alt="Battalion Group" class="ministry-img">
+                    <div class="ministry-photo-placeholder" role="img" aria-label="Battalion ministry photo">Photo coming soon</div>
                     <p><strong>Vision:</strong> Spiritual warriors for Christ.</p>
                     <p><strong>Mission:</strong> Prayer and spiritual warfare ministry.</p>
+                </div>
+                <div class="ministry">
+                    <i class="fa fa-door-open" aria-hidden="true"></i>
+                    <h2>Ushering</h2>
+                    <div class="ministry-photo-placeholder" role="img" aria-label="Ushering ministry photo">Photo coming soon</div>
+                    <p><strong>Mission:</strong> Welcome and assist worshippers, helping everyone feel at home during services.</p>
+                </div>
+                <div class="ministry">
+                    <i class="fa fa-video" aria-hidden="true"></i>
+                    <h2>Media Team</h2>
+                    <div class="ministry-photo-placeholder" role="img" aria-label="Media team photo">Photo coming soon</div>
+                    <p><strong>Mission:</strong> Support worship and outreach through sound, video, photography, and digital communications.</p>
+                </div>
+                <div class="ministry">
+                    <i class="fa fa-utensils" aria-hidden="true"></i>
+                    <h2>Catering</h2>
+                    <div class="ministry-photo-placeholder" role="img" aria-label="Catering ministry photo">Photo coming soon</div>
+                    <p><strong>Mission:</strong> Prepare and serve refreshments for church gatherings and community events.</p>
+                </div>
+                <div class="ministry">
+                    <i class="fa fa-handshake" aria-hidden="true"></i>
+                    <h2>Hospitality</h2>
+                    <div class="ministry-photo-placeholder" role="img" aria-label="Hospitality ministry photo">Photo coming soon</div>
+                    <p><strong>Mission:</strong> Offer practical care and warm hospitality to visitors, members, and guests.</p>
                 </div>
             </div>
         </section>
@@ -1005,10 +1072,15 @@
         <!-- Join Ministry Modal -->
         <div id="joinModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="joinModalTitle">
             <div class="modal-content">
-                <span class="close" onclick="closeJoinModal()" aria-label="Close modal">&times;</span>
+                <button type="button" class="close" data-action="join-close" aria-label="Close dialog">&times;</button>
                 <h2 id="joinModalTitle">Join a Ministry</h2>
-                <form id="joinForm">
-                    <p>Continue to WhatsApp to review and send your ministry application.</p>
+                <form id="joinForm" class="google-mail-form" data-status-id="ministryFormStatus" method="post">
+                    <input type="hidden" name="formType" value="ministry">
+                    <div class="form-honeypot" aria-hidden="true">
+                        <label for="ministryWebsite">Leave this field empty</label>
+                        <input type="text" name="website" id="ministryWebsite" tabindex="-1" autocomplete="off">
+                    </div>
+                    <p>Send your interest to the church team. We will follow up using your phone number.</p>
                     <div class="field">
                         <label for="name">Your Name</label>
                         <input type="text" name="name" id="name" required placeholder="John Doe">
@@ -1042,208 +1114,84 @@
                             <option value="Cadette">Cadette</option>
                             <option value="Star">Star</option>
                             <option value="Battalion">Battalion</option>
+                            <option value="Ushering">Ushering</option>
+                            <option value="Media Team">Media Team</option>
+                            <option value="Catering">Catering</option>
+                            <option value="Hospitality">Hospitality</option>
                         </select>
                     </div>
                     
-                    <button type="submit" id="joinSubmitBtn">Continue in WhatsApp</button>
+                    <div class="cf-turnstile" data-theme="light"></div>
+                    <button type="submit" id="joinSubmitBtn">Send Application</button>
+                    <p class="form-status" id="ministryFormStatus" role="status" aria-live="polite"></p>
+                    <p class="form-alternative">If the online form is unavailable, <a href="https://wa.me/254799522418" target="_blank" rel="noopener noreferrer">message us on WhatsApp</a>.</p>
                 </form>
             </div>
         </div>
     </main>
     
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-col">
-                <h4>About Us</h4>
-                <p>AIC Egerton Chapel is a vibrant community of believers dedicated to worship, spiritual growth, and serving others. Join us on our journey of faith.</p>
-                <div class="social-icons">
-                    <a href="https://www.fb.com/@aicegertonchapel" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="https://www.youtube.com/@aicegertonchapel" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                    <a href="https://www.tiktok.com/@aicegertonchapel" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-                        <i class="fa-brands fa-tiktok"></i>
-                    </a>
-                    <a href="https://wa.me/254799522418" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-                        <i class="fab fa-whatsapp"></i>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="footer-col">
-                <h4>Quick Links</h4>
-                <ul class="quick-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="sermons.html">Sermons</a></li>
-                    <li><a href="Ministries.html">Ministries</a></li>
-                    <li><a href="https://ecschools.netlify.app">Chapel Community Academy</a></li>
-                    <li><a href="contact form.html">Contact Us</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-col">
-                <h4>Contact Info</h4>
-                <p><i class="fas fa-map-marker-alt"></i> Egerton University, Njoro, Kenya</p>
-                <p><i class="fas fa-phone"></i> +254 799 522 418</p>
-                <p><i class="fas fa-envelope"></i> aicegertonchapel@gmail.com</p>
-                <p><i class="fas fa-clock"></i> Sunday Services: 8:00 AM - 12:00 PM</p>
-                <div class="footer-map">
-                    <iframe src="https://www.google.com/maps?q=Egerton+University%2C+Njoro%2C+Kenya&amp;output=embed" title="Map showing Egerton University, Njoro, Kenya" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
-                </div>
-            </div>
-        </div>
-        
-        <div class="copyright">
-            <p>&copy; <span id="copyrightYear"></span> AIC Egerton Chapel. All rights reserved.</p>
-            <p>Developed and maintained by: <a href="#">Eng. Jeremiah Thuita [DCE]</a></p>
-        </div>
-    </footer>
+    <!--CHROME:FOOTER:START-->
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-col">
+      <h4>About Us</h4>
+      <p>AIC Egerton Chapel is a vibrant community of believers dedicated to worship, spiritual growth, and serving others.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul class="quick-links">
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/ministries.html">Ministries</a></li>
+        <li><a href="/sermons.html">Sermons</a></li>
+        <li><a href="/live.html">Live Stream</a></li>
+        <li><a href="/prayer-wall.html">Prayer Wall</a></li>
+        <li><a href="/contact.html">Contact Us</a></li>
+        <li><a href="/give.html">Give</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Service Times</h4>
+      <div class="footer-service-times" data-service-times>
+        <p><strong>Sunday</strong><br>Main Worship Service — 8:00 AM – 12:00 PM EAT</p>
+        <p><strong>Wednesday</strong><br>Mid-Week Prayer — 5:30 PM – 7:00 PM EAT</p>
+        <p><strong>Friday</strong><br>Youth Fellowship — 6:00 PM – 8:00 PM EAT</p>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>Egerton University, Njoro, Kenya</p>
+      <p><a href="tel:+254799522418">+254 799 522 418</a></p>
+      <p><a href="mailto:aicegertonchapel@gmail.com">aicegertonchapel@gmail.com</a></p>
+      <p><a href="https://wa.me/254799522418" target="_blank" rel="noopener noreferrer">WhatsApp</a></p>
+    </div>
+    <div class="footer-col">
+      <h4>Follow us</h4>
+      <div class="social-icons">
+        <a href="https://www.youtube.com/@aicegertonchapel" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+        <a href="https://www.facebook.com/@aicegertonchapel" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+        <a href="https://www.tiktok.com/@aicegertonchapel" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
+      </div>
+    </div>
+    <div class="footer-col footer-map">
+      <h4>Find us</h4>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7356577284563!2d35.94114277582281!3d-0.3688216353133254!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182987bf970d254d%3A0x385834a695a103c7!2sA.I.C%20Egerton%20Chapel!5e0!3m2!1sen!2ske!4v1793572628423!5m2!1sen!2ske" title="Map showing AIC Egerton Chapel" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <a class="btn-get-directions btn-secondary" href="https://www.google.com/maps/dir/?api=1&amp;destination=-0.3688216353133254%2C35.94114277582281" target="_blank" rel="noopener noreferrer">Get directions</a>
+    </div>
+  </div>
+  <div class="copyright">
+    <p>© <span id="copyrightYear"></span> AIC Egerton Chapel. All rights reserved. <a href="/privacy.html">Privacy</a> · <a href="/accessibility.html">Accessibility</a></p>
+    <p class="site-attribution">Website maintained and developed by Eng. Jeremiah Thuita (Dip CE, BSC CS).</p>
+  </div>
+</footer>
+<script type="module" src="/assets/js/content/content-cards.js"></script>
+<!--CHROME:FOOTER:END-->
 
-    <script>
-        document.getElementById('copyrightYear').textContent = new Date().getFullYear();
-        document.getElementById('baptismYear').max = new Date().getFullYear();
-
-        document.querySelectorAll('.ministry-img').forEach(image => {
-            const showPlaceholder = () => {
-                const placeholder = document.createElement('div');
-                placeholder.className = 'ministry-photo-placeholder';
-                placeholder.setAttribute('role', 'img');
-                placeholder.setAttribute('aria-label', image.alt);
-                placeholder.textContent = 'Photo unavailable';
-                image.replaceWith(placeholder);
-            };
-
-            if (image.complete && image.naturalWidth === 0) {
-                showPlaceholder();
-            } else {
-                image.addEventListener('error', showPlaceholder, { once: true });
-            }
-        });
-        
-        // Menu functionality
-        const menuToggle = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
-        
-        menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('active');
-            navLinks.classList.toggle('active');
-            const isExpanded = navLinks.classList.contains('active');
-            menuToggle.setAttribute('aria-expanded', String(isExpanded));
-            document.body.style.overflow = isExpanded ? 'hidden' : '';
-        });
-        
-        // Close menu when clicking outside on mobile
-        document.addEventListener('click', (e) => {
-            if (window.innerWidth <= 850 && 
-                !menuToggle.contains(e.target) && 
-                !navLinks.contains(e.target) && 
-                navLinks.classList.contains('active')) {
-                menuToggle.classList.remove('active');
-                navLinks.classList.remove('active');
-                menuToggle.setAttribute('aria-expanded', 'false');
-                document.body.style.overflow = '';
-            }
-        });
-        
-        // Close menu when a link is clicked
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth <= 850) {
-                    menuToggle.classList.remove('active');
-                    navLinks.classList.remove('active');
-                    menuToggle.setAttribute('aria-expanded', 'false');
-                    document.body.style.overflow = '';
-                }
-            });
-        });
-        
-        // Modal functionality
-        function openDonationModal() {
-            document.getElementById('donationModal').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-            document.getElementById('donationReason').focus();
-        }
-
-        function closeDonationModal() {
-            document.getElementById('donationModal').style.display = 'none';
-            document.body.style.overflow = '';
-        }
-
-        function submitDonation() {
-            const reason = document.getElementById('donationReason').value.trim();
-            const message = `Hello AIC Egerton Chapel, please share the current donation details${reason ? ` for ${reason}` : ''}.`;
-            window.location.href = `https://wa.me/254799522418?text=${encodeURIComponent(message)}`;
-        }
-        
-        // Join Ministry Modal
-        function openJoinModal() {
-            document.getElementById('joinModal').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-            document.getElementById('name').focus();
-        }
-
-        function closeJoinModal() {
-            document.getElementById('joinModal').style.display = 'none';
-            document.body.style.overflow = '';
-        }
-        
-        // Form submission
-        document.getElementById('joinForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            const phone = document.getElementById('phone').value;
-            if (!/^\+?[0-9\s\-]+$/.test(phone)) {
-                alert('Please enter a valid phone number');
-                return;
-            }
-
-            const formData = new FormData(this);
-            const message = [
-                'Hello AIC Egerton Chapel, I would like to join a ministry.',
-                `Name: ${formData.get('name')}`,
-                `Age: ${formData.get('age') || 'Not provided'}`,
-                `Phone: ${phone}`,
-                `Ministry: ${formData.get('ministry')}`,
-                `Baptism year: ${formData.get('baptismYear') || 'Not provided'}`
-            ].join('\n');
-
-            window.location.href = `https://wa.me/254799522418?text=${encodeURIComponent(message)}`;
-        });
-
-        // Close modals when clicking outside or pressing ESC
-        window.onclick = function(event) {
-            const donationModal = document.getElementById('donationModal');
-            const joinModal = document.getElementById('joinModal');
-            
-            if (event.target === donationModal) {
-                closeDonationModal();
-            }
-            if (event.target === joinModal) {
-                closeJoinModal();
-            }
-        };
-        
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                closeDonationModal();
-                closeJoinModal();
-            }
-        });
-
-        // Sticky header effect
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.padding = '10px 20px';
-                header.style.boxShadow = '0px 8px 25px rgba(0, 0, 0, 0.2)';
-                header.style.backdropFilter = 'blur(10px)';
-            } else {
-                header.style.padding = '12px 20px';
-            }
-        });
-    </script>
+    <!-- Supabase CDN, Master Config & Dynamic Features -->
+    <script src="/site-config.js"></script>
+    <script type="module" src="/assets/js/main-app.js"></script>
+    <script src="/assets/js/forms.js"></script>
+    <script src="/assets/js/page-scripts/ministries-1.js"></script>
+    <script src="/assets/js/site-chrome.js"></script>
 </body>
 </html>

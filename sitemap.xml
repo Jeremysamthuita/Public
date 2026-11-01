@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://aicegertonchapel.netlify.app/</loc>
-  </url>
-  <url>
-    <loc>https://aicegertonchapel.netlify.app/about.html</loc>
-  </url>
-  <url>
-    <loc>https://aicegertonchapel.netlify.app/sermons.html</loc>
-  </url>
-  <url>
-    <loc>https://aicegertonchapel.netlify.app/Ministries.html</loc>
-  </url>
-  <url>
-    <loc>https://aicegertonchapel.netlify.app/contact%20form.html</loc>
-  </url>
+  <url><loc>https://aicegertonchapel.netlify.app/</loc><lastmod>2026-10-30</lastmod></url>
+  <url><loc>https://aicegertonchapel.netlify.app/about.html</loc><lastmod>2026-10-30</lastmod></url>
+  <url><loc>https://aicegertonchapel.netlify.app/contact.html</loc><lastmod>2026-10-30</lastmod></url>
+  <url><loc>https://aicegertonchapel.netlify.app/ministries.html</loc><lastmod>2026-10-30</lastmod></url>
+  <url><loc>https://aicegertonchapel.netlify.app/sermons.html</loc><lastmod>2026-10-30</lastmod></url>
+  <url><loc>https://aicegertonchapel.netlify.app/live.html</loc><lastmod>2026-10-30</lastmod></url>
+  <url><loc>https://aicegertonchapel.netlify.app/prayer-wall.html</loc><lastmod>2026-10-30</lastmod></url>
+  <url><loc>https://aicegertonchapel.netlify.app/give.html</loc><lastmod>2026-10-30</lastmod></url>
+  <url><loc>https://aicegertonchapel.netlify.app/privacy.html</loc><lastmod>2026-10-30</lastmod></url>
+  <url><loc>https://aicegertonchapel.netlify.app/accessibility.html</loc><lastmod>2026-10-30</lastmod></url>
 </urlset>

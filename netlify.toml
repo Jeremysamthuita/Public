@@ -1,2 +1,141 @@
 [build]
-  publish = "."
+  command   = "node scripts/sync-chrome.mjs && node scripts/check-links.mjs"
+  publish   = "."
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# ── Redirect order matters: feed/sitemap BEFORE /api/* generic rule ──
+[[redirects]]
+  from = "/feed.xml"
+  to   = "/.netlify/functions/sermons-rss"
+  status = 200
+
+[[redirects]]
+  from = "/sitemap.xml"
+  to   = "/.netlify/functions/sitemap"
+  status = 200
+
+[[redirects]]
+  from = "/api/*"
+  to   = "/.netlify/functions/:splat"
+  status = 200
+
+# ── Legacy filename redirects ──
+[[redirects]]
+  from = "/Ministries.html"
+  to   = "/ministries.html"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from = "/contact form.html"
+  to   = "/contact.html"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from = "/contact%20form.html"
+  to   = "/contact.html"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from = "/contact_form.html"
+  to   = "/contact.html"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from = "/contact-form"
+  to   = "/contact.html"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from = "/index"
+  to   = "/"
+  status = 301
+  force  = true
+
+# ── Global headers ──
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+    X-Content-Type-Options    = "nosniff"
+    X-Frame-Options           = "SAMEORIGIN"
+    Referrer-Policy           = "strict-origin-when-cross-origin"
+    Permissions-Policy        = "geolocation=(self), microphone=(), camera=()"
+    Content-Security-Policy   = """
+      default-src 'self';
+      script-src 'self'
+        https://cdn.jsdelivr.net
+        https://cdnjs.cloudflare.com
+        https://challenges.cloudflare.com
+        https://plausible.io;
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com;
+      font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com;
+      img-src 'self' data: https:;
+      connect-src 'self'
+        https://*.supabase.co
+        wss://*.supabase.co
+        https://cdn.contentful.com
+        https://plausible.io
+        https://challenges.cloudflare.com;
+      frame-src
+        https://www.google.com
+        https://www.youtube.com
+        https://www.youtube-nocookie.com
+        https://challenges.cloudflare.com
+        https://assets.ctfassets.net;
+      media-src 'self' https://assets.ctfassets.net https://videos.ctfassets.net;
+      object-src 'none';
+      base-uri 'self';
+      form-action 'self';
+      frame-ancestors 'self';
+      upgrade-insecure-requests
+    """
+
+# ── HTML + JS/CSS must-revalidate ──
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/assets/js/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/assets/css/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# ── Images and fingerprinted assets: long cache ──
+[[headers]]
+  for = "/assets/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# ── Admin noindex ──
+[[headers]]
+  for = "/admin.html"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    Cache-Control = "public, max-age=0, must-revalidate"

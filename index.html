@@ -411,6 +411,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center;
             display: block;
         }
 
@@ -423,7 +424,8 @@
             position: absolute;
             inset: 0;
             background: linear-gradient(90deg, rgba(0, 0, 0, 0.64), rgba(0, 0, 0, 0.16) 75%),
-                        linear-gradient(0deg, rgba(0, 0, 0, 0.48), transparent 62%);
+                        linear-gradient(0deg, rgba(0, 0, 0, 0.55), transparent 68%),
+                        radial-gradient(ellipse at center, rgba(15, 23, 42, 0.24), transparent 74%);
             pointer-events: none;
         }
 
@@ -435,23 +437,46 @@
             align-items: center;
             justify-content: center;
             padding: 100px 24px 115px;
-            color: white;
+            color: #fff7ed;
             text-align: center;
             z-index: 1;
+            isolation: isolate;
+        }
+
+        .slide-content::before {
+            content: '';
+            position: absolute;
+            z-index: -1;
+            inset: 50% auto auto 50%;
+            width: min(820px, calc(100% - 48px));
+            height: min(340px, calc(100% - 150px));
+            transform: translate(-50%, -50%);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: 28px;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.52), rgba(30, 27, 75, 0.30));
+            box-shadow: 0 24px 70px rgba(0, 0, 0, 0.18);
+            backdrop-filter: blur(3px);
+            pointer-events: none;
         }
 
         .slide-content h1,
         .slide-content h2 {
+            color: #fff7ed !important;
+            font-family: var(--aic-font-display, Georgia, serif);
             font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.12;
             margin-bottom: 15px;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.65);
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.9), 0 8px 24px rgba(0, 0, 0, 0.55);
         }
 
         .slide-content p {
+            color: #fff !important;
             font-size: clamp(1rem, 2vw, 1.25rem);
             max-width: 800px;
             margin: 0 auto 25px;
-            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+            line-height: 1.65;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95), 0 4px 14px rgba(0, 0, 0, 0.75);
         }
 
         .carousel-controls {
@@ -1137,6 +1162,94 @@
             }
         }
 
+        @media (max-width: 800px) {
+            .hero-carousel {
+                height: clamp(580px, calc(100svh - 100px), 760px);
+                min-height: 580px;
+                margin-top: calc(-1 * var(--aic-header-h, 76px));
+            }
+
+            .carousel-slide {
+                display: flex;
+                flex-direction: column;
+                background: #171525;
+            }
+
+            .carousel-slide img {
+                position: relative;
+                inset: auto;
+                flex: 0 0 auto;
+                width: 100%;
+                height: auto;
+                aspect-ratio: auto;
+                object-fit: contain;
+                object-position: center;
+            }
+
+            .carousel-slide:nth-child(2) img {
+                object-position: center 24%;
+            }
+
+            .carousel-slide::after {
+                inset: 0 0 auto;
+                height: min(58vw, 390px);
+                background: linear-gradient(180deg, transparent 48%, rgba(23, 21, 37, 0.78) 100%);
+            }
+
+            .slide-content {
+                position: relative;
+                inset: auto;
+                flex: 1 1 auto;
+                min-height: 0;
+                justify-content: flex-start;
+                padding: clamp(28px, 6vh, 52px) 24px 68px;
+                background: linear-gradient(180deg, #211934 0%, #171525 100%);
+            }
+
+            .slide-content::before {
+                display: none;
+            }
+
+            .slide-content h1,
+            .slide-content h2 {
+                max-width: 18ch;
+                margin-bottom: 12px;
+                font-size: clamp(1.75rem, 6vw, 2.6rem);
+            }
+
+            .slide-content p {
+                max-width: 36ch;
+                margin-bottom: 20px;
+                font-size: clamp(0.98rem, 2.6vw, 1.12rem);
+            }
+
+            .carousel-controls {
+                top: clamp(100px, 28vw, 150px);
+                padding: 0 12px;
+            }
+
+            .carousel-control {
+                width: 44px;
+                height: 44px;
+                font-size: 1.2rem;
+            }
+
+            .carousel-indicators {
+                bottom: 14px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .slide-content::before {
+                content: none;
+                display: none;
+                border: 0;
+                background: none;
+                box-shadow: none;
+                backdrop-filter: none;
+            }
+        }
+
         @media (prefers-reduced-motion: reduce) {
             .carousel-container {
                 transition: none;
@@ -1190,66 +1303,69 @@
             font-weight: 500;
         }
 </style>
-    <link rel="stylesheet" href="site-chrome.css">
+    <link rel="stylesheet" href="/site-chrome.css">
+    <link rel="stylesheet" href="/sermon-cards.css">
 </head>
 <body>
     <!-- Header Section -->
-    <header class="site-header">
-        <div class="container">
-            <div class="logo">
-                <img loading="lazy" class="logo1" src="logo.jpg" alt="Church Logo">
-                <div class="church-name">AIC EGERTON CHAPEL</div>
-            </div>
-            <button type="button" class="menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-controls="navLinks" aria-expanded="false">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-            </button>
-            <nav>
-                <ul class="nav-links" id="navLinks">
-                    <li><a href="index.html" class="active" aria-current="page">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="https://ecschools.netlify.app">Chapel Community Academy</a></li>
-                    <li><a href="sermons.html">Sermons</a></li>
-                    <li><a href="Ministries.html">Ministries</a></li>
-                    <li><a href="contact form.html">Contact Us</a></li>
-                   <li><button type="button" class="donate-btn" onclick="openDonationModal()"><i class="fas fa-donate" aria-hidden="true"></i> Donate</button></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <!--CHROME:HEADER:START-->
+<a href="#main" class="aic-skip-link">Skip to content</a>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/index.html" aria-label="AIC Egerton Chapel — home">
+      <img class="logo1" src="/logo.jpg" alt="" width="46" height="46">
+      <span class="church-name">AIC EGERTON CHAPEL</span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation menu" aria-controls="navLinks" aria-expanded="false">
+      <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+    </button>
+    <nav aria-label="Main navigation">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="https://ecschools.netlify.app" target="_blank" rel="noopener noreferrer">Academy</a></li>
+        <li><a href="/sermons.html">Sermons</a></li>
+        <li><a href="/ministries.html">Ministries</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+        <li><a class="donate-btn" href="/give.html" data-open-donate><i class="fas fa-donate" aria-hidden="true"></i> Donate</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<!--CHROME:HEADER:END-->
+<main id="main">
 
     <!-- Hero Carousel -->
     <section class="hero-carousel" aria-label="Welcome to AIC Egerton Chapel">
         <div class="carousel-container" id="carouselContainer">
             <div class="carousel-slide">
-                <img src="family.jpg" alt="Family celebrating together at sunset">
+                <img src="/power.jpg" alt="Family celebrating together at sunset">
                 <div class="slide-content">
                     <h1>GOD GIVES US POWER</h1>
                     <p>Jesus is holy, loving, and worthy of all our worship and devotion...</p>
-                    <a href="contact form.html" class="btn-more">Plan Your Visit</a>
+                    <a href="/contact.html" class="btn-more">Plan Your Visit</a>
                 </div>
             </div>
             <div class="carousel-slide">
-                <img src="rev.JPG" alt="Rev. Dr. William Chesaine Kipkoros preaching">
+                <img src="/community.jpg" alt="Rev. Dr. William Chesaine Kipkoros preaching">
                 <div class="slide-content">
                     <h2>JOIN OUR COMMUNITY</h2>
                     <p>Experience fellowship and spiritual growth with our vibrant community...</p>
-                    <a href="Ministries.html" class="btn-more">Explore Ministries</a>
+                    <a href="/ministries.html" class="btn-more">Explore Ministries</a>
                 </div>
             </div>
 
 <div class="carousel-slide">
-    <img src="family.jpg" alt="Family celebrating together at sunset">
+    <img src="/family.jpg" alt="Family celebrating together at sunset">
     <div class="slide-content">
         <h2>SUNDAY SERVICES</h2>
         <p>Join us every Sunday at 8:00 AM for uplifting worship and sermons...</p>
-        <a href="https://www.google.com/maps/search/?api=1&amp;query=Egerton+University%2C+Njoro%2C+Kenya" class="btn-more" target="_blank" rel="noopener noreferrer">Get Directions</a>
+        <a href="#" class="btn-more btn-get-directions" target="_blank" rel="noopener noreferrer" aria-label="Get directions to AIC Egerton Chapel"><i class="fas fa-location-arrow"></i> Get Directions</a>
     </div>
 </div>
 
 <div class="carousel-slide">
-    <img src="family.jpg" alt="Family celebrating together at sunset">
+    <img src="/academy.jpg" alt="Family celebrating together at sunset">
     <div class="slide-content">
         <h2>Chapel Community Academy</h2>
         <p>Bring the young toddlers so that they can be nurtured the Christian way...</p>
@@ -1262,6 +1378,21 @@
             <button class="carousel-control next" aria-label="Next slide">❯</button>
         </div>
         <div class="carousel-indicators" id="carouselIndicators">
+        </div>
+        <!-- Floating Glassmorphic Events & Sermon Bubble Ticker -->
+        <div class="hero-floating-bubble" id="heroEventsBubble" aria-label="Upcoming Events and Announcements">
+            <div class="bubble-header">
+                <span class="bubble-badge"><i class="fas fa-bullhorn"></i> HAPPENING SOON</span>
+                <span class="bubble-live-indicator"><span class="pulse-dot"></span> LIVE UPDATES</span>
+            </div>
+            <div class="bubble-ticker-wrapper" id="bubbleTickerWrapper">
+                <div class="bubble-ticker-track" id="bubbleTickerTrack">
+                    <!-- Populated dynamically by initHeroEventsTicker() -->
+                </div>
+            </div>
+            <div class="bubble-details-popover" id="bubbleDetailsPopover" style="display: none;">
+                <div class="popover-content" id="popoverContent"></div>
+            </div>
         </div>
     </section>
 
@@ -1278,12 +1409,24 @@
     <!-- Enhanced Donation Modal -->
     <div id="donationModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeDonationModal()">&times;</span>
+            <button type="button" class="close" data-action="donation-close" aria-label="Close donation dialog">&times;</button>
             <h2>Church Donation</h2>
-            <p>Contact us on WhatsApp for current donation details.</p>
+            <p>Use the M-Pesa details below to make your donation. Contact us on WhatsApp if you need help.</p>
+            <p><strong>Paybill Number:</strong> 522522</p>
+            <p><strong>Account Number:</strong> 7506439</p>
+            <div class="donation-instructions">
+                <p>How to donate:</p>
+                <ol>
+                    <li>Go to the M-Pesa menu</li>
+                    <li>Select Lipa na M-Pesa</li>
+                    <li>Select Paybill</li>
+                    <li>Enter the Paybill number above</li>
+                    <li>Enter the account number above and confirm your donation</li>
+                </ol>
+            </div>
             <label for="donationReason">Reason for Donation:</label>
             <input type="text" id="donationReason" placeholder="E.g., Church Project, Tithe, Offering">
-            <button onclick="submitDonation()">Get Donation Details on WhatsApp</button>
+            <button type="button" data-action="donation-submit">Get Help on WhatsApp</button>
         </div>
     </div>
 
@@ -1300,7 +1443,7 @@
         </div>
 
         <div class="more-sermons">
-            <a href="sermons.html" class="btn-more">More Sermons</a>
+            <a href="/sermons.html" class="btn-more">More Sermons</a>
         </div>
     </section>
 
@@ -1327,441 +1470,75 @@
                     <p>Learn with us the Bible, enhance your wisdom and deepen your faith.</p>
                 </div>
             </div>
-            <a href="about.html" class="btn-more">Learn More</a>
+            <a href="/about.html" class="btn-more">Learn More</a>
         </div>
     </section>
 
     <!-- Enhanced Footer -->
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-col">
-                <h4>About Us</h4>
-                <p>AIC Egerton Chapel is a vibrant community of believers dedicated to worship, spiritual growth, and serving others. Join us on our journey of faith.</p>
-                <div class="social-icons">
-                    <a href="https://www.fb.com/@aicegertonchapel" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="https://www.youtube.com/@aicegertonchapel" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                    <a href="https://www.tiktok.com/@aicegertonchapel" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-                        <i class="fa-brands fa-tiktok"></i>
-                    </a>
-                    <a href="https://wa.me/254799522418" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-                        <i class="fab fa-whatsapp"></i>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="footer-col">
-                <h4>Quick Links</h4>
-                <ul class="quick-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="sermons.html">Sermons</a></li>
-                    <li><a href="Ministries.html">Ministries</a></li>
-                    <li><a href="https://ecschools.netlify.app">Chapel Community Academy</a></li>
-                    <li><a href="contact form.html">Contact Us</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-col">
-                <h4>Contact Info</h4>
-                <p><i class="fas fa-map-marker-alt"></i> Egerton University, Njoro, Kenya</p>
-                <p><i class="fas fa-phone"></i> +254 799 522 418</p>
-                <p><i class="fas fa-envelope"></i> aicegertonchapel@gmail.com</p>
-                <p><i class="fas fa-clock"></i> Sunday Services: 8:00 AM - 12:00 PM</p>
-                <div class="footer-map">
-                    <iframe
-                        src="https://www.google.com/maps?q=Egerton+University%2C+Njoro%2C+Kenya&amp;output=embed"
-                        title="Map showing Egerton University, Njoro, Kenya"
-                        loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"
-                        allowfullscreen>
-                    </iframe>
-                </div>
-            </div>
-        </div>
-        
-        <div class="copyright">
-            <p>&copy; <span id="copyrightYear"></span> AIC Egerton Chapel. All rights reserved.</p>
-            <p>Developed and maintained by: <a href="#">Eng. Jeremiah Thuita [DCE]</a></p>
-        </div>
-    </footer>
+    </main>
+<!--CHROME:FOOTER:START-->
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-col">
+      <h4>About Us</h4>
+      <p>AIC Egerton Chapel is a vibrant community of believers dedicated to worship, spiritual growth, and serving others.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul class="quick-links">
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/ministries.html">Ministries</a></li>
+        <li><a href="/sermons.html">Sermons</a></li>
+        <li><a href="/live.html">Live Stream</a></li>
+        <li><a href="/prayer-wall.html">Prayer Wall</a></li>
+        <li><a href="/contact.html">Contact Us</a></li>
+        <li><a href="/give.html">Give</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Service Times</h4>
+      <div class="footer-service-times" data-service-times>
+        <p><strong>Sunday</strong><br>Main Worship Service — 8:00 AM – 12:00 PM EAT</p>
+        <p><strong>Wednesday</strong><br>Mid-Week Prayer — 5:30 PM – 7:00 PM EAT</p>
+        <p><strong>Friday</strong><br>Youth Fellowship — 6:00 PM – 8:00 PM EAT</p>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>Egerton University, Njoro, Kenya</p>
+      <p><a href="tel:+254799522418">+254 799 522 418</a></p>
+      <p><a href="mailto:aicegertonchapel@gmail.com">aicegertonchapel@gmail.com</a></p>
+      <p><a href="https://wa.me/254799522418" target="_blank" rel="noopener noreferrer">WhatsApp</a></p>
+    </div>
+    <div class="footer-col">
+      <h4>Follow us</h4>
+      <div class="social-icons">
+        <a href="https://www.youtube.com/@aicegertonchapel" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+        <a href="https://www.facebook.com/@aicegertonchapel" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+        <a href="https://www.tiktok.com/@aicegertonchapel" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
+      </div>
+    </div>
+    <div class="footer-col footer-map">
+      <h4>Find us</h4>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7356577284563!2d35.94114277582281!3d-0.3688216353133254!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182987bf970d254d%3A0x385834a695a103c7!2sA.I.C%20Egerton%20Chapel!5e0!3m2!1sen!2ske!4v1793572628423!5m2!1sen!2ske" title="Map showing AIC Egerton Chapel" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <a class="btn-get-directions btn-secondary" href="https://www.google.com/maps/dir/?api=1&amp;destination=-0.3688216353133254%2C35.94114277582281" target="_blank" rel="noopener noreferrer">Get directions</a>
+    </div>
+  </div>
+  <div class="copyright">
+    <p>© <span id="copyrightYear"></span> AIC Egerton Chapel. All rights reserved. <a href="/privacy.html">Privacy</a> · <a href="/accessibility.html">Accessibility</a></p>
+    <p class="site-attribution">Website maintained and developed by Eng. Jeremiah Thuita (Dip CE, BSC CS).</p>
+  </div>
+</footer>
+<script type="module" src="/assets/js/content/content-cards.js"></script>
+<!--CHROME:FOOTER:END-->
 
-    <script>
-        document.getElementById('copyrightYear').textContent = new Date().getFullYear();
-
-        const eventGrid = document.getElementById('eventsGrid');
-        window.upcomingEvents = Array.isArray(window.upcomingEvents) ? window.upcomingEvents : [];
-
-        function renderUpcomingEvents(events) {
-            eventGrid.replaceChildren();
-
-            if (events.length === 0) {
-                const emptyState = document.createElement('p');
-                emptyState.className = 'events-empty';
-                emptyState.textContent = 'No upcoming events at the moment. Please check back soon.';
-                eventGrid.appendChild(emptyState);
-                return;
-            }
-
-            events.forEach(event => {
-                if (!event || !event.title || !event.date || !event.description) return;
-
-                const card = document.createElement('article');
-                card.className = 'event-card';
-
-                if (event.flyer) {
-                    const flyer = document.createElement('img');
-                    flyer.src = event.flyer;
-                    flyer.alt = event.flyerAlt || `${event.title} event flyer`;
-                    flyer.loading = 'lazy';
-                    card.appendChild(flyer);
-                }
-
-                const content = document.createElement('div');
-                content.className = 'event-card-content';
-
-                const date = document.createElement('p');
-                date.className = 'event-date';
-                date.textContent = [event.date, event.time].filter(Boolean).join(' · ');
-                content.appendChild(date);
-
-                const title = document.createElement('h3');
-                title.textContent = event.title;
-                content.appendChild(title);
-
-                const description = document.createElement('p');
-                description.textContent = event.description;
-                content.appendChild(description);
-
-                const reminder = document.createElement('a');
-                const message = `Hello, please remind me about ${event.title}${event.date ? ` on ${event.date}` : ''}${event.time ? ` at ${event.time}` : ''}.`;
-                reminder.className = 'event-reminder';
-                reminder.href = `https://wa.me/254799522418?text=${encodeURIComponent(message)}`;
-                reminder.target = '_blank';
-                reminder.rel = 'noopener noreferrer';
-                reminder.textContent = 'Remind Me';
-                content.appendChild(reminder);
-
-                card.appendChild(content);
-                eventGrid.appendChild(card);
-            });
-
-            if (eventGrid.children.length === 0) {
-                const emptyState = document.createElement('p');
-                emptyState.className = 'events-empty';
-                emptyState.textContent = 'No upcoming events at the moment. Please check back soon.';
-                eventGrid.appendChild(emptyState);
-            }
-        }
-
-        // A CMS integration can set window.upcomingEvents and call this renderer.
-        renderUpcomingEvents(window.upcomingEvents);
-
-        // Contentful API configuration
-        const spaceID = 'em08252vzuh6';
-        const accessToken = 'ooQsmSp49pSYFtEwn52S4U_sdjD6Tojr7KCTnWHPO8I';
-        const environment = 'Church-Website';
-        
-        // Enhanced menu toggle functionality
-        const menuToggle = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
-        
-        menuToggle.addEventListener('click', () => {
-            const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-            menuToggle.classList.toggle('active');
-            navLinks.classList.toggle('active');
-            menuToggle.setAttribute('aria-expanded', !isExpanded);
-            
-            // Toggle body scroll when menu is open
-            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
-        });
-        
-        // Close menu when clicking outside on mobile
-        document.addEventListener('click', (e) => {
-            if (window.innerWidth <= 850 && 
-                !menuToggle.contains(e.target) && 
-                !navLinks.contains(e.target) && 
-                navLinks.classList.contains('active')) {
-                menuToggle.classList.remove('active');
-                navLinks.classList.remove('active');
-                menuToggle.setAttribute('aria-expanded', 'false');
-                document.body.style.overflow = '';
-            }
-        });
-        
-        // Close menu when a link is clicked
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth <= 850) {
-                    menuToggle.classList.remove('active');
-                    navLinks.classList.remove('active');
-                    menuToggle.setAttribute('aria-expanded', 'false');
-                    document.body.style.overflow = '';
-                }
-            });
-        });
-        
-        // Modal functionality
-        function openDonationModal() {
-            document.getElementById('donationModal').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-            document.getElementById('donationReason').focus();
-        }
-
-        function closeDonationModal() {
-            document.getElementById('donationModal').style.display = 'none';
-            document.body.style.overflow = '';
-        }
-
-        function submitDonation() {
-            const reason = document.getElementById('donationReason').value.trim();
-            const message = `Hello AIC Egerton Chapel, please share the current donation details${reason ? ` for ${reason}` : ''}.`;
-            window.location.href = `https://wa.me/254799522418?text=${encodeURIComponent(message)}`;
-        }
-
-        // Close modal when clicking outside the content
-        window.onclick = function(event) {
-            const modal = document.getElementById('donationModal');
-            if (event.target === modal) {
-                closeDonationModal();
-            }
-        };
-        
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeDonationModal();
-        });
-
-        // Sticky header effect
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.padding = '10px 20px';
-                header.style.boxShadow = '0px 8px 25px rgba(0, 0, 0, 0.2)';
-                header.style.backdropFilter = 'blur(10px)';
-            } else {
-                header.style.padding = '12px 20px';
-            }
-        });
-
-        // Carousel functionality
-        const carouselContainer = document.getElementById('carouselContainer');
-        const indicatorsContainer = document.getElementById('carouselIndicators');
-        const slides = document.querySelectorAll('.carousel-slide');
-        const carousel = document.querySelector('.hero-carousel');
-        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-        let currentIndex = 0;
-        let autoSlide;
-        
-        // Create indicators
-        slides.forEach((_, index) => {
-            const indicator = document.createElement('button');
-            indicator.classList.add('indicator');
-            indicator.type = 'button';
-            indicator.setAttribute('aria-label', `Show slide ${index + 1}`);
-            indicator.setAttribute('aria-pressed', index === 0 ? 'true' : 'false');
-            if (index === 0) indicator.classList.add('active');
-            indicator.addEventListener('click', () => {
-                goToSlide(index);
-                restartAutoSlide();
-            });
-            indicatorsContainer.appendChild(indicator);
-        });
-        
-        // Navigation controls
-        document.querySelector('.carousel-control.prev').addEventListener('click', () => {
-            goToSlide(currentIndex - 1);
-            restartAutoSlide();
-        });
-        
-        document.querySelector('.carousel-control.next').addEventListener('click', () => {
-            goToSlide(currentIndex + 1);
-            restartAutoSlide();
-        });
-        
-        function goToSlide(index) {
-            if (index < 0) index = slides.length - 1;
-            if (index >= slides.length) index = 0;
-            
-            currentIndex = index;
-            carouselContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
-            
-            document.querySelectorAll('.indicator').forEach((indicator, i) => {
-                indicator.classList.toggle('active', i === currentIndex);
-                indicator.setAttribute('aria-pressed', i === currentIndex ? 'true' : 'false');
-            });
-        }
-        
-        function stopAutoSlide() {
-            clearInterval(autoSlide);
-            autoSlide = undefined;
-        }
-
-        function startAutoSlide() {
-            if (prefersReducedMotion.matches || autoSlide) return;
-            autoSlide = setInterval(() => {
-                goToSlide(currentIndex + 1);
-            }, 6000);
-        }
-
-        function restartAutoSlide() {
-            stopAutoSlide();
-            startAutoSlide();
-        }
-
-        carousel.addEventListener('mouseenter', stopAutoSlide);
-        carousel.addEventListener('mouseleave', startAutoSlide);
-        carousel.addEventListener('focusin', stopAutoSlide);
-        carousel.addEventListener('focusout', event => {
-            if (!carousel.contains(event.relatedTarget)) startAutoSlide();
-        });
-        document.addEventListener('visibilitychange', () => {
-            if (document.hidden) stopAutoSlide();
-            else startAutoSlide();
-        });
-        startAutoSlide();
-        
-        // Active link management
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            if (link.href === window.location.href) {
-                link.classList.add('active');
-            }
-        });
-
-        // Load recent sermons from Contentful
-        async function loadRecentSermons() {
-            try {
-                const sermonsContainer = document.getElementById('sermons-container');
-                const res = await fetch(`https://cdn.contentful.com/spaces/${spaceID}/environments/${environment}/entries?access_token=${accessToken}&content_type=sermons&include=2`);
-                const data = await res.json();
-
-                const assets = data.includes?.Asset || [];
-                const sermons = data.items.map(item => {
-                    const fields = item.fields;
-                    const title = fields.title;
-                    const preacher = fields.preacher;
-                    const date = fields.date;
-
-                    const pptLinks = (fields.powerpoint || []).map(file => {
-                        const asset = assets.find(asset => asset.sys.id === file.sys.id);
-                        return {
-                            url: asset?.fields?.file?.url ? `https:${asset.fields.file.url}` : '#',
-                            name: asset?.fields?.title || 'Download File'
-                        };
-                    });
-
-                    return { title, preacher, date, pptLinks };
-                });
-
-                // Sort by most recent date and select only the top 3
-                const recentSermons = sermons
-                    .sort((a, b) => new Date(b.date) - new Date(a.date))
-                    .slice(0, 3);
-
-                // Clear loading state
-                sermonsContainer.innerHTML = '';
-
-                // Add sermons to the page
-                recentSermons.forEach(sermon => {
-                    const pptLinksHTML = sermon.pptLinks.map(link =>
-                        `<a href="${link.url}" target="_blank">${link.name}</a>`).join('<br>');
-
-                    const sermonHTML = `
-                        <div class="sermon-item">
-                            <h3>${sermon.title}</h3>
-                            <p><strong>Preacher:</strong> ${sermon.preacher}</p>
-                            <p><strong>Date:</strong> ${new Date(sermon.date).toDateString()}</p>
-                            <div class="downloads">${pptLinksHTML}</div>
-                        </div>
-                    `;
-                    sermonsContainer.innerHTML += sermonHTML;
-                });
-
-            } catch (error) {
-                document.getElementById('sermons-container').innerHTML = `
-                    <div class="error-message">
-                        <p>Failed to load sermons. Please try again later.</p>
-                    </div>
-                `;
-                console.error('Failed to load recent sermons:', error);
-            }
-        }
-
-        // Load about carousel images from Contentful
-        async function loadAboutGallery() {
-            try {
-                const aboutCarousel = document.getElementById('about-carousel');
-                const res = await fetch(`https://cdn.contentful.com/spaces/${spaceID}/environments/${environment}/entries?access_token=${accessToken}&content_type=galleryImage&include=1`);
-                const data = await res.json();
-
-                const assets = data.includes.Asset;
-                const imageUrls = [];
-
-                data.items.forEach(item => {
-                    const imgIds = item.fields.img.map(link => link.sys.id);
-                    imgIds.forEach(id => {
-                        const asset = assets.find(a => a.sys.id === id);
-                        const url = asset?.fields?.file?.url;
-                        if (url) imageUrls.push(`https:${url}`);
-                    });
-                });
-
-                // Clear loading state
-                aboutCarousel.innerHTML = '';
-                
-                // Add the first image
-                aboutCarousel.innerHTML = `<img src="${imageUrls[0]}" alt="About Section Image" loading="lazy">`;
-                
-                // Start the slideshow if we have multiple images
-                if (imageUrls.length > 1) {
-                    startBlindsSlideshow(imageUrls);
-                }
-
-            } catch (error) {
-                document.getElementById('about-carousel').innerHTML = `
-                    <div class="error-message">
-                        <p>Failed to load images. Please try again later.</p>
-                    </div>
-                `;
-                console.error('Failed to load about gallery:', error);
-            }
-        }
-
-        function startBlindsSlideshow(images) {
-            const aboutCarousel = document.getElementById('about-carousel');
-            let current = 0;
-            let interval;
-
-            function showImage(index) {
-                aboutCarousel.innerHTML = `<img src="${images[index]}" alt="About Section Image" loading="lazy" class="blinds">`;
-            }
-
-            function nextImage() {
-                current = (current + 1) % images.length;
-                showImage(current);
-            }
-
-            // Start slideshow
-            showImage(current);
-            interval = setInterval(nextImage, 5000);
-
-            // Pause on hover
-            aboutCarousel.addEventListener('mouseenter', () => {
-                clearInterval(interval);
-            });
-
-            aboutCarousel.addEventListener('mouseleave', () => {
-                interval = setInterval(nextImage, 5000);
-            });
-        }
-
-        // Initialize the page
-        document.addEventListener('DOMContentLoaded', () => {
-            loadRecentSermons();
-            loadAboutGallery();
-        });
-    </script>
+    <!-- Supabase CDN, Config & Dynamic Features -->
+    <script src="/site-config.js"></script>
+    <script src="/sermon-cards.js"></script>
+    <script type="module" src="/assets/js/main-app.js"></script>
+    <script src="/assets/js/forms.js"></script>
+    <script src="/assets/js/page-scripts/index-1.js"></script>
+    <script src="/assets/js/site-chrome.js"></script>
 </body>
 </html>

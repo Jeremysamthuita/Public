@@ -1,0 +1,132 @@
+/* Page shell: give.html. Always-visible manual Paybill + optional STK flow. */
+.give-page {
+  --gp-card-r: var(--aic-radius, 14px);
+  --gp-field-r: var(--aic-radius-sm, 8px);
+  --gp-border: var(--aic-border, #e5e3ef);
+  --gp-surface: var(--aic-surface, #fff);
+  --gp-alt: var(--aic-surface-alt, #f7f5fb);
+  --gp-text: var(--aic-text, #1f1b2e);
+  --gp-muted: var(--aic-text-muted, #6b6580);
+  --gp-purple: var(--aic-purple, #4a2d7a);
+  --gp-purple-d: var(--aic-purple-dark, #33205a);
+  --gp-coral: var(--aic-coral, #e74c3c);
+  --gp-coral-d: var(--aic-coral-dark, #c0392b);
+  --gp-success: var(--aic-success, #1e7a3e);
+  --gp-focus: var(--aic-focus, #ffb703);
+  --gp-shadow: var(--aic-shadow-sm, 0 1px 2px rgba(31,27,46,.06), 0 2px 6px rgba(31,27,46,.06));
+  color: var(--gp-text); background: var(--aic-bg, #fbfaff);
+}
+
+.give-main { max-width: 900px; margin: 0 auto; padding: clamp(2rem,4vw,3.5rem) 1.25rem; }
+
+.give-intro { text-align: center; margin-bottom: 2rem; }
+.give-intro h1 { color: var(--gp-purple-d); margin: 0 0 .5rem; }
+.give-intro p { color: var(--gp-muted); max-width: 60ch; margin: 0 auto; line-height: 1.6; }
+
+/* Manual giving card — MUST always render, even if STK is off */
+.give-manual {
+  background: var(--gp-surface);
+  border: 1px solid var(--gp-border);
+  border-radius: var(--gp-card-r);
+  padding: clamp(1.25rem,3vw,2rem);
+  box-shadow: var(--gp-shadow);
+  margin-bottom: 1.5rem;
+}
+.give-manual h2 { margin: 0 0 .35rem; color: var(--gp-purple-d); font-size: 1.25rem; }
+.give-manual__lede { color: var(--gp-muted); margin: 0 0 1.25rem; font-size: .95rem; }
+
+.give-paybill {
+  display: grid; gap: .75rem;
+  grid-template-columns: 1fr;
+  padding: 1rem 1.1rem;
+  background: var(--gp-alt);
+  border-radius: var(--gp-field-r);
+  margin-bottom: 1rem;
+}
+@media (min-width: 560px) { .give-paybill { grid-template-columns: repeat(2, 1fr); } }
+
+.give-paybill__row { display: flex; flex-direction: column; gap: .2rem; }
+.give-paybill__label { font-size: .8rem; color: var(--gp-muted); text-transform: uppercase; letter-spacing: .06em; font-weight: 600; }
+.give-paybill__value { display: flex; align-items: center; gap: .5rem; font-size: 1.15rem; font-weight: 700; color: var(--gp-purple-d); }
+
+.copy-btn {
+  font: inherit; font-size: .8rem; font-weight: 600;
+  padding: .35rem .65rem; border-radius: 6px;
+  border: 1px solid var(--gp-border); background: var(--gp-surface);
+  color: var(--gp-purple); cursor: pointer;
+}
+.copy-btn:hover { background: var(--gp-alt); }
+.copy-btn:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--gp-focus); }
+.copy-btn[aria-live="polite"] { min-width: 5.5rem; }
+
+.give-help {
+  display: flex; flex-wrap: wrap; gap: .75rem 1rem; align-items: center;
+  margin-top: .5rem;
+}
+.give-help a { color: var(--gp-purple); font-weight: 600; text-decoration: none; }
+.give-help a:hover { text-decoration: underline; }
+.give-help a:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--gp-focus); border-radius: 4px; }
+
+/* STK card — hidden by default via hidden attribute until backend health check passes */
+.give-stk { padding: 0; }
+.give-stk[hidden] { display: none; }
+
+/* Result states */
+.give-status { margin-top: 1rem; padding: .85rem 1rem; border-radius: var(--gp-field-r); font-size: .95rem; }
+.give-status[data-state="info"]    { background: var(--gp-alt); color: var(--gp-text); }
+.give-status[data-state="success"] { background: #e8f5ee; color: var(--gp-success); border: 1px solid #b9e0c8; }
+.give-status[data-state="error"]   { background: #fdecea; color: var(--gp-coral-d); border: 1px solid #f5c6c2; }
+.give-status:not([data-state]) { display: none; }
+.give-help span { color: var(--gp-muted); font-size: .9rem; }
+
+.give-stk form { display: grid; gap: .55rem; margin-top: 1rem; }
+.give-stk label { margin-top: .5rem; font-weight: 700; }
+.give-stk input,
+.give-stk select {
+  width: 100%; min-height: 44px; padding: .6rem .75rem;
+  border: 1px solid var(--gp-border); border-radius: var(--gp-field-r);
+  color: var(--gp-text); background: var(--gp-surface); font: inherit;
+}
+.give-stk input:focus-visible,
+.give-stk select:focus-visible {
+  outline: 3px solid var(--gp-focus); outline-offset: 2px;
+}
+.btn-give-primary {
+  justify-self: start; margin-top: .75rem; min-height: 44px; padding: .65rem 1.2rem;
+  border: 0; border-radius: 999px; background: var(--gp-purple);
+  color: #fff; font: inherit; font-weight: 700; cursor: pointer;
+}
+.btn-give-primary:hover { background: var(--gp-purple-d); }
+.btn-give-primary:disabled { cursor: wait; opacity: .7; }
+.give-eyebrow {
+  margin-bottom: .35rem !important; color: var(--gp-purple) !important;
+  font-size: .8rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
+}
+.give-page .site-footer a { color: inherit; }
+.give-page .site-footer a:focus-visible,
+.give-page .copy-btn:focus-visible,
+.give-page .btn-give-primary:focus-visible {
+  outline: 3px solid var(--gp-focus); outline-offset: 3px;
+}
+
+.give-status__receipt {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-weight: 700;
+}
+
+/* Poll indicator */
+.give-poll { display: flex; align-items: center; gap: .5rem; color: var(--gp-muted); font-size: .9rem; margin-top: .5rem; }
+.give-poll__dot {
+  width: .55rem; height: .55rem; border-radius: 999px;
+  background: var(--gp-purple); animation: gp-pulse 1.2s ease-in-out infinite;
+}
+@keyframes gp-pulse { 50% { opacity: .3; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .give-poll__dot { animation: none; opacity: .75; }
+}
+
+@media (forced-colors: active) {
+  .copy-btn, .btn-give-primary { border: 1px solid ButtonText; }
+  :focus-visible { outline: 2px solid Highlight; outline-offset: 2px; }
+}

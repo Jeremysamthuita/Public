@@ -1,0 +1,86 @@
+.prayer-wall-page {
+  --pw-border: var(--aic-border, #e5e3ef);
+  --pw-surface: var(--aic-surface, #fff);
+  --pw-alt: var(--aic-surface-alt, #f7f5fb);
+  --pw-text: var(--aic-text, #1f1b2e);
+  --pw-muted: var(--aic-text-muted, #6b6580);
+  --pw-purple: var(--aic-purple, #4a2d7a);
+  --pw-purple-d: var(--aic-purple-dark, #33205a);
+  --pw-coral: var(--aic-coral, #e74c3c);
+  --pw-coral-d: var(--aic-coral-dark, #c0392b);
+  --pw-focus: var(--aic-focus, #ffb703);
+  --pw-shadow: var(--aic-shadow-sm, 0 1px 2px rgba(31,27,46,.06));
+  --pw-r: var(--aic-radius, 14px);
+  color: var(--pw-text); background: var(--aic-bg, #fbfaff);
+}
+
+.prayer-wall-main { max-width: 1000px; margin: 0 auto; padding: clamp(2rem,4vw,3.5rem) 1.25rem; }
+.prayer-wall-intro { text-align: center; margin-bottom: 1.75rem; }
+.prayer-wall-intro h1 { color: var(--pw-purple-d); margin: 0 0 .5rem; }
+.prayer-wall-intro p { color: var(--pw-muted); max-width: 60ch; margin: 0 auto; line-height: 1.6; }
+
+.prayer-wall-layout { display: grid; gap: 1.5rem; }
+@media (min-width: 900px) { .prayer-wall-layout { grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); align-items: start; } }
+
+/* Submit form card */
+.prayer-form-card {
+  background: var(--pw-surface);
+  border: 1px solid var(--pw-border);
+  border-radius: var(--pw-r);
+  padding: clamp(1.1rem,2.5vw,1.75rem);
+  box-shadow: var(--pw-shadow);
+  position: sticky; top: 1rem;
+}
+.prayer-form-card h2 { color: var(--pw-purple-d); margin: 0 0 .75rem; font-size: 1.2rem; }
+.prayer-form-card label { font-weight: 600; font-size: .9rem; color: var(--pw-text); display: block; margin: 0 0 .3rem; }
+.prayer-form-card input,
+.prayer-form-card textarea,
+.prayer-form-card select {
+  width: 100%; box-sizing: border-box; font: inherit; font-size: .95rem;
+  padding: .7rem .85rem;
+  border: 1px solid var(--pw-border); border-radius: 8px;
+  background: var(--pw-surface); color: var(--pw-text);
+}
+.prayer-form-card textarea { min-height: 7rem; resize: vertical; }
+.prayer-form-card :focus-visible {
+  outline: none; border-color: var(--pw-purple);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--pw-focus) 55%, transparent);
+}
+.prayer-form-card .field { margin-bottom: .9rem; }
+.prayer-form-card .privacy-hint { font-size: .8rem; color: var(--pw-muted); line-height: 1.4; margin-top: .35rem; }
+
+.prayer-form__status { min-height: 1.1rem; font-size: .9rem; margin-top: .5rem; }
+.prayer-form__status[data-state="success"] { color: var(--aic-success, #1e7a3e); font-weight: 600; }
+.prayer-form__status[data-state="error"]   { color: var(--pw-coral-d); font-weight: 600; }
+
+/* Wall list */
+.prayer-wall-list h2 { color: var(--pw-purple-d); margin: 0 0 1rem; font-size: 1.2rem; }
+.prayer-card {
+  background: var(--pw-surface);
+  border: 1px solid var(--pw-border);
+  border-radius: var(--pw-r);
+  padding: 1.1rem 1.25rem;
+  margin-bottom: .9rem;
+  box-shadow: var(--pw-shadow);
+  word-wrap: break-word;
+}
+.prayer-card__meta { display: flex; justify-content: space-between; gap: .5rem; margin-bottom: .5rem; font-size: .82rem; color: var(--pw-muted); }
+.prayer-card__author { font-weight: 700; color: var(--pw-purple-d); }
+.prayer-card__text { margin: 0 0 .75rem; line-height: 1.55; color: var(--pw-text); white-space: pre-line; }
+.prayer-card__actions { display: flex; gap: .75rem; font-size: .85rem; }
+.prayer-card__pray {
+  display: inline-flex; align-items: center; gap: .35rem;
+  padding: .35rem .75rem; font: inherit; font-size: .85rem; font-weight: 600;
+  background: var(--pw-alt); color: var(--pw-purple);
+  border: 1px solid var(--pw-border); border-radius: 999px;
+  cursor: pointer;
+}
+.prayer-card__pray:hover { background: color-mix(in srgb, var(--pw-purple) 8%, var(--pw-alt)); }
+.prayer-card__pray:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--pw-focus); }
+.prayer-card__pray[disabled] { opacity: .6; cursor: default; }
+
+.prayer-wall-empty { padding: 2rem 1rem; text-align: center; color: var(--pw-muted); background: var(--pw-alt); border-radius: var(--pw-r); }
+
+@media (forced-colors: active) {
+  .prayer-form-card input, .prayer-form-card textarea, .prayer-card__pray { border: 1px solid ButtonText; }
+}
