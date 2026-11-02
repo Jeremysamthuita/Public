@@ -112,7 +112,7 @@ export function normalizeRecord(type, record, {source = 'supabase', assets = []}
   if (type === 'sermons') {
     const sourceFiles = normalizeFiles(fields, assets);
     const isPremium = Boolean(fieldValue(fields, 'isPremium', 'is_premium'));
-    const pdf = fieldValue(fields, 'sermonPdf', 'pdf_url', 'resource_pack_url');
+    const pdf = fieldValue(fields, 'sermonPdf', 'pdfUrl', 'pdf_url', 'resource_pack_url');
     const pdfUrl = cleanUrl(typeof pdf === 'string' ? pdf : assetUrl(pdf, assets));
     const pdfId = pdf?.sys?.id;
     const files = (isPremium ? [] : sourceFiles).filter(file => {
@@ -121,8 +121,8 @@ export function normalizeRecord(type, record, {source = 'supabase', assets = []}
       const match = linked.find(item => assetUrl(item, assets) === file.url);
       return !pdfId || match?.sys?.id !== pdfId;
     });
-    const audio = fieldValue(fields, 'audio', 'audioFile', 'audio_url');
-    const preview = fieldValue(fields, 'previewImage', 'preview_image_url');
+    const audio = fieldValue(fields, 'audio', 'audioFile', 'audioUrl', 'audio_url');
+    const preview = fieldValue(fields, 'previewImage', 'previewImageUrl', 'preview_image_url');
     const video = fieldValue(fields, 'videoUrl', 'youtubeUrl', 'video_url');
     return {
       ...base,

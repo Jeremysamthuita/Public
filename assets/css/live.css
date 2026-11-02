@@ -56,6 +56,13 @@
 .live-past { margin-top: 2rem; }
 .live-past h2 { color: var(--lv-purple-d); margin: 0 0 .75rem; font-size: 1.15rem; }
 .live-past__empty { color: var(--lv-muted); font-style: italic; }
+.live-videos { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 1rem; }
+.live-video-card { display: flex; flex-direction: column; gap: .55rem; overflow: hidden; padding-bottom: .85rem; color: var(--lv-text); text-decoration: none; background: var(--lv-surface); border: 1px solid var(--lv-border); border-radius: var(--lv-r); }
+.live-video-card:hover { border-color: var(--lv-purple); }
+.live-video-card img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: #000; }
+.live-video-card strong, .live-video-card span { margin: 0 .85rem; }
+.live-video-card strong { line-height: 1.35; }
+.live-video-card span { color: var(--lv-muted); font-size: .84rem; }
 
 @media (prefers-reduced-motion: reduce) {
   .live-status[data-state="live"] .live-status__dot { animation: none; }

@@ -126,9 +126,17 @@
 
         const status = document.querySelector('[data-cms-status]');
         if (status) {
-            status.textContent = contentful.spaceId && contentful.deliveryToken && supabase.url && supabase.anonKey
-                ? 'Contentful is primary; Supabase is configured as the content backup.'
-                : 'Configure both public CMS connections in site-config.js to enable automatic content failover.';
+            const contentfulReady = Boolean(contentful.spaceId && contentful.deliveryToken);
+            const supabaseReady = Boolean(supabase.url && supabase.anonKey);
+            if (contentfulReady && supabaseReady) {
+                status.textContent = 'Contentful is primary; Supabase is configured as the content backup.';
+            } else {
+                const missing = [
+                    !contentfulReady && 'Contentful content connection',
+                    !supabaseReady && 'Supabase content connection'
+                ].filter(Boolean);
+                status.textContent = `${missing.join(' and ')} ${missing.length === 1 ? 'is' : 'are'} not configured. Automatic content failover is unavailable until the site administrator completes setup.`;
+            }
         }
     }
 

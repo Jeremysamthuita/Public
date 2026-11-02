@@ -27,6 +27,43 @@
 
 # ── Legacy filename redirects ──
 [[redirects]]
+  from = "/admin/"
+  to = "/admin/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/admin"
+  to = "/admin/"
+  status = 301
+
+[[redirects]]
+  from = "/admin.html"
+  to = "/admin/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/admin/dashboard"
+  to = "/admin/dashboard.html"
+  status = 301
+
+[[redirects]]
+  from = "/admin/console"
+  to = "/admin/console.html"
+  status = 301
+
+[[redirects]]
+  from = "/admin/forgot-password.html"
+  to = "/admin/?flow=forgot"
+  status = 200
+
+[[redirects]]
+  from = "/admin/reset-password.html"
+  to = "/admin/?flow=reset"
+  status = 200
+
+[[redirects]]
   from = "/Ministries.html"
   to   = "/ministries.html"
   status = 301
@@ -71,35 +108,7 @@
     X-Frame-Options           = "SAMEORIGIN"
     Referrer-Policy           = "strict-origin-when-cross-origin"
     Permissions-Policy        = "geolocation=(self), microphone=(), camera=()"
-    Content-Security-Policy   = """
-      default-src 'self';
-      script-src 'self'
-        https://cdn.jsdelivr.net
-        https://cdnjs.cloudflare.com
-        https://challenges.cloudflare.com
-        https://plausible.io;
-      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com;
-      font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com;
-      img-src 'self' data: https:;
-      connect-src 'self'
-        https://*.supabase.co
-        wss://*.supabase.co
-        https://cdn.contentful.com
-        https://plausible.io
-        https://challenges.cloudflare.com;
-      frame-src
-        https://www.google.com
-        https://www.youtube.com
-        https://www.youtube-nocookie.com
-        https://challenges.cloudflare.com
-        https://assets.ctfassets.net;
-      media-src 'self' https://assets.ctfassets.net https://videos.ctfassets.net;
-      object-src 'none';
-      base-uri 'self';
-      form-action 'self';
-      frame-ancestors 'self';
-      upgrade-insecure-requests
-    """
+    Content-Security-Policy   = "default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://challenges.cloudflare.com https://plausible.io; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://*.supabase.co wss://*.supabase.co https://cdn.contentful.com https://plausible.io https://challenges.cloudflare.com; frame-src https://www.google.com https://www.youtube.com https://www.youtube-nocookie.com https://challenges.cloudflare.com https://assets.ctfassets.net; media-src 'self' https://assets.ctfassets.net https://videos.ctfassets.net; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests"
 
 # ── HTML + JS/CSS must-revalidate ──
 [[headers]]
@@ -133,9 +142,19 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# ── Admin noindex ──
+# ── Admin pages: private, uncached, and never framed ──
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    Cache-Control = "no-store, max-age=0"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "no-referrer"
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: https://tdtvktdqtkfdvucqlzlg.supabase.co https://assets.ctfassets.net; connect-src 'self' https://tdtvktdqtkfdvucqlzlg.supabase.co; frame-ancestors 'none'; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests"
+
 [[headers]]
   for = "/admin.html"
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"
-    Cache-Control = "public, max-age=0, must-revalidate"
+    Cache-Control = "no-store, max-age=0"
+    X-Frame-Options = "DENY"

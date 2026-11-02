@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" class="auth-checking">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Sign in — AIC Egerton Chapel</title>
+  <link rel="stylesheet" href="/assets/css/admin.css">
+</head>
+<body>
+  <main class="admin-login-wrap">
+    <a class="admin-brand" href="/" aria-label="AIC Egerton Chapel home">
+      <img src="/logo.jpg" alt="" width="48" height="48">
+      <span>AIC EGERTON CHAPEL</span>
+    </a>
+    <section class="admin-card" aria-labelledby="loginHeading">
+      <p class="admin-eyebrow">STAFF ACCESS</p>
+      <h1 id="loginHeading">Welcome back</h1>
+      <p class="admin-muted">Sign in with the email and password provided by your website administrator.</p>
+      <form id="loginForm">
+        <label for="email">Email address</label>
+        <input id="email" name="email" type="email" autocomplete="username" required inputmode="email" placeholder="you@example.com">
+        <label for="password">Password</label>
+        <div class="password-field">
+          <input id="password" name="password" type="password" autocomplete="current-password" required placeholder="Your password">
+          <button type="button" class="password-toggle" data-toggle-password="password" aria-label="Show password">Show</button>
+        </div>
+        <button class="admin-primary" type="submit" id="signInButton">Sign in</button>
+      </form>
+      <button type="button" class="admin-text-button" id="forgotPasswordButton">Forgot password?</button>
+      <p class="admin-status" id="loginStatus" role="status" aria-live="polite"></p>
+      <form id="resetForm" hidden>
+        <h2>Choose a new password</h2>
+        <p class="admin-muted">Use at least 8 characters.</p>
+        <label for="newPassword">New password</label>
+        <input id="newPassword" type="password" autocomplete="new-password" minlength="8" required>
+        <label for="confirmPassword">Confirm password</label>
+        <input id="confirmPassword" type="password" autocomplete="new-password" minlength="8" required>
+        <button class="admin-primary" type="submit" id="savePasswordButton">Save password</button>
+        <p class="admin-status" id="resetStatus" role="status" aria-live="polite"></p>
+      </form>
+      <section id="mfaPanel" class="mfa-panel" hidden aria-labelledby="mfaHeading">
+        <h2 id="mfaHeading">Secure your admin account</h2>
+        <p class="admin-muted" id="mfaInstructions"></p>
+        <img id="mfaQr" class="mfa-qr" alt="Authenticator app setup QR code" hidden>
+        <label for="mfaCode">6-digit authenticator code</label>
+        <input id="mfaCode" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" autocomplete="one-time-code" required>
+        <button class="admin-primary" id="verifyMfaButton" type="button">Verify and continue</button>
+        <p class="admin-status" id="mfaStatus" role="status" aria-live="polite"></p>
+      </section>
+    </section>
+    <a class="admin-back" href="/">← Back to the website</a>
+  </main>
+  <script src="/site-config.js"></script>
+  <script src="/assets/vendor/supabase.js" integrity="sha384-TcHRA3zBbn+Lexh5n+Oil4guNPOS3rjNDpGRAN46u/s/mB2IZ50ceC6TYDU2yvgK" crossorigin="anonymous"></script>
+  <script type="module" src="/assets/js/admin/admin-login.js"></script>
+</body>
+</html>

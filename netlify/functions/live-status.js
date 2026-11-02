@@ -1,13 +1,13 @@
 /**
  * Cached YouTube live status and latest completed live broadcast.
  */
-async function findVideo({ channelId, apiKey, eventType }) {
+async function findVideos({ channelId, apiKey, eventType, maxResults = 1 }) {
   const query = new URLSearchParams({
     part: "snippet",
     channelId,
     type: "video",
     order: "date",
-    maxResults: "1",
+    maxResults: String(maxResults),
     key: apiKey
   });
   if (eventType) query.set("eventType", eventType);
@@ -16,12 +16,12 @@ async function findVideo({ channelId, apiKey, eventType }) {
   });
   if (!response.ok) throw new Error(`YouTube API returned HTTP ${response.status}`);
   const data = await response.json();
-  const result = data.items?.[0];
-  return result ? {
+  return (data.items || []).map(result => ({
     videoId: result.id?.videoId || "",
     title: result.snippet?.title || "",
-    publishedAt: result.snippet?.publishedAt || ""
-  } : null;
+    publishedAt: result.snippet?.publishedAt || "",
+    thumbnail: result.snippet?.thumbnails?.medium?.url || result.snippet?.thumbnails?.default?.url || ""
+  })).filter(video => video.videoId);
 }
 
 export const handler = async () => {
@@ -40,8 +40,14 @@ export const handler = async () => {
   }
 
   try {
-    const live = await findVideo({ channelId, apiKey, eventType: "live" });
-    const latest = live || await findVideo({ channelId, apiKey, eventType: "completed" });
+    const [liveResults, videos] = await Promise.all([
+      findVideos({ channelId, apiKey, eventType: "live" }),
+      findVideos({ channelId, apiKey, maxResults: 8 })
+    ]);
+    const live = liveResults[0] || null;
+    const recentVideos = [...videos];
+    if (live && !recentVideos.some(video => video.videoId === live.videoId)) recentVideos.unshift(live);
+    const latest = recentVideos[0] || null;
     return {
       statusCode: 200,
       headers,
@@ -49,7 +55,8 @@ export const handler = async () => {
         configured: true,
         isLive: Boolean(live?.videoId),
         live: live || null,
-        latest: live ? null : latest
+        latest: live ? null : latest,
+        videos: recentVideos.slice(0, 8)
       })
     };
   } catch (error) {

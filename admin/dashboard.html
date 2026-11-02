@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" class="auth-checking">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Content dashboard — AIC Egerton Chapel</title>
+  <link rel="stylesheet" href="/assets/css/admin.css">
+</head>
+<body>
+  <header class="admin-topbar">
+    <a class="admin-brand" href="/admin/dashboard.html"><img src="/logo.jpg" alt="" width="42" height="42"><span>CHAPEL CONTENT</span></a>
+    <nav aria-label="Admin navigation">
+      <span data-admin-name></span>
+      <a href="/" target="_blank" rel="noopener noreferrer">View website</a>
+      <a href="/admin/console.html" id="consoleLink" hidden>Developer console</a>
+      <button type="button" id="signOutButton">Sign out</button>
+    </nav>
+  </header>
+  <main class="admin-content">
+    <section id="homeView">
+      <p class="admin-eyebrow">CONTENT DASHBOARD</p>
+      <h1>What would you like to share?</h1>
+      <p class="admin-subtitle">Choose a task below. Your changes are checked before they appear on the website.</p>
+      <div class="admin-actions-grid" id="actionCards">
+        <button class="admin-action-card" data-new-type="sermons"><strong>🎙 Post a Sermon</strong><span>Share a message, recording, or study resource.</span></button>
+        <button class="admin-action-card" data-new-type="events"><strong>📅 Add an Event</strong><span>Tell the community what is coming up.</span></button>
+        <button class="admin-action-card" data-new-type="announcements"><strong>📣 Post an Announcement</strong><span>Share an update with the congregation.</span></button>
+        <button class="admin-action-card" data-new-type="gallery"><strong>🖼 Add Photos</strong><span>Add pictures to the chapel gallery.</span></button>
+        <button class="admin-action-card" data-new-type="leadership"><strong>👥 Leaders & Profiles</strong><span>Update LCC, Women, and pastoral leaders.</span></button>
+        <button class="admin-action-card" data-new-type="ministries"><strong>🤝 Ministries</strong><span>Update ministry details and joining information.</span></button>
+        <button class="admin-action-card" data-new-type="service_times"><strong>🕒 Service Times</strong><span>Keep weekly service information current.</span></button>
+      </div>
+      <section id="permissionCards" class="admin-actions-grid" hidden>
+        <button class="admin-action-card" data-admin-section="prayers"><strong>🙏 Prayer Requests</strong><span>Review requests shared with the church.</span></button>
+        <button class="admin-action-card" data-admin-section="inbox"><strong>✉ Messages</strong><span>Read messages from the website.</span></button>
+        <button class="admin-action-card" data-admin-section="applications"><strong>🙋 Ministry joining requests</strong><span>Review requests to join a ministry.</span></button>
+      </section>
+      <div class="admin-toolbar">
+        <h2>Recent posts</h2>
+        <input id="searchPosts" type="search" placeholder="Search your posts" aria-label="Search posts">
+        <select id="filterType" aria-label="Filter by content type">
+          <option value="sermons">Sermons</option><option value="events">Events</option>
+          <option value="announcements">Announcements</option><option value="gallery">Gallery</option>
+          <option value="leadership">Leaders</option><option value="ministries">Ministries</option>
+          <option value="service_times">Service times</option>
+        </select>
+        <select id="filterStatus" aria-label="Filter by status">
+          <option value="all">All statuses</option><option value="published">Live on website</option>
+          <option value="draft">Drafts</option><option value="scheduled">Scheduled</option><option value="deleted">Hidden</option>
+        </select>
+      </div>
+      <p class="admin-status-card" id="listStatus" role="status" aria-live="polite"></p>
+      <div class="admin-list" id="recentPosts"></div>
+    </section>
+    <section id="editorView" hidden aria-labelledby="editorHeading">
+      <button class="admin-secondary" type="button" id="backToHome">← Back to posts</button>
+      <p class="admin-eyebrow" id="editorTypeLabel">NEW POST</p>
+      <h1 id="editorHeading">Create a post</h1>
+      <p class="admin-subtitle" id="editorHelp">Complete the required details. You can save a draft and return later.</p>
+      <p class="admin-status-card" id="editorStatus" role="status" aria-live="polite"></p>
+      <div class="admin-form-layout">
+        <form class="admin-form" id="contentForm"></form>
+        <aside class="admin-preview" aria-live="polite">
+          <h2>Preview</h2>
+          <article class="admin-preview-card" id="contentPreview"></article>
+          <p class="admin-muted">This is a preview of how your post will look on the website.</p>
+        </aside>
+      </div>
+    </section>
+    <section id="permissionView" hidden aria-labelledby="permissionHeading">
+      <button class="admin-secondary" type="button" id="backFromPermission">← Back to posts</button>
+      <h1 id="permissionHeading"></h1>
+      <div class="admin-panel"><div class="admin-list" id="permissionList"></div></div>
+      <p class="admin-status-card" id="permissionStatus" role="status" aria-live="polite"></p>
+    </section>
+  </main>
+  <div class="admin-modal" id="idleWarning" hidden role="alertdialog" aria-labelledby="idleTitle" aria-describedby="idleText">
+    <div class="admin-modal-card"><h2 id="idleTitle">Still working?</h2><p id="idleText">You’ll be signed out in <span id="idleCountdown">120</span> seconds to protect your account.</p><button type="button" class="admin-primary" id="staySignedIn">Stay signed in</button></div>
+  </div>
+  <script src="/site-config.js"></script>
+  <script src="/assets/vendor/supabase.js" integrity="sha384-TcHRA3zBbn+Lexh5n+Oil4guNPOS3rjNDpGRAN46u/s/mB2IZ50ceC6TYDU2yvgK" crossorigin="anonymous"></script>
+  <script type="module" src="/assets/js/admin/admin-dashboard.js"></script>
+</body>
+</html>

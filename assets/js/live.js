@@ -3,6 +3,7 @@ const iframe = document.getElementById("liveIframe");
 const status = document.getElementById("liveStatus");
 const statusText = document.getElementById("liveStatusText");
 const pastEmpty = document.getElementById("pastEmpty");
+const recentVideos = document.getElementById("recentVideos");
 
 const WEEKDAYS = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
 
@@ -66,6 +67,34 @@ function setLatestStream(stream) {
   pastEmpty.replaceChildren(document.createTextNode("Latest recorded service: "), link);
 }
 
+function renderRecentVideos(videos = []) {
+  recentVideos.replaceChildren();
+  for (const video of videos) {
+    if (!video.videoId) continue;
+    const card = document.createElement("a");
+    card.className = "live-video-card";
+    card.href = `https://www.youtube.com/watch?v=${encodeURIComponent(video.videoId)}`;
+    card.target = "_blank";
+    card.rel = "noopener noreferrer";
+    if (video.thumbnail) {
+      const thumbnail = document.createElement("img");
+      thumbnail.src = video.thumbnail;
+      thumbnail.alt = "";
+      thumbnail.loading = "lazy";
+      card.appendChild(thumbnail);
+    }
+    const title = document.createElement("strong");
+    title.textContent = video.title || "Watch on YouTube";
+    card.appendChild(title);
+    if (video.publishedAt) {
+      const date = document.createElement("span");
+      date.textContent = new Date(video.publishedAt).toLocaleDateString();
+      card.appendChild(date);
+    }
+    recentVideos.appendChild(card);
+  }
+}
+
 async function loadLiveStatus() {
   const channelId = config.youtubeChannelId || "";
   if (!channelId) {
@@ -88,12 +117,15 @@ async function loadLiveStatus() {
     if (result.isLive && result.live?.videoId) {
       iframe.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(result.live.videoId)}?autoplay=0`;
       setStatus("live", "We're LIVE now — join us in worship!");
-      pastEmpty.hidden = true;
+      pastEmpty.hidden = (result.videos || []).length > 0;
+      renderRecentVideos(result.videos);
       return;
     }
 
     setStatus("offline", `No live broadcast right now. ${nextScheduledService()}`);
     setLatestStream(result.latest);
+    renderRecentVideos(result.videos);
+    if ((result.videos || []).length) pastEmpty.hidden = true;
   } catch (error) {
     console.error("Could not retrieve live-stream status.", error);
     setStatus("offline", `Live status is temporarily unavailable. ${nextScheduledService()}`);

@@ -49,7 +49,7 @@ async function checkTarget(file, value) {
     report(file, parsed.error);
     return;
   }
-  const target = parsed.pathname === '/' ? '/index.html' : parsed.pathname;
+  const target = parsed.pathname === '/' ? '/index.html' : parsed.pathname.endsWith('/') ? `${parsed.pathname}index.html` : parsed.pathname;
   const resolved = path.resolve(root, `.${target}`);
   if (!resolved.startsWith(root + path.sep)) {
     report(file, `internal URL escapes the site root: ${value}`);
@@ -73,14 +73,17 @@ for (const page of pages) {
     if (titles.has(title)) report(page, `duplicate title also used in ${titles.get(title)}`);
     titles.set(title, page);
   }
-  if (!/<main\b[^>]*\bid=["']main["']/i.test(html)) report(page, 'missing <main id="main">');
-  if (!/class=["'][^"']*\baic-skip-link\b/i.test(html)) report(page, 'missing skip link');
-  if (!/<link\b[^>]*rel=["']canonical["']/i.test(html)) report(page, 'missing canonical URL');
+  const legacyRedirect = page === 'admin.html';
+  if (!legacyRedirect) {
+    if (!/<main\b[^>]*\bid=["']main["']/i.test(html)) report(page, 'missing <main id="main">');
+    if (!/class=["'][^"']*\baic-skip-link\b/i.test(html)) report(page, 'missing skip link');
+    if (!/<link\b[^>]*rel=["']canonical["']/i.test(html)) report(page, 'missing canonical URL');
 
-  const header = normalizedSection(html, 'header');
-  if (!header) report(page, 'missing shared header markers');
-  else if (!chrome.has('header')) chrome.set('header', {html: header, page});
-  else if (chrome.get('header').html !== header) report(page, `header differs from ${chrome.get('header').page}`);
+    const header = normalizedSection(html, 'header');
+    if (!header) report(page, 'missing shared header markers');
+    else if (!chrome.has('header')) chrome.set('header', {html: header, page});
+    else if (chrome.get('header').html !== header) report(page, `header differs from ${chrome.get('header').page}`);
+  }
 
   if (page !== 'admin.html') {
     const footer = normalizedSection(html, 'footer');

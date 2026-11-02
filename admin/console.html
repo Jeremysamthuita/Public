@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" class="auth-checking">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Developer console — AIC Egerton Chapel</title>
+  <link rel="stylesheet" href="/assets/css/admin.css">
+</head>
+<body>
+  <header class="admin-topbar">
+    <a class="admin-brand" href="/admin/console.html"><img src="/logo.jpg" alt="" width="42" height="42"><span>DEVELOPER CONSOLE</span></a>
+    <nav aria-label="Administrator navigation">
+      <span data-admin-name></span>
+      <a href="/admin/dashboard.html">Switch to Editor view</a>
+      <a href="/" target="_blank" rel="noopener noreferrer">View website</a>
+      <button type="button" id="signOutButton">Sign out</button>
+    </nav>
+  </header>
+  <main class="admin-content">
+    <p class="admin-eyebrow">ADMINISTRATOR TOOLS</p>
+    <h1>Developer console</h1>
+    <p class="admin-subtitle">Service status, publishing, team access, and protected records.</p>
+    <div class="admin-tabs" role="tablist" aria-label="Console sections">
+      <button role="tab" aria-selected="true" data-console-panel="overview">Overview</button>
+      <button role="tab" aria-selected="false" data-console-panel="publishing">Publishing</button>
+      <button role="tab" aria-selected="false" data-console-panel="users">Users</button>
+      <button role="tab" aria-selected="false" data-console-panel="content">Content</button>
+      <button role="tab" aria-selected="false" data-console-panel="records">Private records</button>
+      <button role="tab" aria-selected="false" data-console-panel="audit">Audit log</button>
+    </div>
+    <p class="admin-status-card" id="consoleStatus" role="status" aria-live="polite"></p>
+    <section class="admin-panel" id="console-overview" role="tabpanel">
+      <h2>Service health</h2>
+      <div class="admin-actions-grid" id="healthCards"></div>
+      <div class="admin-toolbar">
+        <a class="admin-secondary" id="openSupabase" href="https://supabase.com/dashboard/" target="_blank" rel="noopener noreferrer">Open Supabase Studio</a>
+        <a class="admin-secondary" id="openContentful" href="https://app.contentful.com/" target="_blank" rel="noopener noreferrer">Open Contentful space</a>
+        <button class="admin-secondary" id="refreshHealth" type="button">Refresh status</button>
+      </div>
+      <p class="admin-callout">Direct changes in these tools bypass the website’s checks and publishing history. Use them only for technical maintenance.</p>
+      <h2>Recent synchronization</h2>
+      <div id="syncHistory" class="admin-list"></div>
+    </section>
+    <section class="admin-panel" id="console-publishing" role="tabpanel" hidden>
+      <div class="admin-toolbar"><h2>Publishing queue</h2><button class="admin-secondary" id="retryAll" type="button">Retry all failed jobs</button><button class="admin-secondary" id="runSync" type="button">Refresh Contentful content</button><button class="admin-secondary" id="rebuildSnapshot" type="button">Refresh the website snapshot</button></div>
+      <div id="queueList" class="admin-list"></div>
+    </section>
+    <section class="admin-panel" id="console-users" role="tabpanel" hidden>
+      <h2>Invite a team member</h2>
+      <form class="admin-form" id="inviteForm">
+        <div class="field"><label for="inviteEmail">Email address</label><input id="inviteEmail" type="email" autocomplete="email" required></div>
+        <div class="field"><label for="inviteName">Display name</label><input id="inviteName" autocomplete="name"></div>
+        <div class="field"><label for="inviteRole">Access level</label><select id="inviteRole"><option value="editor">Content editor</option><option value="admin">Administrator</option></select></div>
+        <fieldset><legend>Additional editor access</legend>
+          <label><input type="checkbox" id="invitePrayers"> Moderate prayer requests</label>
+          <label><input type="checkbox" id="inviteInbox"> Read messages and ministry requests</label>
+          <label><input type="checkbox" id="invitePayments"> View payments</label>
+        </fieldset>
+        <button class="admin-primary" type="submit">Send invitation</button>
+      </form>
+      <h2>Team accounts</h2><div id="userList" class="admin-list"></div>
+    </section>
+    <section class="admin-panel" id="console-content" role="tabpanel" hidden>
+      <div class="admin-toolbar"><h2>Content records</h2><select id="consoleContentType" aria-label="Choose content type"><option value="sermons">Sermons</option><option value="events">Events</option><option value="announcements">Announcements</option><option value="gallery">Gallery</option><option value="leadership">Leadership</option><option value="ministries">Ministries</option><option value="service_times">Service times</option><option value="settings">Site settings</option></select><input id="consoleSearch" type="search" placeholder="Search content" aria-label="Search content"><button class="admin-secondary" id="reloadContent" type="button">Reload</button></div>
+      <div class="admin-toolbar" id="settingsCreator" hidden><input id="settingKey" placeholder="Setting name"><textarea id="settingValue" placeholder="Setting value as JSON"></textarea><button class="admin-secondary" id="createSetting" type="button">Save setting</button></div>
+      <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Content</th><th>State</th><th>Source</th><th>Backup state</th><th>Actions</th></tr></thead><tbody id="contentRows"></tbody></table></div>
+      <div id="rawRecord" class="admin-panel" hidden><button type="button" id="closeRaw" class="admin-secondary">Close details</button><pre id="rawRecordText"></pre><h3>Saved versions</h3><div id="revisionList" class="admin-list"></div></div>
+    </section>
+    <section class="admin-panel" id="console-records" role="tabpanel" hidden>
+      <div class="admin-toolbar"><h2>Private records</h2><select id="privateSection"><option value="inbox">Messages</option><option value="applications">Ministry requests</option><option value="prayers">Prayer requests</option><option value="payments">Payments</option></select><button class="admin-secondary" id="loadPrivate" type="button">Load records</button></div>
+      <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Record</th><th>Details</th><th>Status</th><th>Date</th></tr></thead><tbody id="privateRows"></tbody></table></div>
+    </section>
+    <section class="admin-panel" id="console-audit" role="tabpanel" hidden>
+      <h2>Recent administrator actions</h2>
+      <div id="auditList" class="admin-list"></div>
+    </section>
+  </main>
+  <div class="admin-modal" id="idleWarning" hidden role="alertdialog" aria-labelledby="idleTitle" aria-describedby="idleText">
+    <div class="admin-modal-card"><h2 id="idleTitle">Still working?</h2><p id="idleText">You’ll be signed out in <span id="idleCountdown">120</span> seconds to protect your account.</p><button type="button" class="admin-primary" id="staySignedIn">Stay signed in</button></div>
+  </div>
+  <script src="/site-config.js"></script>
+  <script src="/assets/vendor/supabase.js" integrity="sha384-TcHRA3zBbn+Lexh5n+Oil4guNPOS3rjNDpGRAN46u/s/mB2IZ50ceC6TYDU2yvgK" crossorigin="anonymous"></script>
+  <script type="module" src="/assets/js/admin/admin-console.js"></script>
+</body>
+</html>
