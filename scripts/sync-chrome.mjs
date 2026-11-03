@@ -1,4 +1,4 @@
-import {readFile, readdir, stat, writeFile} from 'node:fs/promises';
+import {readFile, readdir, writeFile} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 
@@ -7,21 +7,6 @@ const headerTemplate = await readFile(path.join(root, 'partials', 'header.html')
 const footerTemplate = await readFile(path.join(root, 'partials', 'footer.html'), 'utf8');
 const pages = (await readdir(root)).filter(file => file.endsWith('.html'));
 const origin = 'https://aicegertonchapel.netlify.app';
-const mapFiles = [
-  path.join(root, 'assets', 'img', 'map-chapel.webp'),
-  path.join(root, 'assets', 'img', 'map-chapel-2x.webp')
-];
-
-async function mapImagesAvailable() {
-  if (process.env.GOOGLE_MAPS_STATIC_KEY) return true;
-  try {
-    await Promise.all(mapFiles.map(file => stat(file)));
-    return true;
-  } catch {
-    return false;
-  }
-}
-
 function withMarkers(html, kind, template, existingMarkup, include) {
   const start = `<!--CHROME:${kind}:START-->`;
   const end = `<!--CHROME:${kind}:END-->`;
@@ -123,18 +108,10 @@ function ensureContentBootstrap(html) {
   );
 }
 
-function useMapFallback(html) {
-  return html.replace(
-    /<picture>\s*<source type="image\/webp" srcset="\/assets\/img\/map-chapel\.webp 1x, \/assets\/img\/map-chapel-2x\.webp 2x">\s*<img\b[^>]*src="\/assets\/img\/map-chapel\.webp"[^>]*>\s*<\/picture>/gi,
-    '<div class="map-facade__unavailable" role="img" aria-label="Static map preview unavailable">Map preview unavailable</div>'
-  );
-}
-
 function pageIsAdmin(html) {
   return /<title>Admin\b/i.test(html);
 }
 
-const hasMapImages = await mapImagesAvailable();
 for (const page of pages) {
   const file = path.join(root, page);
   let html = await readFile(file, 'utf8');
@@ -145,7 +122,6 @@ for (const page of pages) {
   html = ensureSingleSkipLink(html);
   html = ensureMapPreconnects(html);
   html = ensureContentBootstrap(html);
-  if (!hasMapImages) html = useMapFallback(html);
   if (page !== 'admin.html' && !html.includes('/assets/js/content/content-cards.js')) {
     html = html.replace(/<\/body>/i, '  <script type="module" src="/assets/js/content/content-cards.js"></script>\n</body>');
   }

@@ -1,4 +1,4 @@
-const SHELL_CACHE = 'aic-shell-v4';
+const SHELL_CACHE = 'aic-shell-v5';
 const IMAGE_CACHE = 'aic-cms-images-v1';
 const IMAGE_META_CACHE = 'aic-cms-images-meta-v1';
 const IMAGE_MAX_AGE = 30 * 24 * 60 * 60 * 1000;
@@ -15,26 +15,13 @@ const SHELL_FILES = [
   '/assets/js/content/normalize.js',
   '/assets/js/content/cache.js',
   '/content-snapshot.json',
-  '/assets/img/map-chapel.webp',
-  '/assets/img/map-chapel-2x.webp',
   '/favicon.ico',
   '/logo.jpg'
 ];
 
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(SHELL_CACHE).then(async cache => {
-    const requiredFiles = SHELL_FILES.filter(file =>
-      file !== '/assets/img/map-chapel.webp' && file !== '/assets/img/map-chapel-2x.webp');
-    await cache.addAll(requiredFiles);
-    for (const file of ['/assets/img/map-chapel.webp', '/assets/img/map-chapel-2x.webp']) {
-      try {
-        const response = await fetch(file);
-        if (response.ok) await cache.put(file, response);
-        else console.info(`[service-worker] Optional shell asset is unavailable: ${file}`);
-      } catch (error) {
-        console.warn(`[service-worker] Optional shell asset could not be cached: ${file}`, error);
-      }
-    }
+    await cache.addAll(SHELL_FILES);
   }));
   self.skipWaiting();
 });

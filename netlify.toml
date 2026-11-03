@@ -1,5 +1,5 @@
 [build]
-  command   = "node scripts/sync-chrome.mjs && node scripts/generate-map-image.mjs && node scripts/build-content-snapshot.mjs && node scripts/prerender-content.mjs && node scripts/check-links.mjs"
+  command   = "node scripts/sync-chrome.mjs && node scripts/build-content-snapshot.mjs && node scripts/prerender-content.mjs && node scripts/check-links.mjs"
   publish   = "."
   functions = "netlify/functions"
 

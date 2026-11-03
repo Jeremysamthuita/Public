@@ -31,7 +31,7 @@ The editor saves to Supabase first. If the Contentful backup fails, the website 
 
 ## Snapshot and offline cache
 
-The Netlify build generates the static map image, refreshes the content snapshot, pre-renders supported content sections, then validates links. Set `GOOGLE_MAPS_STATIC_KEY` as a Netlify build environment variable; it is used only by the build and is never placed in browser code. Configure the public Contentful Delivery API values and Supabase URL/anon key in the build environment to refresh the snapshot. If neither CMS source is configured, the build keeps the last valid `content-snapshot.json`; it fails rather than publishing an empty snapshot when no valid snapshot exists. Local builds without the map key keep any previously generated map files and print a warning.
+The Netlify build synchronizes shared chrome, refreshes the content snapshot, pre-renders supported content sections, then validates links. Maps use lazy-loaded Google Maps iframes and require no Static Maps API key. Configure the public Contentful Delivery API values and Supabase URL/anon key in the build environment to refresh the snapshot. If neither CMS source is configured, the build keeps the last valid `content-snapshot.json`; it fails rather than publishing an empty snapshot when no valid snapshot exists.
 
 The admin console's **Rebuild snapshot** action triggers a Netlify build hook. Set `NETLIFY_BUILD_HOOK_URL` in the function environment for that action. The Contentful `cms-sync` webhook synchronizes CMS records, but does not itself publish a new static snapshot; the current fast-update/debounced build pipeline still needs implementation.
 
@@ -43,5 +43,3 @@ The browser bootstrap stores one validated public snapshot in IndexedDB and fall
 - Confirm that public access to the `cms-media` bucket is appropriate for church photos, PDFs, and recordings.
 - Add the live site and any preview URLs to Supabase Auth's allowed redirect URLs.
 - Confirm the church address used for terminal publish-failure alerts.
-- Set `GOOGLE_MAPS_STATIC_KEY` in Netlify and enable the Google Static Maps API for it. Never add the key to `site-config.js`.
-- Supply an approved static map image or approve a server-side map-image generation source; no map image or key is present in the repository.
