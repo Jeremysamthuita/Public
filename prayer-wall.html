@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="preload" href="/content-snapshot.json" as="fetch" crossorigin>
+    <link rel="preconnect" href="https://cdn.contentful.com">
+    <link rel="preconnect" href="https://images.ctfassets.net">
+    <link rel="preconnect" href="https://assets.ctfassets.net">
+    <link rel="preconnect" href="https://tdtvktdqtkfdvucqlzlg.supabase.co">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta name="content-version" content="1">
+    <meta name="content-generated-at" content="2026-11-01T22:05:55.807Z">
+    <script defer src="/assets/js/content/content-bootstrap.js"></script>
+    <link rel="preconnect" href="https://www.google.com">
+    <link rel="preconnect" href="https://maps.gstatic.com" crossorigin>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Submit a prayer request and stand with the AIC Egerton Chapel community. Pray for one another.">
@@ -228,9 +240,7 @@
     <div class="footer-col">
       <h4>Service Times</h4>
       <div class="footer-service-times" data-service-times>
-        <p><strong>Sunday</strong><br>Main Worship Service — 8:00 AM – 12:00 PM EAT</p>
-        <p><strong>Wednesday</strong><br>Mid-Week Prayer — 5:30 PM – 7:00 PM EAT</p>
-        <p><strong>Friday</strong><br>Youth Fellowship — 6:00 PM – 8:00 PM EAT</p>
+        <!--CONTENT:SERVICE_TIMES:START--><p><strong>Sunday</strong><br>Main Worship Service — 8:00 AM – 12:00 PM EAT</p><p><strong>Wednesday</strong><br>Mid-Week Prayer — 5:30 PM – 7:00 PM EAT</p><p><strong>Friday</strong><br>Youth Fellowship — 6:00 PM – 8:00 PM EAT</p><!--CONTENT:SERVICE_TIMES:END-->
       </div>
     </div>
     <div class="footer-col">
@@ -250,10 +260,17 @@
     </div>
     <div class="footer-col footer-map">
       <h4>Find us</h4>
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7356577284563!2d35.94114277582281!3d-0.3688216353133254!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182987bf970d254d%3A0x385834a695a103c7!2sA.I.C%20Egerton%20Chapel!5e0!3m2!1sen!2ske!4v1793572628423!5m2!1sen!2ske" title="Map showing AIC Egerton Chapel" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="map-facade" data-progressive-map>
+        <a class="map-facade__preview" href="https://www.google.com/maps/dir/?api=1&amp;destination=-0.3688216353133254%2C35.94114277582281" target="_blank" rel="noopener noreferrer" aria-label="Get directions to AIC Egerton Chapel">
+          <div class="map-facade__unavailable" role="img" aria-label="Static map preview unavailable">Map preview unavailable</div>
+        </a>
+        <iframe class="map-facade__frame" data-map-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7356577284563!2d35.94114277582281!3d-0.3688216353133254!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182987bf970d254d%3A0x385834a695a103c7!2sA.I.C%20Egerton%20Chapel!5e0!3m2!1sen!2ske!4v1793572628423!5m2!1sen!2ske" title="Interactive map showing AIC Egerton Chapel, Njoro, Kenya" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        <button class="map-facade__load" type="button" data-map-load hidden>Load interactive map</button>
+      </div>
       <a class="btn-get-directions btn-secondary" href="https://www.google.com/maps/dir/?api=1&amp;destination=-0.3688216353133254%2C35.94114277582281" target="_blank" rel="noopener noreferrer">Get directions</a>
     </div>
   </div>
+  <!--CONTENT:ANNOUNCEMENTS:START--><!--CONTENT:ANNOUNCEMENTS:END-->
   <div class="copyright">
     <p>© <span id="copyrightYear"></span> AIC Egerton Chapel. All rights reserved. <a href="/privacy.html">Privacy</a> · <a href="/accessibility.html">Accessibility</a></p>
     <p class="site-attribution">Website maintained and developed by Eng. Jeremiah Thuita (Dip CE, BSC CS).</p>

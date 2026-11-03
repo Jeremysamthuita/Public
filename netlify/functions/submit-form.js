@@ -81,8 +81,10 @@ async function store(supabase, type, fields) {
             full_name: fields.name,
             email: fields.email,
             phone: fields.phone,
+            subject: fields.subject,
             message: fields.message,
             category: fields.category,
+            follow_up: fields.followUp,
             urgency_level: 'Normal',
             assigned_department: 'Pastoral Care',
             status: 'new'
@@ -141,7 +143,7 @@ export const handler = async (event) => {
     }
 
     const turnstile = await verifyTurnstile(
-        payload.cfTurnstileResponse || payload['cf-turnstile-response'] || '',
+        payload.cfTurnstileResponse || payload.turnstileToken || payload['cf-turnstile-response'] || '',
         clientIp(event)
     );
     if (!turnstile.ok) {

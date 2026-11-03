@@ -1,13 +1,14 @@
 import {protectAdminPage, requestFunction, setStatus} from './admin-client.js';
 
 const types = {
-  sermons: {label:'Sermon',plural:'Sermons',fields:[['title','Sermon title','text',true,'Example: Sunday sermon'],['preacher','Preacher name','text',true,'Name of the preacher'],['scripture_reference','Bible passage','text',false,'Example: Psalm 23'],['series','Series','text'],['sermon_date','Date shared','date',true],['description','Description','textarea'],['preview_image_url','Cover photo link','url'],['video_url','Video link','url'],['audio_url','Audio recording link','url'],['pdf_url','Study guide link','url'],['tags','Topics','tags',false,'Separate topics with commas']]},
-  events: {label:'Event',plural:'Events',fields:[['title','Event name','text',true],['event_date','Date','date',true],['end_date','Last day','date'],['event_time','Time','text',false,'Example: 10:00 AM'],['location','Location','text'],['description','What should people know?','textarea'],['flyer_url','Event photo or flyer link','url'],['flyer_alt','Photo description','text'],['registration_url','Registration link','url'],['category','Event type','text']]},
+  sermons: {label:'Sermon',plural:'Sermons',fields:[['title','Sermon title','text',true,'Example: Sunday sermon'],['preacher','Preacher name','text',true,'Name of the preacher'],['scripture_reference','Bible passage','text',false,'Example: Psalm 23'],['series','Series','text'],['sermon_date','Date shared','date',true],['description','Description','textarea'],['preview_image_url','Cover image','url'],['video_url','Video link','url'],['audio_url','Audio recording','url'],['pdf_url','Sermon file (PDF)','url',false,'Upload a PDF sermon manuscript, notes, or study guide.'],['tags','Topics','tags',false,'Separate topics with commas']]},
+  events: {label:'Event',plural:'Events',fields:[['title','Event name','text',true],['event_date','Date','date',true],['end_date','Last day','date'],['event_time','Time','text',false,'Example: 10:00 AM'],['location','Location','text'],['description','What should people know?','textarea'],['flyer_url','Event flyer or image','url'],['flyer_alt','Photo description','text'],['registration_url','Registration link','url'],['category','Event type','text']]},
   announcements: {label:'Announcement',plural:'Announcements',fields:[['announcement_text','Announcement','textarea',true],['link_url','Optional link','url'],['link_label','Link button text','text'],['severity','Style','select',true,['info','success','warning','urgent']],['starts_at','Show from','datetime-local'],['ends_at','Stop showing','datetime-local']]},
-  gallery: {label:'Gallery photo',plural:'Gallery',fields:[['image_url','Photo link','url',true],['alt','Photo description','text'],['caption','Caption','textarea']]},
-  leadership: {label:'Leader profile',plural:'Leaders',fields:[['group_name','Leadership group','select',true,['lcc','women','pastoral']],['name','Name','text',true],['role','Role','text'],['bio','Short biography','textarea'],['message','Message','textarea'],['photo_url','Photo link','url']]},
-  ministries: {label:'Ministry',plural:'Ministries',fields:[['name','Ministry name','text',true],['description','About this ministry','textarea'],['leader','Leader name','text'],['meeting_time','Meeting time','text'],['contact','How to contact or join','text'],['image_url','Photo link','url'],['accepting_applications','Accepting new members','checkbox']]},
-  service_times: {label:'Service time',plural:'Service times',fields:[['label','Service name','text',true],['day','Day','text',true],['start_time','Starts at','text'],['end_time','Ends at','text'],['is_live','Streamed live','checkbox']]}
+  gallery: {label:'Gallery photo',plural:'Gallery',fields:[['image_url','Upload gallery image','url',true],['alt','Photo description','text'],['caption','Caption','textarea']]},
+  leadership: {label:'Leader profile',plural:'Leaders',fields:[['group_name','Leadership group','select',true,['lcc','women','pastoral']],['name','Name','text',true],['role','Role','text'],['bio','Short biography','textarea'],['message','Message','textarea'],['photo_url','Upload profile photo','url']]},
+  ministries: {label:'Ministry',plural:'Ministries',fields:[['name','Ministry name','text',true],['category','Ministry category','text',false,'Example: Worship, Youth, Outreach'],['description','About this ministry','textarea'],['leader','Leader name','text'],['meeting_time','Meeting time','text'],['contact','Contact details','text'],['joining_information','How to join','textarea'],['image_url','Upload ministry card image','url'],['accepting_applications','Accepting new members','checkbox']]},
+  service_times: {label:'Service time',plural:'Service times',fields:[['label','Service name','text',true],['day','Day','text',true],['start_time','Starts at','text'],['end_time','Ends at','text'],['is_live','Streamed live','checkbox']]},
+  settings: {label:'Live stream setting',plural:'Live stream settings',fields:[['setting_key','Setting name','text',true,'Use live_stream for the stream page.'],['setting_value','Live stream details (JSON)','json',true,'Set channelId, fallbackVideoId, liveMessage and offlineMessage. Keep API keys out of this field.']]}
 };
 
 const home = document.getElementById('homeView');
@@ -49,6 +50,7 @@ function eastAfricaDate(value) {
 function toApiValue(input, kind) {
   if (kind === 'checkbox') return input.checked;
   if (kind === 'tags') return input.value.split(',').map(value => value.trim()).filter(Boolean);
+  if (kind === 'json') return JSON.parse(input.value || '{}');
   if (kind === 'datetime-local') return input.value ? eastAfricaDate(input.value) : null;
   return input.value.trim() || null;
 }
@@ -81,7 +83,7 @@ function addField([name,label,kind,required = false,helpOrOptions = null], value
   labelElement.htmlFor = `field-${name}`;
   if (required) labelElement.appendChild(node('span',' *'));
   let input;
-  if (kind === 'textarea') input = document.createElement('textarea');
+  if (kind === 'textarea' || kind === 'json') input = document.createElement('textarea');
   else if (kind === 'select') {
     input = document.createElement('select');
     for (const optionValue of helpOrOptions || []) {
@@ -99,19 +101,25 @@ function addField([name,label,kind,required = false,helpOrOptions = null], value
   if (kind === 'checkbox') input.checked = Boolean(value);
   else if (kind === 'datetime-local') input.value = fromLocalDate(value);
   else if (kind === 'tags') input.value = Array.isArray(value) ? value.join(', ') : (value || '');
+  else if (kind === 'json') input.value = typeof value === 'string' ? value : JSON.stringify(value || {},null,2);
   else input.value = value ?? '';
   input.addEventListener('input', () => { dirty = true; updatePreview(); scheduleAutosave(); });
   input.addEventListener('change', () => { dirty = true; updatePreview(); scheduleAutosave(); });
   wrapper.append(labelElement,input);
   if (helpOrOptions && kind !== 'select') wrapper.appendChild(node('small',helpOrOptions));
   if(kind==='url'){
-    const uploadLabel=node('label','Or choose a photo, PDF, or audio file');
-    const fileInput=document.createElement('input');fileInput.type='file';fileInput.accept='image/jpeg,image/png,image/webp,application/pdf,audio/mpeg,audio/mp4';fileInput.setAttribute('aria-label',`Choose a file for ${label.toLowerCase()}`);
+    const uploadLabel=node('label',`Or upload ${label.toLowerCase()}`);
+    const uploadKind = name==='pdf_url' ? 'pdf' : name==='audio_url' ? 'audio' : (name==='video_url'||name==='registration_url'||name==='link_url') ? 'none' : 'image';
+    const accept = uploadKind==='pdf' ? 'application/pdf' : uploadKind==='audio' ? 'audio/mpeg,audio/mp4' : uploadKind==='image' ? 'image/jpeg,image/png,image/webp' : '';
+    const fileInput=document.createElement('input');fileInput.type='file';fileInput.accept=accept;fileInput.disabled=uploadKind==='none';fileInput.setAttribute('aria-label',`Choose a file for ${label.toLowerCase()}`);
     const progress=document.createElement('progress');progress.max=100;progress.value=0;progress.hidden=true;
     const uploadStatus=node('small');uploadStatus.setAttribute('role','status');
-    wrapper.appendChild(node('small','Photos up to 8 MB · PDF up to 15 MB · MP3/M4A audio up to 60 MB. Photos are reduced to fit the page.'));
+    if(uploadKind!=='none')wrapper.appendChild(node('small',uploadKind==='image'?'JPG, PNG or WebP up to 8 MB. Photos are reduced to fit the page.':uploadKind==='pdf'?'PDF files up to 15 MB.':'MP3 or M4A audio up to 60 MB.'));
     fileInput.addEventListener('change',async()=>{
       let file=fileInput.files?.[0];if(!file)return;
+      if(uploadKind==='image'&&!file.type.startsWith('image/')){uploadStatus.textContent='Choose a JPG, PNG or WebP image.';return;}
+      if(uploadKind==='pdf'&&file.type!=='application/pdf'){uploadStatus.textContent='Choose a PDF file.';return;}
+      if(uploadKind==='audio'&&!file.type.startsWith('audio/')){uploadStatus.textContent='Choose an MP3 or M4A audio file.';return;}
       if(file.type.startsWith('image/')){uploadStatus.textContent='Preparing a smaller photo…';try{file=await compressPhoto(file);}catch(error){uploadStatus.textContent=error.message;return;}}
       const maxMb=file.type==='application/pdf'?15:file.type.startsWith('audio/')?60:8;
       if(file.size>maxMb*1024*1024){uploadStatus.textContent=`Choose a file smaller than ${maxMb} MB.`;return;}
@@ -129,11 +137,12 @@ function addField([name,label,kind,required = false,helpOrOptions = null], value
   form.appendChild(wrapper);
 }
 
-function getFormData() {
+function getFormData({allowInvalid = false} = {}) {
   const data = {};
   for (const [name,,kind] of types[currentType].fields) {
     const input = form.elements.namedItem(name);
-    data[name] = toApiValue(input,kind);
+    try { data[name] = toApiValue(input,kind); }
+    catch (error) { if (!allowInvalid) throw error; data[name] = input.value; }
   }
   const publishAt = form.elements.namedItem('publish_at');
   data.publish_at = publishAt?.value ? eastAfricaDate(publishAt.value) : null;
@@ -141,7 +150,7 @@ function getFormData() {
 }
 
 function updatePreview() {
-  const data = getFormData();
+  const data = getFormData({allowInvalid:true});
   preview.replaceChildren();
   if (data.preview_image_url || data.flyer_url || data.image_url || data.photo_url || data.image_url) {
     const imageUrl = data.preview_image_url || data.flyer_url || data.image_url || data.photo_url;
@@ -153,7 +162,7 @@ function updatePreview() {
     }
   }
   const copy = node('div');
-  const title = data.title || data.name || data.label || data.announcement_text || data.caption || 'Your post title';
+  const title = data.title || data.name || data.label || data.announcement_text || data.caption || (data.setting_key ? `Settings: ${data.setting_key}` : '') || 'Your post title';
   copy.appendChild(node('h3',title));
   const subtitle = [data.preacher,data.sermon_date,data.event_date,data.event_time,data.day,data.group_name].filter(Boolean).map(fieldLabel).join(' · ');
   if (subtitle) copy.appendChild(node('p',subtitle));
@@ -242,11 +251,12 @@ async function loadItems() {
 }
 
 function websiteUrl(type,item) {
-  const pages = {sermons:'/sermons.html',events:'/#events',announcements:'/',gallery:'/about.html',leadership:'/about.html',ministries:'/ministries.html',service_times:'/live.html'};
+  const pages = {sermons:'/sermons.html',events:'/#events',announcements:'/',gallery:'/about.html',leadership:'/about.html',ministries:'/ministries.html',service_times:'/live.html',settings:'/live.html'};
   return `${pages[type] || '/'}${item.slug ? `#${encodeURIComponent(item.slug)}` : ''}`;
 }
 
 function openEditor(type,item=null) {
+  if (type === 'settings' && !item) item = {setting_key:'live_stream',setting_value:{channelId:'',fallbackVideoId:'',liveMessage:'We are live now — join us in worship!',offlineMessage:'No live broadcast right now.'}};
   currentType = type;
   currentItem = item;
   dirty = false;
@@ -402,6 +412,7 @@ if (profile) {
   document.querySelector('[data-admin-section="prayers"]').hidden = !perm.moderatePrayers;
   document.querySelector('[data-admin-section="inbox"]').hidden = !perm.viewInbox;
   document.querySelector('[data-admin-section="applications"]').hidden = !perm.viewInbox;
+  document.querySelector('[data-new-type="settings"]').hidden = profile.role !== 'admin';
   const notice = new URLSearchParams(location.search).get('notice');
   if (notice==='timeout') setStatus(listStatus,'You were signed out after a period of inactivity. Sign in again when ready.');
   const params=new URLSearchParams(location.search);

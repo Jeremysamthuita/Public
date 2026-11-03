@@ -20,6 +20,7 @@ export async function fetchSupabase(type, {signal, config = window.AIC_SITE_CONF
   for (let offset = 0; ; offset += 1000) {
     const response = await fetch(url, {
       signal,
+      cache: 'no-store',
       headers: {
         apikey: settings.anonKey,
         Authorization: `Bearer ${settings.anonKey}`,

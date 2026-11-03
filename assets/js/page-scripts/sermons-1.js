@@ -15,16 +15,15 @@ document.getElementById('copyrightYear').textContent = new Date().getFullYear();
         
         async function loadSermons() {
             try {
-                sermonContainer.replaceChildren();
-                const loading = document.createElement('p');
-                loading.className = 'sermon-loading';
-                loading.textContent = 'Loading sermon archive…';
-                sermonContainer.appendChild(loading);
+                if (typeof window.AICSermonCards?.fetchSermons !== 'function') {
+                    throw new Error('The shared sermon service is unavailable.');
+                }
                 allSermons = await window.AICSermonCards.fetchSermons();
                 populateDateFilters();
                 displaySermons(allSermons);
             } catch (error) {
                 console.error('Failed to load sermons:', error);
+                if (sermonContainer.querySelector('.sermon-card')) return;
                 sermonContainer.replaceChildren();
                 const message = document.createElement('p');
                 message.className = 'sermon-load-error';

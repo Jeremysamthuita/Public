@@ -116,13 +116,13 @@ async function loadLiveStatus() {
     iframe.hidden = false;
     if (result.isLive && result.live?.videoId) {
       iframe.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(result.live.videoId)}?autoplay=0`;
-      setStatus("live", "We're LIVE now — join us in worship!");
+      setStatus("live", result.liveMessage || "We're LIVE now — join us in worship!");
       pastEmpty.hidden = (result.videos || []).length > 0;
       renderRecentVideos(result.videos);
       return;
     }
 
-    setStatus("offline", `No live broadcast right now. ${nextScheduledService()}`);
+    setStatus("offline", `${result.offlineMessage || 'No live broadcast right now.'} ${nextScheduledService()}`.trim());
     setLatestStream(result.latest);
     renderRecentVideos(result.videos);
     if ((result.videos || []).length) pastEmpty.hidden = true;

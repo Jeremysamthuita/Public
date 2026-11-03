@@ -210,10 +210,12 @@ export function normalizeRecord(type, record, {source = 'supabase', assets = []}
     return {
       ...base,
       name: fieldValue(fields, 'name', 'title'),
+      category: fieldValue(fields, 'category'),
       description: fieldValue(fields, 'description'),
       leader: fieldValue(fields, 'leader'),
       meetingTime: fieldValue(fields, 'meetingTime', 'meeting_time'),
       contact: fieldValue(fields, 'contact'),
+      joiningInformation: fieldValue(fields, 'joiningInformation', 'joining_information'),
       imageUrl: cleanUrl(typeof fields.image === 'string' ? fields.image : assetUrl(fields.image, assets) || fieldValue(fields, 'imageUrl', 'image_url')),
       acceptingApplications: Boolean(fieldValue(fields, 'acceptingApplications', 'accepting_applications')),
       sortOrder: Number(fields.sortOrder ?? record.sort_order) || 0
@@ -232,10 +234,16 @@ export function normalizeRecord(type, record, {source = 'supabase', assets = []}
   }
 
   if (type === 'settings') {
-    const value = record.setting_value || fieldValue(fields, 'settingValue', 'value');
+    const rawValue = record.setting_value || fieldValue(fields, 'settingValue', 'value');
+    const publicKeys = ['channelId', 'fallbackVideoId', 'fallbackTitle', 'liveMessage', 'offlineMessage'];
+    const value = rawValue && typeof rawValue === 'object' && !Array.isArray(rawValue)
+      ? Object.fromEntries(publicKeys
+        .filter(key => typeof rawValue[key] === 'string')
+        .map(key => [key, rawValue[key]]))
+      : {};
     return {
       ...base,
-      ...(value && typeof value === 'object' && !Array.isArray(value) ? value : {}),
+      ...value,
       value,
       settingKey: fieldValue(fields, 'settingKey', 'key') || record.setting_key || ''
     };

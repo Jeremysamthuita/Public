@@ -49,7 +49,9 @@ npm run lint
 npm test
 ```
 
-The build synchronizes shared header/footer markup, generates a content snapshot when public CMS settings are available, and validates internal links. Tests do not contact production services.
+The build synchronizes shared header/footer markup, generates the static map image from a server-only key, refreshes the public CMS snapshot, pre-renders supported content sections, and validates internal links. Without CMS build credentials it retains the last valid snapshot; without a local map key it leaves a usable directions link and reports the missing preview. Tests do not contact production services.
+
+The service worker caches the public site shell, generated static map and CMS images for offline use. A shared bootstrap uses IndexedDB (with localStorage fallback) to seed the existing content cache and periodically revalidates the public snapshot. The worker bypasses admin pages and their assets, API/function requests, and authentication requests. Snapshot responses are revalidated frequently at the CDN; if CMS credentials are unavailable during a build, the last valid snapshot is retained rather than replaced with empty content.
 
 ## Configuration
 
@@ -58,6 +60,8 @@ The full server-side variable list is in `.env.example`. Set production values i
 | Integration | Required configuration |
 |---|---|
 | Site | `URL`, `ALLOWED_ORIGINS` |
+| Static map image | `GOOGLE_MAPS_STATIC_KEY` (server-side build variable only) |
+| Snapshot rebuild action | `NETLIFY_BUILD_HOOK_URL` |
 | Supabase functions | `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `ADMIN_MFA_REQUIRED=true` |
 | Contentful functions | `CONTENTFUL_SPACE_ID`, `CONTENTFUL_ENV`, `CONTENTFUL_LOCALE`, `CONTENTFUL_DELIVERY_TOKEN`, `CONTENTFUL_MANAGEMENT_TOKEN` |
 | CMS reconciliation | `CONTENTFUL_WEBHOOK_SECRET` in addition to the Contentful and Supabase function settings |

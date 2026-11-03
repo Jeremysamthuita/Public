@@ -28,13 +28,29 @@ function sourceBadge(type) {
 }
 
 function renderAnnouncement(items) {
-  const main = document.querySelector('main');
-  if (!main || !items.length || main.querySelector('[data-cms-announcements]')) return;
-  const region = document.createElement('section');
+  let region = document.body.querySelector('[data-cms-announcements]');
+  if (!items.length) {
+    region?.remove();
+    document.body.classList.remove('has-cms-announcements');
+    return;
+  }
+  if (!region) {
+    region = document.createElement('section');
+    document.body.appendChild(region);
+  }
   region.className = 'cms-announcements';
   region.dataset.cmsAnnouncements = '';
   region.setAttribute('aria-label', 'Church announcements');
-  for (const item of items) {
+  region.setAttribute('aria-live', 'off');
+
+  const badge = text('span', 'Announcement', 'cms-announcements__badge');
+  const viewport = document.createElement('div');
+  viewport.className = 'cms-announcements__viewport';
+  const track = document.createElement('div');
+  track.className = 'cms-announcements__track';
+  const sequence = document.createElement('div');
+  sequence.className = 'cms-announcements__sequence';
+  const appendItem = (parent, item) => {
     const article = document.createElement('article');
     article.className = `cms-announcement cms-announcement--${item.severity}`;
     article.appendChild(text('p', item.text));
@@ -44,23 +60,44 @@ function renderAnnouncement(items) {
       link.textContent = item.linkLabel || 'Learn more';
       article.appendChild(link);
     }
-    region.appendChild(article);
-  }
-  const badge = sourceBadge('announcements');
-  if (badge) region.appendChild(badge);
-  main.prepend(region);
+    parent.appendChild(article);
+  };
+  for (const item of items) appendItem(sequence, item);
+  const repeatedSequence = sequence.cloneNode(true);
+  repeatedSequence.setAttribute('aria-hidden', 'true');
+  repeatedSequence.setAttribute('inert', '');
+  track.append(sequence, repeatedSequence);
+  viewport.appendChild(track);
+
+  const close = document.createElement('button');
+  close.className = 'cms-announcements__close';
+  close.type = 'button';
+  close.setAttribute('aria-label', 'Dismiss announcements');
+  close.textContent = '×';
+  close.addEventListener('click', () => {
+    region.remove();
+    document.body.classList.remove('has-cms-announcements');
+  });
+
+  region.replaceChildren(badge, viewport);
+  const source = sourceBadge('announcements');
+  if (source) region.appendChild(source);
+  region.appendChild(close);
+  document.body.classList.add('has-cms-announcements');
 }
 
 function renderServiceTimes(items) {
   const target = document.querySelector('[data-service-times]');
-  if (!target || !items.length) return;
+  if (!target) return;
+  if (!items.length) return;
   const fragment = document.createDocumentFragment();
   for (const item of items) {
     const row = document.createElement('p');
     row.appendChild(text('strong', item.day || item.label));
     const detail = document.createElement('span');
     const name = item.label && item.label !== item.day ? `${item.label} — ` : '';
-    detail.textContent = `${name}${[item.start, item.end].filter(Boolean).join(' – ')}${item.isLive ? ' · Live' : ''}`;
+    const time = [item.start, item.end].filter(Boolean).join(' – ');
+    detail.textContent = `${name}${time}${time ? ' EAT' : ''}${item.isLive ? ' · Live' : ''}`;
     row.append(document.createElement('br'), detail);
     fragment.appendChild(row);
   }
@@ -83,12 +120,22 @@ function ministryCard(item) {
   if (photo) card.appendChild(photo);
   card.appendChild(text('h2', item.name));
   if (item.description) card.appendChild(text('p', item.description));
+  if (item.category) {
+    const category = document.createElement('p');
+    category.append(text('strong', 'Category: '), document.createTextNode(item.category));
+    card.appendChild(category);
+  }
   if (item.leader) {
     const leader = document.createElement('p');
     leader.append(text('strong', 'Leader: '), document.createTextNode(item.leader));
     card.appendChild(leader);
   }
   if (item.contact) card.appendChild(text('p', `Contact: ${item.contact}`));
+  if (item.joiningInformation) {
+    const joining = document.createElement('p');
+    joining.append(text('strong', 'How to join: '), document.createTextNode(item.joiningInformation));
+    card.appendChild(joining);
+  }
   if (item.meetingTime) {
     const schedule = document.createElement('p');
     schedule.append(text('strong', 'Meeting time: '), document.createTextNode(item.meetingTime));
@@ -101,7 +148,8 @@ function ministryCard(item) {
 
 function renderMinistries(items) {
   const target = document.querySelector('.ministries-container');
-  if (!target || !items.length) return;
+  if (!target) return;
+  if (!items.length) return;
   target.replaceChildren(...items.map(ministryCard));
   const select = document.getElementById('ministry');
   if (!select) return;

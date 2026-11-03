@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="preload" href="/content-snapshot.json" as="fetch" crossorigin>
+    <link rel="preconnect" href="https://cdn.contentful.com">
+    <link rel="preconnect" href="https://images.ctfassets.net">
+    <link rel="preconnect" href="https://assets.ctfassets.net">
+    <link rel="preconnect" href="https://tdtvktdqtkfdvucqlzlg.supabase.co">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta name="content-version" content="1">
+    <meta name="content-generated-at" content="2026-11-01T22:05:55.807Z">
+    <script defer src="/assets/js/content/content-bootstrap.js"></script>
+    <link rel="preconnect" href="https://www.google.com">
+    <link rel="preconnect" href="https://maps.gstatic.com" crossorigin>
     <meta charset="UTF-8">
     <meta name="description" content="Welcome to AIC Egerton Chapel – a place of worship, spiritual growth, and fellowship. Join us for uplifting sermons, ministries, and community service.">
     <meta name="google-site-verification" content="jSX6MHsPyuaZg6XkJBf1dORf4jXHfMTlhi5baXB20LU" />
@@ -444,19 +455,7 @@
         }
 
         .slide-content::before {
-            content: '';
-            position: absolute;
-            z-index: -1;
-            inset: 50% auto auto 50%;
-            width: min(820px, calc(100% - 48px));
-            height: min(340px, calc(100% - 150px));
-            transform: translate(-50%, -50%);
-            border: 1px solid rgba(255, 255, 255, 0.16);
-            border-radius: 28px;
-            background: linear-gradient(135deg, rgba(15, 23, 42, 0.52), rgba(30, 27, 75, 0.30));
-            box-shadow: 0 24px 70px rgba(0, 0, 0, 0.18);
-            backdrop-filter: blur(3px);
-            pointer-events: none;
+            content: none;
         }
 
         .slide-content h1,
@@ -512,60 +511,76 @@
             transform: scale(1.08);
         }
 
-        .carousel-indicators {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
-            z-index: 10;
-        }
-
-        .indicator {
-            width: 12px;
-            height: 12px;
-            padding: 0;
-            border: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
-            cursor: pointer;
-            transition: background-color 0.25s ease, transform 0.25s ease;
-        }
-
-        .indicator.active {
-            background: white;
-            transform: scale(1.2);
-        }
-
-        .indicator:focus-visible,
         .carousel-control:focus-visible {
             outline: 3px solid #ffae00;
             outline-offset: 3px;
         }
 
+        .carousel-indicators {
+            position: absolute;
+            z-index: 10;
+            right: 0;
+            bottom: 24px;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .carousel-indicators button {
+            position: static;
+            width: 12px;
+            height: 12px;
+            margin: 0;
+            padding: 0;
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.55);
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.45);
+            cursor: pointer;
+            transition: width 180ms ease, background-color 180ms ease;
+        }
+
+        .carousel-indicators button::after {
+            content: none;
+        }
+
+        .carousel-indicators button[aria-current="true"] {
+            width: 30px;
+            background: #fff;
+        }
+
+        .carousel-indicators button:focus-visible {
+            outline: 3px solid #ffae00;
+            outline-offset: 4px;
+        }
+
         #events {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 70px 20px 20px;
+            max-width: none;
+            margin: 0;
+            padding: 34px 20px 36px;
+            background: linear-gradient(180deg, #171525 0, #f8fafc 180px);
         }
 
         .events-heading {
+            max-width: 1200px;
+            margin: 0 auto 28px;
             text-align: center;
-            margin-bottom: 32px;
         }
 
         .events-heading h2 {
-            color: #24213b;
+            color: #fff;
             font-size: clamp(1.8rem, 4vw, 2.5rem);
             margin-bottom: 10px;
         }
 
         .events-heading p {
-            color: #555;
+            color: #e2e8f0;
         }
 
         .events-grid {
+            max-width: 1200px;
+            margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 24px;
@@ -1056,7 +1071,7 @@
         .footer-col {
             flex: 1;
             min-width: 250px;
-            margin-bottom: 30px;
+            margin-bottom: 0;
         }
 
         .footer-col h4 {
@@ -1164,14 +1179,20 @@
 
         @media (max-width: 800px) {
             .hero-carousel {
-                height: clamp(580px, calc(100svh - 100px), 760px);
-                min-height: 580px;
-                margin-top: calc(-1 * var(--aic-header-h, 76px));
+                height: auto;
+                min-height: 0;
+                margin-top: 0;
+            }
+
+            .carousel-container {
+                height: auto;
+                align-items: stretch;
             }
 
             .carousel-slide {
                 display: flex;
                 flex-direction: column;
+                height: auto;
                 background: #171525;
             }
 
@@ -1191,19 +1212,17 @@
             }
 
             .carousel-slide::after {
-                inset: 0 0 auto;
-                height: min(58vw, 390px);
-                background: linear-gradient(180deg, transparent 48%, rgba(23, 21, 37, 0.78) 100%);
+                display: none;
             }
 
             .slide-content {
                 position: relative;
                 inset: auto;
-                flex: 1 1 auto;
-                min-height: 0;
+                flex: 0 0 auto;
+                min-height: auto;
                 justify-content: flex-start;
-                padding: clamp(28px, 6vh, 52px) 24px 68px;
-                background: linear-gradient(180deg, #211934 0%, #171525 100%);
+                padding: 28px 24px 48px;
+                background: #171525;
             }
 
             .slide-content::before {
@@ -1223,6 +1242,12 @@
                 font-size: clamp(0.98rem, 2.6vw, 1.12rem);
             }
 
+            .slide-content h1,
+            .slide-content h2,
+            .slide-content p {
+                text-shadow: 0 1px 3px rgba(15, 23, 42, 0.62);
+            }
+
             .carousel-controls {
                 top: clamp(100px, 28vw, 150px);
                 padding: 0 12px;
@@ -1234,9 +1259,6 @@
                 font-size: 1.2rem;
             }
 
-            .carousel-indicators {
-                bottom: 14px;
-            }
         }
 
         @media (max-width: 600px) {
@@ -1336,7 +1358,7 @@
 <main id="main">
 
     <!-- Hero Carousel -->
-    <section class="hero-carousel" aria-label="Welcome to AIC Egerton Chapel">
+    <section class="hero-carousel" aria-label="Welcome to AIC Egerton Chapel" aria-roledescription="carousel" tabindex="0">
         <div class="carousel-container" id="carouselContainer">
             <div class="carousel-slide">
                 <img src="/power.jpg" alt="Family celebrating together at sunset">
@@ -1374,11 +1396,16 @@
 </div>
         </div>
         <div class="carousel-controls">
-            <button class="carousel-control prev" aria-label="Previous slide">❮</button>
-            <button class="carousel-control next" aria-label="Next slide">❯</button>
+            <button type="button" class="carousel-control prev" aria-label="Previous slide">❮</button>
+            <button type="button" class="carousel-control next" aria-label="Next slide">❯</button>
         </div>
-        <div class="carousel-indicators" id="carouselIndicators">
+        <div class="carousel-indicators" role="group" aria-label="Choose a slide">
+            <button type="button" data-carousel-slide="0" aria-label="Show slide 1" aria-current="true"></button>
+            <button type="button" data-carousel-slide="1" aria-label="Show slide 2" aria-current="false"></button>
+            <button type="button" data-carousel-slide="2" aria-label="Show slide 3" aria-current="false"></button>
+            <button type="button" data-carousel-slide="3" aria-label="Show slide 4" aria-current="false"></button>
         </div>
+        <p class="aic-visually-hidden" id="heroSlideStatus" role="status" aria-live="polite"></p>
         <!-- Floating Glassmorphic Events & Sermon Bubble Ticker -->
         <div class="hero-floating-bubble" id="heroEventsBubble" aria-label="Upcoming Events and Announcements">
             <div class="bubble-header">
@@ -1402,7 +1429,7 @@
             <p>Stay connected with what's happening at AIC Egerton Chapel.</p>
         </div>
         <div id="eventsGrid" class="events-grid" aria-live="polite">
-            <p class="events-empty">No upcoming events at the moment. Please check back soon.</p>
+            <!--CONTENT:EVENTS:START--><p class="events-empty">No upcoming events at the moment. Please check back soon.</p><!--CONTENT:EVENTS:END-->
         </div>
     </section>
 
@@ -1436,10 +1463,7 @@
         <p class="sermon-intro">Be nourished with God's word. Listen, reflect, and grow spiritually.</p>
 
         <div id="sermons-container" class="sermons-list">
-            <div class="loading">
-                <div class="spinner"></div>
-                <p class="loading-text">Loading recent sermons...</p>
-            </div>
+            <!--CONTENT:INDEX_SERMONS:START--><p class="sermon-empty">No sermons are available yet. Please check back soon.</p><!--CONTENT:INDEX_SERMONS:END-->
         </div>
 
         <div class="more-sermons">
@@ -1451,10 +1475,7 @@
     <section class="about">
         <div class="about-image-wrapper">
             <div id="about-carousel">
-                <div class="loading">
-                    <div class="spinner"></div>
-                    <p class="loading-text">Loading images...</p>
-                </div>
+                <!--CONTENT:INDEX_GALLERY:START--><!--CONTENT:INDEX_GALLERY:END-->
             </div>
         </div>
         <div class="about-text">
@@ -1499,9 +1520,7 @@
     <div class="footer-col">
       <h4>Service Times</h4>
       <div class="footer-service-times" data-service-times>
-        <p><strong>Sunday</strong><br>Main Worship Service — 8:00 AM – 12:00 PM EAT</p>
-        <p><strong>Wednesday</strong><br>Mid-Week Prayer — 5:30 PM – 7:00 PM EAT</p>
-        <p><strong>Friday</strong><br>Youth Fellowship — 6:00 PM – 8:00 PM EAT</p>
+        <!--CONTENT:SERVICE_TIMES:START--><p><strong>Sunday</strong><br>Main Worship Service — 8:00 AM – 12:00 PM EAT</p><p><strong>Wednesday</strong><br>Mid-Week Prayer — 5:30 PM – 7:00 PM EAT</p><p><strong>Friday</strong><br>Youth Fellowship — 6:00 PM – 8:00 PM EAT</p><!--CONTENT:SERVICE_TIMES:END-->
       </div>
     </div>
     <div class="footer-col">
@@ -1521,10 +1540,17 @@
     </div>
     <div class="footer-col footer-map">
       <h4>Find us</h4>
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7356577284563!2d35.94114277582281!3d-0.3688216353133254!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182987bf970d254d%3A0x385834a695a103c7!2sA.I.C%20Egerton%20Chapel!5e0!3m2!1sen!2ske!4v1793572628423!5m2!1sen!2ske" title="Map showing AIC Egerton Chapel" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="map-facade" data-progressive-map>
+        <a class="map-facade__preview" href="https://www.google.com/maps/dir/?api=1&amp;destination=-0.3688216353133254%2C35.94114277582281" target="_blank" rel="noopener noreferrer" aria-label="Get directions to AIC Egerton Chapel">
+          <div class="map-facade__unavailable" role="img" aria-label="Static map preview unavailable">Map preview unavailable</div>
+        </a>
+        <iframe class="map-facade__frame" data-map-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7356577284563!2d35.94114277582281!3d-0.3688216353133254!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182987bf970d254d%3A0x385834a695a103c7!2sA.I.C%20Egerton%20Chapel!5e0!3m2!1sen!2ske!4v1793572628423!5m2!1sen!2ske" title="Interactive map showing AIC Egerton Chapel, Njoro, Kenya" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        <button class="map-facade__load" type="button" data-map-load hidden>Load interactive map</button>
+      </div>
       <a class="btn-get-directions btn-secondary" href="https://www.google.com/maps/dir/?api=1&amp;destination=-0.3688216353133254%2C35.94114277582281" target="_blank" rel="noopener noreferrer">Get directions</a>
     </div>
   </div>
+  <!--CONTENT:ANNOUNCEMENTS:START--><!--CONTENT:ANNOUNCEMENTS:END-->
   <div class="copyright">
     <p>© <span id="copyrightYear"></span> AIC Egerton Chapel. All rights reserved. <a href="/privacy.html">Privacy</a> · <a href="/accessibility.html">Accessibility</a></p>
     <p class="site-attribution">Website maintained and developed by Eng. Jeremiah Thuita (Dip CE, BSC CS).</p>

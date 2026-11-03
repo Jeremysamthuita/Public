@@ -41,7 +41,6 @@ document.getElementById('copyrightYear').textContent = new Date().getFullYear();
         // ====== CAROUSEL FUNCTIONALITY ======
         let currentSlide = 0;
         let slides = [];
-        let dots = [];
         let autoSlideInterval;
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
         const galleryGridModal = document.getElementById('galleryGridModal');
@@ -53,24 +52,9 @@ document.getElementById('copyrightYear').textContent = new Date().getFullYear();
         }
 
         function initCarousel() {
-            const dotsContainer = document.getElementById('dots');
-            dotsContainer.innerHTML = '';
             document.getElementById('galleryPrev').disabled = slides.length < 2;
             document.getElementById('galleryNext').disabled = slides.length < 2;
             document.getElementById('galleryGridOpen').disabled = slides.length === 0;
-            
-            slides.forEach((_, i) => {
-                const dot = document.createElement('button');
-                dot.classList.add('dot');
-                dot.type = 'button';
-                dot.setAttribute('aria-label', `Show gallery photo ${i + 1}`);
-                dot.addEventListener('click', () => {
-                    goToSlide(i);
-                });
-                dotsContainer.appendChild(dot);
-            });
-            
-            dots = document.querySelectorAll('.dot');
             updateCarousel();
             
             // Auto-advance slides
@@ -98,10 +82,7 @@ document.getElementById('copyrightYear').textContent = new Date().getFullYear();
             slides.forEach((slide, i) => {
                 slide.classList.toggle('active', i === currentSlide);
             });
-            dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === currentSlide);
-                dot.setAttribute('aria-current', i === currentSlide ? 'true' : 'false');
-            });
+            document.getElementById('gallerySlideStatus').textContent = `Photo ${currentSlide + 1} of ${slides.length}`;
         }
 
         function startAutoSlide() {
@@ -160,6 +141,26 @@ document.getElementById('copyrightYear').textContent = new Date().getFullYear();
         galleryCarousel.addEventListener('focusin', stopAutoSlide);
         galleryCarousel.addEventListener('focusout', event => {
             if (!galleryCarousel.contains(event.relatedTarget)) startAutoSlide();
+        });
+        galleryCarousel.addEventListener('keydown', event => {
+            if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+            if (event.target.closest('button, a, input, select, textarea')) return;
+            event.preventDefault();
+            changeSlide(event.key === 'ArrowRight' ? 1 : -1);
+        });
+        let touchStartX = null;
+        galleryCarousel.addEventListener('touchstart', event => {
+            touchStartX = event.changedTouches[0]?.screenX ?? null;
+        }, {passive: true});
+        galleryCarousel.addEventListener('touchend', event => {
+            if (touchStartX === null) return;
+            const distance = event.changedTouches[0].screenX - touchStartX;
+            touchStartX = null;
+            if (Math.abs(distance) >= 48) changeSlide(distance < 0 ? 1 : -1);
+        }, {passive: true});
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) stopAutoSlide();
+            else startAutoSlide();
         });
 
         // ====== CMS CONTENT ======

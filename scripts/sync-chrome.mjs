@@ -1,4 +1,4 @@
-import {readFile, readdir, writeFile} from 'node:fs/promises';
+import {readFile, readdir, stat, writeFile} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 
@@ -7,6 +7,20 @@ const headerTemplate = await readFile(path.join(root, 'partials', 'header.html')
 const footerTemplate = await readFile(path.join(root, 'partials', 'footer.html'), 'utf8');
 const pages = (await readdir(root)).filter(file => file.endsWith('.html'));
 const origin = 'https://aicegertonchapel.netlify.app';
+const mapFiles = [
+  path.join(root, 'assets', 'img', 'map-chapel.webp'),
+  path.join(root, 'assets', 'img', 'map-chapel-2x.webp')
+];
+
+async function mapImagesAvailable() {
+  if (process.env.GOOGLE_MAPS_STATIC_KEY) return true;
+  try {
+    await Promise.all(mapFiles.map(file => stat(file)));
+    return true;
+  } catch {
+    return false;
+  }
+}
 
 function withMarkers(html, kind, template, existingMarkup, include) {
   const start = `<!--CHROME:${kind}:START-->`;
@@ -76,10 +90,51 @@ function ensureSingleSkipLink(html) {
   return `${before}${header}${after}`;
 }
 
+function ensureMapPreconnects(html) {
+  if (pageIsAdmin(html)) return html;
+  const hints = [
+    '<link rel="preconnect" href="https://cdn.contentful.com">',
+    '<link rel="preconnect" href="https://images.ctfassets.net">',
+    '<link rel="preconnect" href="https://assets.ctfassets.net">',
+    '<link rel="preconnect" href="https://tdtvktdqtkfdvucqlzlg.supabase.co">',
+    '<link rel="preconnect" href="https://fonts.googleapis.com">',
+    '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>',
+    '<link rel="preconnect" href="https://www.google.com">',
+    '<link rel="preconnect" href="https://maps.gstatic.com" crossorigin>'
+  ];
+  const additions = hints.filter(hint => !html.includes(hint)).join('\n    ');
+  if (!additions) return html;
+  return html.replace(/<head\b[^>]*>/i, match => `${match}\n    ${additions}`);
+}
+
+function ensureContentBootstrap(html) {
+  if (pageIsAdmin(html)) return html;
+  const additions = [];
+  if (!html.includes('href="/content-snapshot.json" as="fetch"')) {
+    additions.push('<link rel="preload" href="/content-snapshot.json" as="fetch" crossorigin>');
+  }
+  if (!html.includes('/assets/js/content/content-bootstrap.js')) {
+    additions.push('<script defer src="/assets/js/content/content-bootstrap.js"></script>');
+  }
+  if (!additions.length) return html;
+  return html.replace(
+    /<head\b[^>]*>/i,
+    match => `${match}\n    ${additions.join('\n    ')}`
+  );
+}
+
+function useMapFallback(html) {
+  return html.replace(
+    /<picture>\s*<source type="image\/webp" srcset="\/assets\/img\/map-chapel\.webp 1x, \/assets\/img\/map-chapel-2x\.webp 2x">\s*<img\b[^>]*src="\/assets\/img\/map-chapel\.webp"[^>]*>\s*<\/picture>/gi,
+    '<div class="map-facade__unavailable" role="img" aria-label="Static map preview unavailable">Map preview unavailable</div>'
+  );
+}
+
 function pageIsAdmin(html) {
   return /<title>Admin\b/i.test(html);
 }
 
+const hasMapImages = await mapImagesAvailable();
 for (const page of pages) {
   const file = path.join(root, page);
   let html = await readFile(file, 'utf8');
@@ -88,6 +143,9 @@ for (const page of pages) {
   html = withMarkers(html, 'HEADER', currentHeader(page), headerRegex, true);
   html = withMarkers(html, 'FOOTER', footerTemplate, footerRegex, page !== 'admin.html');
   html = ensureSingleSkipLink(html);
+  html = ensureMapPreconnects(html);
+  html = ensureContentBootstrap(html);
+  if (!hasMapImages) html = useMapFallback(html);
   if (page !== 'admin.html' && !html.includes('/assets/js/content/content-cards.js')) {
     html = html.replace(/<\/body>/i, '  <script type="module" src="/assets/js/content/content-cards.js"></script>\n</body>');
   }

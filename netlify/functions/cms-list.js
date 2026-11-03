@@ -6,7 +6,7 @@ const visibleFields = {
   announcements: ['announcement_text','link_url','link_label','severity','starts_at','ends_at'],
   gallery: ['image_url','alt','caption'],
   leadership: ['group_name','name','role','bio','message','photo_url','active'],
-  ministries: ['name','description','leader','meeting_time','contact','image_url','accepting_applications'],
+  ministries: ['name','category','description','leader','meeting_time','contact','joining_information','image_url','accepting_applications'],
   service_times: ['label','day','start_time','end_time','is_live'],
   settings: ['setting_key','setting_value']
 };

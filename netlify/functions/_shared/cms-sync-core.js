@@ -51,10 +51,12 @@ const fieldsByType = {
   }),
   ministries: item => ({
     name: item.name,
+    category: item.category || null,
     description: item.description || null,
     leader: item.leader || null,
     meeting_time: item.meetingTime || null,
     contact: item.contact || null,
+    joining_information: item.joiningInformation || null,
     image_url: item.imageUrl || null,
     accepting_applications: Boolean(item.acceptingApplications)
   }),
@@ -83,7 +85,7 @@ function getSettings() {
     serviceRoleKey: SUPABASE_SERVICE_ROLE_KEY,
     contentful: {
       spaceId: CONTENTFUL_SPACE_ID,
-      environment: process.env.CONTENTFUL_ENV || process.env.CONTENTFUL_ENVIRONMENT || 'master',
+      environment: process.env.CONTENTFUL_ENV || process.env.CONTENTFUL_ENVIRONMENT || 'Church-Website',
       token: CONTENTFUL_DELIVERY_TOKEN
     }
   };

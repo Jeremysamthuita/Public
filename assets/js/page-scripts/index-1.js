@@ -1,4 +1,5 @@
-document.getElementById('copyrightYear').textContent = new Date().getFullYear();
+const copyrightYear = document.getElementById('copyrightYear');
+if (copyrightYear) copyrightYear.textContent = new Date().getFullYear();
 
         const directionsLink = document.querySelector('.btn-get-directions');
         if (directionsLink) {
@@ -10,8 +11,6 @@ document.getElementById('copyrightYear').textContent = new Date().getFullYear();
 
         const eventGrid = document.getElementById('eventsGrid');
         window.upcomingEvents = Array.isArray(window.upcomingEvents) ? window.upcomingEvents : [];
-        const {spaceId: spaceID, deliveryToken: accessToken, environment} = window.AIC_SITE_CONFIG.contentful;
-
         function renderUpcomingEvents(events) {
             eventGrid.replaceChildren();
             events = Array.isArray(events) ? events : [];
@@ -145,27 +144,13 @@ document.getElementById('copyrightYear').textContent = new Date().getFullYear();
 
         // Carousel functionality
         const carouselContainer = document.getElementById('carouselContainer');
-        const indicatorsContainer = document.getElementById('carouselIndicators');
         const slides = document.querySelectorAll('.carousel-slide');
         const carousel = document.querySelector('.hero-carousel');
+        const slideStatus = document.getElementById('heroSlideStatus');
+        const slideIndicators = document.querySelectorAll('[data-carousel-slide]');
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
         let currentIndex = 0;
         let autoSlide;
-        
-        // Create indicators
-        slides.forEach((_, index) => {
-            const indicator = document.createElement('button');
-            indicator.classList.add('indicator');
-            indicator.type = 'button';
-            indicator.setAttribute('aria-label', `Show slide ${index + 1}`);
-            indicator.setAttribute('aria-pressed', index === 0 ? 'true' : 'false');
-            if (index === 0) indicator.classList.add('active');
-            indicator.addEventListener('click', () => {
-                goToSlide(index);
-                restartAutoSlide();
-            });
-            indicatorsContainer.appendChild(indicator);
-        });
         
         // Navigation controls
         document.querySelector('.carousel-control.prev').addEventListener('click', () => {
@@ -184,12 +169,19 @@ document.getElementById('copyrightYear').textContent = new Date().getFullYear();
             
             currentIndex = index;
             carouselContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
-            
-            document.querySelectorAll('.indicator').forEach((indicator, i) => {
-                indicator.classList.toggle('active', i === currentIndex);
-                indicator.setAttribute('aria-pressed', i === currentIndex ? 'true' : 'false');
+            if (slideStatus) slideStatus.textContent = `Slide ${currentIndex + 1} of ${slides.length}`;
+            slideIndicators.forEach((indicator, indicatorIndex) => {
+                indicator.setAttribute('aria-current', String(indicatorIndex === currentIndex));
             });
         }
+
+        if (slideStatus) slideStatus.textContent = `Slide 1 of ${slides.length}`;
+        slideIndicators.forEach(indicator => {
+            indicator.addEventListener('click', () => {
+                goToSlide(Number(indicator.dataset.carouselSlide));
+                restartAutoSlide();
+            });
+        });
         
         function stopAutoSlide() {
             clearInterval(autoSlide);
@@ -214,6 +206,25 @@ document.getElementById('copyrightYear').textContent = new Date().getFullYear();
         carousel.addEventListener('focusout', event => {
             if (!carousel.contains(event.relatedTarget)) startAutoSlide();
         });
+        carousel.addEventListener('keydown', event => {
+            if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+            if (event.target.closest('button, a, input, select, textarea')) return;
+            event.preventDefault();
+            goToSlide(currentIndex + (event.key === 'ArrowRight' ? 1 : -1));
+            restartAutoSlide();
+        });
+        let touchStartX = null;
+        carousel.addEventListener('touchstart', event => {
+            touchStartX = event.changedTouches[0]?.screenX ?? null;
+        }, {passive: true});
+        carousel.addEventListener('touchend', event => {
+            if (touchStartX === null) return;
+            const distance = event.changedTouches[0].screenX - touchStartX;
+            touchStartX = null;
+            if (Math.abs(distance) < 48) return;
+            goToSlide(currentIndex + (distance < 0 ? 1 : -1));
+            restartAutoSlide();
+        }, {passive: true});
         document.addEventListener('visibilitychange', () => {
             if (document.hidden) stopAutoSlide();
             else startAutoSlide();
@@ -227,64 +238,20 @@ document.getElementById('copyrightYear').textContent = new Date().getFullYear();
             }
         });
 
-        // Load recent sermons from Contentful
+        // Keep the build-rendered sermons visible while the shared CMS service refreshes.
         async function loadRecentSermons() {
-            try {
-                const sermonsContainer = document.getElementById('sermons-container');
-                const res = await fetch(`https://cdn.contentful.com/spaces/${spaceID}/environments/${environment}/entries?access_token=${accessToken}&content_type=sermons&include=2`);
-                const data = await res.json();
-
-                const assets = data.includes?.Asset || [];
-                const sermons = data.items.map(item => {
-                    const fields = item.fields;
-                    const title = fields.title;
-                    const preacher = fields.preacher;
-                    const date = fields.date;
-
-                    const pptLinks = (fields.powerpoint || []).map(file => {
-                        const asset = assets.find(asset => asset.sys.id === file.sys.id);
-                        return {
-                            url: asset?.fields?.file?.url ? `https:${asset.fields.file.url}` : '#',
-                            name: asset?.fields?.title || 'Download File'
-                        };
-                    });
-
-                    return { title, preacher, date, pptLinks };
-                });
-
-                // Sort by most recent date and select only the top 3
-                const recentSermons = sermons
-                    .sort((a, b) => new Date(b.date) - new Date(a.date))
-                    .slice(0, 3);
-
-                // Clear loading state
-                sermonsContainer.innerHTML = '';
-
-                // Add sermons to the page
-                recentSermons.forEach(sermon => {
-                    const pptLinksHTML = sermon.pptLinks.map(link =>
-                        `<a href="${link.url}" target="_blank">${link.name}</a>`).join('<br>');
-
-                    const sermonHTML = `
-                        <div class="sermon-item">
-                            <h3>${sermon.title}</h3>
-                            <p><strong>Preacher:</strong> ${sermon.preacher}</p>
-                            <p><strong>Date:</strong> ${new Date(sermon.date).toDateString()}</p>
-                            <div class="downloads">${pptLinksHTML}</div>
-                        </div>
-                    `;
-                    sermonsContainer.innerHTML += sermonHTML;
-                });
-
-            } catch (error) {
-                document.getElementById('sermons-container').innerHTML = `
-                    <div class="error-message">
-                        <p>Failed to load sermons. Please try again later.</p>
-                    </div>
-                `;
-                console.error('Failed to load recent sermons:', error);
+            const sermonsContainer = document.getElementById('sermons-container');
+            if (!sermonsContainer) return;
+            if (typeof window.AICSermonCards?.render !== 'function') {
+                console.error('The shared sermon renderer is unavailable.');
+                return;
             }
+            await window.AICSermonCards.render(sermonsContainer, {limit: 3});
         }
+        window.addEventListener('aic:content-updated', event => {
+            if (event.detail?.type === 'sermons') loadRecentSermons();
+        });
+        loadRecentSermons();
 
         // Load about carousel images from Contentful
         async function loadAboutGallery() {

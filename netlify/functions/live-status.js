@@ -27,11 +27,25 @@ async function findVideos({ channelId, apiKey, eventType, maxResults = 1 }) {
 export const handler = async () => {
   const headers = {
     "Content-Type": "application/json",
-    "Cache-Control": "public, max-age=60, stale-while-revalidate=30"
+    "Cache-Control": "public, max-age=15, stale-while-revalidate=15"
   };
-  const channelId = process.env.YOUTUBE_CHANNEL_ID;
+  const cmsSettings = await loadStreamSettings();
+  const channelId = cleanChannelId(cmsSettings.channelId || process.env.YOUTUBE_CHANNEL_ID);
   const apiKey = process.env.YOUTUBE_API_KEY;
+  const fallbackVideoId = cleanVideoId(cmsSettings.fallbackVideoId);
   if (!channelId || !apiKey) {
+    if (fallbackVideoId) {
+      return {
+        statusCode: 200,
+        headers,
+        body: JSON.stringify({
+          configured: true, isLive: false,
+          latest: {videoId:fallbackVideoId,title:String(cmsSettings.fallbackTitle || 'Latest recorded service').slice(0,160)},
+          videos: [], liveMessage:String(cmsSettings.liveMessage || '').slice(0,200),
+          offlineMessage:String(cmsSettings.offlineMessage || '').slice(0,200)
+        })
+      };
+    }
     return {
       statusCode: 503,
       headers,
@@ -55,8 +69,10 @@ export const handler = async () => {
         configured: true,
         isLive: Boolean(live?.videoId),
         live: live || null,
-        latest: live ? null : latest,
-        videos: recentVideos.slice(0, 8)
+        latest: live ? null : (latest || (fallbackVideoId ? {videoId:fallbackVideoId,title:String(cmsSettings.fallbackTitle || 'Latest recorded service').slice(0,160)} : null)),
+        videos: recentVideos.slice(0, 8),
+        liveMessage:String(cmsSettings.liveMessage || '').slice(0,200),
+        offlineMessage:String(cmsSettings.offlineMessage || '').slice(0,200)
       })
     };
   } catch (error) {
@@ -68,3 +84,33 @@ export const handler = async () => {
     };
   }
 };
+
+function cleanChannelId(value) {
+  const id = String(value || '').trim();
+  return /^UC[A-Za-z0-9_-]{22}$/.test(id) ? id : '';
+}
+
+function cleanVideoId(value) {
+  const id = String(value || '').trim();
+  return /^[A-Za-z0-9_-]{11}$/.test(id) ? id : '';
+}
+
+async function loadStreamSettings() {
+  const url = process.env.SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!url || !key) return {};
+  try {
+    const endpoint = new URL('/rest/v1/cms_settings', url);
+    endpoint.search = new URLSearchParams({select:'setting_value',setting_key:'eq.live_stream',is_published:'eq.true',limit:'1'}).toString();
+    const response = await fetch(endpoint, {
+      headers:{apikey:key,Authorization:`Bearer ${key}`,Accept:'application/json'},
+      signal:AbortSignal.timeout(2500)
+    });
+    if (!response.ok) return {};
+    const rows = await response.json();
+    const value = rows?.[0]?.setting_value;
+    return value && typeof value === 'object' && !Array.isArray(value) ? value : {};
+  } catch {
+    return {};
+  }
+}

@@ -24,7 +24,7 @@ const schemas = {
     required: ['group_name','name']
   },
   ministries: {
-    fields: {name:['text',160], description:['long',5000], leader:['text',160], meeting_time:['text',240], contact:['text',240], image_url:['url'], accepting_applications:['boolean']},
+    fields: {name:['text',160], category:['text',100], description:['long',5000], leader:['text',160], meeting_time:['text',240], contact:['text',240], joining_information:['long',2000], image_url:['url'], accepting_applications:['boolean']},
     required: ['name']
   },
   service_times: {

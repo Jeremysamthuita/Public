@@ -1,3 +1,4 @@
+import {createHash} from 'node:crypto';
 import {readFile, writeFile} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
@@ -89,25 +90,24 @@ async function readPreviousSnapshot() {
   }
 }
 
+function validSnapshot(snapshot) {
+  return types.some(type => Array.isArray(snapshot[type]));
+}
+
 const sources = [];
 if (config.contentful.spaceId && config.contentful.deliveryToken) sources.push(['contentful', fetchContentful]);
 if (config.supabase.url && config.supabase.anonKey) sources.push(['supabase', fetchSupabase]);
 const previous = await readPreviousSnapshot();
 
 if (!sources.length) {
-  if (Object.keys(previous).length) {
+  if (validSnapshot(previous)) {
     console.warn('[snapshot] No public CMS credentials are configured; retaining the existing snapshot.');
   } else {
-    const emptySnapshot = {
-      version: 1,
-      generatedAt: new Date().toISOString(),
-      ...Object.fromEntries(types.map(type => [type, []]))
-    };
-    await writeFile(snapshotPath, `${JSON.stringify(emptySnapshot, null, 2)}\n`, 'utf8');
-    console.warn('[snapshot] No CMS credentials are configured; wrote an empty snapshot for static fallback.');
+    throw new Error('[snapshot] No CMS source or valid last-known-good snapshot is available.');
   }
 } else {
-  const snapshot = {version: 1, generatedAt: new Date().toISOString()};
+  const content = {};
+  let successfulTypeCount = 0;
   for (const type of types) {
     const results = await Promise.allSettled(sources.map(async ([source, fetchItems]) => ({
       source,
@@ -120,14 +120,22 @@ if (!sources.length) {
       if (result.status === 'rejected') console.warn(`[snapshot] ${type} source failed: ${result.reason.message}`);
     }
     if (successful.length) {
-      snapshot[type] = mergeContent(
+      content[type] = mergeContent(
         successful.flatMap(result => result.items.map(item => ({...item, type}))),
         config.content.policy
       );
+      successfulTypeCount += 1;
     } else {
-      snapshot[type] = Array.isArray(previous[type]) ? previous[type] : [];
+      content[type] = Array.isArray(previous[type]) ? previous[type] : [];
     }
   }
+  if (successfulTypeCount === 0) {
+    if (!validSnapshot(previous)) throw new Error('[snapshot] Both CMS sources failed and no valid snapshot exists.');
+    console.warn('[snapshot] Both CMS sources failed; retaining the last-known-good snapshot.');
+    process.exit(0);
+  }
+  const version = createHash('sha256').update(JSON.stringify(content)).digest('hex');
+  const snapshot = {version, generatedAt: new Date().toISOString(), ...content};
   await writeFile(snapshotPath, `${JSON.stringify(snapshot, null, 2)}\n`, 'utf8');
   console.log(`[snapshot] Wrote ${snapshotPath}.`);
 }

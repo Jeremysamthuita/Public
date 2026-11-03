@@ -29,7 +29,8 @@ const fieldMappings = {
     group_name: 'group', name: 'name', role: 'role', bio: 'bio', message: 'message', photo_url: 'photoUrl', active: 'active'
   },
   ministries: {
-    name: 'name', description: 'description', leader: 'leader', meeting_time: 'meetingTime', contact: 'contact',
+    name: 'name', category: 'category', description: 'description', leader: 'leader', meeting_time: 'meetingTime', contact: 'contact',
+    joining_information: 'joiningInformation',
     image_url: 'imageUrl', accepting_applications: 'acceptingApplications'
   },
   service_times: {label: 'label', day: 'day', start_time: 'start', end_time: 'end', is_live: 'isLive'},
@@ -42,7 +43,7 @@ function settings() {
   return {
     space,
     token,
-    environment: process.env.CONTENTFUL_ENV || process.env.CONTENTFUL_ENVIRONMENT || 'master',
+    environment: process.env.CONTENTFUL_ENV || process.env.CONTENTFUL_ENVIRONMENT || 'Church-Website',
     locale: process.env.CONTENTFUL_LOCALE || 'en-US'
   };
 }
@@ -80,6 +81,10 @@ function fieldValue(type, name, value, locale) {
 
 function entryFields(type, row, locale) {
   const fields = {};
+  for (const [column, fieldId] of Object.entries({slug:'slug', publish_at:'publishAt', unpublish_at:'unpublishAt', sort_order:'sortOrder'})) {
+    const value = fieldValue(type, column, row[column], locale);
+    if (value) fields[fieldId] = value;
+  }
   for (const [column, fieldId] of Object.entries(fieldMappings[type])) {
     const value = fieldValue(type, column, row[column], locale);
     if (value) fields[fieldId] = value;

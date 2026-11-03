@@ -225,6 +225,10 @@
         return sermons;
     }
 
+    window.addEventListener('aic:content-updated', event => {
+        if (event.detail?.type === 'sermons') sermonCache.clear();
+    });
+
     function createCard(sermon, { onPreview, headingLevel = 3 } = {}) {
         const card = document.createElement('article');
         card.className = 'sermon-card';
@@ -370,12 +374,6 @@
     }
 
     async function render(container, {limit = null, onPreview, headingLevel = 3} = {}) {
-        container.replaceChildren();
-        const loading = document.createElement('p');
-        loading.className = 'sermon-loading';
-        loading.textContent = 'Loading recent sermons…';
-        container.appendChild(loading);
-
         try {
             const sermons = await fetchSermons({limit});
             const displayed = sermons;
@@ -390,6 +388,10 @@
             displayed.forEach(sermon => container.appendChild(createCard(sermon, {onPreview, headingLevel})));
             return sermons;
         } catch (error) {
+            if (container.querySelector('.sermon-card')) {
+                console.warn('Sermon refresh failed; keeping the pre-rendered sermons.', error);
+                return [];
+            }
             console.error('Failed to display sermons:', error);
             container.replaceChildren();
             const message = document.createElement('p');

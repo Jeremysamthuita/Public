@@ -5,6 +5,10 @@ import {fetchSupabase} from './supabase-provider.js';
 
 const lastSources = new Map();
 const config = () => window.AIC_SITE_CONFIG || {};
+const activeTypes = new Set();
+const refreshes = new Map();
+let pollTimer = null;
+let bootstrapAppliedVersion = '';
 
 function debugMode() {
   return new URLSearchParams(window.location.search).get('debugContent') === '1';
@@ -29,6 +33,19 @@ function announceUpdate(type) {
   if (typeof window !== 'undefined' && typeof CustomEvent !== 'undefined') {
     window.dispatchEvent(new CustomEvent('aic:content-updated', {detail: {type}}));
   }
+}
+
+function startContentPolling() {
+  if (pollTimer || typeof document === 'undefined') return;
+  const poll = () => {
+    if (document.visibilityState === 'hidden' || !activeTypes.size) return;
+    for (const type of activeTypes) refresh(type).catch(() => {});
+  };
+  pollTimer = setInterval(poll, 30_000);
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') poll();
+  });
+  window.addEventListener('online', poll);
 }
 
 async function attempt(provider, type, providerName) {
@@ -97,6 +114,18 @@ export function mergeContent(items, policy = 'merge') {
 }
 
 async function snapshot(type) {
+  const bootstrap = window.AIC_CONTENT_BOOTSTRAP;
+  if (bootstrap) {
+    await bootstrap.ready;
+    let data = bootstrap.snapshot;
+    if (!data && typeof bootstrap.refresh === 'function') data = await bootstrap.refresh();
+    const bootstrappedItems = data?.[type];
+    if (Array.isArray(bootstrappedItems)) return bootstrappedItems;
+    if (typeof bootstrap.refresh === 'function') {
+      throw new Error('The cached content snapshot has no matching content type.');
+    }
+  }
+
   const snapshotUrl = config().content?.snapshotUrl || '/content-snapshot.json';
   const response = await fetch(snapshotUrl, {cache: 'no-cache'});
   if (!response.ok) throw new Error(`Content snapshot failed with HTTP ${response.status}.`);
@@ -107,6 +136,17 @@ async function snapshot(type) {
 }
 
 async function refresh(type) {
+  if (refreshes.has(type)) return refreshes.get(type);
+  const pending = refreshFromProviders(type);
+  refreshes.set(type, pending);
+  try {
+    return await pending;
+  } finally {
+    refreshes.delete(type);
+  }
+}
+
+async function refreshFromProviders(type) {
   const mode = cmsMode();
   if (mode === 'off') throw new Error('CMS requests are disabled by the test switch.');
   const requests = [];
@@ -137,12 +177,31 @@ async function refresh(type) {
   const records = fulfilled.flatMap(result => result.items.map(item => ({...item, type})));
   const merged = mergeContent(records, policy);
   const sources = [...new Set(fulfilled.map(result => result.provider))];
+  const previousCache = readCache(type);
+  const previous = previousCache?.items || [];
+  const changed = JSON.stringify(previous) !== JSON.stringify(merged);
   writeCache(type, merged);
   lastSources.set(type, sources.length > 1 ? 'merged' : sources[0]);
+  if (changed && previousCache) announceUpdate(type);
   return merged;
 }
 
+async function applyBootstrapSnapshot() {
+  const bootstrap = window.AIC_CONTENT_BOOTSTRAP;
+  if (!bootstrap) return;
+  await bootstrap.ready;
+  const data = bootstrap.snapshot;
+  if (!data?.version || data.version === bootstrapAppliedVersion) return;
+  for (const [type, items] of Object.entries(data)) {
+    if (Array.isArray(items)) writeCache(type, items);
+  }
+  bootstrapAppliedVersion = data.version;
+}
+
 export async function getContent(type, {limit = null, forceRefresh = false} = {}) {
+  await applyBootstrapSnapshot();
+  activeTypes.add(type);
+  startContentPolling();
   const cached = readCache(type);
   if (cached && !forceRefresh && cacheIsFresh(cached)) {
     lastSources.set(type, 'cache');
@@ -151,11 +210,25 @@ export async function getContent(type, {limit = null, forceRefresh = false} = {}
   }
 
   if (cached && !forceRefresh) {
-    refresh(type).then(() => announceUpdate(type)).catch(error => {
+    refresh(type).catch(error => {
       if (debugMode()) console.info(`[content-service] Background refresh failed for ${type}.`, error);
     });
     const visible = cached.items.filter(item => isVisible(item));
     return limit ? visible.slice(0, limit) : visible;
+  }
+
+  if (!cached && !forceRefresh) {
+    try {
+      const items = await snapshot(type);
+      writeCache(type, items);
+      lastSources.set(type, 'snapshot');
+      refresh(type).catch(error => {
+        if (debugMode()) console.info(`[content-service] Background refresh failed for ${type}.`, error);
+      });
+      return limit ? items.slice(0, limit) : items;
+    } catch (error) {
+      if (debugMode()) console.info(`[content-service] Snapshot unavailable for ${type}; querying providers.`, error);
+    }
   }
 
   let items;

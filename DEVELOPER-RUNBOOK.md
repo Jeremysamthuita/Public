@@ -29,9 +29,19 @@ Create the replacement key in its provider, update the matching Netlify environm
 
 The editor saves to Supabase first. If the Contentful backup fails, the website continues serving the saved content and the queue retries it. Check the health panel and queue. If the primary database is unavailable, publishing cannot be confirmed; wait for service recovery and retry the saved draft. Do not report an unsaved post as live.
 
+## Snapshot and offline cache
+
+The Netlify build generates the static map image, refreshes the content snapshot, pre-renders supported content sections, then validates links. Set `GOOGLE_MAPS_STATIC_KEY` as a Netlify build environment variable; it is used only by the build and is never placed in browser code. Configure the public Contentful Delivery API values and Supabase URL/anon key in the build environment to refresh the snapshot. If neither CMS source is configured, the build keeps the last valid `content-snapshot.json`; it fails rather than publishing an empty snapshot when no valid snapshot exists. Local builds without the map key keep any previously generated map files and print a warning.
+
+The admin console's **Rebuild snapshot** action triggers a Netlify build hook. Set `NETLIFY_BUILD_HOOK_URL` in the function environment for that action. The Contentful `cms-sync` webhook synchronizes CMS records, but does not itself publish a new static snapshot; the current fast-update/debounced build pipeline still needs implementation.
+
+The browser bootstrap stores one validated public snapshot in IndexedDB and falls back to localStorage when IndexedDB is blocked. The public service worker updates cached shell files and the snapshot in the background. To test a clean client, use browser DevTools **Application → Storage → Clear site data** (or unregister `/sw.js` and clear Cache Storage), then reload while online. To test offline behavior, reload once online to seed the caches, switch DevTools to **Offline**, and navigate to a previously visited public page. Admin pages, admin assets, API/function requests, and authentication are deliberately bypassed.
+
 ## Owner confirmations still needed
 
 - Confirm the Contentful environment, default locale, and field definitions before running the migration script.
 - Confirm that public access to the `cms-media` bucket is appropriate for church photos, PDFs, and recordings.
 - Add the live site and any preview URLs to Supabase Auth's allowed redirect URLs.
 - Confirm the church address used for terminal publish-failure alerts.
+- Set `GOOGLE_MAPS_STATIC_KEY` in Netlify and enable the Google Static Maps API for it. Never add the key to `site-config.js`.
+- Supply an approved static map image or approve a server-side map-image generation source; no map image or key is present in the repository.

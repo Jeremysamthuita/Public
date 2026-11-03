@@ -72,19 +72,59 @@
     }
 
     function initMaps() {
-        if (config.mapsEmbedUrl) {
-            document.querySelectorAll('.footer-map iframe, .contact-map iframe, .contact-map-panel iframe')
-                .forEach(map => {
-                    if (!map.getAttribute('src') || map.getAttribute('src') === 'about:blank') {
-                        map.src = config.mapsEmbedUrl;
-                    }
-                });
-        }
         if (config.mapsDirectionsUrl) {
             document.querySelectorAll('.btn-get-directions').forEach(link => {
                 link.href = config.mapsDirectionsUrl;
             });
         }
+
+        const maps = [...document.querySelectorAll('[data-progressive-map]')];
+        const loadMap = container => {
+            const frame = container.querySelector('.map-facade__frame');
+            const source = frame?.dataset.mapSrc || config.mapsEmbedUrl;
+            if (!frame || !source || frame.hasAttribute('src')) return;
+            frame.addEventListener('load', () => {
+                if (navigator.onLine) {
+                    container.classList.add('is-interactive');
+                    const button = container.querySelector('[data-map-load]');
+                    if (button) button.hidden = true;
+                }
+            }, {once: true});
+            frame.src = source;
+        };
+
+        maps.forEach(container => {
+            const button = container.querySelector('[data-map-load]');
+            if (button) {
+                button.hidden = false;
+                button.addEventListener('click', () => loadMap(container));
+            }
+        });
+
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver(entries => {
+                for (const entry of entries) {
+                    if (!entry.isIntersecting) continue;
+                    loadMap(entry.target);
+                    observer.unobserve(entry.target);
+                }
+            }, {rootMargin: '300px'});
+            maps.forEach(map => observer.observe(map));
+        } else {
+            const loadVisibleMaps = () => maps.forEach(loadMap);
+            if ('requestIdleCallback' in window) window.requestIdleCallback(loadVisibleMaps, {timeout: 3000});
+            else window.setTimeout(loadVisibleMaps, 1000);
+        }
+
+        window.addEventListener('offline', () => {
+            maps.forEach(map => {
+                map.classList.remove('is-interactive');
+                const frame = map.querySelector('.map-facade__frame');
+                if (frame) frame.removeAttribute('src');
+                const button = map.querySelector('[data-map-load]');
+                if (button) button.hidden = false;
+            });
+        });
     }
 
     function initFooterYear() {
@@ -170,6 +210,15 @@
         document.head.appendChild(script);
     }
 
+    function initServiceWorker() {
+        if (!('serviceWorker' in navigator) ||
+            (location.protocol !== 'https:' && location.hostname !== 'localhost')) return;
+        const register = () => navigator.serviceWorker.register('/sw.js')
+            .catch(error => console.error('[site-chrome] Offline support could not be enabled.', error));
+        if (document.readyState === 'complete') register();
+        else window.addEventListener('load', register, {once: true});
+    }
+
     function init() {
         initMenu();
         initMaps();
@@ -177,6 +226,7 @@
         initCmsCards();
         initDialogActions();
         initTurnstile();
+        initServiceWorker();
     }
 
     if (document.readyState === 'loading') {

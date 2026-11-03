@@ -8,6 +8,14 @@ function cleanName(value){
   return name||'upload';
 }
 function storageHeaders(key){return {apikey:key,Authorization:`Bearer ${key}`,'Content-Type':'application/json'};}
+function signedUploadUrl(value,baseUrl){
+  const rawUrl=String(value);
+  const uploadUrl=/^https?:\/\//i.test(rawUrl)
+    ? new URL(rawUrl)
+    : new URL(`${rawUrl.startsWith('/storage/v1/')?'':'/storage/v1'}${rawUrl.startsWith('/')?rawUrl:`/${rawUrl}`}`,baseUrl);
+  if(uploadUrl.origin!==baseUrl||!uploadUrl.pathname.startsWith('/storage/v1/object/upload/sign/'))throw new Error('Storage returned an invalid upload link.');
+  return uploadUrl;
+}
 
 export const handler=async event=>{
   if(event.httpMethod==='OPTIONS')return response(event,200,{});
@@ -33,7 +41,7 @@ export const handler=async event=>{
       const result=await sign.json();
       const rawUrl=result.signedUrl||result.signedURL||result.url;
       if(!rawUrl||!result.token)throw new Error('Storage did not return an upload link.');
-      const uploadUrl=new URL(rawUrl,settings.baseUrl);
+      const uploadUrl=signedUploadUrl(rawUrl,settings.baseUrl);
       if(!uploadUrl.searchParams.has('token'))uploadUrl.searchParams.set('token',result.token);
       await audit(settings,user.id,'cms_upload_prepared','media',path,{content_type:mime,size});
       return response(event,200,{ok:true,path,uploadUrl:uploadUrl.toString(),contentType:mime,size});

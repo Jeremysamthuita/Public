@@ -205,3 +205,49 @@ test('normalizes Contentful gallery entries with multiple linked images', () => 
     'https://images.example/two.jpg'
   ]);
 });
+
+test('normalizes ministry category and joining guidance across CMS field names', () => {
+  const record = normalizeRecord('ministries', {
+    name: 'Youth Ministry',
+    category: 'Youth',
+    joining_information: 'Contact the ministry leader after Sunday service.',
+    is_published: true
+  });
+
+  assert.equal(record.category, 'Youth');
+  assert.equal(record.joiningInformation, 'Contact the ministry leader after Sunday service.');
+});
+
+test('normalizes public live-stream site settings from Contentful and Supabase shapes', () => {
+  const fromContentful = normalizeRecord('settings', {
+    sys: {id:'live-setting'},
+    fields: {settingKey:'live_stream',settingValue:{channelId:'UC123',fallbackVideoId:'abcdefghijk'}}
+  }, {source:'contentful'});
+  const fromSupabase = normalizeRecord('settings', {
+    setting_key:'live_stream',
+    setting_value:{channelId:'UC123',fallbackVideoId:'abcdefghijk'},
+    is_published:true
+  });
+
+  assert.equal(fromContentful.settingKey, 'live_stream');
+  assert.equal(fromContentful.channelId, 'UC123');
+  assert.equal(fromSupabase.settingKey, 'live_stream');
+  assert.equal(fromSupabase.fallbackVideoId, 'abcdefghijk');
+});
+
+test('public settings omit unknown values such as private API keys', () => {
+  const record = normalizeRecord('settings', {
+    setting_key:'live_stream',
+    setting_value:{
+      channelId:'UC123',
+      fallbackTitle:'Latest service',
+      apiKey:'must-not-be-published',
+      secret:'must-not-be-published'
+    },
+    is_published:true
+  });
+
+  assert.equal(record.channelId, 'UC123');
+  assert.equal(record.fallbackTitle, 'Latest service');
+  assert.equal(JSON.stringify(record).includes('must-not-be-published'), false);
+});
