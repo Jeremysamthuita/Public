@@ -1,6 +1,8 @@
 /**
- * Cached YouTube live status and latest completed live broadcast.
+ * Public channel recordings plus optional YouTube API live-broadcast status.
  */
+const DEFAULT_CHANNEL_ID = "UCUcpLiA7EYxKzcesFtlripg";
+
 async function findVideos({ channelId, apiKey, eventType, maxResults = 1 }) {
   const query = new URLSearchParams({
     part: "snippet",
@@ -24,52 +26,87 @@ async function findVideos({ channelId, apiKey, eventType, maxResults = 1 }) {
   })).filter(video => video.videoId);
 }
 
+function decodeXml(value) {
+  return String(value || '')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&apos;|&#39;/g, "'")
+    .replace(/&amp;/g, '&');
+}
+
+export function parseYouTubeFeed(xml) {
+  return [...String(xml || '').matchAll(/<entry\b[^>]*>([\s\S]*?)<\/entry>/gi)]
+    .map(([, entry]) => {
+      const videoId = entry.match(/<yt:videoId\b[^>]*>([^<]+)<\/yt:videoId>/i)?.[1]?.trim() || '';
+      const title = entry.match(/<title\b[^>]*>([\s\S]*?)<\/title>/i)?.[1] || '';
+      const publishedAt = entry.match(/<published\b[^>]*>([^<]+)<\/published>/i)?.[1] || '';
+      if (!/^[A-Za-z0-9_-]{11}$/.test(videoId)) return null;
+      return {
+        videoId,
+        title: decodeXml(title.replace(/<[^>]*>/g, '')).slice(0, 300),
+        publishedAt: decodeXml(publishedAt),
+        thumbnail: `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`
+      };
+    })
+    .filter(Boolean)
+    .slice(0, 15);
+}
+
+async function findRecentVideos(channelId) {
+  const feedUrl = new URL('https://www.youtube.com/feeds/videos.xml');
+  feedUrl.searchParams.set('channel_id', channelId);
+  const response = await fetch(feedUrl, {signal: AbortSignal.timeout(5000)});
+  if (!response.ok) throw new Error(`YouTube channel feed returned HTTP ${response.status}`);
+  return parseYouTubeFeed(await response.text());
+}
+
 export const handler = async () => {
   const headers = {
     "Content-Type": "application/json",
     "Cache-Control": "public, max-age=15, stale-while-revalidate=15"
   };
   const cmsSettings = await loadStreamSettings();
-  const channelId = cleanChannelId(cmsSettings.channelId || process.env.YOUTUBE_CHANNEL_ID);
+  const channelId = cleanChannelId(cmsSettings.channelId || process.env.YOUTUBE_CHANNEL_ID || DEFAULT_CHANNEL_ID);
   const apiKey = process.env.YOUTUBE_API_KEY;
   const fallbackVideoId = cleanVideoId(cmsSettings.fallbackVideoId);
-  if (!channelId || !apiKey) {
-    if (fallbackVideoId) {
-      return {
-        statusCode: 200,
-        headers,
-        body: JSON.stringify({
-          configured: true, isLive: false,
-          latest: {videoId:fallbackVideoId,title:String(cmsSettings.fallbackTitle || 'Latest recorded service').slice(0,160)},
-          videos: [], liveMessage:String(cmsSettings.liveMessage || '').slice(0,200),
-          offlineMessage:String(cmsSettings.offlineMessage || '').slice(0,200)
-        })
-      };
-    }
+  if (!channelId) {
     return {
-      statusCode: 503,
+      statusCode: 500,
       headers,
       body: JSON.stringify({ configured: false, isLive: false, latest: null })
     };
   }
 
   try {
-    const [liveResults, videos] = await Promise.all([
-      findVideos({ channelId, apiKey, eventType: "live" }),
-      findVideos({ channelId, apiKey, maxResults: 8 })
+    let liveStatusAvailable = Boolean(apiKey);
+    const livePromise = apiKey
+      ? findVideos({channelId, apiKey, eventType: "live"}).catch(error => {
+          console.error("Could not check YouTube live status.", error.message);
+          liveStatusAvailable = false;
+          return [];
+        })
+      : Promise.resolve([]);
+    const [videos, liveResults] = await Promise.all([
+      findRecentVideos(channelId),
+      livePromise
     ]);
     const live = liveResults[0] || null;
     const recentVideos = [...videos];
     if (live && !recentVideos.some(video => video.videoId === live.videoId)) recentVideos.unshift(live);
-    const latest = recentVideos[0] || null;
+    const latest = recentVideos[0] || (fallbackVideoId
+      ? {videoId:fallbackVideoId,title:String(cmsSettings.fallbackTitle || 'Latest recorded service').slice(0,160)}
+      : null);
     return {
       statusCode: 200,
       headers,
       body: JSON.stringify({
         configured: true,
+        channelId,
+        liveStatusAvailable,
         isLive: Boolean(live?.videoId),
         live: live || null,
-        latest: live ? null : (latest || (fallbackVideoId ? {videoId:fallbackVideoId,title:String(cmsSettings.fallbackTitle || 'Latest recorded service').slice(0,160)} : null)),
+        latest: live ? null : latest,
         videos: recentVideos.slice(0, 8),
         liveMessage:String(cmsSettings.liveMessage || '').slice(0,200),
         offlineMessage:String(cmsSettings.offlineMessage || '').slice(0,200)
@@ -79,8 +116,8 @@ export const handler = async () => {
     console.error("Could not check YouTube broadcast status.", error.message);
     return {
       statusCode: 502,
-      headers: { ...headers, "Cache-Control": "public, max-age=15" },
-      body: JSON.stringify({ configured: true, isLive: false, latest: null })
+      headers: { ...headers, "Cache-Control": "public, max-age=15, stale-while-revalidate=15" },
+      body: JSON.stringify({ configured: true, channelId, liveStatusAvailable: false, isLive: false, latest: null, videos: [] })
     };
   }
 };

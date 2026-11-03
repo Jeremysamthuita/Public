@@ -1,5 +1,6 @@
 const config = window.AIC_SITE_CONFIG || {};
 const iframe = document.getElementById("liveIframe");
+const recordingsFeed = document.getElementById("recordingsFeed");
 const status = document.getElementById("liveStatus");
 const statusText = document.getElementById("liveStatusText");
 const pastEmpty = document.getElementById("pastEmpty");
@@ -95,18 +96,27 @@ function renderRecentVideos(videos = []) {
   }
 }
 
+function setRecordingsFeed(channelId) {
+  if (!/^UC[A-Za-z0-9_-]{22}$/.test(channelId)) return;
+  const uploadsPlaylistId = `UU${channelId.slice(2)}`;
+  recordingsFeed.src = `https://www.youtube-nocookie.com/embed/videoseries?list=${encodeURIComponent(uploadsPlaylistId)}`;
+}
+
 async function loadLiveStatus() {
   const channelId = config.youtubeChannelId || "";
-  if (!channelId) {
+  if (!/^UC[A-Za-z0-9_-]{22}$/.test(channelId)) {
     iframe.hidden = true;
     setStatus("offline", "Live stream status is not configured yet.");
     pastEmpty.hidden = false;
     return;
   }
 
+  setRecordingsFeed(channelId);
+
   try {
     const response = await fetch("/api/live-status", { cache: "no-store" });
     const result = await response.json().catch(() => ({}));
+    setRecordingsFeed(result.channelId || channelId);
     if (!response.ok || !result.configured) {
       iframe.hidden = true;
       setStatus("offline", "Live status is not available yet. " + nextScheduledService());
@@ -122,7 +132,10 @@ async function loadLiveStatus() {
       return;
     }
 
-    setStatus("offline", `${result.offlineMessage || 'No live broadcast right now.'} ${nextScheduledService()}`.trim());
+    const liveMessage = result.liveStatusAvailable === false
+      ? "Recent recordings are synced; live status is unavailable."
+      : (result.offlineMessage || "No live broadcast right now.");
+    setStatus("offline", `${liveMessage} ${nextScheduledService()}`.trim());
     setLatestStream(result.latest);
     renderRecentVideos(result.videos);
     if ((result.videos || []).length) pastEmpty.hidden = true;

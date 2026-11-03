@@ -112,12 +112,23 @@
             </div>
         </section>
 
-        <!-- Past recordings placeholder — populated if YouTube configured -->
+        <!-- Recent recordings are loaded from the public channel feed. -->
         <section class="live-past" aria-labelledby="pastHeading">
             <h2 id="pastHeading">Recent Recordings</h2>
             <p class="live-past__empty" id="pastEmpty">
                 Visit our <a href="https://www.youtube.com/@aicegertonchapel" target="_blank" rel="noopener noreferrer">YouTube channel</a> for past service recordings.
             </p>
+            <div class="live-feed">
+                <iframe
+                    id="recordingsFeed"
+                    title="Recent AIC Egerton Chapel recordings on YouTube"
+                    src="about:blank"
+                    loading="lazy"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
+            </div>
             <div class="live-videos" id="recentVideos" aria-label="Recent videos from the AIC Egerton Chapel YouTube channel"></div>
         </section>
     </main>
