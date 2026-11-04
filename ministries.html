@@ -548,13 +548,13 @@
         
         /* Ministries Section Styling */
         .ministries {
-            padding: 40px 20px;
+            box-sizing: border-box;
+            width: 100%;
+            padding: 40px clamp(16px, 2.5vw, 40px);
             background: #fdf3e3;
             border-radius: 15px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             text-align: center;
-            width: 90%;
-            max-width: 1200px;
             margin: 100px auto 0;
             position: relative;
         }
@@ -589,7 +589,7 @@
         /* Ministries Grid */
         .ministries-container {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
             gap: 30px;
             justify-content: center;
             padding: 20px;
@@ -714,10 +714,6 @@
 
         /* Responsive Design for Small Screens */
         @media (max-width: 768px) {
-            .ministries-container {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-            
             .ministry {
                 width: 100%;
                 max-width: 500px;
@@ -731,11 +727,6 @@
         }
 
         @media (max-width: 560px) {
-            .ministries-container {
-                grid-template-columns: 1fr;
-                padding: 10px 0;
-            }
-
             .ministries {
                 width: calc(100% - 24px);
                 padding: 24px 14px;
