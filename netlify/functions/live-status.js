@@ -26,6 +26,30 @@ async function findVideos({ channelId, apiKey, eventType, maxResults = 1 }) {
   })).filter(video => video.videoId);
 }
 
+async function findUploadsPage(channelId, apiKey, pageToken = "") {
+  const query = new URLSearchParams({
+    part: "snippet",
+    playlistId: `UU${channelId.slice(2)}`,
+    maxResults: "50",
+    key: apiKey
+  });
+  if (pageToken) query.set("pageToken", pageToken);
+  const response = await fetch(`https://www.googleapis.com/youtube/v3/playlistItems?${query}`, {
+    signal: AbortSignal.timeout(5000)
+  });
+  if (!response.ok) throw new Error(`YouTube uploads playlist returned HTTP ${response.status}`);
+  const data = await response.json();
+  return {
+    videos: (data.items || []).map(result => ({
+      videoId: result.snippet?.resourceId?.videoId || "",
+      title: result.snippet?.title || "",
+      publishedAt: result.snippet?.publishedAt || "",
+      thumbnail: result.snippet?.thumbnails?.medium?.url || result.snippet?.thumbnails?.default?.url || ""
+    })).filter(video => /^[A-Za-z0-9_-]{11}$/.test(video.videoId)),
+    nextPageToken: typeof data.nextPageToken === "string" ? data.nextPageToken : ""
+  };
+}
+
 function decodeXml(value) {
   return String(value || '')
     .replace(/&lt;/g, '<')
@@ -61,7 +85,7 @@ async function findRecentVideos(channelId) {
   return parseYouTubeFeed(await response.text());
 }
 
-export const handler = async () => {
+export const handler = async (event = {}) => {
   const headers = {
     "Content-Type": "application/json",
     "Cache-Control": "public, max-age=15, stale-while-revalidate=15"
@@ -70,12 +94,38 @@ export const handler = async () => {
   const channelId = cleanChannelId(cmsSettings.channelId || process.env.YOUTUBE_CHANNEL_ID || DEFAULT_CHANNEL_ID);
   const apiKey = process.env.YOUTUBE_API_KEY;
   const fallbackVideoId = cleanVideoId(cmsSettings.fallbackVideoId);
+  const pageToken = event.queryStringParameters?.pageToken || "";
   if (!channelId) {
     return {
       statusCode: 500,
       headers,
       body: JSON.stringify({ configured: false, isLive: false, latest: null })
     };
+  }
+
+  if (pageToken) {
+    if (typeof pageToken !== "string" || pageToken.length > 1024 || !apiKey) {
+      return {
+        statusCode: 400,
+        headers,
+        body: JSON.stringify({error: "A valid YouTube API page token is required."})
+      };
+    }
+    try {
+      const page = await findUploadsPage(channelId, apiKey, pageToken);
+      return {
+        statusCode: 200,
+        headers,
+        body: JSON.stringify({configured: true, videos: page.videos, nextPageToken: page.nextPageToken})
+      };
+    } catch (error) {
+      console.error("Could not load more YouTube recordings.", error.message);
+      return {
+        statusCode: 502,
+        headers,
+        body: JSON.stringify({error: "Could not load more YouTube recordings."})
+      };
+    }
   }
 
   try {
@@ -87,12 +137,17 @@ export const handler = async () => {
           return [];
         })
       : Promise.resolve([]);
-    const [videos, liveResults] = await Promise.all([
-      findRecentVideos(channelId),
+    const [recordingsPage, liveResults] = await Promise.all([
+      apiKey
+        ? findUploadsPage(channelId, apiKey).catch(async error => {
+            console.error("Could not load YouTube uploads playlist; using the public feed.", error.message);
+            return {videos: await findRecentVideos(channelId), nextPageToken: ""};
+          })
+        : findRecentVideos(channelId).then(videos => ({videos, nextPageToken: ""})),
       livePromise
     ]);
     const live = liveResults[0] || null;
-    const recentVideos = [...videos];
+    const recentVideos = [...recordingsPage.videos];
     if (live && !recentVideos.some(video => video.videoId === live.videoId)) recentVideos.unshift(live);
     const latest = recentVideos[0] || (fallbackVideoId
       ? {videoId:fallbackVideoId,title:String(cmsSettings.fallbackTitle || 'Latest recorded service').slice(0,160)}
@@ -107,7 +162,8 @@ export const handler = async () => {
         isLive: Boolean(live?.videoId),
         live: live || null,
         latest: live ? null : latest,
-        videos: recentVideos.slice(0, 8),
+        videos: recentVideos,
+        nextPageToken: recordingsPage.nextPageToken,
         liveMessage:String(cmsSettings.liveMessage || '').slice(0,200),
         offlineMessage:String(cmsSettings.offlineMessage || '').slice(0,200)
       })

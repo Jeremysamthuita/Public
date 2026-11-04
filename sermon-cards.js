@@ -330,9 +330,9 @@
             download.rel = 'noopener noreferrer';
             download.download = file.name;
             const icon = document.createElement('i');
-            icon.className = `fas ${file.type.toLowerCase().includes('pdf') ? 'fa-file-pdf' : 'fa-file-powerpoint'}`;
+            icon.className = 'fas fa-download';
             icon.setAttribute('aria-hidden', 'true');
-            download.append(icon, document.createTextNode(file.name));
+            download.append(icon, document.createTextNode('Download'));
             actions.appendChild(download);
         });
 

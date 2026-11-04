@@ -67,7 +67,7 @@ The full server-side variable list is in `.env.example`. Set production values i
 | Email | `EMAIL_PROVIDER` (`resend` or `brevo`), `EMAIL_API_KEY`, `EMAIL_FROM`, `CHURCH_EMAIL` |
 | Spam protection | `TURNSTILE_SECRET_KEY`; put the matching public site key in root `site-config.js` |
 | Daraja | `MPESA_STK_ENABLED=false` until verified; then configure all `DARAJA_*` values and Turnstile |
-| YouTube | Optional `YOUTUBE_API_KEY` for live-broadcast detection; `YOUTUBE_CHANNEL_ID` can override the public channel ID configured in the site |
+| YouTube | Optional `YOUTUBE_API_KEY` for live-broadcast detection and paginated channel recordings; `YOUTUBE_CHANNEL_ID` can override the public channel ID configured in the site |
 | Optional AI | `AI_TRIAGE_ENABLED=false`, `GEMINI_API_KEY`, `GEMINI_MODEL` |
 
 Root `site-config.js` is the classic-script browser config consumed by existing pages. It may contain only public Supabase and Contentful delivery values. The ES module at `assets/js/site-config.js` exports the same browser configuration for module-based code. The local Supabase override is accepted only on localhost. Never put server-only keys in either browser config.
@@ -94,7 +94,7 @@ Contentful remains the primary editorial source. Public pages merge and deduplic
 
 The admin editor saves content through protected Netlify Functions, with Supabase as the primary store and Contentful as the background copy. The console includes user management, health, retries, revision restore and protected records. A new Auth account receives the safe `member` role by default. Apply the migrations before using the dashboard. Run `npm run contentful:migrate` with a server-only Management token after confirming the space and locale. Configure Contentful webhooks to call `/.netlify/functions/cms-sync` with the `x-contentful-webhook-secret` header. Scheduled Contentful reconciliation runs every six hours; publish retries and scheduled visibility changes run every five minutes.
 
-Public pages try configured Contentful and Supabase sources and retain cached/snapshot content as a fallback. The Live page loads recent public recordings from the channel feed and embeds the uploads playlist without an API key. Configure a server-side YouTube API key in Netlify to detect active broadcasts; do not put it in browser configuration.
+Public pages try configured Contentful and Supabase sources and retain cached/snapshot content as a fallback. The Live page displays channel recordings as cards and uses a server-side YouTube API key in Netlify for full, paginated uploads and live-broadcast detection. Without the key, it falls back to the 15 most recent public recordings from the channel feed. Never put the key in browser configuration.
 
 The browser values in root `site-config.js` must contain the public Supabase URL/anon key and Contentful space/environment/delivery token for live client-side requests. Configure provider values as Netlify environment variables so functions can publish and reconcile content. Never place the Supabase service-role key or a Contentful management token in browser configuration.
 
