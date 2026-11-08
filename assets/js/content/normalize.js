@@ -1,7 +1,7 @@
 const contentfulTypes = {
   sermons: 'sermons',
-  events: 'upcomingEvent',
-  leadership: 'leadershipProfile',
+  events: 'event',
+  leadership: 'leader',
   gallery: 'galleryImage',
   announcements: 'announcement',
   ministries: 'ministry',
@@ -70,6 +70,13 @@ function cleanUrl(raw) {
   }
 }
 
+function normalizeGroup(value) {
+  const text = String(value || '').toLowerCase();
+  if (text.includes('women')) return 'women';
+  if (text.includes('pastor')) return 'pastoral';
+  return 'lcc';
+}
+
 function normalizeFiles(fields, assets) {
   const linked = fieldValue(fields, 'powerpoint', 'files');
   const links = Array.isArray(linked) ? linked : linked ? [linked] : [];
@@ -92,6 +99,16 @@ function assetUrls(value, assets) {
   return values.map(item => cleanUrl(assetUrl(item, assets))).filter(Boolean);
 }
 
+function timeFromDateTime(value) {
+  const raw = String(value || '');
+  if (!/T\d{2}:\d{2}/.test(raw) || /T00:00/.test(raw)) return '';
+  const date = new Date(raw);
+  if (Number.isNaN(date.getTime())) return '';
+  return new Intl.DateTimeFormat('en-KE', {
+    timeZone: 'Africa/Nairobi', hour: 'numeric', minute: '2-digit', hour12: true
+  }).format(date).toUpperCase();
+}
+
 export function normalizeRecord(type, record, {source = 'supabase', assets = []} = {}) {
   const fields = record.fields || record;
   const id = record.sys?.id || record.id || '';
@@ -105,7 +122,7 @@ export function normalizeRecord(type, record, {source = 'supabase', assets = []}
     unpublishAt: fields.unpublishAt || record.unpublish_at || null,
     isPublished: fields.isPublished ?? record.is_published ?? true,
     locallyHidden: fields.locallyHidden ?? record.locally_hidden ?? false,
-    sortOrder: Number(fields.sortOrder ?? record.sort_order) || 0,
+    sortOrder: Number(fields.sortOrder ?? fields.displayOrder ?? record.sort_order) || 0,
     updatedAt: record.sys?.updatedAt || record.updated_at || record.created_at || ''
   };
 
@@ -121,9 +138,11 @@ export function normalizeRecord(type, record, {source = 'supabase', assets = []}
       const match = linked.find(item => assetUrl(item, assets) === file.url);
       return !pdfId || match?.sys?.id !== pdfId;
     });
-    const audio = fieldValue(fields, 'audio', 'audioFile', 'audioUrl', 'audio_url');
-    const preview = fieldValue(fields, 'previewImage', 'previewImageUrl', 'preview_image_url');
-    const video = fieldValue(fields, 'videoUrl', 'youtubeUrl', 'video_url');
+    const mediaUrl = String(fieldValue(fields, 'mediaUrl') || '');
+    const mediaIsAudio = /\.(mp3|m4a|wav|ogg|aac)(\?|#|$)/i.test(mediaUrl);
+    const audio = fieldValue(fields, 'audio', 'audioFile', 'audioUrl', 'audio_url') || (mediaIsAudio ? mediaUrl : '');
+    const preview = fieldValue(fields, 'previewImage', 'thumbnail', 'previewImageUrl', 'preview_image_url');
+    const video = fieldValue(fields, 'videoUrl', 'youtubeUrl', 'video_url') || (mediaIsAudio ? '' : mediaUrl);
     return {
       ...base,
       title: fieldValue(fields, 'title'),
@@ -148,15 +167,16 @@ export function normalizeRecord(type, record, {source = 'supabase', assets = []}
   }
 
   if (type === 'events') {
+    const eventDate = fieldValue(fields, 'date', 'startDate', 'event_date');
     return {
       ...base,
       title: fieldValue(fields, 'title'),
-      date: normalizeDate(fieldValue(fields, 'date', 'event_date')),
+      date: normalizeDate(eventDate),
       endDate: normalizeDate(fieldValue(fields, 'endDate', 'end_date')),
-      time: fieldValue(fields, 'time', 'event_time'),
-      location: fieldValue(fields, 'location'),
-      description: fieldValue(fields, 'description'),
-      flyerUrl: cleanUrl(typeof fields.flyer === 'string' ? fields.flyer : assetUrl(fields.flyer, assets) || fieldValue(fields, 'flyerUrl', 'flyer_url')),
+      time: fieldValue(fields, 'time', 'event_time') || timeFromDateTime(eventDate),
+      location: fieldValue(fields, 'location', 'locationName'),
+      description: fieldValue(fields, 'description', 'summary'),
+      flyerUrl: cleanUrl(typeof fields.flyer === 'string' ? fields.flyer : assetUrl(fields.flyer ?? fields.image, assets) || fieldValue(fields, 'flyerUrl', 'flyer_url')),
       flyerAlt: fieldValue(fields, 'flyerAlt', 'flyer_alt'),
       registrationUrl: cleanUrl(fieldValue(fields, 'registrationUrl', 'registration_url')),
       category: fieldValue(fields, 'category'),
@@ -168,13 +188,13 @@ export function normalizeRecord(type, record, {source = 'supabase', assets = []}
     const photo = fieldValue(fields, 'photo', 'photoUrl', 'photo_url');
     return {
       ...base,
-      group: String(fieldValue(fields, 'group', 'group_name') || 'lcc').toLowerCase(),
-      name: fieldValue(fields, 'name'),
+      group: normalizeGroup(fieldValue(fields, 'group', 'group_name', 'team')),
+      name: fieldValue(fields, 'name', 'fullName'),
       role: fieldValue(fields, 'role'),
       bio: fieldValue(fields, 'bio'),
       message: fieldValue(fields, 'message'),
       photoUrl: cleanUrl(typeof photo === 'string' ? photo : assetUrl(Array.isArray(photo) ? photo[0] : photo, assets)),
-      sortOrder: Number(fields.sortOrder ?? record.sort_order) || 0,
+      sortOrder: Number(fields.sortOrder ?? fields.displayOrder ?? record.sort_order) || 0,
       active: fields.active !== false
     };
   }
@@ -190,7 +210,7 @@ export function normalizeRecord(type, record, {source = 'supabase', assets = []}
       images,
       alt: fieldValue(fields, 'alt', 'imageAlt', 'image_alt') || '',
       caption: fieldValue(fields, 'caption', 'title'),
-      sortOrder: Number(fields.sortOrder ?? record.sort_order) || 0
+      sortOrder: Number(fields.sortOrder ?? fields.displayOrder ?? record.sort_order) || 0
     };
   }
 
@@ -211,14 +231,14 @@ export function normalizeRecord(type, record, {source = 'supabase', assets = []}
       ...base,
       name: fieldValue(fields, 'name', 'title'),
       category: fieldValue(fields, 'category'),
-      description: fieldValue(fields, 'description'),
+      description: fieldValue(fields, 'description', 'tagline'),
       leader: fieldValue(fields, 'leader'),
-      meetingTime: fieldValue(fields, 'meetingTime', 'meeting_time'),
+      meetingTime: fieldValue(fields, 'meetingTime', 'meeting_time', 'meetingSchedule'),
       contact: fieldValue(fields, 'contact'),
       joiningInformation: fieldValue(fields, 'joiningInformation', 'joining_information'),
       imageUrl: cleanUrl(typeof fields.image === 'string' ? fields.image : assetUrl(fields.image, assets) || fieldValue(fields, 'imageUrl', 'image_url')),
       acceptingApplications: Boolean(fieldValue(fields, 'acceptingApplications', 'accepting_applications')),
-      sortOrder: Number(fields.sortOrder ?? record.sort_order) || 0
+      sortOrder: Number(fields.sortOrder ?? fields.displayOrder ?? record.sort_order) || 0
     };
   }
 

@@ -9,14 +9,18 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const snapshotPath = path.join(root, 'content-snapshot.json');
 const types = ['sermons', 'events', 'leadership', 'gallery', 'announcements', 'ministries', 'service_times', 'settings'];
 const env = process.env;
+// The delivery token and space ID are public (they already live in site-config.js), so the build
+// falls back to that file when Netlify environment variables are not set.
+const siteConfigText = await readFile(path.join(root, 'site-config.js'), 'utf8').catch(() => '');
+const fromSiteConfig = key => siteConfigText.match(new RegExp(`${key}\\s*:\\s*["']([^"']+)["']`))?.[1];
 const config = {
   contentful: {
-    spaceId: env.CONTENTFUL_SPACE_ID,
-    environment: env.CONTENTFUL_ENV || env.CONTENTFUL_ENVIRONMENT || 'master',
-    deliveryToken: env.CONTENTFUL_DELIVERY_TOKEN
+    spaceId: env.CONTENTFUL_SPACE_ID || fromSiteConfig('spaceId'),
+    environment: env.CONTENTFUL_ENV || env.CONTENTFUL_ENVIRONMENT || fromSiteConfig('environment') || 'master',
+    deliveryToken: env.CONTENTFUL_DELIVERY_TOKEN || fromSiteConfig('deliveryToken')
   },
   supabase: {url: env.SUPABASE_URL, anonKey: env.SUPABASE_ANON_KEY},
-  content: {policy: env.CONTENT_POLICY || 'merge'}
+  content: {policy: env.CONTENT_POLICY || 'contentful-first'}
 };
 
 async function fetchContentful(type) {
@@ -119,6 +123,7 @@ if (!sources.length) {
     for (const result of results) {
       if (result.status === 'rejected') console.warn(`[snapshot] ${type} source failed: ${result.reason.message}`);
     }
+    console.log(`[snapshot] ${type}: ${successful.map(result => `${result.source}=${result.items.length}`).join(', ') || 'no source answered'}`);
     if (successful.length) {
       content[type] = mergeContent(
         successful.flatMap(result => result.items.map(item => ({...item, type}))),

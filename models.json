@@ -1,0 +1,2305 @@
+{
+  "contentTypes": [
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "em08252vzuh6"
+          }
+        },
+        "id": "sermons",
+        "type": "ContentType",
+        "createdAt": "2025-05-26T09:56:55.977Z",
+        "updatedAt": "2026-11-05T10:03:41.799Z",
+        "environment": {
+          "sys": {
+            "id": "Church-Website",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 11,
+        "publishedAt": "2026-11-05T10:03:41.799Z",
+        "firstPublishedAt": "2025-05-26T09:56:56.559Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "0GOMZNmYEU5uv8T6LAfiH5"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "0GOMZNmYEU5uv8T6LAfiH5"
+          }
+        },
+        "publishedCounter": 6,
+        "version": 12,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "0GOMZNmYEU5uv8T6LAfiH5"
+          }
+        },
+        "urn": "crn:contentful:::content:spaces/em08252vzuh6/environments/Church-Website/content_types/sermons"
+      },
+      "displayField": "title",
+      "name": "Sermons",
+      "description": "Stores sermons with title, preacher, date, and PowerPoint file",
+      "fields": [
+        {
+          "id": "title",
+          "name": "Title",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "preacher",
+          "name": "Preacher",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "date",
+          "name": "Sermon date",
+          "type": "Date",
+          "localized": false,
+          "required": true,
+          "validations": [
+          ],
+          "defaultValue": {
+            "en-US": "2025-01-01T00:00+03:00"
+          },
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "powerpoint",
+          "name": "Sermon files",
+          "type": "Array",
+          "localized": false,
+          "required": false,
+          "validations": [
+            {
+              "size": {
+                "max": 2
+              },
+              "message": "You can upload up to 2 files."
+            }
+          ],
+          "disabled": false,
+          "omitted": false,
+          "items": {
+            "type": "Link",
+            "validations": [
+              {
+                "linkMimetypeGroup": [
+                  "attachment",
+                  "presentation",
+                  "pdfdocument",
+                  "richtext",
+                  "plaintext",
+                  "audio",
+                  "video"
+                ],
+                "message": "Upload a PDF, PowerPoint, Word, audio (mp3) or video file."
+              }
+            ],
+            "linkType": "Asset"
+          }
+        },
+        {
+          "id": "thumbnail",
+          "name": "Thumbnail image",
+          "type": "Link",
+          "localized": false,
+          "required": false,
+          "validations": [
+            {
+              "linkMimetypeGroup": [
+                "image"
+              ]
+            }
+          ],
+          "disabled": false,
+          "omitted": false,
+          "linkType": "Asset"
+        },
+        {
+          "id": "scripture",
+          "name": "Scripture",
+          "type": "Symbol",
+          "localized": false,
+          "required": false,
+          "validations": [
+            {
+              "size": {
+                "max": 120
+              }
+            }
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "mediaUrl",
+          "name": "Video / audio link",
+          "type": "Symbol",
+          "localized": false,
+          "required": false,
+          "validations": [
+            {
+              "regexp": {
+                "pattern": "^https?://\\S+$"
+              },
+              "message": "Must start with http:// or https://"
+            }
+          ],
+          "disabled": false,
+          "omitted": false
+        }
+      ]
+    },
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "em08252vzuh6"
+          }
+        },
+        "id": "sermonVideos",
+        "type": "ContentType",
+        "createdAt": "2025-05-26T11:39:48.678Z",
+        "updatedAt": "2025-05-26T11:39:49.219Z",
+        "environment": {
+          "sys": {
+            "id": "Church-Website",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 1,
+        "publishedAt": "2025-05-26T11:39:49.219Z",
+        "firstPublishedAt": "2025-05-26T11:39:49.219Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "0GOMZNmYEU5uv8T6LAfiH5"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "0GOMZNmYEU5uv8T6LAfiH5"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 2,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "0GOMZNmYEU5uv8T6LAfiH5"
+          }
+        },
+        "urn": "crn:contentful:::content:spaces/em08252vzuh6/environments/Church-Website/content_types/sermonVideos"
+      },
+      "displayField": "title",
+      "name": "SermonVideos",
+      "description": "Youtube links of the videos for sermons",
+      "fields": [
+        {
+          "id": "title",
+          "name": "Title",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "youTubeLink",
+          "name": "YouTubeLink",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        }
+      ]
+    },
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "em08252vzuh6"
+          }
+        },
+        "id": "galleryImage",
+        "type": "ContentType",
+        "createdAt": "2025-05-26T14:28:47.773Z",
+        "updatedAt": "2025-05-26T14:36:36.126Z",
+        "environment": {
+          "sys": {
+            "id": "Church-Website",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 3,
+        "publishedAt": "2025-05-26T14:36:36.126Z",
+        "firstPublishedAt": "2025-05-26T14:28:48.473Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "0GOMZNmYEU5uv8T6LAfiH5"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "0GOMZNmYEU5uv8T6LAfiH5"
+          }
+        },
+        "publishedCounter": 2,
+        "version": 4,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "0GOMZNmYEU5uv8T6LAfiH5"
+          }
+        },
+        "urn": "crn:contentful:::content:spaces/em08252vzuh6/environments/Church-Website/content_types/galleryImage"
+      },
+      "displayField": "title",
+      "name": "galleryImage",
+      "description": "about images in the carousel",
+      "fields": [
+        {
+          "id": "title",
+          "name": "title",
+          "type": "Symbol",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "img",
+          "name": "image",
+          "type": "Array",
+          "localized": false,
+          "required": true,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false,
+          "items": {
+            "type": "Link",
+            "validations": [
+              {
+                "linkMimetypeGroup": [
+                  "image"
+                ],
+                "message": "Make sure it's in the correct image format!"
+              }
+            ],
+            "linkType": "Asset"
+          }
+        }
+      ]
+    },
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "em08252vzuh6"
+          }
+        },
+        "id": "ccaImages",
+        "type": "ContentType",
+        "createdAt": "2025-05-30T10:49:48.108Z",
+        "updatedAt": "2025-05-30T10:49:49.828Z",
+        "environment": {
+          "sys": {
+            "id": "Church-Website",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 1,
+        "publishedAt": "2025-05-30T10:49:49.828Z",
+        "firstPublishedAt": "2025-05-30T10:49:49.828Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "0GOMZNmYEU5uv8T6LAfiH5"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "0GOMZNmYEU5uv8T6LAfiH5"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 2,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "0GOMZNmYEU5uv8T6LAfiH5"
+          }
+        },
+        "urn": "crn:contentful:::content:spaces/em08252vzuh6/environments/Church-Website/content_types/ccaImages"
+      },
+      "displayField": "title",
+      "name": "CCA Images",
+      "description": "Chapel community church images in the carousel",
+      "fields": [
+        {
+          "id": "title",
+          "name": "title",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "image",
+          "name": "image",
+          "type": "Array",
+          "localized": false,
+          "required": true,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false,
+          "items": {
+            "type": "Link",
+            "validations": [
+            ],
+            "linkType": "Asset"
+          }
+        },
+        {
+          "id": "order",
+          "name": "order",
+          "type": "Integer",
+          "localized": false,
+          "required": true,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        }
+      ]
+    },
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "em08252vzuh6"
+          }
+        },
+        "id": "upcomingEvent",
+        "type": "ContentType",
+        "createdAt": "2026-11-02T21:12:54.801Z",
+        "updatedAt": "2026-11-02T21:12:55.545Z",
+        "environment": {
+          "sys": {
+            "id": "Church-Website",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 1,
+        "publishedAt": "2026-11-02T21:12:55.545Z",
+        "firstPublishedAt": "2026-11-02T21:12:55.545Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "0GOMZNmYEU5uv8T6LAfiH5"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "0GOMZNmYEU5uv8T6LAfiH5"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 2,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "0GOMZNmYEU5uv8T6LAfiH5"
+          }
+        },
+        "urn": "crn:contentful:::content:spaces/em08252vzuh6/environments/Church-Website/content_types/upcomingEvent"
+      },
+      "displayField": "title",
+      "name": "Upcoming event",
+      "description": "Church events that display on the website.",
+      "fields": [
+        {
+          "id": "title",
+          "name": "Event title",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "slug",
+          "name": "URL slug",
+          "type": "Symbol",
+          "localized": false,
+          "required": false,
+          "validations": [
+            {
+              "unique": true
+            }
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "date",
+          "name": "Event date",
+          "type": "Date",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "endDate",
+          "name": "Event end date",
+          "type": "Date",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "time",
+          "name": "Time",
+          "type": "Symbol",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "location",
+          "name": "Location",
+          "type": "Symbol",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        }
+      ]
+    },
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "em08252vzuh6"
+          }
+        },
+        "id": "leadershipProfile",
+        "type": "ContentType",
+        "createdAt": "2026-11-02T21:15:04.353Z",
+        "updatedAt": "2026-11-02T21:37:23.401Z",
+        "environment": {
+          "sys": {
+            "id": "Church-Website",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 5,
+        "publishedAt": "2026-11-02T21:37:23.401Z",
+        "firstPublishedAt": "2026-11-02T21:15:05.179Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "0GOMZNmYEU5uv8T6LAfiH5"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "0GOMZNmYEU5uv8T6LAfiH5"
+          }
+        },
+        "publishedCounter": 3,
+        "version": 6,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "0GOMZNmYEU5uv8T6LAfiH5"
+          }
+        },
+        "urn": "crn:contentful:::content:spaces/em08252vzuh6/environments/Church-Website/content_types/leadershipProfile"
+      },
+      "displayField": "name",
+      "name": "Leadership profile",
+      "description": "LCC, women and pastoral leadership profiles shown on the church website.",
+      "fields": [
+        {
+          "id": "name",
+          "name": "Name",
+          "type": "Symbol",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "group",
+          "name": "Leadership group",
+          "type": "Symbol",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "role",
+          "name": "Role",
+          "type": "Symbol",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "bio",
+          "name": "Biography",
+          "type": "Symbol",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "message",
+          "name": "Leadership message",
+          "type": "Symbol",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "photoUrl",
+          "name": "Photo URL",
+          "type": "Symbol",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        }
+      ]
+    },
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "em08252vzuh6"
+          }
+        },
+        "id": "leadershipGroup",
+        "type": "ContentType",
+        "createdAt": "2026-11-05T08:26:52.808Z",
+        "updatedAt": "2026-11-05T08:27:03.910Z",
+        "environment": {
+          "sys": {
+            "id": "Church-Website",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 11,
+        "publishedAt": "2026-11-05T08:27:03.910Z",
+        "firstPublishedAt": "2026-11-05T08:26:53.720Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "0GOMZNmYEU5uv8T6LAfiH5"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "0GOMZNmYEU5uv8T6LAfiH5"
+          }
+        },
+        "publishedCounter": 6,
+        "version": 12,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "0GOMZNmYEU5uv8T6LAfiH5"
+          }
+        },
+        "urn": "crn:contentful:::content:spaces/em08252vzuh6/environments/Church-Website/content_types/leadershipGroup"
+      },
+      "displayField": "title",
+      "name": "Leadership Group",
+      "description": "A group of leaders shown together on the About page: LCC, Women Ministry, Pastoral Team.",
+      "fields": [
+        {
+          "id": "title",
+          "name": "Group name",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [
+            {
+              "unique": true
+            },
+            {
+              "size": {
+                "max": 80
+              }
+            }
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "slug",
+          "name": "Slug",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [
+            {
+              "unique": true
+            },
+            {
+              "regexp": {
+                "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+              },
+              "message": "Lowercase letters, numbers and hyphens only"
+            }
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "sectionHeading",
+          "name": "Section heading",
+          "type": "Symbol",
+          "localized": false,
+          "required": false,
+          "validations": [
+            {
+              "size": {
+                "max": 120
+              }
+            }
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "introHeading",
+          "name": "Intro title",
+          "type": "Symbol",
+          "localized": false,
+          "required": false,
+          "validations": [
+            {
+              "size": {
+                "max": 120
+              }
+            }
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "introText",
+          "name": "Intro text",
+          "type": "RichText",
+          "localized": false,
+          "required": false,
+          "validations": [
+            {
+              "enabledMarks": [
+                "bold",
+                "italic",
+                "underline"
+              ],
+              "message": "Only bold, italic and underline are allowed"
+            },
+            {
+              "enabledNodeTypes": [
+                "heading-2",
+                "heading-3",
+                "unordered-list",
+                "ordered-list",
+                "hyperlink",
+                "blockquote"
+              ],
+              "message": "Only headings, lists, links and quotes are allowed"
+            }
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "displayOrder",
+          "name": "Display order",
+          "type": "Integer",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "defaultValue": {
+            "en-US": 10
+          },
+          "disabled": false,
+          "omitted": false
+        }
+      ]
+    },
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "em08252vzuh6"
+          }
+        },
+        "id": "leader",
+        "type": "ContentType",
+        "createdAt": "2026-11-05T08:27:05.136Z",
+        "updatedAt": "2026-11-05T10:03:33.331Z",
+        "environment": {
+          "sys": {
+            "id": "Church-Website",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 43,
+        "publishedAt": "2026-11-05T10:03:33.331Z",
+        "firstPublishedAt": "2026-11-05T08:27:05.789Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "0GOMZNmYEU5uv8T6LAfiH5"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "0GOMZNmYEU5uv8T6LAfiH5"
+          }
+        },
+        "publishedCounter": 22,
+        "version": 44,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "0GOMZNmYEU5uv8T6LAfiH5"
+          }
+        },
+        "urn": "crn:contentful:::content:spaces/em08252vzuh6/environments/Church-Website/content_types/leader"
+      },
+      "displayField": "fullName",
+      "name": "Leader",
+      "description": "A person in LCC, Women Ministry or the Pastoral Team.",
+      "fields": [
+        {
+          "id": "fullName",
+          "name": "Full name",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [
+            {
+              "size": {
+                "max": 120
+              }
+            }
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "role",
+          "name": "Role / title",
+          "type": "Symbol",
+          "localized": false,
+          "required": false,
+          "validations": [
+            {
+              "size": {
+                "max": 120
+              }
+            }
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "photo",
+          "name": "Photo",
+          "type": "Link",
+          "localized": false,
+          "required": false,
+          "validations": [
+            {
+              "linkMimetypeGroup": [
+                "image"
+              ]
+            }
+          ],
+          "disabled": false,
+          "omitted": false,
+          "linkType": "Asset"
+        },
+        {
+          "id": "bio",
+          "name": "Message / about",
+          "type": "Text",
+          "localized": false,
+          "required": false,
+          "validations": [
+            {
+              "size": {
+                "max": 3000
+              }
+            }
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "displayOrder",
+          "name": "Display order",
+          "type": "Integer",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "defaultValue": {
+            "en-US": 10
+          },
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "team",
+          "name": "Team",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [
+            {
+              "in": [
+                "LCC",
+                "Women Ministry",
+                "Pastoral Team"
+              ]
+            }
+          ],
+          "disabled": false,
+          "omitted": false
+        }
+      ]
+    },
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "em08252vzuh6"
+          }
+        },
+        "id": "ministry",
+        "type": "ContentType",
+        "createdAt": "2026-11-05T08:27:31.971Z",
+        "updatedAt": "2026-11-05T10:03:14.939Z",
+        "environment": {
+          "sys": {
+            "id": "Church-Website",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 65,
+        "publishedAt": "2026-11-05T10:03:14.939Z",
+        "firstPublishedAt": "2026-11-05T08:27:32.495Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "0GOMZNmYEU5uv8T6LAfiH5"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "0GOMZNmYEU5uv8T6LAfiH5"
+          }
+        },
+        "publishedCounter": 33,
+        "version": 66,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "0GOMZNmYEU5uv8T6LAfiH5"
+          }
+        },
+        "urn": "crn:contentful:::content:spaces/em08252vzuh6/environments/Church-Website/content_types/ministry"
+      },
+      "displayField": "name",
+      "name": "Ministry",
+      "description": "A church ministry shown on the Ministries page.",
+      "fields": [
+        {
+          "id": "name",
+          "name": "Ministry name",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [
+            {
+              "unique": true
+            },
+            {
+              "size": {
+                "max": 120
+              }
+            }
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "category",
+          "name": "Category",
+          "type": "Symbol",
+          "localized": false,
+          "required": false,
+          "validations": [
+            {
+              "in": [
+                "Children",
+                "Youth",
+                "Women",
+                "Men",
+                "Families",
+                "Worship & Music",
+                "Outreach & Missions",
+                "Prayer & Discipleship",
+                "Service & Support",
+                "Other"
+              ]
+            }
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "tagline",
+          "name": "Short description",
+          "type": "Text",
+          "localized": false,
+          "required": true,
+          "validations": [
+            {
+              "size": {
+                "max": 500
+              }
+            }
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "image",
+          "name": "Image",
+          "type": "Link",
+          "localized": false,
+          "required": false,
+          "validations": [
+            {
+              "linkMimetypeGroup": [
+                "image"
+              ]
+            }
+          ],
+          "disabled": false,
+          "omitted": false,
+          "linkType": "Asset"
+        },
+        {
+          "id": "joiningInformation",
+          "name": "How to join",
+          "type": "Text",
+          "localized": false,
+          "required": false,
+          "validations": [
+            {
+              "size": {
+                "max": 2000
+              }
+            }
+          ],
+          "disabled": false,
+          "omitted": false
+        }
+      ]
+    },
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "em08252vzuh6"
+          }
+        },
+        "id": "event",
+        "type": "ContentType",
+        "createdAt": "2026-11-05T08:27:58.236Z",
+        "updatedAt": "2026-11-05T10:02:40.168Z",
+        "environment": {
+          "sys": {
+            "id": "Church-Website",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 71,
+        "publishedAt": "2026-11-05T10:02:40.168Z",
+        "firstPublishedAt": "2026-11-05T08:27:58.849Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "0GOMZNmYEU5uv8T6LAfiH5"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "0GOMZNmYEU5uv8T6LAfiH5"
+          }
+        },
+        "publishedCounter": 36,
+        "version": 72,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "0GOMZNmYEU5uv8T6LAfiH5"
+          }
+        },
+        "urn": "crn:contentful:::content:spaces/em08252vzuh6/environments/Church-Website/content_types/event"
+      },
+      "displayField": "title",
+      "name": "Event",
+      "description": "An event card on the home page and in the hero ticker.",
+      "fields": [
+        {
+          "id": "title",
+          "name": "Event title",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [
+            {
+              "size": {
+                "max": 120
+              }
+            }
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "startDate",
+          "name": "Date and time",
+          "type": "Date",
+          "localized": false,
+          "required": true,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "locationName",
+          "name": "Venue",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [
+            {
+              "size": {
+                "max": 140
+              }
+            }
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "summary",
+          "name": "Short description",
+          "type": "Text",
+          "localized": false,
+          "required": true,
+          "validations": [
+            {
+              "size": {
+                "max": 300
+              }
+            }
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "image",
+          "name": "Flyer / poster / image",
+          "type": "Link",
+          "localized": false,
+          "required": false,
+          "validations": [
+            {
+              "linkMimetypeGroup": [
+                "image"
+              ]
+            }
+          ],
+          "disabled": false,
+          "omitted": false,
+          "linkType": "Asset"
+        }
+      ]
+    }
+  ],
+  "tags": [
+  ],
+  "editorInterfaces": [
+    {
+      "sys": {
+        "id": "default",
+        "type": "EditorInterface",
+        "space": {
+          "sys": {
+            "id": "em08252vzuh6",
+            "type": "Link",
+            "linkType": "Space"
+          }
+        },
+        "version": 14,
+        "createdAt": "2025-05-26T09:56:56.682Z",
+        "createdBy": {
+          "sys": {
+            "id": "0GOMZNmYEU5uv8T6LAfiH5",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "updatedAt": "2026-11-05T10:03:46.829Z",
+        "updatedBy": {
+          "sys": {
+            "id": "0GOMZNmYEU5uv8T6LAfiH5",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "id": "sermons",
+            "type": "Link",
+            "linkType": "ContentType"
+          }
+        },
+        "environment": {
+          "sys": {
+            "id": "Church-Website",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        }
+      },
+      "controls": [
+        {
+          "fieldId": "title",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "preacher",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "date",
+          "settings": {
+            "ampm": "24",
+            "format": "dateonly"
+          },
+          "widgetId": "datePicker",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "powerpoint",
+          "settings": {
+            "helpText": "Upload up to 2 files: PDF, PowerPoint, Word, mp3 or video. Optional if you add a link below."
+          },
+          "widgetId": "assetLinksEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "thumbnail",
+          "settings": {
+            "helpText": "Landscape (16:9) works best."
+          },
+          "widgetId": "assetLinkEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "thumbnailAlt",
+          "settings": {
+            "helpText": "Describe the picture for screen readers."
+          },
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "scripture",
+          "settings": {
+            "helpText": "e.g. John 3:16-21"
+          },
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "mediaUrl",
+          "settings": {
+            "helpText": "Optional. A YouTube, Vimeo or mp3 link."
+          },
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        }
+      ]
+    },
+    {
+      "sys": {
+        "id": "default",
+        "type": "EditorInterface",
+        "space": {
+          "sys": {
+            "id": "em08252vzuh6",
+            "type": "Link",
+            "linkType": "Space"
+          }
+        },
+        "version": 2,
+        "createdAt": "2025-05-26T11:39:49.351Z",
+        "createdBy": {
+          "sys": {
+            "id": "0GOMZNmYEU5uv8T6LAfiH5",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "updatedAt": "2025-05-26T11:39:50.249Z",
+        "updatedBy": {
+          "sys": {
+            "id": "0GOMZNmYEU5uv8T6LAfiH5",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "id": "sermonVideos",
+            "type": "Link",
+            "linkType": "ContentType"
+          }
+        },
+        "environment": {
+          "sys": {
+            "id": "Church-Website",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        }
+      },
+      "controls": [
+        {
+          "fieldId": "title",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "youTubeLink",
+          "settings": {
+            "helpText": "Enter the youtube link"
+          },
+          "widgetId": "urlEditor",
+          "widgetNamespace": "builtin"
+        }
+      ]
+    },
+    {
+      "sys": {
+        "id": "default",
+        "type": "EditorInterface",
+        "space": {
+          "sys": {
+            "id": "em08252vzuh6",
+            "type": "Link",
+            "linkType": "Space"
+          }
+        },
+        "version": 4,
+        "createdAt": "2025-05-26T14:28:48.616Z",
+        "createdBy": {
+          "sys": {
+            "id": "0GOMZNmYEU5uv8T6LAfiH5",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "updatedAt": "2025-05-26T14:36:37.105Z",
+        "updatedBy": {
+          "sys": {
+            "id": "0GOMZNmYEU5uv8T6LAfiH5",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "id": "galleryImage",
+            "type": "Link",
+            "linkType": "ContentType"
+          }
+        },
+        "environment": {
+          "sys": {
+            "id": "Church-Website",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        }
+      },
+      "controls": [
+        {
+          "fieldId": "title",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "img",
+          "widgetId": "assetGalleryEditor",
+          "widgetNamespace": "builtin"
+        }
+      ]
+    },
+    {
+      "sys": {
+        "id": "default",
+        "type": "EditorInterface",
+        "space": {
+          "sys": {
+            "id": "em08252vzuh6",
+            "type": "Link",
+            "linkType": "Space"
+          }
+        },
+        "version": 2,
+        "createdAt": "2025-05-30T10:49:49.979Z",
+        "createdBy": {
+          "sys": {
+            "id": "0GOMZNmYEU5uv8T6LAfiH5",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "updatedAt": "2025-05-30T10:49:51.205Z",
+        "updatedBy": {
+          "sys": {
+            "id": "0GOMZNmYEU5uv8T6LAfiH5",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "id": "ccaImages",
+            "type": "Link",
+            "linkType": "ContentType"
+          }
+        },
+        "environment": {
+          "sys": {
+            "id": "Church-Website",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        }
+      },
+      "controls": [
+        {
+          "fieldId": "title",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "image",
+          "widgetId": "assetLinksEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "order",
+          "widgetId": "numberEditor",
+          "widgetNamespace": "builtin"
+        }
+      ]
+    },
+    {
+      "sys": {
+        "id": "default",
+        "type": "EditorInterface",
+        "space": {
+          "sys": {
+            "id": "em08252vzuh6",
+            "type": "Link",
+            "linkType": "Space"
+          }
+        },
+        "version": 2,
+        "createdAt": "2026-11-02T21:12:55.661Z",
+        "createdBy": {
+          "sys": {
+            "id": "0GOMZNmYEU5uv8T6LAfiH5",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "updatedAt": "2026-11-02T21:12:56.748Z",
+        "updatedBy": {
+          "sys": {
+            "id": "0GOMZNmYEU5uv8T6LAfiH5",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "id": "upcomingEvent",
+            "type": "Link",
+            "linkType": "ContentType"
+          }
+        },
+        "environment": {
+          "sys": {
+            "id": "Church-Website",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        }
+      },
+      "controls": [
+        {
+          "fieldId": "title",
+          "settings": {
+            "helpText": "The name shown on the website."
+          },
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "slug",
+          "settings": {
+            "helpText": "A short, shareable address segment for this event."
+          },
+          "widgetId": "slugEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "date",
+          "settings": {
+            "ampm": "24",
+            "format": "timeZ",
+            "helpText": "Date and time the event begins."
+          },
+          "widgetId": "datePicker",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "endDate",
+          "widgetId": "datePicker",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "time",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "location",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        }
+      ]
+    },
+    {
+      "sys": {
+        "id": "default",
+        "type": "EditorInterface",
+        "space": {
+          "sys": {
+            "id": "em08252vzuh6",
+            "type": "Link",
+            "linkType": "Space"
+          }
+        },
+        "version": 6,
+        "createdAt": "2026-11-02T21:15:05.254Z",
+        "createdBy": {
+          "sys": {
+            "id": "0GOMZNmYEU5uv8T6LAfiH5",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "updatedAt": "2026-11-02T21:37:24.591Z",
+        "updatedBy": {
+          "sys": {
+            "id": "0GOMZNmYEU5uv8T6LAfiH5",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "id": "leadershipProfile",
+            "type": "Link",
+            "linkType": "ContentType"
+          }
+        },
+        "environment": {
+          "sys": {
+            "id": "Church-Website",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        }
+      },
+      "controls": [
+        {
+          "fieldId": "name",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "group",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "role",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "bio",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "message",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "photoUrl",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        }
+      ]
+    },
+    {
+      "sys": {
+        "id": "default",
+        "type": "EditorInterface",
+        "space": {
+          "sys": {
+            "id": "em08252vzuh6",
+            "type": "Link",
+            "linkType": "Space"
+          }
+        },
+        "version": 12,
+        "createdAt": "2026-11-05T08:26:53.825Z",
+        "createdBy": {
+          "sys": {
+            "id": "0GOMZNmYEU5uv8T6LAfiH5",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "updatedAt": "2026-11-05T08:27:04.593Z",
+        "updatedBy": {
+          "sys": {
+            "id": "0GOMZNmYEU5uv8T6LAfiH5",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "id": "leadershipGroup",
+            "type": "Link",
+            "linkType": "ContentType"
+          }
+        },
+        "environment": {
+          "sys": {
+            "id": "Church-Website",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        }
+      },
+      "controls": [
+        {
+          "fieldId": "title",
+          "settings": {
+            "helpText": "e.g. LCC, Women Ministry, Pastoral Team"
+          },
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "slug",
+          "settings": {
+            "helpText": "Used by the website to find this group. Use: lcc, women-ministry, pastoral-team.",
+            "trackingFieldId": "title"
+          },
+          "widgetId": "slugEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "sectionHeading",
+          "settings": {
+            "helpText": "Heading shown on the page, e.g. \"Our Elders & Church Leaders\"."
+          },
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "introHeading",
+          "settings": {
+            "helpText": "Optional, e.g. \"Empowering Women in Christ\"."
+          },
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "introText",
+          "settings": {
+            "helpText": "Optional paragraph(s) shown above the leaders."
+          },
+          "widgetId": "richTextEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "displayOrder",
+          "settings": {
+            "helpText": "Lower numbers appear first on the page."
+          },
+          "widgetId": "numberEditor",
+          "widgetNamespace": "builtin"
+        }
+      ]
+    },
+    {
+      "sys": {
+        "id": "default",
+        "type": "EditorInterface",
+        "space": {
+          "sys": {
+            "id": "em08252vzuh6",
+            "type": "Link",
+            "linkType": "Space"
+          }
+        },
+        "version": 37,
+        "createdAt": "2026-11-05T08:27:05.886Z",
+        "createdBy": {
+          "sys": {
+            "id": "0GOMZNmYEU5uv8T6LAfiH5",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "updatedAt": "2026-11-05T10:03:36.983Z",
+        "updatedBy": {
+          "sys": {
+            "id": "0GOMZNmYEU5uv8T6LAfiH5",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "id": "leader",
+            "type": "Link",
+            "linkType": "ContentType"
+          }
+        },
+        "environment": {
+          "sys": {
+            "id": "Church-Website",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        }
+      },
+      "controls": [
+        {
+          "fieldId": "fullName",
+          "settings": {
+            "helpText": "e.g. Dr. Stephine Mutie"
+          },
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "slug",
+          "settings": {
+            "trackingFieldId": "fullName"
+          },
+          "widgetId": "slugEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "group",
+          "settings": {
+            "helpText": "Choose LCC, Women Ministry or Pastoral Team."
+          },
+          "widgetId": "entryLinkEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "role",
+          "settings": {
+            "helpText": "e.g. Chairman, Secretary, LCC Member, Senior Pastor. Leave empty for Women Ministry."
+          },
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "photo",
+          "settings": {
+            "helpText": "Optional. If empty, the website shows an icon."
+          },
+          "widgetId": "assetLinkEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "bio",
+          "settings": {
+            "helpText": "Optional. Mainly the Senior Pastor welcome message."
+          },
+          "widgetId": "multipleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "message",
+          "settings": {
+            "helpText": "Mainly for the Senior Pastor welcome message. Leave empty for others."
+          },
+          "widgetId": "richTextEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "isLead",
+          "settings": {
+            "helpText": "Show this person large, with photo and message (use for the Senior Pastor)."
+          },
+          "widgetId": "boolean",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "email",
+          "settings": {
+            "helpText": "Optional. Only fill in if the person agrees to have it public."
+          },
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "displayOrder",
+          "settings": {
+            "helpText": "Lower numbers appear first inside the team."
+          },
+          "widgetId": "numberEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "team",
+          "settings": {
+            "helpText": "Which group does this person belong to?"
+          },
+          "widgetId": "dropdown",
+          "widgetNamespace": "builtin"
+        }
+      ]
+    },
+    {
+      "sys": {
+        "id": "default",
+        "type": "EditorInterface",
+        "space": {
+          "sys": {
+            "id": "em08252vzuh6",
+            "type": "Link",
+            "linkType": "Space"
+          }
+        },
+        "version": 47,
+        "createdAt": "2026-11-05T08:27:32.589Z",
+        "createdBy": {
+          "sys": {
+            "id": "0GOMZNmYEU5uv8T6LAfiH5",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "updatedAt": "2026-11-05T10:03:16.119Z",
+        "updatedBy": {
+          "sys": {
+            "id": "0GOMZNmYEU5uv8T6LAfiH5",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "id": "ministry",
+            "type": "Link",
+            "linkType": "ContentType"
+          }
+        },
+        "environment": {
+          "sys": {
+            "id": "Church-Website",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        }
+      },
+      "controls": [
+        {
+          "fieldId": "slug",
+          "settings": {
+            "trackingFieldId": "name"
+          },
+          "widgetId": "slugEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "category",
+          "settings": {
+            "helpText": "Used to group and filter ministries."
+          },
+          "widgetId": "dropdown",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "tagline",
+          "settings": {
+            "helpText": "What this ministry is about (shown on the card)."
+          },
+          "widgetId": "multipleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "description",
+          "settings": {
+            "helpText": "Shown when someone opens the ministry."
+          },
+          "widgetId": "richTextEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "image",
+          "settings": {
+            "helpText": "Landscape (16:9), at least 1200 x 675 px."
+          },
+          "widgetId": "assetLinkEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "imageAlt",
+          "settings": {
+            "helpText": "Describe the picture for screen readers."
+          },
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "meetingSchedule",
+          "settings": {
+            "helpText": "e.g. Sundays 2:00 PM, or First Saturday monthly."
+          },
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "leaders",
+          "settings": {
+            "helpText": "Optional. Pick from the Leader entries."
+          },
+          "widgetId": "entryLinksEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "joiningInformation",
+          "settings": {
+            "helpText": "Meeting times, contact person, how to sign up."
+          },
+          "widgetId": "multipleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "acceptingMembers",
+          "settings": {
+            "helpText": "Turn off to hide the \"Join\" button."
+          },
+          "widgetId": "boolean",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "contactPhone",
+          "settings": {
+            "helpText": "e.g. +254 7XX XXX XXX"
+          },
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "displayOrder",
+          "settings": {
+            "helpText": "Lower numbers appear first."
+          },
+          "widgetId": "numberEditor",
+          "widgetNamespace": "builtin"
+        }
+      ]
+    },
+    {
+      "sys": {
+        "id": "default",
+        "type": "EditorInterface",
+        "space": {
+          "sys": {
+            "id": "em08252vzuh6",
+            "type": "Link",
+            "linkType": "Space"
+          }
+        },
+        "version": 53,
+        "createdAt": "2026-11-05T08:27:58.949Z",
+        "createdBy": {
+          "sys": {
+            "id": "0GOMZNmYEU5uv8T6LAfiH5",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "updatedAt": "2026-11-05T10:02:42.409Z",
+        "updatedBy": {
+          "sys": {
+            "id": "0GOMZNmYEU5uv8T6LAfiH5",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "id": "event",
+            "type": "Link",
+            "linkType": "ContentType"
+          }
+        },
+        "environment": {
+          "sys": {
+            "id": "Church-Website",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        }
+      },
+      "controls": [
+        {
+          "fieldId": "slug",
+          "settings": {
+            "trackingFieldId": "title"
+          },
+          "widgetId": "slugEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "category",
+          "widgetId": "dropdown",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "startDate",
+          "settings": {
+            "format": "timeZ",
+            "helpText": "Pick the date, then the start time."
+          },
+          "widgetId": "datePicker",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "endDate",
+          "settings": {
+            "format": "timeZ",
+            "helpText": "Optional. Leave empty for single-time events."
+          },
+          "widgetId": "datePicker",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "locationName",
+          "settings": {
+            "helpText": "e.g. Main Sanctuary"
+          },
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "mapLink",
+          "settings": {
+            "helpText": "Optional Google Maps link."
+          },
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "summary",
+          "settings": {
+            "helpText": "Shown on the event card (max 300 characters)."
+          },
+          "widgetId": "multipleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "description",
+          "settings": {
+            "helpText": "Optional longer details."
+          },
+          "widgetId": "richTextEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "image",
+          "settings": {
+            "helpText": "Upload the flyer, poster or a photo. Landscape (16:9) works best."
+          },
+          "widgetId": "assetLinkEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "ministry",
+          "settings": {
+            "helpText": "Optional."
+          },
+          "widgetId": "entryLinkEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "buttonLabel",
+          "settings": {
+            "helpText": "Text on the card button, e.g. Remind me, Register, RSVP."
+          },
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "buttonUrl",
+          "settings": {
+            "helpText": "Optional registration or calendar link. If empty, the site uses its reminder behaviour."
+          },
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "showInTicker",
+          "settings": {
+            "helpText": "Adds this event to the \"Happening soon\" bubble at the top of the home page."
+          },
+          "widgetId": "boolean",
+          "widgetNamespace": "builtin"
+        }
+      ]
+    }
+  ],
+  "locales": [
+    {
+      "code": "en-US",
+      "name": "English (United States)",
+      "default": true,
+      "optional": false,
+      "fallbackCode": null,
+      "contentManagementApi": true,
+      "contentDeliveryApi": true,
+      "internal_code": "en-US",
+      "sys": {
+        "id": "53xzHmNJrOOF3Dx2FFoksb",
+        "type": "Locale",
+        "version": 1,
+        "space": {
+          "sys": {
+            "type": "Link",
+            "id": "em08252vzuh6",
+            "linkType": "Space"
+          }
+        },
+        "environment": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Environment",
+            "id": "Church-Website"
+          }
+        },
+        "createdAt": "2025-05-26T10:17:24Z",
+        "updatedAt": "2025-05-26T10:17:24Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "id": "0GOMZNmYEU5uv8T6LAfiH5",
+            "linkType": "User"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "id": "0GOMZNmYEU5uv8T6LAfiH5",
+            "linkType": "User"
+          }
+        }
+      }
+    }
+  ],
+  "releases": [
+  ],
+  "designTokens": [
+  ],
+  "components": [
+  ],
+  "experienceTemplates": [
+  ],
+  "dataAssemblies": [
+  ],
+  "experienceFragments": [
+  ],
+  "experiences": [
+  ]
+}

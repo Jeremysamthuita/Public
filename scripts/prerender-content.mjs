@@ -78,7 +78,7 @@ function renderEvent(item) {
   const flyer = flyerUrl
     ? `<img src="${escapeHtml(flyerUrl)}" alt="${escapeHtml(item.flyerAlt || `${item.title} event flyer`)}" width="640" height="400" loading="lazy" decoding="async">`
     : '';
-  return `<article class="event-card">${flyer}<div class="event-card-content"><p class="event-date">${escapeHtml([formattedDate(item.date), item.time].filter(Boolean).join(' · '))}</p><h3>${title}</h3>${item.description ? `<p>${escapeHtml(item.description)}</p>` : ''}${reminder}</div></article>`;
+  return `<article class="event-card">${flyer}<div class="event-card-content"><p class="event-date">${escapeHtml([formattedDate(item.date), item.time].filter(Boolean).join(' · '))}</p><h3>${title}</h3>${item.location ? `<p class=\"event-venue\">📍 ${escapeHtml(item.location)}</p>` : ''}${item.description ? `<p>${escapeHtml(item.description)}</p>` : ''}${reminder}</div></article>`;
 }
 
 export function renderServiceTimes(items) {

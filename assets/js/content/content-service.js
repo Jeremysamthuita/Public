@@ -83,6 +83,11 @@ function hiddenGroupKey(item) {
 }
 
 export function mergeContent(items, policy = 'merge') {
+  // contentful-first: when Contentful has published entries of this type, show only those.
+  // If Contentful has none (or could not be reached), fall back to Supabase as before.
+  if (policy === 'contentful-first' && items.some(item => item.source === 'contentful')) {
+    items = items.filter(item => item.source === 'contentful');
+  }
   const priority = policy === 'supabase-first' ? ['supabase', 'contentful'] : ['contentful', 'supabase'];
   const hidden = new Set(items
     .filter(item => item.source === 'contentful' && item.locallyHidden)

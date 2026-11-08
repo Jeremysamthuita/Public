@@ -41,6 +41,10 @@ To run and open the website locally:
 
 The Netlify development server serves the website and its local functions at `http://localhost:8888`. Copy `.env.example` to `.env` and set only local/test credentials. The local Supabase config is in `supabase/config.toml`; start it with `supabase start` and apply migrations with `supabase db push`.
 
+### Supabase tools in VS Code
+
+The workspace config in `.vscode/mcp.json` connects VS Code's MCP-capable chat tools to the Supabase project used by this site. Open the workspace in VS Code and authenticate with Supabase when prompted; OAuth grants access through your Supabase account, so no personal access token or service-role key belongs in this repository. The server is scoped to this project, and its tools can perform Supabase operations, including changes to the database. Review proposed operations before approving them.
+
 Build and run checks:
 
 ```powershell
