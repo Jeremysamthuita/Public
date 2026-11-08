@@ -184,6 +184,13 @@ async function refreshFromProviders(type) {
   const sources = [...new Set(fulfilled.map(result => result.provider))];
   const previousCache = readCache(type);
   const previous = previousCache?.items || [];
+  const contentfulConfigured = Boolean(settings.contentful?.spaceId && settings.contentful?.environment &&
+    settings.contentful?.deliveryToken) && (!mode || mode === 'contentful');
+  if (policy === 'contentful-first' && contentfulConfigured && !sources.includes('contentful') &&
+      previous.some(item => item.source === 'contentful')) {
+    lastSources.set(type, 'cache');
+    return previous.filter(item => isVisible(item));
+  }
   const changed = JSON.stringify(previous) !== JSON.stringify(merged);
   writeCache(type, merged);
   lastSources.set(type, sources.length > 1 ? 'merged' : sources[0]);

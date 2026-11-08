@@ -49,6 +49,13 @@ if (copyrightYear) copyrightYear.textContent = new Date().getFullYear();
                 title.textContent = event.title;
                 content.appendChild(title);
 
+                if (event.location) {
+                    const venue = document.createElement('p');
+                    venue.className = 'event-venue';
+                    venue.textContent = `\u{1F4CD} ${event.location}`;
+                    content.appendChild(venue);
+                }
+
                 if (event.description) {
                     const description = document.createElement('p');
                     description.textContent = event.description;
@@ -77,7 +84,7 @@ if (copyrightYear) copyrightYear.textContent = new Date().getFullYear();
             }
         }
 
-        renderUpcomingEvents(window.upcomingEvents);
+        if (window.upcomingEvents.length) renderUpcomingEvents(window.upcomingEvents);
         window.addEventListener('aic:content-updated', event => {
             if (event.detail?.type === 'events') loadUpcomingEvents();
         });
@@ -315,4 +322,3 @@ if (copyrightYear) copyrightYear.textContent = new Date().getFullYear();
             // Handled dynamically by assets/js/main-app.js
             loadAboutGallery();
         });
-    
