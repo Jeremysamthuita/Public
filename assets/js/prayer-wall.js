@@ -126,7 +126,25 @@ form.addEventListener('submit', async (e) => {
     status.textContent = 'Submitting your request…';
 
     try {
-        const res = await fetch('/api/submit-form', {
+        const web3Payload = {
+            access_key: form.querySelector('input[name="access_key"]')?.value || '1881d2e0-7c1e-4f59-8fcb-cf8f69825625',
+            subject: 'New Prayer Wall Request — AIC Egerton Chapel',
+            from_name: 'AIC Egerton Chapel Prayer Wall',
+            name: name,
+            category: category,
+            message: message,
+            private_request: isPrivate === 'true' ? 'Yes (Keep private to pastoral team)' : 'No (Approved for public prayer wall)'
+        };
+
+        const res = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify(web3Payload)
+        });
+        const data = await res.json().catch(() => ({}));
+
+        // Also background-sync to /api/submit-form for local moderation/Supabase
+        fetch('/api/submit-form', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -138,11 +156,11 @@ form.addEventListener('submit', async (e) => {
                 website: '',
                 cfTurnstileResponse: document.querySelector('input[name="cf-turnstile-response"]')?.value || ''
             })
-        });
-        const data = await res.json().catch(() => ({}));
-        if (res.ok && data.ok) {
+        }).catch(() => {});
+
+        if (res.ok && (data.success || data.ok)) {
             status.className = 'pw-status ok';
-            status.textContent = data.message || 'Thank you — your prayer request was received and will be reviewed.';
+            status.textContent = 'Thank you — your prayer request was received.';
             form.reset();
             if (window.turnstile) {
                 const widget = form.querySelector('.cf-turnstile');

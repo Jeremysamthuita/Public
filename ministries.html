@@ -1077,7 +1077,10 @@
             <div class="modal-content">
                 <button type="button" class="close" data-action="join-close" aria-label="Close dialog">&times;</button>
                 <h2 id="joinModalTitle">Join a Ministry</h2>
-                <form id="joinForm" class="google-mail-form" data-status-id="ministryFormStatus" method="post">
+                <form id="joinForm" class="google-mail-form" action="https://api.web3forms.com/submit" method="POST" data-status-id="ministryFormStatus">
+                    <input type="hidden" name="access_key" value="1881d2e0-7c1e-4f59-8fcb-cf8f69825625">
+                    <input type="hidden" name="subject" value="New Ministry Application — AIC Egerton Chapel">
+                    <input type="hidden" name="from_name" value="AIC Egerton Chapel Ministry Form">
                     <input type="hidden" name="formType" value="ministry">
                     <div class="form-honeypot" aria-hidden="true">
                         <label for="ministryWebsite">Leave this field empty</label>

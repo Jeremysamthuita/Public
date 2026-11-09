@@ -176,7 +176,11 @@
         </section>
 
         <div class="pw-layout">
-            <form class="pw-form" id="prayerForm" novalidate>
+            <form class="pw-form" id="prayerForm" action="https://api.web3forms.com/submit" method="POST" novalidate>
+                <input type="hidden" name="access_key" value="1881d2e0-7c1e-4f59-8fcb-cf8f69825625">
+                <input type="hidden" name="subject" value="New Prayer Wall Submission — AIC Egerton Chapel">
+                <input type="hidden" name="from_name" value="AIC Egerton Chapel Prayer Wall">
+                <input type="hidden" name="formType" value="prayer">
                 <h2>Share a prayer request</h2>
                 <p>Your request is reviewed by our pastoral team before being published.</p>
 

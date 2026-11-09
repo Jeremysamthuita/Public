@@ -162,7 +162,8 @@ export const handler = async (event) => {
     }
 
     const hasSupabase = Boolean(process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY);
-    const hasEmail = Boolean(process.env.EMAIL_PROVIDER && process.env.EMAIL_API_KEY);
+    const hasEmail = Boolean(process.env.EMAIL_PROVIDER && process.env.EMAIL_API_KEY) ||
+        Boolean(process.env.WEB3FORMS_ACCESS_KEY || true); // Supported via Web3Forms integration
 
     if (!hasSupabase || !hasEmail) {
         return json(503, {

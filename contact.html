@@ -1310,7 +1310,10 @@
 
             <section class="contact-form-panel" aria-labelledby="prayer-form-heading">
                 <h2 id="prayer-form-heading">Prayer Requests</h2>
-                <form class="google-mail-form contact-form" data-status-id="prayerFormStatus" method="post">
+                <form class="google-mail-form contact-form" action="https://api.web3forms.com/submit" method="POST" data-status-id="prayerFormStatus">
+                    <input type="hidden" name="access_key" value="1881d2e0-7c1e-4f59-8fcb-cf8f69825625">
+                    <input type="hidden" name="subject" value="New Prayer Request — AIC Egerton Chapel">
+                    <input type="hidden" name="from_name" value="AIC Egerton Chapel Prayer Form">
                     <input type="hidden" name="formType" value="prayer">
                     <div class="form-honeypot" aria-hidden="true">
                         <label for="prayerWebsite">Leave this field empty</label>
@@ -1346,7 +1349,9 @@
 
             <section class="contact-form-panel" aria-labelledby="contact-form-heading">
                 <h2 id="contact-form-heading">Contact Form</h2>
-                <form class="google-mail-form contact-form" data-status-id="generalFormStatus" method="post">
+                <form class="google-mail-form contact-form" action="https://api.web3forms.com/submit" method="POST" data-status-id="generalFormStatus">
+                    <input type="hidden" name="access_key" value="1881d2e0-7c1e-4f59-8fcb-cf8f69825625">
+                    <input type="hidden" name="from_name" value="AIC Egerton Chapel Contact Form">
                     <input type="hidden" name="formType" value="contact">
                     <div class="form-honeypot" aria-hidden="true">
                         <label for="generalWebsite">Leave this field empty</label>
@@ -1354,7 +1359,7 @@
                     </div>
                     <div class="contact-field">
                         <label for="generalName">Name *</label>
-                        <input type="text" name="from_name" id="generalName" placeholder="Your full name" autocomplete="name" required>
+                        <input type="text" name="name" id="generalName" placeholder="Your full name" autocomplete="name" required>
                     </div>
                     <div class="contact-field">
                         <label for="generalPhone">Phone Number *</label>
@@ -1362,7 +1367,7 @@
                     </div>
                     <div class="contact-field">
                         <label for="generalEmail">Email *</label>
-                        <input type="email" name="from_email" id="generalEmail" placeholder="you@example.com" autocomplete="email" required>
+                        <input type="email" name="email" id="generalEmail" placeholder="you@example.com" autocomplete="email" required>
                     </div>
                     <div class="contact-field">
                         <label for="generalCategory">Ministry Category *</label>

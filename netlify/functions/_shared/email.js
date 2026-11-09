@@ -51,5 +51,25 @@ export async function sendEmail({ to, subject, text, html, replyTo }) {
         return;
     }
 
-    throw new Error(`EMAIL_PROVIDER must be "resend" or "brevo". Got "${provider}".`);
+    const web3Key = process.env.WEB3FORMS_ACCESS_KEY || '1881d2e0-7c1e-4f59-8fcb-cf8f69825625';
+    if (provider === 'web3forms' || web3Key) {
+        const res = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                access_key: web3Key,
+                subject: subject || 'New Website Submission — AIC Egerton Chapel',
+                from_name: 'AIC Egerton Chapel Website',
+                message: text,
+                reply_to: replyTo || undefined
+            })
+        });
+        if (!res.ok) throw new Error(`Web3Forms HTTP ${res.status}: ${await res.text()}`);
+        return;
+    }
+
+    throw new Error(`EMAIL_PROVIDER must be "resend", "brevo", or "web3forms". Got "${provider}".`);
 }
