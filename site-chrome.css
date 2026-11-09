@@ -76,6 +76,19 @@ html {
   scroll-behavior: smooth;
 }
 
+/*
+ * Pre-render guard: hides the announcement section while JavaScript is
+ * assembling the DOM tree. The [data-loading] attribute is set synchronously
+ * when the <section> is first appended to <body>, and removed synchronously
+ * after replaceChildren() completes — so the card never shows as a bare
+ * unstyled element. The visibility:hidden approach (not display:none) keeps
+ * the element in the layout flow so there is no reflow when it appears.
+ */
+.cms-announcements[data-loading] {
+  visibility: hidden;
+  pointer-events: none;
+}
+
 .cms-announcements {
 position: fixed;
 z-index: 1200;

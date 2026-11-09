@@ -45,6 +45,9 @@ function renderAnnouncement(items) {
   } catch { /* dismissal is optional when storage is unavailable */ }
   if (!region) {
     region = document.createElement('section');
+    // Hide while building — prevents flash of bare unstyled element.
+    // The attribute is removed synchronously after replaceChildren() below.
+    region.setAttribute('data-loading', '');
     document.body.appendChild(region);
   }
   region.announcementCleanup?.();
@@ -146,6 +149,8 @@ function renderAnnouncement(items) {
   });
 
   region.replaceChildren(badge, close, viewport, footer);
+  // All children are in place — reveal the card in one paint.
+  region.removeAttribute('data-loading');
   showAnnouncement(0, false);
   startAutoplay();
   region.announcementCleanup = () => {
