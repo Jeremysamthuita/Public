@@ -6,7 +6,7 @@ const defaults = {
   phoneDisplay: "+254 799 522 418",
   locationText: "Egerton University, Njoro, Kenya",
   paybill: "522522",
-  accountNumber: "7506439",
+  accountNumber: "7506439#Offerings/ Tithes",
   youtubeChannelId: "UCUcpLiA7EYxKzcesFtlripg",
   turnstileSiteKey: "0x4AAAAAAFxF26mEmeMGQh_I",
   supabase: { url: "https://tdtvktdqtkfdvucqlzlg.supabase.co", anonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRkdHZrdGRxdGtmZHZ1Y3FsemxnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMxNjQ2MzEsImV4cCI6MjEwODc0MDYzMX0.hHlKzVlaAxXU5HHaYUheNAEnPvpN_X7UmOGOypoTams" },
@@ -19,7 +19,7 @@ const defaults = {
     snapshotUrl: "/content-snapshot.json"
   },
   mapsDirectionsUrl: "https://www.google.com/maps/dir/?api=1&destination=-0.3688216353133254%2C35.94114277582281",
-  mpesa: { stkEnabled: false, paybill: "522522", accountNumber: "7506439" }
+  mpesa: { stkEnabled: false, paybill: "522522", accountNumber: "7506439#Offerings/ Tithes" }
 };
 
 const browserConfig = typeof window !== "undefined" ? window.AIC_SITE_CONFIG : null;

@@ -52,7 +52,7 @@ Manual giving is always available:
 | M-Pesa field | Value |
 |---|---|
 | Paybill | 522522 |
-| Account | 7506439 |
+| Account |  7506439#Offerings/ Tithes|
 
 The website does not confirm manual payments. Verify manual donations against the Safaricom statement and confirmation details.
 

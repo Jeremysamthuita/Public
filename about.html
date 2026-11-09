@@ -900,11 +900,17 @@
         }
 
         .cms-leader-card {
+            display: flex;
+            min-height: 100%;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
             padding: 18px;
-            border: 1px solid #e8dfd2;
+            border: 1px solid #e5e7eb;
             border-radius: 12px;
             background: #fff;
             text-align: center;
+            box-shadow: 0 2px 6px rgba(15, 23, 42, .06);
         }
 
         .cms-leader-card img {
@@ -925,21 +931,33 @@
         }
 
         .cms-leader-role {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: .4rem;
             font-weight: 600;
         }
 
+        .cms-leader-role__icon { width: 1.1rem; height: 1.1rem; flex: 0 0 auto; fill: none; stroke: var(--green); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+
         .leader-card {
-            background-color: #fdf8f3;
+            display: flex;
+            min-height: 150px;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #e5e7eb;
+            background: #fff;
             border-radius: 12px;
             padding: 1.5rem;
             text-align: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, background 0.3s ease;
+            box-shadow: 0 2px 6px rgba(15, 23, 42, .06);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .leader-card:hover {
-            background-color: #fff7ef;
-            transform: scale(1.05);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 14px rgba(15, 23, 42, .1);
         }
 
         .leader-icon {
@@ -964,9 +982,9 @@
         /* Women Ministry */
         #women-ministry {
             padding: 2rem;
-            background-color: #fef8f8;
+            background-color: #fff;
             border-radius: 12px;
-            max-width: 1000px;
+            max-width: none;
             margin: 0 auto;
         }
 
@@ -1006,16 +1024,155 @@
             color: #444;
         }
 
-        .leaders-grid.women {
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        .women-leadership-quote {
+            position: relativeab;
+            width: 100%;
+            max-width: none;
+            box-sizing: border-box;
+            margin: 1.25rem 0 0;
+            padding: 1.4rem 1.6rem 1.2rem 2rem;
+            border-left: 3px solid #7e9c87;
+            border-radius: 0 12px 12px 0;
+            background: linear-gradient(110deg, #f5f8f5, #fff);
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #3a3a3a;
+        }
+
+        .women-leadership-quote p {
+            margin: .35rem 0;
+            font-size: .94rem;
+            line-height: 1.6;
+        }
+
+        .women-leadership-quote p:first-child { color: #2f5b43; }
+
+        .about-intro {
+            margin: -2rem -2rem 0;
+            overflow: hidden;
+            border: 1px solid #e7e5dc;
+            border-radius: 20px;
+            background: #fff;
+            box-shadow: 0 4px 18px rgba(38, 48, 42, .08);
+        }
+
+        .about-hero {
+            display: flex;
+            min-height: 270px;
+            flex-direction: column;
+            justify-content: center;
+            max-width: none;
+            margin: 0;
+            padding: clamp(2.25rem, 6vw, 4rem);
+            border: 0;
+            border-radius: 0;
+            background-image: linear-gradient(100deg, rgba(250, 250, 246, 0.027), rgba(22, 1, 1, 0.055) 55%, rgba(73, 2, 2, 0.342)), url('/theme.png');
+            background-position: center, center 43%;
+            background-size: cover;
+            box-shadow: none;
+            color: #243b32;
+        }
+
+        .about-hero:hover,
+        #history:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        .about-hero__eyebrow { color: #00d9ff !important; }
+        .about-hero h1 { color: #f6faf8; }
+        .about-hero__lead { color: #ffffff !important; }
+
+        #history {
+            margin: 0;
+            padding: 1.5rem clamp(1.25rem, 5vw, 3.25rem) 2rem;
+            border-top: 1px solid rgba(44, 62, 53, .1);
+            border-radius: 0;
+            background: rgba(255, 255, 255, .96);
+            box-shadow: none;
+        }
+
+        #history h2 { margin-bottom: .85rem; }
+
+        #mission ol {
+            margin: 1rem 0 0;
+            padding-left: 1.5rem;
+            list-style: decimal;
+        }
+
+        #mission ul {
+            margin: .35rem 0 0;
+            padding-left: 1.35rem;
+            list-style: disc;
+        }
+
+        #mission li {
+            padding-left: .2rem;
+        }
+
+        #mission li::before { content: none; }
+
+        .leadership-councils {
+            display: block;
+            padding: 1.5rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(15, 23, 42, .06);
+        }
+
+        .leadership-councils > h2 {
+            margin-bottom: 1.25rem;
+        }
+
+        .leadership-council-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            align-items: start;
+            gap: 1.5rem;
+        }
+
+        .council-category {
+            min-width: 0;
+        }
+
+        .council-category > h3 {
+            min-height: 3rem;
+            margin: 0;
+            padding: .8rem 1rem;
+            border-bottom: 1px solid #e5e7eb;
+            color: var(--maroon);
+            font-size: 1.1rem;
+            line-height: 1.4;
+            text-align: center;
+        }
+
+        .council-category .leaders-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-auto-rows: 150px;
+            align-content: start;
+            align-items: stretch;
+            gap: .75rem;
             margin-top: 2rem;
         }
+
+        .council-category .leader-card,
+        .council-category .leader-name {
+            height: 150px;
+            min-height: 150px;
+        }
+
+        .council-category .leader-card { padding: 1rem; }
 
         .leader-name {
             background: #fff;
             padding: 1rem;
+            min-height: 72px;
+            display: grid;
+            place-items: center;
+            border: 1px solid #e5e7eb;
             border-radius: 10px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 6px rgba(15, 23, 42, .06);
             text-align: center;
             font-weight: 500;
             font-size: 1rem;
@@ -1024,10 +1181,14 @@
 
         /* Pastoral Section */
         #pastoral {
-            max-width: 900px;
-            margin: 3rem auto;
-            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 1.5rem auto;
+            padding: 1.5rem;
             color: #4b4b4b;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(15, 23, 42, .06);
         }
 
         #pastoral h2 {
@@ -1038,42 +1199,114 @@
             font-weight: 700;
         }
 
-        .pastoral-content {
-            display: flex;
-            gap: 2.5rem;
-            align-items: flex-start;
-            flex-wrap: wrap;
+        .pastoral-leadership {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            align-items: stretch;
+            gap: 1rem;
+            margin-top: 1.25rem;
+        }
+
+        #pastoralLeaders:not([hidden]) { display: contents; }
+        #pastoral .cms-leader-card,
+        #pastoral .pastoral-content {
+            grid-column: 2;
+            grid-row: 1;
+            min-height: 100%;
             justify-content: center;
+            padding: 1.5rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 14px;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(15, 23, 42, .07);
         }
 
-        @media (max-width: 650px) {
-            .pastoral-content {
-                flex-direction: column;
-            }
-            
-            .pastoral-content img {
-                max-width: 100%;
-                margin-bottom: 20px;
-            }
-        }
+        #pastoral .cms-leader-card--former { grid-column: 1; grid-row: 1; }
+        #pastoral .cms-leader-card--current,
+        #pastoral .pastoral-content { grid-column: 2; grid-row: 1; }
+        #pastoral .cms-leader-card--founding { grid-column: 3; grid-row: 1; }
 
-        .pastoral-content img {
-            max-width: 300px;
-            width: 100%;
-            border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        #pastoral .pastoral-content img {
+            width: 150px;
+            height: 150px;
+            max-width: 100%;
+            margin: 0 auto .75rem;
+            border-radius: 50%;
+            border: 3px solid #f1f3f0;
+            box-shadow: none;
             object-fit: cover;
         }
 
-        .pastoral-message {
-            max-width: 500px;
+        .pastoral-current-role {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: .4rem;
+            min-height: 34px;
+            margin: .5rem 0 0;
+            padding: .3rem .8rem;
+            border: 1px solid #cfe2d4;
+            border-radius: 999px;
+            background: #edf6ef;
+            color: #286044;
+            font-size: .82rem;
+            font-weight: 700;
+        }
+
+        .pastoral-current-role svg { width: 1.1rem; height: 1.1rem; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+        #pastoral .pastoral-content h3 { margin: .25rem 0; color: var(--maroon); font-size: 1.15rem; }
+
+        #pastoral .pastoral-message {
+            position: relative;
+            width: 100%;
+            max-width: none;
+            box-sizing: border-box;
+            margin: 1.25rem 0 0;
+            padding: 1.4rem 1.6rem 1.2rem 2rem;
+            border-left: 3px solid #7e9c87;
+            border-radius: 0 12px 12px 0;
+            background: linear-gradient(110deg, #f5f8f5, #fff);
             font-size: 1.1rem;
             line-height: 1.7;
             color: #3a3a3a;
         }
 
-        .pastoral-message p {
+        #pastoral .pastoral-message footer {
+            margin-top: .75rem;
+            padding: 0;
+            border: 0;
+            background: transparent;
+            color: #52675a;
+            font-size: .95rem;
+            font-weight: 600;
+            text-align: left;
+        }
+        #pastoral .pastoral-message cite { font-style: normal; }
+
+        #pastoral .pastoral-message p {
             margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 900px) {
+            .leadership-council-grid { grid-template-columns: minmax(0, 1fr); }
+            .pastoral-leadership { grid-template-columns: minmax(0, 1fr); max-width: 560px; margin-inline: auto; }
+            #pastoral .cms-leader-card,
+            #pastoral .pastoral-content,
+            #pastoral .cms-leader-card--former,
+            #pastoral .cms-leader-card--current,
+            #pastoral .cms-leader-card--founding { grid-column: 1; grid-row: auto; }
+        }
+
+        @media (max-width: 500px) {
+            .about-intro { margin: -1.1rem -1.1rem 0; border-radius: 14px; }
+            .about-hero { min-height: 230px; padding: 1.5rem; }
+            #history { padding: 1.25rem 1.1rem 1.5rem; }
+            .leadership-councils, #pastoral { padding: 1rem; }
+            .leadership-council-grid { gap: 1rem; }
+            .council-category .leaders-grid { gap: .55rem; }
+            .council-category .leader-card,
+            .council-category .leader-name { padding: .8rem .55rem; font-size: .9rem; }
+            #pastoral .pastoral-message { padding: 1rem; font-size: 1rem; }
         }
 
         /* Footer */
@@ -1205,6 +1438,73 @@
             margin: 60px auto;
             padding: 0 20px;
             text-align: center;
+        }
+
+        .about-hero__eyebrow { margin: 0 0 .65rem; font-size: .82rem !important; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+        .about-hero h1 { max-width: 15ch; margin: 0; font-family: 'Poppins', sans-serif; font-size: clamp(2rem, 5vw, 3.6rem); font-weight: 600; line-height: 1.12; }
+        .about-hero__lead { max-width: 58ch; margin: 1rem 0 0 !important; font-size: 1.08rem !important; line-height: 1.7 !important; }
+
+        .purpose-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(240px, .8fr);
+            grid-template-areas: "mission vision" "mission motto";
+            gap: 1.25rem;
+        }
+
+        .purpose-grid #mission { grid-area: mission; }
+        .purpose-grid #vision { grid-area: vision; }
+        .purpose-grid #motto { grid-area: motto; }
+        .purpose-grid #motto p { font-family: 'Poppins', sans-serif; font-size: 1.2rem; }
+
+        #values .about-value-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+            gap: .85rem;
+            margin-top: 1.25rem;
+        }
+
+        #values .about-value-grid li {
+            display: grid;
+            grid-template-columns: 2rem minmax(0, 1fr);
+            align-items: start;
+            gap: .8rem;
+            min-height: 100%;
+            margin: 0;
+            padding: 1rem;
+            border: 1px solid #e7e8df;
+            border-radius: 12px;
+            background: #fff;
+        }
+
+        #values .about-value-grid li::before { content: none; }
+        .about-value-icon, .leader-icon, .section-heading-icon { width: 1.75rem; height: 1.75rem; fill: none; stroke: currentColor; stroke-width: 1.65; stroke-linecap: round; stroke-linejoin: round; }
+        .about-value-icon { margin-top: .12rem; color: #35705d; }
+        .about-value-copy { display: block; }
+        .about-value-copy strong { display: block; margin-bottom: .15rem; color: #2c3e50; font-size: 1rem; }
+        .about-value-copy span { display: block; color: #555; font-size: .93rem; line-height: 1.55; }
+
+        .leadership-group { display: grid; gap: 1.5rem; }
+        .leader-card { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 170px; }
+        .leader-icon { flex: 0 0 auto; margin-bottom: .55rem; }
+        .leader-card p { margin: 0; line-height: 1.55; }
+        .section-heading-icon { width: 1.6rem; height: 1.6rem; margin-right: .4rem; vertical-align: -.28rem; color: var(--green); }
+        .group-icon { width: 2.5rem; height: 2.5rem; flex: 0 0 auto; }
+
+        .about-other-ministries { margin: 1.5rem 0 0; text-align: center; }
+        .about-other-ministries a { display: inline-flex; min-height: 46px; align-items: center; gap: .55rem; padding: .65rem 1rem; border: 1px solid var(--maroon); border-radius: 999px; background: var(--maroon); color: #fff; font-weight: 600; text-decoration: none; transition: background .2s ease, transform .2s ease; }
+        .about-other-ministries a:hover { background: #5e1010; transform: translateY(-1px); }
+        .about-other-ministries a:focus-visible { outline: 3px solid #d59b28; outline-offset: 3px; }
+
+        .carousel { margin-top: 48px; }
+        .carousel h2 { color: var(--maroon); margin-bottom: .4rem; font-size: 2rem; font-weight: 600; }
+        .carousel .gallery-kicker { margin: 0 0 .35rem; color: #537365; font-size: .82rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+
+        @media (max-width: 720px) {
+            .about-intro { margin: -1.1rem -1.1rem 0; border-radius: 14px; }
+            .about-hero { min-height: 230px; padding: 1.5rem; }
+            #history { padding: 1.25rem 1.1rem 1.5rem; }
+            .container-about { margin: 18px 12px; padding: 1.1rem; gap: 1.25rem; }
+            .purpose-grid { grid-template-columns: minmax(0, 1fr); grid-template-areas: "mission" "vision" "motto"; }
         }
 
         /* Animations */
@@ -1469,9 +1769,151 @@
 <!--CHROME:HEADER:END-->
 <main id="main">
 
-    <!-- Carousel -->
+    <!-- About Content -->
+    <div class="container-about">
+        <div class="about-intro">
+            <section class="about-hero" aria-labelledby="aboutPageTitle">
+                <p class="about-hero__eyebrow">AIC Egerton Chapel · Njoro, Kenya</p>
+                <h1 id="aboutPageTitle">A community rooted in faith</h1>
+                <p class="about-hero__lead">Serving our community since April 2008 through worship, outreach, and discipleship.</p>
+            </section>
+            <section id="history">
+                <h2>Church History</h2>
+                <p>AIC Egerton Chapel was started in April 2008 through a merger of two like-minded groups of christians;
+                    one from AIC Lochorai and other from Egerton Community Chapel. This is mainstream church run by a Local Church Council
+                    (LCC), and held accountable by the DCC, RCC, ACC all the way to the CCC.
+                </p>
+                <p>The church recognizes the fact that the church's mission as the light of the world and salt of the earth is not only to provide
+                    the spiritual needs but also to take care of the physical needs of the world in its immediate vicinity as well as those of the
+                    world that she does not touch directly.
+                </p>
+                <p>Over the years, it has grown to become a beacon of faith, hope, and love, impacting countless lives through worship, outreach, and discipleship...</p>
+            </section>
+        </div>
+        
+        <div class="purpose-grid" aria-label="Mission, vision, and motto">
+            <section id="mission">
+                <h2>Mission</h2>
+                <p>To Know Christ, experience His power, and be true witnesses of christ in a fallen world according to <b>2 Timothy 2:2</b></p>
+                <ol>
+                    <li>Help people to know christ</li>
+                    <li>Help believers to experience the power of Christ</li>
+                    <li>Be the ambassadors of Christ on earth</li>
+                    <li>Fulfil the great commission by:
+                        <ul>
+                            <li>Reaching out to the lost</li>
+                            <li>Making disciples</li>
+                            <li>Teaching to obedience</li>
+                        </ul>
+                    </li>
+                </ol>
+            </section>
+            <section id="vision">
+                <h2>Vision</h2>
+                <p>To become a beacon of hope as Christ-centered church transforming lives through faith, love, and service, empowering generations to live out the Gospel and impact the world for God's Kingdom.</p>
+            </section>
+            <section id="motto">
+                <h2>Motto</h2>
+                <p><b>Becoming a Beacon of Hope</b></p>
+            </section>
+        </div>
+        
+        <section id="values">
+            <h2>Values</h2>
+            <ul class="about-value-grid">
+                <li><svg class="about-value-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 0 4 22z"/><path d="M4 5.5v16.5M8 7h8M8 11h7"/></svg><span class="about-value-copy"><strong>Biblical Foundation</strong><span> - Commitment to Scripture as our ultimate authority</span></span></li>
+                <li><svg class="about-value-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M6 8h12M8 8v4a4 4 0 0 0 8 0V8"/><path d="M5 8h14"/></svg><span class="about-value-copy"><strong>Christ-Centered Worship</strong><span> - Glorifying God in spirit and truth</span></span></li>
+                <li><svg class="about-value-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/><path d="m4 7 6-4 6 6 5-5"/></svg><span class="about-value-copy"><strong>Discipleship &amp; Spiritual Growth</strong><span> - Nurturing believers to maturity</span></span></li>
+                <li><svg class="about-value-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20v-1a6 6 0 0 1 12 0v1M16 5.5a3 3 0 0 1 0 5.8M18 14a5 5 0 0 1 3 4.5V20"/></svg><span class="about-value-copy"><strong>Community &amp; Fellowship</strong><span> - Building authentic relationships</span></span></li>
+                <li><svg class="about-value-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3.5 9h17M3.5 15h17M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg><span class="about-value-copy"><strong>Evangelism &amp; Outreach</strong><span> - Sharing the Gospel locally and globally</span></span></li>
+                <li><svg class="about-value-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11z"/><path d="m9 12 2 2 4-4"/></svg><span class="about-value-copy"><strong>Integrity &amp; Stewardship</strong><span> - Managing resources with accountability</span></span></li>
+                <li><svg class="about-value-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8z"/><path d="M7 12h3l1.5-2.5L14 15l1.5-3H18"/></svg><span class="about-value-copy"><strong>Compassion &amp; Service</strong><span> - Meeting needs with Christ-like love</span></span></li>
+            </ul>
+        </section>
+
+        <section class="leadership-group leadership-councils" id="elders">
+            <h2>Church Leadership Councils</h2>
+            <div class="leadership-council-grid">
+            <div class="council-category">
+            <h3>Local Church Council (LCC)</h3>
+            <div class="leaders-grid" id="lccLeaders">
+                <div class="leader-card male">
+                    <svg class="leader-icon role-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m3 9 2-5 4 3 3-4 3 4 4-3 2 5z"/><path d="M5 9v10h14V9M8 13h8M8 16h5"/></svg>
+                    <p><strong>Chairman</strong><br>Dr. Stephine Mutie</p>
+                </div>
+                <div class="leader-card male">
+                    <svg class="leader-icon role-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20v-1a6 6 0 0 1 12 0v1M17 8h5M19.5 5.5v5"/></svg>
+                    <p><strong>Vice Chairman</strong><br>Isaack Kariithi</p>
+                </div>
+                <div class="leader-card male">
+                    <svg class="leader-icon role-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 12h7M9 16h7"/></svg>
+                    <p><strong>Secretary</strong><br>Jonathan Mwangi Nduati</p>
+                </div>
+                <div class="leader-card male">
+                    <svg class="leader-icon role-icon" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v5c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 11v5c0 1.7 3.6 3 8 3 1.4 0 2.7-.2 3.8-.5"/><path d="M17 17h5M19.5 14.5v5"/></svg>
+                    <p><strong>Treasurer</strong><br>Patrick M. Mboma</p>
+                </div>
+                <div class="leader-card male">
+                    <svg class="leader-icon role-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M4 21a8 8 0 0 1 16 0M19 4v4M17 6h4"/></svg>
+                    <p><strong>LCC Member</strong><br>Richard Mose</p>
+                </div>
+                <div class="leader-card male">
+                    <svg class="leader-icon role-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V8l7-4 7 4v13M9 21v-6h6v6M8 10h.01M16 10h.01"/></svg>
+                    <p><strong>Development Chair</strong><br>Stephine Njogu</p>
+                </div>
+                <div class="leader-card male">
+                    <svg class="leader-icon role-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M4 21a8 8 0 0 1 16 0M19 4v4M17 6h4"/></svg>
+                    <p><strong>LCC Member</strong><br>Mutisya</p>
+                </div>
+                <div class="leader-card male">
+                    <svg class="leader-icon role-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M4 21a8 8 0 0 1 16 0M19 4v4M17 6h4"/></svg>
+                    <p><strong>LCC Member</strong><br>Githinji</p>
+                </div>
+            </div>
+            </div>
+
+            <div id="women-ministry" class="council-category">
+            <h3>Local Church Women Council (LCWC)</h3>
+            <div class="leaders-grid women" id="womenLeaders">
+                <div class="leader-name">Lily Mwangi</div>
+                <div class="leader-name">Esther Lugusi</div>
+                <div class="leader-name">Janet Owit</div>
+                <div class="leader-name">Aska Masita</div>
+                <div class="leader-name">Dr. Muthoka</div>
+                <div class="leader-name">Lucy Rwigi</div>
+                <div class="leader-name">Ms. Karithii</div>
+                <div class="leader-name">Philomena Kamau</div>
+            </div>
+            </div>
+                <blockquote class="women-leadership-quote">
+                <p><strong>Empowering Women in Christ</strong></p>
+                <p>United in faith, the Local Church Women Council (LCWC) serves as a cornerstone of AIC Egerton Chapel, mentoring and empowering women of all ages through prayer, discipleship, counsel, and fellowship.</p>
+             </blockquote>
+            </div>
+        </section>
+
+        <section id="pastoral">
+            <h2><svg class="section-heading-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="3.5"/><path d="M5 21v-2a7 7 0 0 1 14 0v2M12 3v8M9 6h6"/></svg>Pastoral Team</h2>
+            <div class="pastoral-leadership">
+                <article class="pastoral-content cms-leader-card cms-leader-card--current" id="pastoralFallback">
+                    <img src="/rev.JPG" alt="Rev. Dr. William Chesaine Kipkoros" />
+                    <h3>Rev. Dr. William Chesaine Kipkoros</h3>
+                    <span class="pastoral-current-role" aria-label="Current pastor"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 19 6v5c0 5-3 8-7 10-4-2-7-5-7-10V6l7-3Zm-3 9 2 2 4-4"/></svg>Current Pastor</span>
+                </article>
+                <div class="cms-leadership-grid" id="pastoralLeaders" hidden></div>
+            </div>
+            <blockquote class="pastoral-message">
+                <p>“Beloved in Christ, welcome to AIC Egerton Chapel! It is a profound joy to journey together in faith, worship, and fellowship. As we gather, let us embrace our divine calling to grow in grace, walk deeply in love, and serve with unwavering purpose.
+
+May God’s peace, wisdom, and strength abound in your lives as we strive not merely to be hearers of the Word, but true doers—impacting lives, strengthening families, and building a vibrant, Christ-centered community. We invite you to join us as one family in Christ to worship, grow, and walk this path of faith together. May God bless you abundantly!”</p> 
+                <footer><cite>Rev. Dr. William Chesaine Kipkoros</cite></footer>
+            </blockquote>
+        </section>
+    </div>
+
     <section class="carousel" aria-label="Church photo gallery" aria-roledescription="carousel" tabindex="0">
-        <h1>AIC EGERTON CHAPEL GALLERY</h1>
+        <p class="gallery-kicker">Visual Journey</p>
+        <h2>AIC EGERTON CHAPEL GALLERY</h2>
         <div class="carousel-image-wrapper" id="carousel-images">
             <!--CONTENT:ABOUT_GALLERY:START--><p class="gallery-empty">Gallery photos are not available right now.</p><!--CONTENT:ABOUT_GALLERY:END-->
         </div>
@@ -1489,136 +1931,6 @@
         <div class="gallery-grid" id="galleryGrid"></div>
     </div>
 
-    <!-- About Content -->
-    <div class="container-about">
-        <section id="history">
-            <h2>Church History</h2>
-            <p>AIC Egerton Chapel was started in April 2008 through a merger of two like-minded groups of christians;
-                one from AIC Lochorai and other from Egerton Community Chapel. This is mainstream church run by a Local Church Council
-                (LCC), and held accountable by the DCC, RCC, ACC all the way to the CCC.
-            </p>
-            <p>The church recognizes the fact that the church's mission as the light of the world and salt of the earth is not only to provide
-                the spiritual needs but also to take care of the physical needs of the world in its immediate vicinity as well as those of the 
-                world that she does not touch directly. 
-            </p>
-            <p>Over the years, it has grown to become a beacon of faith, hope, and love, impacting countless lives through worship, outreach, and discipleship...</p>
-        </section>
-        
-        <section id="mission">
-            <h2>Mission</h2>
-            <p>To Know Christ, experience His power, and be true witnesses of christ in a fallen world according to <b>2 Timothy 2:2</b></p>
-            <ol>
-                <li>Help people to know christ</li>
-                <li>Help believers to experience the power of Christ</li>
-                <li>Be the ambassadors of Christ on earth</li>
-                <li>Fulfil the great commission by:
-                    <ul>
-                        <li>Reaching out to the lost</li>
-                        <li>Making disciples</li>
-                        <li>Teaching to obedience</li>
-                    </ul>
-                </li>
-            </ol>
-        </section>
-        <section id="motto">
-            <h2>Motto</h2>
-            <p><b>Becoming a Beacon of Hope</b></p>
-        </section>
-        
-        <section id="vision">
-            <h2>Vision</h2>
-            <p>To become a beacon of hope as Christ-centered church transforming lives through faith, love, and service, empowering generations to live out the Gospel and impact the world for God's Kingdom.</p>
-        </section>
-        
-        <section id="values">
-            <h2>Values</h2>
-            <ul>
-                <li>Biblical Foundation - Commitment to Scripture as our ultimate authority</li>
-                <li>Christ-Centered Worship - Glorifying God in spirit and truth</li>
-                <li>Discipleship & Spiritual Growth - Nurturing believers to maturity</li>
-                <li>Community & Fellowship - Building authentic relationships</li>
-                <li>Evangelism & Outreach - Sharing the Gospel locally and globally</li>
-                <li>Integrity & Stewardship - Managing resources with accountability</li>
-                <li>Compassion & Service - Meeting needs with Christ-like love</li>
-            </ul>
-        </section>
-        
-        <section id="elders">
-            <h2>Our Elders & Church Leaders</h2>
-            <div class="leaders-grid" id="lccLeaders">
-                <div class="leader-card male">
-                    <i class="fas fa-user-tie leader-icon"></i>
-                    <p><strong>Chairman</strong><br>Dr. Stephine Mutie</p>
-                </div>
-                <div class="leader-card male">
-                    <i class="fas fa-user-tie leader-icon"></i>
-                    <p><strong>Vice Chairman</strong><br>Isaack Kariithi</p>
-                </div>
-                <div class="leader-card male">
-                    <i class="fas fa-user-tie leader-icon"></i>
-                    <p><strong>Secretary</strong><br>Jonathan Mwangi Nduati</p>
-                </div>
-                <div class="leader-card male">
-                    <i class="fas fa-user-tie leader-icon"></i>
-                    <p><strong>Treasurer</strong><br>Patrick M. Mboma</p>
-                </div>
-                <div class="leader-card male">
-                    <i class="fas fa-user-tie leader-icon"></i>
-                    <p><strong>LCC Member</strong><br>Richard Mose</p>
-                </div>
-                <div class="leader-card male">
-                    <i class="fas fa-user-tie leader-icon"></i>
-                    <p><strong>Development Chair</strong><br>Stephine Njogu</p>
-                </div>
-                <div class="leader-card male">
-                    <i class="fas fa-user-tie leader-icon"></i>
-                    <p><strong>LCC Member</strong><br>Mutisya</p>
-                </div>
-                <div class="leader-card male">
-                    <i class="fas fa-user-tie leader-icon"></i>
-                    <p><strong>LCC Member</strong><br>Githinji</p>
-                </div>
-            </div>
-        </section>
-        
-        <section id="women-ministry">
-            <h2>Women Ministry Leaders</h2>
-            <div class="group-card">
-                <i class="fas fa-users leader-icon group-icon"></i>
-                <div class="group-description">
-                    <p><strong>Empowering Women in Christ</strong></p>
-                    <p>United in purpose and faith, the Women Ministry leadership team serves as a cornerstone of AIC Egerton Chapel’s community life. These women exemplify strength, compassion, and spiritual depth as they mentor, guide, and empower fellow women to thrive in their personal walk with Christ and their service to others.</p>
-                    <p>Through prayer, discipleship, and organized fellowships, they nurture growth among women of all ages—offering counsel, leadership, and unity within the body of Christ.</p>
-                </div>
-            </div>
-            <div class="leaders-grid women" id="womenLeaders">
-                <div class="leader-name">Lily Mwangi</div>
-                <div class="leader-name">Esther Lugusi</div>
-                <div class="leader-name">Janet Owit</div>
-                <div class="leader-name">Aska Masita</div>
-                <div class="leader-name">Dr. Muthoka</div>
-                <div class="leader-name">Lucy Rwigi</div>
-                <div class="leader-name">Ms. Karithii</div>
-                <div class="leader-name">Philomena Kamau</div>
-            </div>
-        </section>
-        
-        <section id="pastoral">
-            <h2>Pastoral Team</h2>
-            <div class="pastoral-content" id="pastoralFallback">
-                <img src="/rev.JPG" alt="Rev. Dr. William Chesaine Kipkoros" />
-                <div class="pastoral-message">
-                    <p>“Beloved in Christ, welcome to AIC Egerton Chapel! It is a great joy to serve and journey with you in faith. As we gather in worship and fellowship, let us be reminded of our divine calling to grow in grace, walk in love, and serve with purpose.</p>
-                    <p>Our mission is not just to be hearers of the Word, but doers—impacting lives, strengthening families, and building a Christ-centered community. In these times, let us hold fast to God’s promises, encourage one another, and be the light that the world desperately needs.</p>
-                    <p>May God’s peace, wisdom, and strength abound in your lives. We look forward to growing together in faith as one family in Christ.”</p>
-                    <p>We invite you to join us in our journey of faith, to worship together, and to serve as one body in Christ. May God bless you abundantly as you walk this path of faith with us!</p>
-                    <p><strong>– Rev. Dr. William Chesaine Kipkoros</strong></p>
-                </div>
-            </div>
-            <div class="cms-leadership-grid" id="pastoralLeaders" hidden></div>
-        </section>
-    </div>
-
     <!-- Donation Modal -->
     <div id="donationModal" class="modal">
         <div class="modal-content">
@@ -1626,7 +1938,7 @@
             <h2>Church Donation</h2>
             <p>Use the M-Pesa details below to make your donation. Contact us on WhatsApp if you need help.</p>
             <p><strong>Paybill Number:</strong> 522522</p>
-            <p><strong>Account Number:</strong> 7506439</p>
+            <p><strong>Account Number:</strong> 7506439#Offerings/ Tithes </p>
             <div class="donation-instructions">
                 <p>How to donate:</p>
                 <ol>

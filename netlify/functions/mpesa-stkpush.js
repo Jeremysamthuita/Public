@@ -140,9 +140,10 @@ export const handler = async event => {
     const consumerSecret = process.env.DARAJA_CONSUMER_SECRET;
     const passkey = process.env.DARAJA_PASSKEY;
     const shortcode = process.env.DARAJA_SHORTCODE;
-    const accountReference = process.env.DARAJA_ACCOUNT_REFERENCE || "7506439";
+    const accountReference = String(process.env.DARAJA_ACCOUNT_REFERENCE || "").trim();
     if (!consumerKey || !consumerSecret || !passkey || !shortcode ||
-        accountReference.length > 12 || !/^[A-Za-z0-9_-]{32,128}$/.test(process.env.DARAJA_CALLBACK_SECRET)) {
+      !accountReference || accountReference.length > 12 ||
+      !/^[A-Za-z0-9_-]{32,128}$/.test(process.env.DARAJA_CALLBACK_SECRET)) {
       return response(503, { error: "The online payment service is not fully configured. Use the Paybill instructions below." }, origin);
     }
 

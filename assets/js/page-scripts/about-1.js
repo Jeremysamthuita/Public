@@ -215,9 +215,15 @@ document.getElementById('copyrightYear').textContent = new Date().getFullYear();
                 const {getContent} = await import('/assets/js/content/content-service.js');
                 const profiles = await getContent('leadership');
 
-                const makeCard = profile => {
+                const makeCard = (profile, group) => {
                     const card = document.createElement('article');
                     card.className = 'cms-leader-card';
+                    if (group === 'pastoral') {
+                        const profileRole = String(profile.role || '').toLowerCase();
+                        if (profileRole.includes('former')) card.classList.add('cms-leader-card--former');
+                        else if (profileRole.includes('founding')) card.classList.add('cms-leader-card--founding');
+                        else if (profileRole.includes('pastor')) card.classList.add('cms-leader-card--current');
+                    }
                     if (profile.photoUrl) {
                         const image = document.createElement('img');
                         image.src = profile.photoUrl;
@@ -232,7 +238,14 @@ document.getElementById('copyrightYear').textContent = new Date().getFullYear();
                     if (profile.role) {
                         const role = document.createElement('p');
                         role.className = 'cms-leader-role';
-                        role.textContent = profile.role;
+                        const roleIcon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+                        roleIcon.setAttribute('viewBox', '0 0 24 24');
+                        roleIcon.setAttribute('aria-hidden', 'true');
+                        roleIcon.classList.add('cms-leader-role__icon');
+                        const iconPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                        iconPath.setAttribute('d', 'M12 3 19 6v5c0 5-3 8-7 10-4-2-7-5-7-10V6l7-3Zm-3 9 2 2 4-4');
+                        roleIcon.appendChild(iconPath);
+                        role.append(roleIcon, document.createTextNode(profile.role));
                         card.appendChild(role);
                     }
                     const descriptionText = profile.bio || profile.message;
@@ -251,10 +264,13 @@ document.getElementById('copyrightYear').textContent = new Date().getFullYear();
                     const entries = groupProfiles
                         .filter(profile => profile.active !== false)
                         .sort((a, b) => Number(a.sortOrder || 0) - Number(b.sortOrder || 0));
-                    target.replaceChildren(...entries.map(makeCard));
+                    target.replaceChildren(...entries.map(profile => makeCard(profile, group)));
                     if (group === 'pastoral' && pastoralFallback) {
                         target.hidden = entries.length === 0;
-                        pastoralFallback.hidden = true;
+                        pastoralFallback.hidden = entries.some(profile => {
+                            const role = String(profile.role || '').toLowerCase();
+                            return role.includes('pastor') && !role.includes('former') && !role.includes('founding');
+                        });
                     }
                 });
             } catch (error) {

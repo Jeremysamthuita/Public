@@ -1,4 +1,4 @@
-const SHELL_CACHE = 'aic-shell-v5';
+const SHELL_CACHE = 'aic-shell-v7';
 const IMAGE_CACHE = 'aic-cms-images-v1';
 const IMAGE_META_CACHE = 'aic-cms-images-meta-v1';
 const IMAGE_MAX_AGE = 30 * 24 * 60 * 60 * 1000;

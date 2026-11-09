@@ -30,60 +30,141 @@ function sourceBadge(type) {
 function renderAnnouncement(items) {
   let region = document.body.querySelector('[data-cms-announcements]');
   if (!items.length) {
+    region?.announcementCleanup?.();
     region?.remove();
     document.body.classList.remove('has-cms-announcements');
     return;
   }
+  try {
+    if (sessionStorage.getItem('aic-announcements-dismissed') === 'true') {
+      region?.announcementCleanup?.();
+      region?.remove();
+      document.body.classList.remove('has-cms-announcements');
+      return;
+    }
+  } catch { /* dismissal is optional when storage is unavailable */ }
   if (!region) {
     region = document.createElement('section');
     document.body.appendChild(region);
   }
+  region.announcementCleanup?.();
   region.className = 'cms-announcements';
   region.dataset.cmsAnnouncements = '';
   region.setAttribute('aria-label', 'Church announcements');
-  region.setAttribute('aria-live', 'off');
+  region.setAttribute('role', 'region');
 
   const badge = text('span', 'Announcement', 'cms-announcements__badge');
-  const viewport = document.createElement('div');
-  viewport.className = 'cms-announcements__viewport';
-  const track = document.createElement('div');
-  track.className = 'cms-announcements__track';
-  const sequence = document.createElement('div');
-  sequence.className = 'cms-announcements__sequence';
-  const appendItem = (parent, item) => {
-    const article = document.createElement('article');
-    article.className = `cms-announcement cms-announcement--${item.severity}`;
-    article.appendChild(text('p', item.text));
-    if (item.linkUrl) {
-      const link = document.createElement('a');
-      link.href = item.linkUrl;
-      link.textContent = item.linkLabel || 'Learn more';
-      article.appendChild(link);
-    }
-    parent.appendChild(article);
-  };
-  for (const item of items) appendItem(sequence, item);
-  const repeatedSequence = sequence.cloneNode(true);
-  repeatedSequence.setAttribute('aria-hidden', 'true');
-  repeatedSequence.setAttribute('inert', '');
-  track.append(sequence, repeatedSequence);
-  viewport.appendChild(track);
-
   const close = document.createElement('button');
   close.className = 'cms-announcements__close';
   close.type = 'button';
   close.setAttribute('aria-label', 'Dismiss announcements');
   close.textContent = '×';
+
+  const viewport = document.createElement('div');
+  viewport.className = 'cms-announcements__viewport';
+  const slide = document.createElement('article');
+  slide.className = 'cms-announcement';
+  const message = text('p', '', 'cms-announcement__text');
+  slide.appendChild(message);
+  viewport.appendChild(slide);
+
+  const footer = document.createElement('div');
+  footer.className = 'cms-announcements__footer';
+  const link = document.createElement('a');
+  link.className = 'cms-announcement__link';
+  link.hidden = true;
+  const controls = document.createElement('div');
+  controls.className = 'cms-announcements__controls';
+  const previous = document.createElement('button');
+  previous.className = 'cms-announcements__nav';
+  previous.type = 'button';
+  previous.setAttribute('aria-label', 'Previous announcement');
+  previous.textContent = '‹';
+  const position = text('span', '', 'cms-announcements__position');
+  position.setAttribute('aria-live', 'off');
+  const next = document.createElement('button');
+  next.className = 'cms-announcements__nav';
+  next.type = 'button';
+  next.setAttribute('aria-label', 'Next announcement');
+  next.textContent = '›';
+  controls.append(previous, position, next);
+  footer.append(link, controls);
+
+  let currentIndex = 0;
+  let animationTimer;
+  let animationTimeout;
+  const showAnnouncement = (index, animate = true) => {
+    currentIndex = (index + items.length) % items.length;
+    const item = items[currentIndex];
+    window.clearTimeout(animationTimeout);
+    if (animate) slide.classList.add('is-changing');
+    animationTimeout = window.setTimeout(() => {
+      message.textContent = item.text || '';
+      slide.className = `cms-announcement cms-announcement--${item.severity || 'info'}`;
+      position.textContent = `${currentIndex + 1} / ${items.length}`;
+      const safeUrl = safeAnnouncementUrl(item.linkUrl);
+      if (safeUrl) {
+        link.href = safeUrl;
+        link.textContent = item.linkLabel || 'Learn more';
+        link.hidden = false;
+        if (new URL(safeUrl).origin !== location.origin) {
+          link.target = '_blank';
+          link.rel = 'noopener noreferrer';
+        } else {
+          link.removeAttribute('target');
+          link.removeAttribute('rel');
+        }
+      } else {
+        link.hidden = true;
+        link.removeAttribute('href');
+      }
+    }, animate ? 150 : 0);
+  };
+  const stopAutoplay = () => window.clearInterval(animationTimer);
+  const startAutoplay = () => {
+    stopAutoplay();
+    if (items.length > 1 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      animationTimer = window.setInterval(() => showAnnouncement(currentIndex + 1), 8000);
+    }
+  };
+
+  previous.addEventListener('click', () => showAnnouncement(currentIndex - 1));
+  next.addEventListener('click', () => showAnnouncement(currentIndex + 1));
+  if (items.length < 2) controls.hidden = true;
+  region.addEventListener('pointerenter', stopAutoplay);
+  region.addEventListener('pointerleave', startAutoplay);
+  region.addEventListener('focusin', stopAutoplay);
+  region.addEventListener('focusout', event => {
+    if (!region.contains(event.relatedTarget)) startAutoplay();
+  });
   close.addEventListener('click', () => {
+    stopAutoplay();
+    window.clearTimeout(animationTimeout);
+    try { sessionStorage.setItem('aic-announcements-dismissed', 'true'); } catch { /* dismissal lasts for this page only */ }
     region.remove();
     document.body.classList.remove('has-cms-announcements');
   });
 
-  region.replaceChildren(badge, viewport);
+  region.replaceChildren(badge, close, viewport, footer);
+  showAnnouncement(0, false);
+  startAutoplay();
+  region.announcementCleanup = () => {
+    stopAutoplay();
+    window.clearTimeout(animationTimeout);
+  };
   const source = sourceBadge('announcements');
-  if (source) region.appendChild(source);
-  region.appendChild(close);
+  if (source) footer.appendChild(source);
   document.body.classList.add('has-cms-announcements');
+}
+
+function safeAnnouncementUrl(value) {
+  if (!value) return null;
+  try {
+    const url = new URL(value, location.origin);
+    return ['http:', 'https:'].includes(url.protocol) ? url.href : null;
+  } catch {
+    return null;
+  }
 }
 
 function renderServiceTimes(items) {

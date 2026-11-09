@@ -20,7 +20,7 @@ Static HTML/CSS/JS
   └─ Netlify Functions: forms, CMS webhook/scheduled reconciliation, RSS, sitemap, health, M-Pesa callbacks/status
 ```
 
-M-Pesa STK is **disabled by default**. Manual giving (Paybill 522522, account 7506439) remains available on [give.html](./give.html). Do not enable STK until the church confirms that its Daraja shortcode can receive payments for this account; a shared bank Paybill may not support the church's own STK application.
+M-Pesa STK is **disabled by default**. Manual giving (Paybill 522522, account 7506439#Offerings/ Tithes) remains available on [give.html](./give.html). Do not enable STK until the church confirms that its Daraja shortcode can receive payments for this account; a shared bank Paybill may not support the church's own STK application.
 
 ## Local development
 
@@ -136,4 +136,4 @@ Legacy filename redirects are configured in `netlify.toml`. The `/feed.xml` and 
 - **Location:** Egerton University, Njoro, Kenya
 - **Phone / WhatsApp:** +254 799 522 418
 - **Email:** aicegertonchapel@gmail.com
-- **Manual M-Pesa:** Paybill 522522, account 7506439
+- **Manual M-Pesa:** Paybill 522522, account 7506439#Offerings/ Tithes

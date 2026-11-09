@@ -14,7 +14,7 @@ function setStatus(element, state, message) {
 
 function initPaybill() {
   const paybill = config.mpesa?.paybill || config.paybill || "522522";
-  const account = config.mpesa?.accountNumber || config.accountNumber || "7506439";
+  const account = config.mpesa?.accountNumber || config.accountNumber || "7506439#Offerings/ Tithes";
   byId("paybillValue").textContent = paybill;
   byId("accountValue").textContent = account;
   byId("copyAccount").addEventListener("click", async event => {

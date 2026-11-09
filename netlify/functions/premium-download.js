@@ -47,7 +47,7 @@ export const handler = async (event) => {
     return { statusCode: 500, headers, body: JSON.stringify({ error: 'Could not verify access.' }) };
   }
   if (!grant) {
-    return { statusCode: 403, headers, body: JSON.stringify({ error: 'No valid access found. Please complete payment first, or use the Paybill: 522522, Account 7506439.' }) };
+    return { statusCode: 403, headers, body: JSON.stringify({ error: 'No valid access found. Please complete payment first, or use the Paybill: 522522, Account 7506439#Offerings/ Tithes.' }) };
   }
 
   // Fetch the resource path from premium_resources table
