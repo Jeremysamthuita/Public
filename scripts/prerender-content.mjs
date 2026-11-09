@@ -154,7 +154,7 @@ export async function buildContentHtml() {
   const sermons = content('sermons');
   const events = content('events').map(renderEvent).filter(Boolean);
   const photos = galleryPhotos(content('gallery'));
-  const pages = (await readdir(root)).filter(file => file.endsWith('.html'));
+  const pages = (await readdir(root)).filter(file => file.endsWith('.html') && !/^google[0-9a-f]+\.html$/i.test(file)); // skip Google Search Console verification files
 
   for (const page of pages) {
     const file = path.join(root, page);

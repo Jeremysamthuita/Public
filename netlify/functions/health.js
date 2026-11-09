@@ -2,7 +2,7 @@
  * GET /api/health
  * Reports which integrations are configured. Never returns secrets.
  */
-export const handler = async () => {
+export default async () => {
     const supabaseConfigured = Boolean(process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY);
     const darajaConfigured = Boolean(
         process.env.DARAJA_CONSUMER_KEY &&
@@ -23,11 +23,10 @@ export const handler = async () => {
         daraja: darajaConfigured,
         darajaEnabled: darajaConfigured && String(process.env.MPESA_STK_ENABLED || 'false').toLowerCase() === 'true',
         youtube: Boolean(process.env.YOUTUBE_API_KEY && process.env.YOUTUBE_CHANNEL_ID),
-        gemini: Boolean(process.env.GEMINI_API_KEY)
+        gemini: Boolean(process.env.GEMINI_API_KEY || process.env.NETLIFY_AI_GATEWAY_KEY)
     };
-    return {
-        statusCode: 200,
-        headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' },
-        body: JSON.stringify({ ok: true, checks, at: new Date().toISOString() })
-    };
+    return new Response(JSON.stringify({ ok: true, checks, at: new Date().toISOString() }), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' }
+    });
 };
