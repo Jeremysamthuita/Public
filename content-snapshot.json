@@ -1,12 +1,2510 @@
 {
-  "version": 1,
-  "generatedAt": "2026-11-01T22:05:55.807Z",
-  "sermons": [],
+  "version": "4c36f1d18aaa275919c784a2d10c40b0ed9bac77d45eaa820ff69328f5434bea",
+  "generatedAt": "2026-11-10T04:43:25.348Z",
+  "sermons": [
+    {
+      "id": "6pHAnh4Z8HtpY5OorQEbQo",
+      "source": "contentful",
+      "externalKey": "6pHAnh4Z8HtpY5OorQEbQo",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2026-11-08T20:14:31.995Z",
+      "title": "Trusting Jesus with Our Insufficiency",
+      "preacher": "Rev. DR. William C Koros",
+      "ministryTitle": "",
+      "date": "2026-11-08",
+      "series": "",
+      "scriptureReference": "JOHN 6:1 - 13",
+      "description": "",
+      "previewImageUrl": "https://images.ctfassets.net/em08252vzuh6/5W3Aq5I48GWsSBcCn5o3A7/68883881e4669d28e08b3b0f1119ec5d/image.png",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/2qYetMmegqVCKK9ZK69WXt/ff7b410f90d0eed65b04c65357191bde/AIC_EGERTON_CHAPEL_8th_November_2026.pptx",
+          "name": "AIC EGERTON CHAPEL 8th November 2026.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/2qYetMmegqVCKK9ZK69WXt/ff7b410f90d0eed65b04c65357191bde/AIC_EGERTON_CHAPEL_8th_November_2026.pptx",
+          "name": "AIC EGERTON CHAPEL 8th November 2026.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "34GXM5QtN49nVHznrZ9mPK",
+      "source": "contentful",
+      "externalKey": "34GXM5QtN49nVHznrZ9mPK",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2026-11-08T20:17:23.770Z",
+      "title": "Knocked Down But Not Out",
+      "preacher": "Rev. DR. William C Koros",
+      "ministryTitle": "",
+      "date": "2026-11-01",
+      "series": "",
+      "scriptureReference": "ACTS 14:8 - 20",
+      "description": "",
+      "previewImageUrl": "",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/6FsD1j9Q820G92qQKERyqv/8b44dc93f9a4970e0e098808a61eb81c/AIC_EGERTON_CHAPEL_1st_November_2026.pptx",
+          "name": "AIC EGERTON CHAPEL 1st November 2026.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/6FsD1j9Q820G92qQKERyqv/8b44dc93f9a4970e0e098808a61eb81c/AIC_EGERTON_CHAPEL_1st_November_2026.pptx",
+          "name": "AIC EGERTON CHAPEL 1st November 2026.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "1aKp9I3CaBf4JVcJMi1tPc",
+      "source": "contentful",
+      "externalKey": "1aKp9I3CaBf4JVcJMi1tPc",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2026-11-09T14:16:25.253Z",
+      "title": "Is Your Faith Showing?",
+      "preacher": "Rev. DR. William C Koros",
+      "ministryTitle": "",
+      "date": "2026-10-25",
+      "series": "",
+      "scriptureReference": "HEBREWS 13:1 - 8",
+      "description": "",
+      "previewImageUrl": "https://images.ctfassets.net/em08252vzuh6/7aZ4jpHYYODcLsZmVwW5Up/968efe7a8b6d826b68f0a6f1e4756240/image.png",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/EF7c1t0yRZZo8D9xwfH5D/87e79cbf4e619d3764103e68c2365607/AIC_EGERTON_CHAPEL_25th_October_2026__1_.pptx",
+          "name": "AIC EGERTON CHAPEL 25th October 2026 (1).pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/EF7c1t0yRZZo8D9xwfH5D/87e79cbf4e619d3764103e68c2365607/AIC_EGERTON_CHAPEL_25th_October_2026__1_.pptx",
+          "name": "AIC EGERTON CHAPEL 25th October 2026 (1).pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "4pIRKJVyDSzy8mREUIjudR",
+      "source": "contentful",
+      "externalKey": "4pIRKJVyDSzy8mREUIjudR",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2026-11-09T14:14:55.766Z",
+      "title": "When the Foundations Are Shaken",
+      "preacher": "Dr. Stephen Mutie, PhD",
+      "ministryTitle": "",
+      "date": "2026-10-18",
+      "series": "",
+      "scriptureReference": "",
+      "description": "",
+      "previewImageUrl": "https://images.ctfassets.net/em08252vzuh6/1gwY3aSZu2syfGdlppFDS9/b38b4d74fa4e1491adacbb1421aac98c/image.png",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/dVJidBB0P0fVDpEv0CRsa/6d1849d63701a52d64e4258162594bab/When_the_Foundations_Shake.pptx",
+          "name": "When the Foundations Shake.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/dVJidBB0P0fVDpEv0CRsa/6d1849d63701a52d64e4258162594bab/When_the_Foundations_Shake.pptx",
+          "name": "When the Foundations Shake.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "1clc8hnbnq9nxfgW6wuWkV",
+      "source": "contentful",
+      "externalKey": "1clc8hnbnq9nxfgW6wuWkV",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2025-08-03T06:27:08.625Z",
+      "title": "Faith That Makes Bold Moves",
+      "preacher": "Rev Dr. William C kipkoros",
+      "ministryTitle": "",
+      "date": "2025-08-03",
+      "series": "",
+      "scriptureReference": "",
+      "description": "",
+      "previewImageUrl": "",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/7loSnU7zlcZqe0bvzxzHcY/0311ae59e4ae8065d3354b49e7280bd0/AIC_EGERTON_CHAPEL_3rd_August__2025.pptx",
+          "name": "AIC EGERTON CHAPEL 3rd August  2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/7loSnU7zlcZqe0bvzxzHcY/0311ae59e4ae8065d3354b49e7280bd0/AIC_EGERTON_CHAPEL_3rd_August__2025.pptx",
+          "name": "AIC EGERTON CHAPEL 3rd August  2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "7bQbOhJ8TrYtkS5oCiM5Aj",
+      "source": "contentful",
+      "externalKey": "7bQbOhJ8TrYtkS5oCiM5Aj",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2025-07-20T07:11:39.895Z",
+      "title": "Managing God's money God's Way",
+      "preacher": "Rev Dr. William C kipkoros",
+      "ministryTitle": "",
+      "date": "2025-07-20",
+      "series": "",
+      "scriptureReference": "",
+      "description": "",
+      "previewImageUrl": "",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/2Ye4kSdYv05VQaxhbO8P4C/70cea2bcd357582003f05a498fa6f213/AIC_EGERTON_CHAPEL_20th_July__2025.pptx",
+          "name": "AIC EGERTON CHAPEL 20th July  2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/2Ye4kSdYv05VQaxhbO8P4C/70cea2bcd357582003f05a498fa6f213/AIC_EGERTON_CHAPEL_20th_July__2025.pptx",
+          "name": "AIC EGERTON CHAPEL 20th July  2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "1M8bgWKdLtGnZnT554Hzcp",
+      "source": "contentful",
+      "externalKey": "1M8bgWKdLtGnZnT554Hzcp",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2025-07-20T07:11:03.937Z",
+      "title": "Solomon: A model of Excellence in Stewardship",
+      "preacher": "Rev Dr. William C kipkoros",
+      "ministryTitle": "",
+      "date": "2025-07-13",
+      "series": "",
+      "scriptureReference": "",
+      "description": "",
+      "previewImageUrl": "",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/1Amc4Uz9jQmqbP6DjxxNYo/79d64fc1a997c010777995a07ff0b4c2/AIC_EGERTON_CHAPEL_13th_July__2025.pptx",
+          "name": "AIC EGERTON CHAPEL 13th July  2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/1Amc4Uz9jQmqbP6DjxxNYo/79d64fc1a997c010777995a07ff0b4c2/AIC_EGERTON_CHAPEL_13th_July__2025.pptx",
+          "name": "AIC EGERTON CHAPEL 13th July  2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "3L46PYhDBYSAfroFcmBuT2",
+      "source": "contentful",
+      "externalKey": "3L46PYhDBYSAfroFcmBuT2",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2025-07-06T07:05:42.436Z",
+      "title": "Shaped in the image of a Generous God",
+      "preacher": "Rev Dr. William C kipkoros",
+      "ministryTitle": "",
+      "date": "2025-07-06",
+      "series": "",
+      "scriptureReference": "",
+      "description": "",
+      "previewImageUrl": "",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/2CYx4MttCCOqQZf9dFhfqv/0566495c0a7b28fa62701926b5bbf194/AIC_EGERTON_CHAPEL_6th_July__2025.pptx",
+          "name": "AIC EGERTON CHAPEL 6th July  2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/2CYx4MttCCOqQZf9dFhfqv/0566495c0a7b28fa62701926b5bbf194/AIC_EGERTON_CHAPEL_6th_July__2025.pptx",
+          "name": "AIC EGERTON CHAPEL 6th July  2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "NtXOGtWSdlWKxBTyDA05W",
+      "source": "contentful",
+      "externalKey": "NtXOGtWSdlWKxBTyDA05W",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2025-07-01T08:30:23.838Z",
+      "title": "What's in Your hands? Use it for others",
+      "preacher": "Rev Dr William C Kipkoros",
+      "ministryTitle": "",
+      "date": "2025-06-22",
+      "series": "",
+      "scriptureReference": "",
+      "description": "",
+      "previewImageUrl": "",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/4ucJposcGB6gGdjYJHK5fe/3a3257eed3b1af8930f1b68acdb5491a/AIC_EGERTON_CHAPEL_22nd_June__2025.pptx",
+          "name": "AIC EGERTON CHAPEL 22nd June  2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/4ucJposcGB6gGdjYJHK5fe/3a3257eed3b1af8930f1b68acdb5491a/AIC_EGERTON_CHAPEL_22nd_June__2025.pptx",
+          "name": "AIC EGERTON CHAPEL 22nd June  2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "3xoeo1tUdeZRW56uOKUE6Q",
+      "source": "contentful",
+      "externalKey": "3xoeo1tUdeZRW56uOKUE6Q",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2025-07-01T08:28:17.901Z",
+      "title": "The Tragedy of Misplaced Passion",
+      "preacher": "Rev Dr William C Kipkoros",
+      "ministryTitle": "",
+      "date": "2025-06-08",
+      "series": "",
+      "scriptureReference": "",
+      "description": "",
+      "previewImageUrl": "",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/785vd9teqrbfpxmei3gXa0/0301be2d8d450c04b0e5bffd142edd72/AIC_EGERTON_CHAPEL_8th_June__2025.pptx",
+          "name": "AIC EGERTON CHAPEL 8th June  2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/785vd9teqrbfpxmei3gXa0/0301be2d8d450c04b0e5bffd142edd72/AIC_EGERTON_CHAPEL_8th_June__2025.pptx",
+          "name": "AIC EGERTON CHAPEL 8th June  2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "79Ai1zJJbiqXhPNHiuOfYz",
+      "source": "contentful",
+      "externalKey": "79Ai1zJJbiqXhPNHiuOfYz",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2025-07-01T08:26:11.953Z",
+      "title": "Called To Carry God's Heart to the world",
+      "preacher": "Rev Dr William C Kipkoros",
+      "ministryTitle": "",
+      "date": "2025-06-01",
+      "series": "",
+      "scriptureReference": "",
+      "description": "",
+      "previewImageUrl": "",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/7JzSViD3wkcd5ll4yx1d3C/d4a6ee9ab0126172351c079a488c16ac/AIC_EGERTON_CHAPEL_1st_June__2025.pptx",
+          "name": "AIC EGERTON CHAPEL 1st June  2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/7JzSViD3wkcd5ll4yx1d3C/d4a6ee9ab0126172351c079a488c16ac/AIC_EGERTON_CHAPEL_1st_June__2025.pptx",
+          "name": "AIC EGERTON CHAPEL 1st June  2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "516HPGTxmBz6HA4A73MMEJ",
+      "source": "contentful",
+      "externalKey": "516HPGTxmBz6HA4A73MMEJ",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2025-07-01T07:40:47.556Z",
+      "title": "Prayer Suistains Hope",
+      "preacher": "Rev Dr William C Kipkoros",
+      "ministryTitle": "",
+      "date": "2025-05-25",
+      "series": "",
+      "scriptureReference": "",
+      "description": "",
+      "previewImageUrl": "",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/6BXw3YyY9lglEZyTAEc4hL/d72b94188d4df5c685440830360aae87/AIC_EGERTON_CHAPEL_25th__May__2025.pptx",
+          "name": "AIC EGERTON CHAPEL 25th  May  2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/6BXw3YyY9lglEZyTAEc4hL/d72b94188d4df5c685440830360aae87/AIC_EGERTON_CHAPEL_25th__May__2025.pptx",
+          "name": "AIC EGERTON CHAPEL 25th  May  2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "2eaqN2gKf1BI7kjEmPKmI2",
+      "source": "contentful",
+      "externalKey": "2eaqN2gKf1BI7kjEmPKmI2",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2025-07-01T08:36:17.139Z",
+      "title": "Downward Drift: The Cost Of Resistance",
+      "preacher": "Rev Dr William C Kipkoros",
+      "ministryTitle": "",
+      "date": "2025-05-18",
+      "series": "",
+      "scriptureReference": "",
+      "description": "",
+      "previewImageUrl": "",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/SOSy20Z3loIcTRb9ZDtRk/5750277346640529fcc29f5bba058e3a/AIC_EGERTON_CHAPEL_-18th__May__2025.pptx",
+          "name": "AIC EGERTON CHAPEL -18th  May  2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/SOSy20Z3loIcTRb9ZDtRk/5750277346640529fcc29f5bba058e3a/AIC_EGERTON_CHAPEL_-18th__May__2025.pptx",
+          "name": "AIC EGERTON CHAPEL -18th  May  2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "6jngqNe1KFv6r0JSgoSiWu",
+      "source": "contentful",
+      "externalKey": "6jngqNe1KFv6r0JSgoSiWu",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2025-07-01T07:44:55.799Z",
+      "title": "Home Missionary",
+      "preacher": "Rev Dr William C Kipkoros",
+      "ministryTitle": "",
+      "date": "2025-05-11",
+      "series": "",
+      "scriptureReference": "",
+      "description": "",
+      "previewImageUrl": "",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/4RUa06e3yzKaTWToZZbPe8/0b964012b996214577a5b0c705d1754d/AIC_EGERTON_CHAPEL_-11th__May__2025.pptx",
+          "name": "AIC EGERTON CHAPEL -11th  May  2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/4RUa06e3yzKaTWToZZbPe8/0b964012b996214577a5b0c705d1754d/AIC_EGERTON_CHAPEL_-11th__May__2025.pptx",
+          "name": "AIC EGERTON CHAPEL -11th  May  2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "7evkOPo1hlgh6tR6zg5kFs",
+      "source": "contentful",
+      "externalKey": "7evkOPo1hlgh6tR6zg5kFs",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2025-07-01T07:37:42.378Z",
+      "title": "Strengthening our vision for missions",
+      "preacher": "Rev Dr William C Kipkoros",
+      "ministryTitle": "",
+      "date": "2025-05-04",
+      "series": "",
+      "scriptureReference": "",
+      "description": "",
+      "previewImageUrl": "",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/7q4BkzPnavnQXWxzoA6K4r/4616737304ec4a8acec7245d8d03f201/AIC_EGERTON_CHAPEL_-4th__May__2025.pptx",
+          "name": "AIC EGERTON CHAPEL -4th  May  2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/7q4BkzPnavnQXWxzoA6K4r/4616737304ec4a8acec7245d8d03f201/AIC_EGERTON_CHAPEL_-4th__May__2025.pptx",
+          "name": "AIC EGERTON CHAPEL -4th  May  2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "1DOKOkLCiPXu11wIdkov7d",
+      "source": "contentful",
+      "externalKey": "1DOKOkLCiPXu11wIdkov7d",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2025-07-01T07:58:30.451Z",
+      "title": "Lasting Legacy on our Children",
+      "preacher": "Rev Dr William C Kipkoros",
+      "ministryTitle": "",
+      "date": "2025-04-27",
+      "series": "",
+      "scriptureReference": "",
+      "description": "",
+      "previewImageUrl": "",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/s5ZuGF5t88PVLtjuJeXgL/48a6ae4a666fabce4f0eef3817d5ee63/AIC_EGERTON_CHAPEL_-_27th__April__2025.pptx",
+          "name": "AIC EGERTON CHAPEL - 27th  April  2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/s5ZuGF5t88PVLtjuJeXgL/48a6ae4a666fabce4f0eef3817d5ee63/AIC_EGERTON_CHAPEL_-_27th__April__2025.pptx",
+          "name": "AIC EGERTON CHAPEL - 27th  April  2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "6JoDwSIXr2ZCVCcH2sZ29q",
+      "source": "contentful",
+      "externalKey": "6JoDwSIXr2ZCVCcH2sZ29q",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2025-07-01T08:02:54.187Z",
+      "title": "Experiencing the risen Christ for Service",
+      "preacher": "Rev Dr William C Kipkoros",
+      "ministryTitle": "",
+      "date": "2025-04-20",
+      "series": "",
+      "scriptureReference": "",
+      "description": "",
+      "previewImageUrl": "",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/6GSrLOWYD4H1g0aNYNWK3p/ee3f52aa1868f715ee0e74a12f5c6eb9/AIC_EGERTON_CHAPEL_20th__April__2025.pptx",
+          "name": "AIC EGERTON CHAPEL 20th  April  2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/6GSrLOWYD4H1g0aNYNWK3p/ee3f52aa1868f715ee0e74a12f5c6eb9/AIC_EGERTON_CHAPEL_20th__April__2025.pptx",
+          "name": "AIC EGERTON CHAPEL 20th  April  2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "2wuxvTgYtJmo5AsV0XqKEa",
+      "source": "contentful",
+      "externalKey": "2wuxvTgYtJmo5AsV0XqKEa",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2025-07-01T07:43:41.715Z",
+      "title": "The Seven Last Words of Jesus from the cross",
+      "preacher": "Rev Dr William C Kipkoros",
+      "ministryTitle": "",
+      "date": "2025-04-18",
+      "series": "",
+      "scriptureReference": "",
+      "description": "",
+      "previewImageUrl": "",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/5kmvmay6OBbujhHBeHb56K/0dd165a204326c265707c322487fa162/AIC_EGERTON_CHAPEL_18th__April__2025.pptx",
+          "name": "AIC EGERTON CHAPEL 18th  April  2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/5kmvmay6OBbujhHBeHb56K/0dd165a204326c265707c322487fa162/AIC_EGERTON_CHAPEL_18th__April__2025.pptx",
+          "name": "AIC EGERTON CHAPEL 18th  April  2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "5nAG9Cjd6nOUzhnmOCX0th",
+      "source": "contentful",
+      "externalKey": "5nAG9Cjd6nOUzhnmOCX0th",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2025-07-01T07:52:55.187Z",
+      "title": "Pontius Pilate: Truth and Pressure",
+      "preacher": "Rev Dr William C Kipkoros",
+      "ministryTitle": "",
+      "date": "2025-04-13",
+      "series": "",
+      "scriptureReference": "",
+      "description": "",
+      "previewImageUrl": "",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/65WckuU1z7ZU4fRzfxyLsy/d72b0b111daae8f491ff8c90a70578b7/AIC_EGERTON_CHAPEL_13th__April__2025.pptx",
+          "name": "AIC EGERTON CHAPEL 13th  April  2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/65WckuU1z7ZU4fRzfxyLsy/d72b0b111daae8f491ff8c90a70578b7/AIC_EGERTON_CHAPEL_13th__April__2025.pptx",
+          "name": "AIC EGERTON CHAPEL 13th  April  2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "4vEgRboy42pZhbO5YUJSx9",
+      "source": "contentful",
+      "externalKey": "4vEgRboy42pZhbO5YUJSx9",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2025-07-01T08:39:09.537Z",
+      "title": "The Tragedy of Materialism",
+      "preacher": "Rev Dr William C Kipkoros",
+      "ministryTitle": "",
+      "date": "2025-04-06",
+      "series": "",
+      "scriptureReference": "",
+      "description": "",
+      "previewImageUrl": "",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/5Hg0lTlEvUCLst5MKUPKwp/4a7c071ad5026885c39e08aab25cceba/AIC_EGERTON_CHAPEL_6th__April__2025.pptx",
+          "name": "AIC EGERTON CHAPEL 6th  April  2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/5Hg0lTlEvUCLst5MKUPKwp/4a7c071ad5026885c39e08aab25cceba/AIC_EGERTON_CHAPEL_6th__April__2025.pptx",
+          "name": "AIC EGERTON CHAPEL 6th  April  2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "2sGqblQd8f6TIBvsDUTsRC",
+      "source": "contentful",
+      "externalKey": "2sGqblQd8f6TIBvsDUTsRC",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2025-07-01T08:43:03.328Z",
+      "title": "Habakkuk 3:17-19",
+      "preacher": "Rev Dr William C Kipkoros",
+      "ministryTitle": "",
+      "date": "2025-04-03",
+      "series": "",
+      "scriptureReference": "",
+      "description": "",
+      "previewImageUrl": "",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/388N2TzdqUAyScAoVX9iYr/9ed378f210763598c9254e24d91b7ec0/AIC_NJORO_REGION__WOMEN_CONFERENCE_3rd___April_2025.pptx",
+          "name": "AIC NJORO REGION  WOMEN CONFERENCE 3rd   April 2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/388N2TzdqUAyScAoVX9iYr/9ed378f210763598c9254e24d91b7ec0/AIC_NJORO_REGION__WOMEN_CONFERENCE_3rd___April_2025.pptx",
+          "name": "AIC NJORO REGION  WOMEN CONFERENCE 3rd   April 2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "1EgdtsxSYtr5SyUwj12xrX",
+      "source": "contentful",
+      "externalKey": "1EgdtsxSYtr5SyUwj12xrX",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2025-07-01T08:44:45.925Z",
+      "title": "The true Nature of Discipleship",
+      "preacher": "Rev Dr William C Kipkoros",
+      "ministryTitle": "",
+      "date": "2025-03-23",
+      "series": "",
+      "scriptureReference": "",
+      "description": "",
+      "previewImageUrl": "",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/duSdfrUuIr4ablfCELqEi/125416140606030aea3ace25cfbc3e7a/AIC_EGERTON_CHAPEL_23rd__March_2025.pptx",
+          "name": "AIC EGERTON CHAPEL 23rd  March 2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/duSdfrUuIr4ablfCELqEi/125416140606030aea3ace25cfbc3e7a/AIC_EGERTON_CHAPEL_23rd__March_2025.pptx",
+          "name": "AIC EGERTON CHAPEL 23rd  March 2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "6iMDGVbGwTm4z4R24FU08R",
+      "source": "contentful",
+      "externalKey": "6iMDGVbGwTm4z4R24FU08R",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2025-07-01T08:46:18.505Z",
+      "title": "God Shapes Us into Greatness",
+      "preacher": "Rev Dr William C Kipkoros",
+      "ministryTitle": "",
+      "date": "2025-03-16",
+      "series": "",
+      "scriptureReference": "",
+      "description": "",
+      "previewImageUrl": "",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/4QvIONANW6kKlVpIU9CDs0/d693636f8f345ef801bd207dc0508985/AIC_EGERTON_CHAPEL_16th_March_2025.pptx",
+          "name": "AIC EGERTON CHAPEL 16th March 2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/4QvIONANW6kKlVpIU9CDs0/d693636f8f345ef801bd207dc0508985/AIC_EGERTON_CHAPEL_16th_March_2025.pptx",
+          "name": "AIC EGERTON CHAPEL 16th March 2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "DraIVNGnKY1RopdBJMEai",
+      "source": "contentful",
+      "externalKey": "DraIVNGnKY1RopdBJMEai",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2025-07-01T08:48:29.940Z",
+      "title": "Mindset of a Gray-Haired Conqueror",
+      "preacher": "Rev Dr William C Kipkoros",
+      "ministryTitle": "",
+      "date": "2025-03-09",
+      "series": "",
+      "scriptureReference": "",
+      "description": "",
+      "previewImageUrl": "",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/71LEAw8brHDhard5KYVAoz/81365daafa500f12468a83a5415a7709/AIC_EGERTON_CHAPEL_9th_March_2025.pptx",
+          "name": "AIC EGERTON CHAPEL 9th March 2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/71LEAw8brHDhard5KYVAoz/81365daafa500f12468a83a5415a7709/AIC_EGERTON_CHAPEL_9th_March_2025.pptx",
+          "name": "AIC EGERTON CHAPEL 9th March 2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "lDDNHtF9bod7RTizMvHbb",
+      "source": "contentful",
+      "externalKey": "lDDNHtF9bod7RTizMvHbb",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2025-07-01T08:50:58.629Z",
+      "title": "Rooted To The Source",
+      "preacher": "Dr. Stephen M. Mutie",
+      "ministryTitle": "",
+      "date": "2025-02-23",
+      "series": "",
+      "scriptureReference": "",
+      "description": "",
+      "previewImageUrl": "",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/5ENWuaQ2FO9eWM7hCKvcl0/b5e44cf92c5ac97b196246447f00cf7d/MUTIE_SERMON.pptx",
+          "name": "MUTIE SERMON.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/5ENWuaQ2FO9eWM7hCKvcl0/b5e44cf92c5ac97b196246447f00cf7d/MUTIE_SERMON.pptx",
+          "name": "MUTIE SERMON.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "3CuWsq1p6RISRSDoNwUjCA",
+      "source": "contentful",
+      "externalKey": "3CuWsq1p6RISRSDoNwUjCA",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2025-07-01T07:49:52.161Z",
+      "title": "Love is Our Greatest Measure of Spiritual Maturity",
+      "preacher": "Rev Dr William C Kipkoros",
+      "ministryTitle": "",
+      "date": "2025-02-16",
+      "series": "",
+      "scriptureReference": "",
+      "description": "",
+      "previewImageUrl": "",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/7uUaTUf0JhmIX75uXCNf7x/b2398effbb3a651eb40ec94bc871f8e6/AIC_EGERTON_CHAPEL_16th__February_2025.pptx",
+          "name": "AIC EGERTON CHAPEL 16th  February 2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/7uUaTUf0JhmIX75uXCNf7x/b2398effbb3a651eb40ec94bc871f8e6/AIC_EGERTON_CHAPEL_16th__February_2025.pptx",
+          "name": "AIC EGERTON CHAPEL 16th  February 2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "dnga4Qm9lLIPNm5GoilJ1",
+      "source": "contentful",
+      "externalKey": "dnga4Qm9lLIPNm5GoilJ1",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2025-07-01T08:53:08.355Z",
+      "title": "Our Sunset Moments Attracts God's Reset",
+      "preacher": "Rev Dr William C Kipkoros",
+      "ministryTitle": "",
+      "date": "2025-02-09",
+      "series": "",
+      "scriptureReference": "",
+      "description": "",
+      "previewImageUrl": "",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/57a4t5HlBanme8ZI3ORCTy/b7150a06f9c5acc5e66f1d1fcc08d866/AIC_EGERTON_CHAPEL9th_February_2025.pptx",
+          "name": "AIC EGERTON CHAPEL9th February 2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/57a4t5HlBanme8ZI3ORCTy/b7150a06f9c5acc5e66f1d1fcc08d866/AIC_EGERTON_CHAPEL9th_February_2025.pptx",
+          "name": "AIC EGERTON CHAPEL9th February 2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "5KOSiw8JHh3pfuRgVMHSvw",
+      "source": "contentful",
+      "externalKey": "5KOSiw8JHh3pfuRgVMHSvw",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2025-07-01T07:47:10.038Z",
+      "title": "Blooming as Pilgrims",
+      "preacher": "Rev Dr William C Kipkoros",
+      "ministryTitle": "",
+      "date": "2025-02-02",
+      "series": "",
+      "scriptureReference": "",
+      "description": "",
+      "previewImageUrl": "",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/PhoswiN4cBC6nL4Kapuep/4bd9af37fe1d2ff95db45e1e7a9dffc2/AIC_EGERTON_CHAPEL_2nd_February_2025.pptx",
+          "name": "AIC EGERTON CHAPEL 2nd February 2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/PhoswiN4cBC6nL4Kapuep/4bd9af37fe1d2ff95db45e1e7a9dffc2/AIC_EGERTON_CHAPEL_2nd_February_2025.pptx",
+          "name": "AIC EGERTON CHAPEL 2nd February 2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "4C2huAAAcP0AhnfG8fTLNl",
+      "source": "contentful",
+      "externalKey": "4C2huAAAcP0AhnfG8fTLNl",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2025-07-01T08:54:38.706Z",
+      "title": "A call to be a Pilgrim of Hope",
+      "preacher": "Rev Dr William C Kipkoros",
+      "ministryTitle": "",
+      "date": "2025-01-26",
+      "series": "",
+      "scriptureReference": "",
+      "description": "",
+      "previewImageUrl": "",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/7Gsao38ypPQJ4arQuhU1h3/a8a43c584a284294d5688e9a51e02515/AIC_EGERTON_CHAPEL26th__January_2025.pptx",
+          "name": "AIC EGERTON CHAPEL26th  January 2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/7Gsao38ypPQJ4arQuhU1h3/a8a43c584a284294d5688e9a51e02515/AIC_EGERTON_CHAPEL26th__January_2025.pptx",
+          "name": "AIC EGERTON CHAPEL26th  January 2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "6j6Q0OMRMVOvobm1kEV4g1",
+      "source": "contentful",
+      "externalKey": "6j6Q0OMRMVOvobm1kEV4g1",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2025-07-01T08:55:43.793Z",
+      "title": "Our Hope Rooted in our Relationship with God",
+      "preacher": "Rev Dr William C Kipkoros",
+      "ministryTitle": "",
+      "date": "2025-01-19",
+      "series": "",
+      "scriptureReference": "",
+      "description": "",
+      "previewImageUrl": "",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/7AEFMB3oETIS7mfgbcDc5e/d1720ce1bcff946ee9a52ee71e9d3473/AIC_EGERTON_CHAPEL19th__January_2025.pptx",
+          "name": "AIC EGERTON CHAPEL19th  January 2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/7AEFMB3oETIS7mfgbcDc5e/d1720ce1bcff946ee9a52ee71e9d3473/AIC_EGERTON_CHAPEL19th__January_2025.pptx",
+          "name": "AIC EGERTON CHAPEL19th  January 2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "7xEoCQJujkAnwYtDZfeuIn",
+      "source": "contentful",
+      "externalKey": "7xEoCQJujkAnwYtDZfeuIn",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2025-07-01T08:57:55.227Z",
+      "title": "Our Living is Rooted in our Looking",
+      "preacher": "Rev Dr William C Kipkoros",
+      "ministryTitle": "",
+      "date": "2025-01-12",
+      "series": "",
+      "scriptureReference": "",
+      "description": "",
+      "previewImageUrl": "",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/31ojlBKkhnZY5ZZ7Ca2iND/98811ef83b6044b283752ace2aae600e/AIC_EGERTON_CHAPEL12th__January_2025.pptx",
+          "name": "AIC EGERTON CHAPEL12th  January 2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/31ojlBKkhnZY5ZZ7Ca2iND/98811ef83b6044b283752ace2aae600e/AIC_EGERTON_CHAPEL12th__January_2025.pptx",
+          "name": "AIC EGERTON CHAPEL12th  January 2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "5oXQwGK9m6bDMslp1NysQj",
+      "source": "contentful",
+      "externalKey": "5oXQwGK9m6bDMslp1NysQj",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2025-07-01T09:00:12.820Z",
+      "title": "God places crown of favor on the year 2025",
+      "preacher": "Rev Dr William C Kipkoros",
+      "ministryTitle": "",
+      "date": "2025-01-05",
+      "series": "",
+      "scriptureReference": "",
+      "description": "",
+      "previewImageUrl": "",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/22sxH3wENggEosVU9qfVDW/f3033c4d703bd64088606b52b96d6f99/AIC_EGERTON_CHAPEL_5th__January_2025.pptx",
+          "name": "AIC EGERTON CHAPEL 5th  January 2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/22sxH3wENggEosVU9qfVDW/f3033c4d703bd64088606b52b96d6f99/AIC_EGERTON_CHAPEL_5th__January_2025.pptx",
+          "name": "AIC EGERTON CHAPEL 5th  January 2025.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "2r2lKLXpjmOL40FF27HdOg",
+      "source": "contentful",
+      "externalKey": "2r2lKLXpjmOL40FF27HdOg",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2025-07-01T09:02:38.546Z",
+      "title": "Joseph A humble man chosen for a Heavenly Mission",
+      "preacher": "Rev Dr William C Kipkoros",
+      "ministryTitle": "",
+      "date": "2024-12-22",
+      "series": "",
+      "scriptureReference": "",
+      "description": "",
+      "previewImageUrl": "",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/EEQkJpwh3YKGWPJsfO0ES/7ecd2afd8555466e3a06b0a9d00e8093/AIC_EGERTON_CHAPEL_22nd__December__2024.pptx",
+          "name": "AIC EGERTON CHAPEL 22nd  December  2024.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/EEQkJpwh3YKGWPJsfO0ES/7ecd2afd8555466e3a06b0a9d00e8093/AIC_EGERTON_CHAPEL_22nd__December__2024.pptx",
+          "name": "AIC EGERTON CHAPEL 22nd  December  2024.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "8UNrQ0ACT91qeUMlMjuSA",
+      "source": "contentful",
+      "externalKey": "8UNrQ0ACT91qeUMlMjuSA",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2025-07-01T09:09:24.994Z",
+      "title": "His Name Is Wonderful (God's Indescribable Gift)",
+      "preacher": "Rev Dr William C Kipkoros",
+      "ministryTitle": "",
+      "date": "2024-12-08",
+      "series": "",
+      "scriptureReference": "",
+      "description": "",
+      "previewImageUrl": "",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/3mWylaGiPmlK0lOye63ERg/ab23035bbbc8ba3240e5d7b05821047e/AIC_EGERTON_CHAPEL_8th__December__2024.pptx",
+          "name": "AIC EGERTON CHAPEL 8th  December  2024.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/3mWylaGiPmlK0lOye63ERg/ab23035bbbc8ba3240e5d7b05821047e/AIC_EGERTON_CHAPEL_8th__December__2024.pptx",
+          "name": "AIC EGERTON CHAPEL 8th  December  2024.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "2SQUkjtK6V2mtymbVWgK80",
+      "source": "contentful",
+      "externalKey": "2SQUkjtK6V2mtymbVWgK80",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2025-07-01T09:05:39.981Z",
+      "title": "Lost in the spirit of time (I am Found)",
+      "preacher": "Dr. Stephen M. Mutie",
+      "ministryTitle": "",
+      "date": "2024-11-24",
+      "series": "",
+      "scriptureReference": "",
+      "description": "",
+      "previewImageUrl": "",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/3GRfsrUixUhMXlPeGDXJUq/3e200e59e9483a1b9ec0f26d4a03d73b/I_am_Found.pptx",
+          "name": "I am Found.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/3GRfsrUixUhMXlPeGDXJUq/3e200e59e9483a1b9ec0f26d4a03d73b/I_am_Found.pptx",
+          "name": "I am Found.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "72wK6GvWkAOWYWtzDdChEk",
+      "source": "contentful",
+      "externalKey": "72wK6GvWkAOWYWtzDdChEk",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2025-07-01T09:08:33.434Z",
+      "title": "His Name Is Wonderful (Four Titles- Same Savior)",
+      "preacher": "Rev Dr William C Kipkoros",
+      "ministryTitle": "",
+      "date": "2024-11-17",
+      "series": "",
+      "scriptureReference": "",
+      "description": "",
+      "previewImageUrl": "",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/3LmEqvtA3QVPfTFMT6EUyZ/0ee465db149c45a9ca8c763ec1d9c68f/AIC_EGERTON_CHAPEL_17th___November__2024.pptx",
+          "name": "AIC EGERTON CHAPEL 17th   November  2024.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/3LmEqvtA3QVPfTFMT6EUyZ/0ee465db149c45a9ca8c763ec1d9c68f/AIC_EGERTON_CHAPEL_17th___November__2024.pptx",
+          "name": "AIC EGERTON CHAPEL 17th   November  2024.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "77ikhgWHUuDEwKxlyu6MJl",
+      "source": "contentful",
+      "externalKey": "77ikhgWHUuDEwKxlyu6MJl",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2025-07-01T09:12:10.489Z",
+      "title": "His Name Is Wonderful: We Call Him Lord",
+      "preacher": "Rev Dr William C Kipkoros",
+      "ministryTitle": "",
+      "date": "2024-11-10",
+      "series": "",
+      "scriptureReference": "",
+      "description": "",
+      "previewImageUrl": "",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/4dHQPPwVwpUBPF1C2lKeWD/4da8d5225dce513238a1216262b6d2bd/AIC_EGERTON_CHAPEL_10th___November__2024.pptx",
+          "name": "AIC EGERTON CHAPEL 10th   November  2024.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/4dHQPPwVwpUBPF1C2lKeWD/4da8d5225dce513238a1216262b6d2bd/AIC_EGERTON_CHAPEL_10th___November__2024.pptx",
+          "name": "AIC EGERTON CHAPEL 10th   November  2024.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "7Eco7njSFP1Omze6qSwq1C",
+      "source": "contentful",
+      "externalKey": "7Eco7njSFP1Omze6qSwq1C",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2025-07-01T09:13:40.162Z",
+      "title": "Grace -Filled Fellowship: Celebrating Diversity",
+      "preacher": "Rev Dr William C Kipkoros",
+      "ministryTitle": "",
+      "date": "2024-11-03",
+      "series": "",
+      "scriptureReference": "",
+      "description": "",
+      "previewImageUrl": "",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/nG0KwOxwAwBeHNt3AZwVC/aae6e87ae60ab1b6e81021469a1d35b5/AIC_EGERTON_CHAPEL_3rd__November__2024__1_.pptx",
+          "name": "AIC EGERTON CHAPEL 3rd  November  2024 (1).pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/nG0KwOxwAwBeHNt3AZwVC/aae6e87ae60ab1b6e81021469a1d35b5/AIC_EGERTON_CHAPEL_3rd__November__2024__1_.pptx",
+          "name": "AIC EGERTON CHAPEL 3rd  November  2024 (1).pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "1qxkpCswK2sOjzMyB4wsD9",
+      "source": "contentful",
+      "externalKey": "1qxkpCswK2sOjzMyB4wsD9",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2025-07-01T09:15:20.204Z",
+      "title": "Living a life of Integrity",
+      "preacher": "Rev Dr William C Kipkoros",
+      "ministryTitle": "",
+      "date": "2024-10-27",
+      "series": "",
+      "scriptureReference": "",
+      "description": "",
+      "previewImageUrl": "",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/7IOAe2jc7ED2AXDNB2gEun/a66664551bd581acc6158ce08cda4953/AIC_EGERTON_CHAPEL_27th__October__2024.pptx",
+          "name": "AIC EGERTON CHAPEL 27th  October  2024.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/7IOAe2jc7ED2AXDNB2gEun/a66664551bd581acc6158ce08cda4953/AIC_EGERTON_CHAPEL_27th__October__2024.pptx",
+          "name": "AIC EGERTON CHAPEL 27th  October  2024.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "56pQuCP7YsNLRFCpIentUk",
+      "source": "contentful",
+      "externalKey": "56pQuCP7YsNLRFCpIentUk",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2025-07-01T09:17:29.072Z",
+      "title": "A Call to Integrity",
+      "preacher": "Rev Dr William C Kipkoros",
+      "ministryTitle": "",
+      "date": "2024-10-13",
+      "series": "",
+      "scriptureReference": "",
+      "description": "",
+      "previewImageUrl": "",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/2o0FFCjEGbWb5s5HDQjJyZ/545576e8c514092893233ef14dfeec63/AIC_EGERTON_CHAPEL_13th__October__2024.pptx",
+          "name": "AIC EGERTON CHAPEL 13th  October  2024.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/2o0FFCjEGbWb5s5HDQjJyZ/545576e8c514092893233ef14dfeec63/AIC_EGERTON_CHAPEL_13th__October__2024.pptx",
+          "name": "AIC EGERTON CHAPEL 13th  October  2024.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "2W4XmIA2fSa9CPwXOtDkZW",
+      "source": "contentful",
+      "externalKey": "2W4XmIA2fSa9CPwXOtDkZW",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2025-07-01T09:22:25.138Z",
+      "title": "How should a believer React when Wronged",
+      "preacher": "Rev Dr William C Kipkoros",
+      "ministryTitle": "",
+      "date": "2024-10-06",
+      "series": "",
+      "scriptureReference": "",
+      "description": "",
+      "previewImageUrl": "",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/2W6HOum0pajebpVtVsrTcB/d89b745a870bb37a9a84e1ff164b11de/AIC_EGERTON_CHAPEL_6th___September_2024.pptx",
+          "name": "AIC EGERTON CHAPEL 6th   September 2024.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/2W6HOum0pajebpVtVsrTcB/d89b745a870bb37a9a84e1ff164b11de/AIC_EGERTON_CHAPEL_6th___September_2024.pptx",
+          "name": "AIC EGERTON CHAPEL 6th   September 2024.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "30YRQJSqEFihGyJNiIejE1",
+      "source": "contentful",
+      "externalKey": "30YRQJSqEFihGyJNiIejE1",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2025-07-01T09:27:04.364Z",
+      "title": "The real test of humility is when our faith is expressed by the tongue",
+      "preacher": "Rev Dr William C Kipkoros",
+      "ministryTitle": "",
+      "date": "2024-09-29",
+      "series": "",
+      "scriptureReference": "",
+      "description": "",
+      "previewImageUrl": "",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/5efANmjlQTq7WHAOB7BN6H/64d78f23fde9e7f5ac28b24fbd335ff8/AIC_EGERTON_CHAPEL_29th___September_2024.pptx",
+          "name": "AIC EGERTON CHAPEL 29th   September 2024.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/5efANmjlQTq7WHAOB7BN6H/64d78f23fde9e7f5ac28b24fbd335ff8/AIC_EGERTON_CHAPEL_29th___September_2024.pptx",
+          "name": "AIC EGERTON CHAPEL 29th   September 2024.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "3LEgW3YW5gLnRMqtx3k4xz",
+      "source": "contentful",
+      "externalKey": "3LEgW3YW5gLnRMqtx3k4xz",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2025-07-01T09:27:48.283Z",
+      "title": "Humility (Our Nature is Putting On Masks- Hypocrisy)",
+      "preacher": "Rev Dr William C Kipkoros",
+      "ministryTitle": "",
+      "date": "2024-09-22",
+      "series": "",
+      "scriptureReference": "",
+      "description": "",
+      "previewImageUrl": "",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/2U6wExSjFzarMw0xPjzLTR/0c3c2113d29cb59e68ee9df48055fa9e/AIC_EGERTON_CHAPEL_22nd___September_2024.pptx",
+          "name": "AIC EGERTON CHAPEL 22nd   September 2024.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/2U6wExSjFzarMw0xPjzLTR/0c3c2113d29cb59e68ee9df48055fa9e/AIC_EGERTON_CHAPEL_22nd___September_2024.pptx",
+          "name": "AIC EGERTON CHAPEL 22nd   September 2024.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "4JX1GfgbtNRyCiO3PfYY5",
+      "source": "contentful",
+      "externalKey": "4JX1GfgbtNRyCiO3PfYY5",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2025-07-01T09:29:42.071Z",
+      "title": "suffering purifies but prolonged suffering Crashes",
+      "preacher": "Rev Dr William C Kipkoros",
+      "ministryTitle": "",
+      "date": "2024-09-08",
+      "series": "",
+      "scriptureReference": "",
+      "description": "",
+      "previewImageUrl": "",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/72XkYyhMkrGqZOzjIOWhgQ/e7c5b1a60f08aaccf28d6792859f53cc/AIC_EGERTON_CHAPEL_8th__September_2024.pptx",
+          "name": "AIC EGERTON CHAPEL 8th  September 2024.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/72XkYyhMkrGqZOzjIOWhgQ/e7c5b1a60f08aaccf28d6792859f53cc/AIC_EGERTON_CHAPEL_8th__September_2024.pptx",
+          "name": "AIC EGERTON CHAPEL 8th  September 2024.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "6tIB6Q5SuExOSIWtNvEY74",
+      "source": "contentful",
+      "externalKey": "6tIB6Q5SuExOSIWtNvEY74",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2025-07-01T07:30:07.568Z",
+      "title": "Our Nature putting on Mask",
+      "preacher": "Rev Dr William C Kipkoros",
+      "ministryTitle": "",
+      "date": "2024-09-01",
+      "series": "",
+      "scriptureReference": "",
+      "description": "",
+      "previewImageUrl": "",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/2OWn42sascFtU0qSwi2Ps/c41b2586b04a5d6745809540fc559096/AIC_EGERTON_CHAPEL_1st__September_2024.pptx",
+          "name": "AIC EGERTON CHAPEL 1st  September 2024.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/2OWn42sascFtU0qSwi2Ps/c41b2586b04a5d6745809540fc559096/AIC_EGERTON_CHAPEL_1st__September_2024.pptx",
+          "name": "AIC EGERTON CHAPEL 1st  September 2024.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "yoarrxISq01zug5U5lo5Y",
+      "source": "contentful",
+      "externalKey": "yoarrxISq01zug5U5lo5Y",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2025-05-28T14:01:26.987Z",
+      "title": "Cont'd A sheep with a shepherd Enjoys God's Preservation",
+      "preacher": "Rev Dr William C Kipkoros",
+      "ministryTitle": "",
+      "date": "2024-08-25",
+      "series": "",
+      "scriptureReference": "",
+      "description": "",
+      "previewImageUrl": "",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/5ieJLzdgamBeaYyRSKetOl/5dfb9ffe05be59ae22d6852424b3892e/AIC_EGERTON_CHAPEL_25th_August_2024.pptx",
+          "name": "AIC EGERTON CHAPEL 25th August 2024.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/5ieJLzdgamBeaYyRSKetOl/5dfb9ffe05be59ae22d6852424b3892e/AIC_EGERTON_CHAPEL_25th_August_2024.pptx",
+          "name": "AIC EGERTON CHAPEL 25th August 2024.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "5MrMhEuCmiaasg8lLYEQ2s",
+      "source": "contentful",
+      "externalKey": "5MrMhEuCmiaasg8lLYEQ2s",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2025-05-28T13:55:27.371Z",
+      "title": "Cont'd A sheep with a shepherd Enjoys an abundant (Today) In God's Home",
+      "preacher": "Rev Dr William C Kipkoros",
+      "ministryTitle": "",
+      "date": "2024-08-18",
+      "series": "",
+      "scriptureReference": "",
+      "description": "",
+      "previewImageUrl": "",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/5ip7Akb0jpkGtBq9KcPkwP/a1cb1d66d0f088f960e4fe4b2824bfc5/AIC_EGERTON_CHAPEL_18th_August_2024.pptx",
+          "name": "AIC EGERTON CHAPEL 18th August 2024.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/5ip7Akb0jpkGtBq9KcPkwP/a1cb1d66d0f088f960e4fe4b2824bfc5/AIC_EGERTON_CHAPEL_18th_August_2024.pptx",
+          "name": "AIC EGERTON CHAPEL 18th August 2024.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "7bkFyRXHlGxkQ9WlxhP9ro",
+      "source": "contentful",
+      "externalKey": "7bkFyRXHlGxkQ9WlxhP9ro",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2025-05-28T13:52:22.364Z",
+      "title": "Cont'd A sheep with a shepherd has absolute confidence of safety in times of crisis",
+      "preacher": "Rev Dr William C Kipkoros",
+      "ministryTitle": "",
+      "date": "2024-08-11",
+      "series": "",
+      "scriptureReference": "",
+      "description": "",
+      "previewImageUrl": "",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/2igYWl2jbR2cDWDYnqzxJq/88413a207c8b9004fdb85c23fc552267/AIC_EGERTON_CHAPEL_11th_August_2024.pptx",
+          "name": "AIC EGERTON CHAPEL 11th August 2024.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/2igYWl2jbR2cDWDYnqzxJq/88413a207c8b9004fdb85c23fc552267/AIC_EGERTON_CHAPEL_11th_August_2024.pptx",
+          "name": "AIC EGERTON CHAPEL 11th August 2024.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "27JNBydAHJBnIrhg4QtVbJ",
+      "source": "contentful",
+      "externalKey": "27JNBydAHJBnIrhg4QtVbJ",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2025-05-28T13:51:54.799Z",
+      "title": "Cont'd a sheep with a shepherd Has hope and direction",
+      "preacher": "Rev Dr William C Kipkoros",
+      "ministryTitle": "",
+      "date": "2024-08-04",
+      "series": "",
+      "scriptureReference": "",
+      "description": "",
+      "previewImageUrl": "",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/6xGNMsuEJ1r19kRu584AUE/f2baebaeb11dfbda9be169945adbdfe1/AIC_EGERTON_CHAPEL_4th_August_2024.pptx",
+          "name": "AIC EGERTON CHAPEL 4th August 2024.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/6xGNMsuEJ1r19kRu584AUE/f2baebaeb11dfbda9be169945adbdfe1/AIC_EGERTON_CHAPEL_4th_August_2024.pptx",
+          "name": "AIC EGERTON CHAPEL 4th August 2024.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "1yBBdauzfMpKSqW3zuleA6",
+      "source": "contentful",
+      "externalKey": "1yBBdauzfMpKSqW3zuleA6",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2025-05-28T13:51:24.370Z",
+      "title": "Cont'd a sheep with a shepherd is fully supplied",
+      "preacher": "Rev Dr William C Kipkoros",
+      "ministryTitle": "",
+      "date": "2024-07-28",
+      "series": "",
+      "scriptureReference": "",
+      "description": "",
+      "previewImageUrl": "",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/1XGOgNnRaGnmO6KL0dOf2a/5afda4f315b3a5cf633e784c145d46a2/AIC_EGERTON_CHAPEL_28th__July_2024.pptx",
+          "name": "AIC EGERTON CHAPEL 28th  July 2024.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/1XGOgNnRaGnmO6KL0dOf2a/5afda4f315b3a5cf633e784c145d46a2/AIC_EGERTON_CHAPEL_28th__July_2024.pptx",
+          "name": "AIC EGERTON CHAPEL 28th  July 2024.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "34RxPOdnm4tzeJXOWzliqy",
+      "source": "contentful",
+      "externalKey": "34RxPOdnm4tzeJXOWzliqy",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2025-05-28T13:36:46.997Z",
+      "title": "Marks of a Sheep With A Shepherd",
+      "preacher": "Rev Dr William C Kipkoros",
+      "ministryTitle": "",
+      "date": "2024-07-07",
+      "series": "",
+      "scriptureReference": "",
+      "description": "",
+      "previewImageUrl": "",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/HwT8AAOPFhqQfZSFg3jrq/ef92596f705fb17f127de9b4a04c2b64/AIC_EGERTON_CHAPEL_7th_July_2024.pptx",
+          "name": "AIC EGERTON CHAPEL 7th July 2024.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/HwT8AAOPFhqQfZSFg3jrq/ef92596f705fb17f127de9b4a04c2b64/AIC_EGERTON_CHAPEL_7th_July_2024.pptx",
+          "name": "AIC EGERTON CHAPEL 7th July 2024.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "4ibditxdgfps3cuO4aiAdv",
+      "source": "contentful",
+      "externalKey": "4ibditxdgfps3cuO4aiAdv",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2025-05-28T13:34:53.457Z",
+      "title": "Relational Esentials_ For Parenting Grown-Up Children",
+      "preacher": "Rev Dr William C Kipkoros",
+      "ministryTitle": "",
+      "date": "2024-06-30",
+      "series": "",
+      "scriptureReference": "",
+      "description": "",
+      "previewImageUrl": "",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/w1ub5WXOhw6zQS1LXTdCz/f3a4cd610baa825697775adb52609293/AIC_EGERTON_CHAPEL__1_.pptx",
+          "name": "AIC EGERTON CHAPEL (1).pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/w1ub5WXOhw6zQS1LXTdCz/f3a4cd610baa825697775adb52609293/AIC_EGERTON_CHAPEL__1_.pptx",
+          "name": "AIC EGERTON CHAPEL (1).pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    },
+    {
+      "id": "33a00ecH3D0pLcRPuYhtgw",
+      "source": "contentful",
+      "externalKey": "33a00ecH3D0pLcRPuYhtgw",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2025-05-28T13:32:45.302Z",
+      "title": "DELIGHTING IN YOUR CHILDREN",
+      "preacher": "Rev Dr William C Kipkoros",
+      "ministryTitle": "",
+      "date": "2024-06-23",
+      "series": "",
+      "scriptureReference": "",
+      "description": "",
+      "previewImageUrl": "",
+      "pdfUrl": "",
+      "files": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/3MfZxGVJOLdHBZQIpu4Xmz/4b2a5c5b7251ba6dc28bc591324f08b6/AIC_EGERTON_CHAPEL.pptx",
+          "name": "AIC EGERTON CHAPEL.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "videoUrl": "",
+      "audioUrl": "",
+      "tags": [],
+      "featured": false,
+      "isPremium": false,
+      "premiumAmount": 0,
+      "presentationAssets": [
+        {
+          "url": "https://assets.ctfassets.net/em08252vzuh6/3MfZxGVJOLdHBZQIpu4Xmz/4b2a5c5b7251ba6dc28bc591324f08b6/AIC_EGERTON_CHAPEL.pptx",
+          "name": "AIC EGERTON CHAPEL.pptx",
+          "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        }
+      ],
+      "pdfName": "sermon.pdf",
+      "type": "sermons"
+    }
+  ],
   "events": [],
-  "leadership": [],
-  "gallery": [],
-  "announcements": [],
+  "leadership": [
+    {
+      "id": "44Nmv9OvH9eQRUeGGwgsro",
+      "source": "contentful",
+      "externalKey": "44Nmv9OvH9eQRUeGGwgsro",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 10,
+      "updatedAt": "2026-11-08T20:45:40.739Z",
+      "group": "pastoral",
+      "name": "Rev. Samuel Ndebe",
+      "role": "Former Pastor",
+      "bio": "",
+      "message": "",
+      "photoUrl": "https://images.ctfassets.net/em08252vzuh6/6Obg7a3ftHtwc5hCenj2VU/df79ac6b8320d33026fde1a86565ea9a/Canon_012.JPG",
+      "active": true,
+      "type": "leadership"
+    },
+    {
+      "id": "6yMNGSVa5h1GOhfJrn0kjC",
+      "source": "contentful",
+      "externalKey": "6yMNGSVa5h1GOhfJrn0kjC",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 10,
+      "updatedAt": "2026-11-08T20:26:30.335Z",
+      "group": "pastoral",
+      "name": "Rev. Isaac Kuria",
+      "role": "Founding Pastor",
+      "bio": "",
+      "message": "",
+      "photoUrl": "https://images.ctfassets.net/em08252vzuh6/1YY2Fnj0Gd25sdFocNHWHB/45f130316e647ede29c104075b947975/image.png",
+      "active": true,
+      "type": "leadership"
+    }
+  ],
+  "gallery": [
+    {
+      "id": "1LE2cnHiI4elJCnJLhgSN3",
+      "source": "contentful",
+      "externalKey": "1LE2cnHiI4elJCnJLhgSN3",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2026-11-05T07:12:24.509Z",
+      "imageUrl": "https://images.ctfassets.net/em08252vzuh6/bOGZ46lkaGGQIP9BBYHlo/c1b0d87b334131a23b61e66712211ec5/pulpit.png",
+      "images": [
+        "https://images.ctfassets.net/em08252vzuh6/bOGZ46lkaGGQIP9BBYHlo/c1b0d87b334131a23b61e66712211ec5/pulpit.png",
+        "https://images.ctfassets.net/em08252vzuh6/3CdWGXCyq8PBCJd0SgCx2M/0feac0536f7846bf3cdcf1e7f019161c/theme.png",
+        "https://images.ctfassets.net/em08252vzuh6/4Q63ejpid3HcWYXI35wRzG/56093cd6c8de308145af6b5de29cea01/rev.JPG",
+        "https://images.ctfassets.net/em08252vzuh6/1YY2Fnj0Gd25sdFocNHWHB/45f130316e647ede29c104075b947975/image.png",
+        "https://images.ctfassets.net/em08252vzuh6/3SVGgZRbuCKMrrMXZRIH8M/df9750cd34d060463484d9304f385a7c/cwf2.JPG",
+        "https://images.ctfassets.net/em08252vzuh6/68tfNJVTcmCNMHWr118cNj/67d423ec5109c8e1245a0ccd212bbf56/y-project.JPG",
+        "https://images.ctfassets.net/em08252vzuh6/2OMDYYJR52TYHBcsDejZFc/de77e9a2ed727909c2b94c33499958a0/children.JPG",
+        "https://images.ctfassets.net/em08252vzuh6/51DqItypjSCje4jJe9K1wJ/44f07bc093ce86bda7043f3ab2aa02a4/batallion.jpg",
+        "https://images.ctfassets.net/em08252vzuh6/50GDK9OEeU2CPhQIWtkPC2/fdab5b0a064cb53105f7a414059980ca/star.JPG",
+        "https://images.ctfassets.net/em08252vzuh6/2WWMLAikn68lWnNei7thTu/0a42d4cc6b181095f5bad9fb8813e381/Canon_029.JPG",
+        "https://images.ctfassets.net/em08252vzuh6/3g71IhV3II0qTEUF0vzwzF/8cf52bc43c4b3f0100e8ed319b8a89be/revfam.JPG",
+        "https://images.ctfassets.net/em08252vzuh6/6Obg7a3ftHtwc5hCenj2VU/df79ac6b8320d33026fde1a86565ea9a/Canon_012.JPG",
+        "https://images.ctfassets.net/em08252vzuh6/2hMR17JMsRsfKDHDPxKzMJ/e0db5364d465c0e3acf17b80964a8358/IMG_7032.JPG",
+        "https://images.ctfassets.net/em08252vzuh6/1T41mUaCmd7erCtvMpZYYR/a1b4a46beb93eab954cded7e92d26141/praise6.jpg",
+        "https://images.ctfassets.net/em08252vzuh6/35e5yS1VmkHqE2tjlPoO4/2a5cfdf183c37a478527138855efab8c/IMG_2063.JPG",
+        "https://images.ctfassets.net/em08252vzuh6/6u8AMpZ0cDVWsDrw0PShkM/49630c862a8105d45997f5b929747f52/praise2.jpg",
+        "https://images.ctfassets.net/em08252vzuh6/wQXh2Wkn2zpdMcYozDFfV/258b5ece2ea9f898c42447e361fc4554/praise1.jpg",
+        "https://images.ctfassets.net/em08252vzuh6/2LBuPtmi4hdD1aIP3bzHX9/6fc2e8b23851a7f5c7f654e9faa235a2/praise5.jpg",
+        "https://images.ctfassets.net/em08252vzuh6/3CxbRLfPEijhzlXMeJeOBY/06aae8891e88aeef2c58aa6061dbad1d/praise3.jpg",
+        "https://images.ctfassets.net/em08252vzuh6/26XFTJp3yWDS73DeubZNEs/450efe413f65f9ab9cdba2910dd386f3/IMG_1073.JPG",
+        "https://images.ctfassets.net/em08252vzuh6/6UUYdI0vzhM9A86hP6q4it/8eab1d3f407b10e8aa854341f96557fe/IMG_1038.JPG",
+        "https://images.ctfassets.net/em08252vzuh6/7ApzGKeAdM86K2uzWAu2aT/cfc40992c04d5f31284353a12974ec32/Canon_299.JPG",
+        "https://images.ctfassets.net/em08252vzuh6/5l6gjV2LmeqlVn3bioa8x1/839baa7238bedd2cf2a9bb42b2133655/Canon_357.JPG",
+        "https://images.ctfassets.net/em08252vzuh6/uEowQDY5fAGnkpXw3xMXc/383c42b5cddbfe6dd3cef79748c01c34/Canon_333.JPG",
+        "https://images.ctfassets.net/em08252vzuh6/1X1oxAa5atCgqCcdq9FbM6/31fef50b349571ed5a488d889e92c42e/Canon_296.JPG",
+        "https://images.ctfassets.net/em08252vzuh6/33aZCEt8DtTkAqpSNZHswk/5983fac2bfad74f8d7e0ed23f5eb3997/IMG_0883.JPG",
+        "https://images.ctfassets.net/em08252vzuh6/4DJxoI7erdUzK0W0ipLAuy/98ddefb3284e15664d99bc8534907301/IMG_0898.JPG",
+        "https://images.ctfassets.net/em08252vzuh6/25PBfsseNMDOhqPjgZJ51f/7321acb5f6075f3d86dcf0ce1e53162b/Cmf_Rally_IMG_5980.JPG"
+      ],
+      "alt": "",
+      "caption": "Carousel",
+      "type": "gallery"
+    }
+  ],
+  "announcements": [
+    {
+      "id": "2ntr9ppDkO0H2vprHTkL6F",
+      "source": "contentful",
+      "externalKey": "2ntr9ppDkO0H2vprHTkL6F",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2026-11-09T09:00:59.230Z",
+      "text": "Call for service. Are you there and you feel the urge to Serve the Lord? This is the time we are inviting everyone to reach out to us on our socials or fill in the join ministry button to register for ministry. Don't hesitate.",
+      "linkUrl": "https://aicegertonchapel.netlify.app/ministries",
+      "linkLabel": "Register Now",
+      "severity": "info",
+      "startsAt": "2026-11-09T00:00+03:00",
+      "endsAt": null,
+      "type": "announcements"
+    },
+    {
+      "id": "7Kw0s6BYnbtUw4r1CO0APf",
+      "source": "contentful",
+      "externalKey": "7Kw0s6BYnbtUw4r1CO0APf",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2026-11-09T08:30:41.894Z",
+      "text": "Change of Giving Criteria. The church account number changes from 7506439 to 7506439#offering/ tithes respectively. pleas note this changes",
+      "linkUrl": "https://aicegertonchapel.netlify.app/give",
+      "linkLabel": "more info",
+      "severity": "info",
+      "startsAt": "2026-11-09T00:00+03:00",
+      "endsAt": null,
+      "type": "announcements"
+    }
+  ],
   "ministries": [],
-  "service_times": [],
+  "service_times": [
+    {
+      "id": "3fH8XuVMyzxnLERx2kDgjQ",
+      "source": "contentful",
+      "externalKey": "3fH8XuVMyzxnLERx2kDgjQ",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2026-11-09T08:43:14.505Z",
+      "label": "2nd Sunday Service",
+      "day": "Sunday",
+      "start": "10:00 Am",
+      "end": "12:30 Pm",
+      "isLive": true,
+      "type": "service_times"
+    },
+    {
+      "id": "6DkknJwh6nXPeoZTxRsyfh",
+      "source": "contentful",
+      "externalKey": "6DkknJwh6nXPeoZTxRsyfh",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2026-11-09T08:42:22.182Z",
+      "label": "1 st Sunday Services",
+      "day": "Sunday",
+      "start": "7:00 Am",
+      "end": "9:30 Am",
+      "isLive": true,
+      "type": "service_times"
+    },
+    {
+      "id": "jqPY2aCz6e9A7CUqzFlSb",
+      "source": "contentful",
+      "externalKey": "jqPY2aCz6e9A7CUqzFlSb",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 1,
+      "updatedAt": "2026-11-09T08:38:12.421Z",
+      "label": "Choir Practices",
+      "day": "Tuesday",
+      "start": "4:00pm",
+      "end": "6:30pm",
+      "isLive": false,
+      "type": "service_times"
+    },
+    {
+      "id": "7cIxXyXmq5BBCdt5bSfHqA",
+      "source": "contentful",
+      "externalKey": "7cIxXyXmq5BBCdt5bSfHqA",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 2,
+      "updatedAt": "2026-11-09T08:41:02.612Z",
+      "label": "Fellowships",
+      "day": "Wednesday",
+      "start": "5:00pm",
+      "end": "6:30PM",
+      "isLive": false,
+      "type": "service_times"
+    },
+    {
+      "id": "2PVizaQcqtsoKH5QvvVO0X",
+      "source": "contentful",
+      "externalKey": "2PVizaQcqtsoKH5QvvVO0X",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 4,
+      "updatedAt": "2026-11-09T08:40:55.557Z",
+      "label": "Praise & Worship Practices",
+      "day": "Saturday",
+      "start": "2:00pm",
+      "end": "6:30pm",
+      "isLive": false,
+      "type": "service_times"
+    }
+  ],
   "settings": []
 }

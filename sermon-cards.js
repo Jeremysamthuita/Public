@@ -235,6 +235,12 @@
 
         const preview = document.createElement('div');
         preview.className = 'sermon-preview';
+
+        const previewBadge = document.createElement('div');
+        previewBadge.className = 'sermon-preview-tag';
+        previewBadge.innerHTML = '<i class="fas fa-church" aria-hidden="true"></i><span>AIC Egerton</span>';
+        preview.appendChild(previewBadge);
+
         if (sermon.previewImageUrl) {
             const image = document.createElement('img');
             const imageUrl = new URL(sermon.previewImageUrl);
@@ -250,23 +256,27 @@
         } else {
             const placeholder = document.createElement('div');
             placeholder.className = 'sermon-preview-placeholder';
-            const icon = document.createElement('i');
-            icon.className = 'fas fa-file-powerpoint';
-            icon.setAttribute('aria-hidden', 'true');
-            const hint = document.createElement('span');
-            hint.textContent = 'Sermon preview image not yet added';
-            placeholder.append(icon, hint);
+            placeholder.innerHTML = `
+                <div class="sermon-placeholder-icon">
+                    <i class="fas fa-book-bible" aria-hidden="true"></i>
+                </div>
+                <span class="sermon-placeholder-label">Sunday Sermon</span>
+            `;
             preview.appendChild(placeholder);
         }
 
-        const title = document.createElement(`h${Math.min(6, Math.max(3, Number(headingLevel) || 3))}`);
-        title.className = 'sermon-title-overlay';
-        title.textContent = sermon.title;
-        preview.appendChild(title);
         card.appendChild(preview);
 
         const content = document.createElement('div');
         content.className = 'sermon-content';
+
+        const titleWrapper = document.createElement('div');
+        titleWrapper.className = 'sermon-title-wrapper';
+        const title = document.createElement(`h${Math.min(6, Math.max(3, Number(headingLevel) || 3))}`);
+        title.className = 'sermon-card-title';
+        title.textContent = sermon.title;
+        titleWrapper.appendChild(title);
+        content.appendChild(titleWrapper);
         const meta = document.createElement('div');
         meta.className = 'sermon-meta';
 

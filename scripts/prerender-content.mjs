@@ -41,7 +41,11 @@ export function renderSermon(item) {
   const imageUrl = safeHttpsUrl(item.previewImageUrl);
   const preview = imageUrl
     ? `<img src="${escapeHtml(imageUrl)}" alt="${title} sermon preview" width="640" height="360" loading="lazy" decoding="async">`
-    : '<div class="sermon-preview-placeholder"><span>Sermon preview image not yet added</span></div>';
+    : `<div class="sermon-preview-placeholder">
+         <div class="sermon-placeholder-icon"><i class="fas fa-book-bible" aria-hidden="true"></i></div>
+         <span class="sermon-placeholder-label">Sunday Sermon</span>
+       </div>`;
+  const badge = `<div class="sermon-preview-tag"><i class="fas fa-church" aria-hidden="true"></i><span>AIC Egerton</span></div>`;
   const preacher = item.preacher
     ? `<div><strong>${escapeHtml(item.ministryTitle ? `Preacher · ${item.ministryTitle}` : 'Preacher')}</strong><span>${escapeHtml(item.preacher)}</span></div>`
     : '';
@@ -55,16 +59,16 @@ export function renderSermon(item) {
   const links = files.map(file => {
     const url = safeHttpsUrl(file.url);
     if (!url) return '';
-    return `<a class="sermon-download-link" href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" download="${escapeHtml(file.name || 'Sermon resource')}">${escapeHtml(file.name || 'Sermon resource')}</a>`;
+    return `<a class="sermon-download-link" href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" download="${escapeHtml(file.name || 'Sermon resource')}"><i class="fas fa-download" aria-hidden="true"></i> Download</a>`;
   }).join('');
   const video = videoUrl
-    ? `<a class="sermon-video-link" href="${escapeHtml(videoUrl)}" target="_blank" rel="noopener noreferrer">Watch sermon</a>`
+    ? `<a class="sermon-video-link" href="${escapeHtml(videoUrl)}" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube" aria-hidden="true"></i> Watch sermon</a>`
     : '';
   const audio = audioUrl
     ? `<audio controls preload="none" aria-label="Listen to ${title}" src="${escapeHtml(audioUrl)}"></audio>`
     : '';
 
-  return `<article class="sermon-card"><div class="sermon-preview">${preview}<h3 class="sermon-title-overlay">${title}</h3></div><div class="sermon-content"><div class="sermon-meta">${preacher}<div><strong>Date</strong><span>${escapeHtml(formattedDate(item.date))}</span></div></div>${item.scriptureReference ? `<p class="sermon-scripture-reference">Scripture: ${escapeHtml(item.scriptureReference)}</p>` : ''}${item.series ? `<p class="sermon-series">Series: ${escapeHtml(item.series)}</p>` : ''}${audio}<div class="sermon-actions">${links}${video}</div></div></article>`;
+  return `<article class="sermon-card"><div class="sermon-preview">${badge}${preview}</div><div class="sermon-content"><div class="sermon-title-wrapper"><h3 class="sermon-card-title">${title}</h3></div><div class="sermon-meta">${preacher}<div><strong>Date</strong><span>${escapeHtml(formattedDate(item.date))}</span></div></div>${item.scriptureReference ? `<p class="sermon-scripture-reference">Scripture: ${escapeHtml(item.scriptureReference)}</p>` : ''}${item.series ? `<p class="sermon-series">Series: ${escapeHtml(item.series)}</p>` : ''}${audio}<div class="sermon-actions">${links}${video}</div></div></article>`;
 }
 
 function renderEvent(item) {
