@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/site-chrome.css">
+    <link rel="preconnect" href="https://cdn.contentful.com">
+    <link rel="preconnect" href="https://images.ctfassets.net">
+    <link rel="preconnect" href="https://tdtvktdqtkfdvucqlzlg.supabase.co">
+    <script defer src="/assets/js/content/content-bootstrap.js"></script>
+    <title>Projects &amp; Development | AIC Egerton Chapel</title>
+    <meta name="description" content="See what AIC Egerton Chapel is building together: ongoing, proposed and completed church projects, with progress, funding and ways to support.">
+    <meta name="author" content="Eng. Jeremiah Thuita and AIC Egerton Chapel Team">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Projects &amp; Development | AIC Egerton Chapel">
+    <meta property="og:description" content="Follow the progress of our church projects and learn how you can support them.">
+    <meta property="og:image" content="https://aicegertonchapel.netlify.app/family.jpg">
+    <link rel="canonical" href="https://aicegertonchapel.netlify.app/projects.html">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+    <link rel="stylesheet" href="/projects.css">
+    <link rel="stylesheet" href="/nav-modern.css">
+    <script src="/nav-modern.js" defer></script>
+</head>
+<body class="pj-page">
+<!--CHROME:HEADER:START-->
+<a href="#main" class="aic-skip-link">Skip to content</a>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/index.html" aria-label="AIC Egerton Chapel — home">
+      <img class="logo1" src="/logo.jpg" alt="" width="46" height="46">
+      <span class="church-name">AIC EGERTON CHAPEL</span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation menu" aria-controls="navLinks" aria-expanded="false">
+      <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+    </button>
+    <nav aria-label="Main navigation">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="https://ecschools.netlify.app" target="_blank" rel="noopener noreferrer">Academy</a></li>
+        <li><a href="/sermons.html">Sermons</a></li>
+        <li><a href="/ministries.html">Ministries</a></li>
+        <li><a href="/projects.html">Projects</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+        <li><a class="donate-btn" href="/give.html" data-open-donate><i class="fas fa-donate" aria-hidden="true"></i> Donate</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<!--CHROME:HEADER:END-->
+
+<main id="main">
+  <div class="pj-wrap">
+
+    <section class="pj-hero" aria-labelledby="pj-title">
+      <div class="pj-hero-inner">
+        <span class="pj-eyebrow"><i class="fas fa-helmet-safety" aria-hidden="true"></i> Building together</span>
+        <h1 id="pj-title">Projects &amp; Development</h1>
+        <p>Follow what God is doing through our church family. See what we are building, how far each project has come, and how you can take part.</p>
+        <div class="pj-hero-actions">
+          <a class="pj-btn pj-btn-light" href="#projects"><i class="fas fa-arrow-down" aria-hidden="true"></i> Explore projects</a>
+          <a class="pj-btn pj-btn-ghost" href="/give.html"><i class="fas fa-heart" aria-hidden="true"></i> Ways to give</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="pj-stats" aria-label="Project summary">
+      <div class="pj-stat"><i class="fas fa-layer-group" aria-hidden="true"></i><strong id="total-projects">0</strong><span>Total projects</span></div>
+      <div class="pj-stat"><i class="fas fa-person-digging" aria-hidden="true"></i><strong id="ongoing-projects">0</strong><span>Ongoing</span></div>
+      <div class="pj-stat"><i class="fas fa-lightbulb" aria-hidden="true"></i><strong id="proposed-projects">0</strong><span>Proposed</span></div>
+      <div class="pj-stat"><i class="fas fa-circle-check" aria-hidden="true"></i><strong id="completed-projects">0</strong><span>Completed</span></div>
+      <div class="pj-stat" id="stat-funds" hidden><i class="fas fa-hand-holding-dollar" aria-hidden="true"></i><strong id="funds-received">KES 0</strong><span>Funds received</span></div>
+    </section>
+
+    <section class="pj-section" id="projects" aria-labelledby="pj-list-title">
+      <div class="pj-heading">
+        <h2 id="pj-list-title">Our Projects</h2>
+        <p>Search, filter and open any project to see its milestones, updates, photos and reports.</p>
+      </div>
+
+      <div class="pj-toolbar" role="search">
+        <div class="pj-controls">
+          <div class="pj-field">
+            <label class="pj-sr" for="project-search">Search projects</label>
+            <i class="fas fa-magnifying-glass" aria-hidden="true"></i>
+            <input id="project-search" type="search" placeholder="Search projects..." autocomplete="off">
+          </div>
+          <div class="pj-field">
+            <label class="pj-sr" for="project-category">Category</label>
+            <select id="project-category">
+              <option value="all">All categories</option>
+              <option value="infrastructure">Infrastructure</option>
+              <option value="education">Education</option>
+              <option value="community">Community</option>
+              <option value="outreach">Outreach</option>
+              <option value="environment">Environment</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="pj-field">
+            <label class="pj-sr" for="project-sort">Sort by</label>
+            <select id="project-sort">
+              <option value="featured">Featured first</option>
+              <option value="newest">Recently updated</option>
+              <option value="progress">Most progress</option>
+              <option value="name">Name (A to Z)</option>
+            </select>
+          </div>
+        </div>
+        <div class="pj-chips" id="status-chips" role="group" aria-label="Filter by status">
+          <button class="pj-chip" type="button" data-filter="all" aria-pressed="true">All <span class="pj-chip-count" data-count="all">0</span></button>
+          <button class="pj-chip" type="button" data-filter="ongoing" aria-pressed="false">Ongoing <span class="pj-chip-count" data-count="ongoing">0</span></button>
+          <button class="pj-chip" type="button" data-filter="proposed" aria-pressed="false">Proposed <span class="pj-chip-count" data-count="proposed">0</span></button>
+          <button class="pj-chip" type="button" data-filter="completed" aria-pressed="false">Completed <span class="pj-chip-count" data-count="completed">0</span></button>
+          <button class="pj-chip" type="button" data-filter="on-hold" aria-pressed="false">On hold <span class="pj-chip-count" data-count="on-hold">0</span></button>
+        </div>
+      </div>
+
+      <div class="pj-result-bar">
+        <span id="results-count" role="status" aria-live="polite"></span>
+        <button class="pj-link-btn" id="clear-filters" type="button" hidden>Clear filters</button>
+      </div>
+
+      <p class="pj-notice" id="project-notice" role="status" hidden></p>
+
+      <div class="pj-grid" id="project-grid" aria-busy="true">
+        <div class="pj-skel" aria-hidden="true"></div>
+        <div class="pj-skel" aria-hidden="true"></div>
+        <div class="pj-skel" aria-hidden="true"></div>
+      </div>
+
+      <div class="pj-state" id="project-empty" hidden></div>
+      <div class="pj-state" id="project-error" hidden role="alert">
+        <i class="fas fa-triangle-exclamation" aria-hidden="true"></i>
+        <h3>We could not load the projects</h3>
+        <p>Please check your internet connection and try again.</p>
+        <button class="pj-btn pj-btn-primary" id="retry-projects" type="button"><i class="fas fa-rotate-right" aria-hidden="true"></i> Try again</button>
+      </div>
+      <noscript><div class="pj-state"><h3>JavaScript is needed</h3><p>Please turn on JavaScript to see our projects, or contact the church office.</p></div></noscript>
+    </section>
+
+    <section class="pj-cta" aria-labelledby="pj-cta-title">
+      <h2 id="pj-cta-title">Be part of what God is building</h2>
+      <p>Every gift, prayer and helping hand moves a project forward. Talk to us about giving, volunteering or partnering with a project.</p>
+      <div class="pj-hero-actions">
+        <a class="pj-btn pj-btn-light" href="/give.html"><i class="fas fa-heart" aria-hidden="true"></i> Give</a>
+        <a class="pj-btn pj-btn-ghost" href="/contact.html"><i class="fas fa-envelope" aria-hidden="true"></i> Contact us</a>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<!-- Donation dialog (same as the home page; opened by the Donate button) -->
+<div id="donationModal" class="modal">
+    <div class="modal-content">
+        <button type="button" class="close" data-action="donation-close" aria-label="Close donation dialog">&times;</button>
+        <h2>Church Donation</h2>
+        <p>Use the M-Pesa details below to make your donation. Contact us on WhatsApp if you need help.</p>
+        <p><strong>Paybill Number:</strong> 522522</p>
+        <p><strong>Account Number:</strong>7506439#Offerings/ Tithes</p>
+        <div class="donation-instructions">
+            <p>How to donate:</p>
+            <ol>
+                <li>Go to the M-Pesa menu</li>
+                <li>Select Lipa na M-Pesa</li>
+                <li>Select Paybill</li>
+                <li>Enter the Paybill number above</li>
+                <li>Enter the account number above and confirm your donation</li>
+            </ol>
+        </div>
+        <label for="donationReason">Reason for Donation:</label>
+        <input type="text" id="donationReason" placeholder="E.g., Church Project, Tithe, Offering">
+        <button type="button" data-action="donation-submit">Get Help on WhatsApp</button>
+    </div>
+</div>
+
+<!-- Project details -->
+<div class="pj-modal" id="project-modal" aria-hidden="true">
+  <div class="pj-backdrop" data-close-modal></div>
+  <div class="pj-dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="pj-modal-tools">
+      <button class="pj-icon-btn" id="pj-share" type="button" aria-label="Share this project"><i class="fas fa-share-nodes" aria-hidden="true"></i></button>
+      <button class="pj-icon-btn" id="pj-close" type="button" data-close-modal aria-label="Close project details"><i class="fas fa-xmark" aria-hidden="true"></i></button>
+    </div>
+    <div id="modal-content"></div>
+  </div>
+</div>
+
+<div class="pj-lightbox" id="pj-lightbox" role="dialog" aria-modal="true" aria-label="Project photo viewer">
+  <button class="pj-icon-btn pj-lb-close" id="pj-lb-close" type="button" aria-label="Close photo"><i class="fas fa-xmark" aria-hidden="true"></i></button>
+  <button class="pj-icon-btn pj-lb-btn pj-lb-prev" id="pj-lb-prev" type="button" aria-label="Previous photo"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+  <figure><img id="pj-lb-img" src="" alt=""><figcaption id="pj-lb-caption"></figcaption></figure>
+  <button class="pj-icon-btn pj-lb-btn pj-lb-next" id="pj-lb-next" type="button" aria-label="Next photo"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
+</div>
+<div class="pj-toast" id="pj-toast" role="status" aria-live="polite"></div>
+
+<!--CHROME:FOOTER:START-->
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-col footer-about">
+      <h4>About Us</h4>
+      <p>AIC Egerton Chapel is a vibrant community of believers dedicated to worship, spiritual growth, and serving others.</p>
+      <div class="footer-social">
+        <h4>Follow us</h4>
+        <div class="social-icons">
+          <a href="https://www.youtube.com/@aicegertonchapel" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+          <a href="https://www.facebook.com/@aicegertonchapel" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+          <a href="https://www.tiktok.com/@aicegertonchapel" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-col footer-links">
+      <h4>Quick Links</h4>
+      <ul class="quick-links">
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/ministries.html">Ministries</a></li>
+        <li><a href="/sermons.html">Sermons</a></li>
+        <li><a href="/live.html">Live Stream</a></li>
+        <li><a href="/prayer-wall.html">Prayer Wall</a></li>
+        <li><a href="/contact.html">Contact Us</a></li>
+        <li><a href="/give.html">Give</a></li>
+      </ul>
+    </div>
+    <div class="footer-col footer-services">
+      <h4>Service Times</h4>
+      <div class="footer-service-times" data-service-times>
+        <!--CONTENT:SERVICE_TIMES:START-->
+        <p><strong>Sunday</strong><br>Main Worship Service — 8:00 AM – 12:00 PM EAT</p>
+        <p><strong>Wednesday</strong><br>Mid-Week Prayer — 5:30 PM – 7:00 PM EAT</p>
+        <p><strong>Friday</strong><br>Youth Fellowship — 6:00 PM – 8:00 PM EAT</p>
+        <!--CONTENT:SERVICE_TIMES:END-->
+      </div>
+    </div>
+    <div class="footer-col footer-contact">
+      <h4>Contact</h4>
+      <p>Egerton University, Njoro, Kenya</p>
+      <p><a href="tel:+254799522418">+254 799 522 418</a></p>
+      <p><a href="mailto:aicegertonchapel@gmail.com">aicegertonchapel@gmail.com</a></p>
+      <p><a href="https://wa.me/254799522418" target="_blank" rel="noopener noreferrer">WhatsApp</a></p>
+      <div class="footer-map">
+        <h4>Find us</h4>
+        <div class="map-facade">
+          <iframe class="map-facade__frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7356577284563!2d35.94114277582281!3d-0.3688216353133254!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182987bf970d254d%3A0x385834a695a103c7!2sA.I.C%20Egerton%20Chapel!5e0!3m2!1sen!2ske!4v1793572628423!5m2!1sen!2ske" title="Map showing AIC Egerton Chapel, Njoro, Kenya" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </div>
+        <a class="btn-get-directions btn-secondary" href="https://www.google.com/maps/dir/?api=1&amp;destination=-0.3688216353133254%2C35.94114277582281" target="_blank" rel="noopener noreferrer">Get directions</a>
+      </div>
+    </div>
+  </div>
+  <!--CONTENT:ANNOUNCEMENTS:START--><!--CONTENT:ANNOUNCEMENTS:END-->
+  <div class="copyright">
+    <p>© <span id="copyrightYear"></span> AIC Egerton Chapel. All rights reserved. <a href="/privacy.html">Privacy</a> · <a href="/accessibility.html">Accessibility</a></p>
+    <p class="site-attribution">Website maintained and developed by Eng. Jeremiah Thuita (Dip CE, BSC CS).</p>
+  </div>
+</footer>
+<script type="module" src="/assets/js/content/content-cards.js"></script>
+<!--CHROME:FOOTER:END-->
+
+<script src="/site-config.js"></script>
+<script type="module" src="/assets/js/main-app.js"></script>
+<script src="/assets/js/site-chrome.js"></script>
+<script src="/projects.js"></script>
+</body>
+</html>

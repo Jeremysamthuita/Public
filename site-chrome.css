@@ -557,58 +557,125 @@ a:hover { color: var(--aic-coral); }
 
 @media (max-width: 1250px) {
   .site-header .menu-toggle { display: flex; }
+  
+  /* 1. The Glassmorphism Right Sidebar */
   .site-header nav ul.nav-links {
     position: fixed;
     top: 0;
-    right: 0;
+    right: 0; 
+    left: auto;
     display: flex !important;
     flex-direction: column;
     align-items: stretch;
-    gap: 8px !important;
-    width: min(340px, 90vw);
+    gap: 12px !important;
+    width: min(300px, 85vw); /* Smaller, neat column */
     height: 100vh;
     height: 100dvh;
     overflow-y: auto;
     visibility: hidden;
     pointer-events: none;
-    clip-path: inset(0 0 0 100%);
-    padding: calc(var(--aic-header-h) + 24px) 20px 40px;
-    background: linear-gradient(160deg, #4c1d95 0%, #7c3aed 50%, #be123c 100%);
-    box-shadow: -20px 0 60px rgba(0,0,0,0.35);
-    transition: clip-path 320ms cubic-bezier(0.4, 0, 0.2, 1), visibility 0s linear 320ms;
+    padding: calc(var(--aic-header-h) + 30px) 24px 40px;
+    
+    /* Glassmorphism magic */
+    background: rgba(15, 23, 42, 0.65) !important; /* Translucent dark base */
+    backdrop-filter: blur(20px) saturate(150%);
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    
+    /* Slide in from right */
+    transform: translateX(100%);
+    transition: transform 350ms cubic-bezier(0.4, 0, 0.2, 1), visibility 0s linear 350ms;
     z-index: 999;
+    box-shadow: -20px 0 50px rgba(0, 0, 0, 0.5);
   }
+  
+  /* 2. Active State (Slide in) */
   .site-header nav ul.nav-links.active {
     visibility: visible;
     pointer-events: auto;
-    clip-path: inset(0);
-    transition: clip-path 320ms cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(0);
+    transition: transform 350ms cubic-bezier(0.4, 0, 0.2, 1);
   }
+
+  /* Backdrop overlay to dim the rest of the screen */
+  .site-header nav ul.nav-links::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    right: 300px; /* Matches sidebar width */
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 350ms;
+    z-index: -1;
+  }
+  .site-header nav ul.nav-links.active::after {
+    opacity: 1;
+    pointer-events: auto; /* Clicking backdrop could close menu if you add JS for it later */
+  }
+
+  /* 3. Menu Links - Pill Shaped */
   .site-header nav ul.nav-links > li > a {
-    padding: 14px 18px !important;
-    background: rgba(255,255,255,0.08);
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 14px 20px !important;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #f8fafc !important;
     font-size: 1rem !important;
+    font-weight: 600 !important;
+    border-radius: var(--aic-r-pill);
+    text-align: center;
+    transition: all 0.3s ease;
   }
+  
+  .site-header nav ul.nav-links > li > a:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+  }
+
+  /* 4. Active Link (Brand Gradient) */
   .site-header nav ul.nav-links > li > a.active {
-    background: #fff !important;
-    color: var(--aic-purple-dark) !important;
+    background: var(--aic-grad-brand) !important;
+    color: #fff !important;
+    border-color: transparent;
+    box-shadow: 0 8px 24px rgba(225, 29, 72, 0.4);
+    font-weight: 800 !important;
   }
+
+  /* Optional: Add a small glowing dot to active state like the screenshot */
+  .site-header nav ul.nav-links > li > a.active::before {
+    content: '';
+    position: absolute;
+    left: 18px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 10px #fff;
+  }
+
+  /* 5. Donate Button */
   .site-header .donate-btn {
     width: 100%;
     justify-content: center;
-    margin-top: 8px;
+    margin-top: 12px;
     padding: 14px 18px !important;
+    border: 1px solid rgba(255, 255, 255, 0.2);
   }
+
+  /* 6. Top Label */
   .site-header nav ul.nav-links::before {
     content: 'MENU';
     display: block;
-    margin: 0 0 16px;
-    color: rgba(255,255,255,0.5);
-    font-size: 0.72rem;
+    margin: 0 0 10px 10px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.75rem;
     font-weight: 800;
     letter-spacing: 3px;
-    text-align: center;
+    text-align: left;
   }
 }
 

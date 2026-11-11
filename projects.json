@@ -1,0 +1,86 @@
+[
+  {
+    "title": "Chapel Community Academy Development",
+    "slug": "chapel-community-academy-development",
+    "summary": "Support the continued development of learning spaces and resources for Chapel Community Academy.",
+    "description": "This project supports the development of Chapel Community Academy facilities and learning resources. Replace this sample description with the approved project brief, scope, and implementation details before publishing.",
+    "status": "ongoing",
+    "category": "education",
+    "estimatedBudget": 0,
+    "fundsReceived": 0,
+    "progress": 0,
+    "startDate": "2026-01-01",
+    "expectedCompletion": "2027-12-31",
+    "featured": true,
+    "coverImageUrl": "",
+    "supportUrl": "mailto:aicegertonchapel@gmail.com?subject=Support%20for%20Chapel%20Community%20Academy",
+    "supportDescription": "Contact the chapel to discuss approved ways to support this project.",
+    "stakeholders": [
+      {
+        "name": "AIC Egerton Chapel",
+        "role": "Project oversight"
+      }
+    ],
+    "milestones": [
+      {
+        "title": "Project planning and needs assessment",
+        "status": "planned",
+        "date": ""
+      },
+      {
+        "title": "Resource mobilisation",
+        "status": "planned",
+        "date": ""
+      },
+      {
+        "title": "Implementation and review",
+        "status": "planned",
+        "date": ""
+      }
+    ],
+    "updates": [],
+    "reports": []
+  },
+  {
+    "title": "Church Grounds Greening Initiative",
+    "slug": "church-grounds-greening-initiative",
+    "summary": "A proposed initiative to improve the church environment through tree planting and care of green spaces.",
+    "description": "This sample entry demonstrates a proposed environmental project. Update the scope, dates, budget, stakeholders, and support arrangements to reflect an approved church plan.",
+    "status": "proposed",
+    "category": "environment",
+    "estimatedBudget": 0,
+    "fundsReceived": 0,
+    "progress": 0,
+    "startDate": "",
+    "expectedCompletion": "",
+    "featured": false,
+    "coverImageUrl": "",
+    "supportUrl": "mailto:aicegertonchapel@gmail.com?subject=Church%20Greening%20Initiative",
+    "supportDescription": "Contact the chapel for information about participation and approved support options.",
+    "stakeholders": [
+      {
+        "name": "AIC Egerton Chapel",
+        "role": "Project sponsor"
+      }
+    ],
+    "milestones": [
+      {
+        "title": "Confirm project scope",
+        "status": "planned",
+        "date": ""
+      },
+      {
+        "title": "Identify suitable planting areas",
+        "status": "planned",
+        "date": ""
+      },
+      {
+        "title": "Planting and maintenance",
+        "status": "planned",
+        "date": ""
+      }
+    ],
+    "updates": [],
+    "reports": []
+  }
+]
