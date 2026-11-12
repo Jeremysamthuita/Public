@@ -3,7 +3,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const pages = (await readdir(root)).filter(file => file.endsWith('.html'));
+const pages = (await readdir(root)).filter(file => file.endsWith('.html') && !/^google[0-9a-f]+\.html$/i.test(file)); // skip Google Search Console verification files
 const errors = [];
 const titles = new Map();
 const chrome = new Map();

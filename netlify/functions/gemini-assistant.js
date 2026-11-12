@@ -1,32 +1,24 @@
 /**
- * Netlify Serverless Function: Gemini Assistant
- * Phase 1: ESM format.
+ * Netlify Function (v2): Gemini Assistant
+ * Uses Netlify AI Gateway — credentials are injected at runtime.
  */
+import { GoogleGenAI } from '@google/genai';
 
-export const handler = async (event) => {
-    const headers = {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Methods': 'POST, OPTIONS',
-        'Content-Type': 'application/json'
-    };
+const headers = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Content-Type': 'application/json'
+};
 
-    if (event.httpMethod === 'OPTIONS') return { statusCode: 200, headers, body: 'ok' };
-    if (event.httpMethod !== 'POST') {
-        return { statusCode: 405, headers, body: JSON.stringify({ error: 'Method not allowed' }) };
-    }
+const json = (status, body) => new Response(JSON.stringify(body), { status, headers });
 
-    const apiKey = process.env.GEMINI_API_KEY;
-    if (!apiKey) {
-        return {
-            statusCode: 503,
-            headers,
-            body: JSON.stringify({ error: 'Gemini is not configured. The site will use local search.' })
-        };
-    }
+export default async (req) => {
+    if (req.method === 'OPTIONS') return new Response('ok', { status: 200, headers });
+    if (req.method !== 'POST') return json(405, { error: 'Method not allowed' });
 
     try {
-        const { task, prompt, payload } = JSON.parse(event.body || '{}');
+        const { task, prompt, payload } = await req.json().catch(() => ({}));
         let systemPrompt;
         let userInput;
 
@@ -51,26 +43,21 @@ Identify:
 Return ONLY valid JSON.`;
             userInput = JSON.stringify(payload);
         } else {
-            return { statusCode: 400, headers, body: JSON.stringify({ error: 'Unknown task' }) };
+            return json(400, { error: 'Unknown task' });
         }
 
-        const model = process.env.GEMINI_MODEL || 'gemini-1.5-flash';
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
-        const geminiResp = await fetch(url, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                contents: [{ parts: [{ text: `${systemPrompt}\n\nInput: ${userInput}` }] }],
-                generationConfig: { responseMimeType: 'application/json', temperature: 0.1 }
-            })
+        const ai = new GoogleGenAI({});
+        const response = await ai.models.generateContent({
+            model: 'gemini-3-flash-preview',
+            contents: `${systemPrompt}\n\nInput: ${userInput}`,
+            config: { responseMimeType: 'application/json', temperature: 0.1 }
         });
 
-        const geminiData = await geminiResp.json();
-        const jsonText = geminiData.candidates?.[0]?.content?.parts?.[0]?.text;
+        const jsonText = response.text;
         if (!jsonText) throw new Error('Gemini returned no content.');
 
-        return { statusCode: 200, headers, body: jsonText };
+        return new Response(jsonText, { status: 200, headers });
     } catch (err) {
-        return { statusCode: 500, headers, body: JSON.stringify({ error: err.message }) };
+        return json(500, { error: err.message });
     }
 };
