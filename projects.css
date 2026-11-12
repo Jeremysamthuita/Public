@@ -76,13 +76,22 @@ body.pj-lock{overflow:hidden}
 .pj-page :focus-visible{outline:none;box-shadow:0 0 0 3px rgba(142,68,173,.45);border-radius:8px}
 
 /* hero */
-.pj-hero{position:relative;overflow:hidden;color:#fff;border-radius:24px;padding:clamp(34px,6vw,70px) clamp(22px,5vw,60px) clamp(70px,9vw,96px);background:linear-gradient(135deg,#6c2f8a 0%,#8e44ad 48%,#e74c3c 100%);box-shadow:0 18px 45px rgba(142,68,173,.28)}
+.pj-hero{
+  position:relative;
+  overflow:hidden;
+  color:#fff;
+  border-radius:24px;
+  padding:clamp(34px,6vw,70px) clamp(22px,5vw,60px) clamp(70px,9vw,96px);
+  background-image:url('/theme.png');
+  background-size:cover;
+  box-shadow:0 18px 45px rgba(142,68,173,.28)
+}
 .pj-hero::before,.pj-hero::after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.09);pointer-events:none}
 .pj-hero::before{width:340px;height:340px;right:-90px;top:-120px}
 .pj-hero::after{width:220px;height:220px;right:150px;bottom:-130px}
 .pj-hero-inner{position:relative;max-width:720px}
 .pj-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);padding:6px 14px;border-radius:30px;font-size:.78rem;font-weight:700;letter-spacing:1.4px;text-transform:uppercase}
-.pj-hero h1{font-size:clamp(2rem,5vw,3.3rem);line-height:1.12;margin:16px 0 12px;text-shadow:0 2px 8px rgba(0,0,0,.18)}
+.pj-hero h1{font-size:clamp(2rem,5vw,3.3rem);line-height:1.12;margin:16px 0 12px;text-shadow:0 2px 8px rgba(0,0,0,.18); color:rgba(255,255,255,.92)}
 .pj-hero p{font-size:clamp(1rem,2vw,1.15rem);line-height:1.7;color:rgba(255,255,255,.92);max-width:62ch}
 .pj-hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
 
@@ -103,7 +112,7 @@ body.pj-lock{overflow:hidden}
 .pj-stat{background:#fff;border-radius:15px;padding:18px 16px;text-align:center;box-shadow:0 8px 20px rgba(0,0,0,.08);border-top:4px solid #8e44ad}
 .pj-stat:nth-child(2){border-top-color:#27ae60}.pj-stat:nth-child(3){border-top-color:#f39c12}.pj-stat:nth-child(4){border-top-color:#3f51b5}.pj-stat:nth-child(5){border-top-color:#e74c3c}
 .pj-stat i{font-size:1.2rem;color:#8e44ad;margin-bottom:6px}
-.pj-stat strong{display:block;font-size:clamp(1.4rem,3vw,1.9rem);color:var(--pj-ink);line-height:1.2}
+.pj-stat strong{display:block;font: size 0.9em;color:var(--pj-ink);line-height:1.2}
 .pj-stat span{display:block;font-size:.8rem;color:var(--pj-muted);margin-top:2px}
 
 /* section headings */
