@@ -1,0 +1,235 @@
+/* =========================================================
+   AIC EGERTON CHAPEL: modern home page
+   Loaded after the page's own styles. Everything is scoped to body.hm.
+========================================================= */
+body.hm{
+  --hm-purple:#8e44ad;--hm-purple-d:#5b2a86;--hm-red:#e74c3c;--hm-ink:#24213b;--hm-text:#4a4a5a;--hm-muted:#6b7280;
+  --hm-line:rgba(142,68,173,.14);--hm-brand:linear-gradient(135deg,#8e44ad,#e74c3c);
+  --hm-shadow:0 10px 30px rgba(36,33,59,.08);--hm-shadow-lg:0 18px 44px rgba(36,33,59,.16);
+  --hm-off:100px;padding-bottom:0;
+  background:linear-gradient(180deg,#f7f4fb 0,#eef0f7 45%,#f7f4fb 100%);
+}
+@media(max-width:850px){body.hm{--hm-off:86px}}
+@media(max-width:480px){body.hm{--hm-off:82px}}
+body.hm :focus-visible{outline:none;box-shadow:0 0 0 3px rgba(142,68,173,.45)}
+body.hm .hm-wrap{width:min(1200px,92%);margin-inline:auto}
+
+/* ---------- shared pieces ---------- */
+body.hm .hm-head{text-align:center;max-width:720px;margin:0 auto clamp(24px,4vw,40px);padding-inline:20px}
+body.hm .hm-eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:30px;background:rgba(142,68,173,.1);color:#7a3a9b;font-size:.76rem;font-weight:800;letter-spacing:1.3px;text-transform:uppercase}
+body.hm .hm-head h2,body.hm .events-heading h2,body.hm #sermons .hm-head h2{color:var(--hm-ink);font-size:clamp(1.7rem,4.4vw,2.6rem);line-height:1.2;margin:12px 0 10px;font-weight:800}
+body.hm .hm-head p,body.hm .events-heading p,body.hm .sermon-intro{color:var(--hm-muted);font-size:clamp(1rem,2vw,1.1rem);line-height:1.65;margin:0}
+body.hm .btn-more{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:46px;padding:12px 26px;border:0;border-radius:30px;background:var(--hm-brand);color:#fff;font-size:.98rem;font-weight:700;text-decoration:none;box-shadow:0 10px 24px rgba(142,68,173,.3);transition:transform .25s ease,box-shadow .25s ease,filter .25s ease}
+body.hm .btn-more:hover{background:var(--hm-brand);transform:translateY(-3px);box-shadow:0 14px 30px rgba(142,68,173,.42);filter:saturate(1.1)}
+body.hm .btn-more i{font-size:.85em;transition:transform .25s ease}
+body.hm .btn-more:hover i{transform:translateX(3px)}
+body.hm .hm-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:46px;padding:12px 26px;border:2px solid transparent;border-radius:30px;font-weight:700;font-size:.98rem;text-decoration:none;transition:transform .25s ease,background .25s ease,box-shadow .25s ease}
+body.hm .hm-btn:hover{transform:translateY(-3px)}
+body.hm .hm-btn-light{background:#fff;color:#7a3a9b;box-shadow:0 10px 24px rgba(0,0,0,.2)}
+body.hm .hm-btn-ghost{background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.75)}
+body.hm .hm-btn-ghost:hover{background:rgba(255,255,255,.2)}
+
+/* reveal on scroll (only when the script is running) */
+body.hm.hm-js [data-reveal]{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,.8,.3,1)}
+body.hm.hm-js [data-reveal].hm-in{opacity:1;transform:none}
+
+/* =========================================================
+   HERO
+========================================================= */
+body.hm .hero-carousel{position:relative;width:100%;max-width:none;height:auto;min-height:0;margin:calc(-1 * var(--hm-off)) 0 0;overflow:visible;background:transparent;border-radius:0}
+body.hm .hero-stage{position:relative;overflow:hidden;background:#171525;height:clamp(580px,92vh,900px);height:clamp(580px,92svh,900px)}
+body.hm .hero-stage .carousel-container{display:flex;height:100%;align-items:stretch;transition:transform .8s cubic-bezier(.22,1,.36,1)}
+body.hm .hero-stage .carousel-slide{position:relative;display:block;flex:0 0 100%;min-width:100%;height:100%;overflow:hidden;background:#171525}
+body.hm .hero-stage .carousel-slide img{position:absolute;inset:0;display:block;width:100%;height:100%;aspect-ratio:auto;object-fit:cover;object-position:center;transform:scale(1.02)}
+body.hm .hero-stage .carousel-slide:nth-child(2) img{object-position:center 24%}
+body.hm .hero-stage .carousel-slide.is-active img{animation:hmZoom 11s ease-out both}
+@keyframes hmZoom{from{transform:scale(1.02)}to{transform:scale(1.1)}}
+body.hm .hero-stage .carousel-slide::after{content:"";display:block;position:absolute;inset:0;z-index:0;
+  background:linear-gradient(90deg,rgba(24,9,40,.82) 0%,rgba(24,9,40,.5) 42%,rgba(24,9,40,.12) 75%),linear-gradient(0deg,rgba(24,9,40,.7) 0%,transparent 55%),radial-gradient(ellipse at 18% 90%,rgba(231,76,60,.28),transparent 55%)}
+body.hm .hero-stage .slide-content{position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;min-height:0;padding:calc(var(--hm-off) + 20px) clamp(24px,7vw,110px) 110px;text-align:left;color:#fff;isolation:isolate}
+body.hm .hero-stage .slide-content>*{max-width:min(640px,100%)}
+body.hm .slide-eyebrow{display:inline-flex;align-items:center;gap:8px;margin-bottom:18px;padding:7px 15px;border-radius:30px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#fff;font-size:.78rem;font-weight:700;letter-spacing:1.4px;text-transform:uppercase}
+body.hm .hero-stage .slide-content h1,body.hm .hero-stage .slide-content h2{color:#fff !important;font-family:var(--aic-font-display,Georgia,'Times New Roman',serif);font-size:clamp(2.2rem,5.6vw,4.4rem);font-weight:800;line-height:1.08;letter-spacing:-.01em;margin:0 0 16px;text-shadow:0 3px 18px rgba(0,0,0,.35)}
+body.hm .hero-stage .slide-content p{color:rgba(255,255,255,.95) !important;font-size:clamp(1rem,1.9vw,1.25rem);line-height:1.65;margin:0 0 28px;max-width:56ch;text-shadow:0 2px 12px rgba(0,0,0,.45)}
+body.hm .hero-stage .slide-content .btn-more{box-shadow:0 12px 28px rgba(0,0,0,.35)}
+body.hm .carousel-slide.is-active .slide-content>*{animation:hmUp .75s cubic-bezier(.22,.8,.3,1) both}
+body.hm .carousel-slide.is-active .slide-content>:nth-child(2){animation-delay:.08s}
+body.hm .carousel-slide.is-active .slide-content>:nth-child(3){animation-delay:.16s}
+body.hm .carousel-slide.is-active .slide-content>:nth-child(4){animation-delay:.24s}
+@keyframes hmUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+
+body.hm .hero-stage .carousel-controls{position:absolute;top:50%;left:0;right:0;z-index:10;display:flex;justify-content:space-between;width:100%;padding:0 clamp(12px,2.4vw,28px);transform:translateY(-50%);pointer-events:none}
+body.hm .hero-stage .carousel-control{pointer-events:auto;width:48px;height:48px;border:1px solid rgba(255,255,255,.3);border-radius:50%;background:rgba(255,255,255,.12);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#fff;font-size:1.05rem;transition:background .25s ease,transform .25s ease}
+body.hm .hero-stage .carousel-control:hover,body.hm .hero-stage .carousel-control:focus-visible{background:rgba(255,255,255,.3);transform:scale(1.08)}
+body.hm .hero-stage .carousel-indicators{position:absolute;left:0;right:0;bottom:30px;z-index:10;display:flex;justify-content:center;gap:9px}
+body.hm .hero-stage .carousel-indicators button{width:10px;height:10px;padding:0;border:0;border-radius:999px;background:rgba(255,255,255,.5);box-shadow:none;transition:width .35s ease,background .35s ease}
+body.hm .hero-stage .carousel-indicators button[aria-current="true"]{width:36px;background:#fff}
+
+/* ---------- quick action cards ---------- */
+body.hm .hm-quick{width:min(1200px,92%);margin:clamp(22px,3.5vw,38px) auto 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+body.hm .hm-qcard{position:relative;display:flex;align-items:center;gap:14px;padding:18px;background:#fff;border:1px solid var(--hm-line);border-radius:20px;box-shadow:var(--hm-shadow);color:var(--hm-ink);text-decoration:none;transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
+body.hm .hm-qcard:hover{transform:translateY(-5px);box-shadow:var(--hm-shadow-lg);border-color:rgba(142,68,173,.35)}
+body.hm .hm-qicon{flex:none;display:flex;align-items:center;justify-content:center;width:50px;height:50px;border-radius:16px;color:#fff;font-size:1.25rem;background:var(--hm-brand);box-shadow:0 8px 18px rgba(142,68,173,.3)}
+body.hm .hm-qcard:nth-child(2) .hm-qicon{background:linear-gradient(135deg,#e74c3c,#f39c12);box-shadow:0 8px 18px rgba(231,76,60,.3)}
+body.hm .hm-qcard:nth-child(3) .hm-qicon{background:linear-gradient(135deg,#3b3a9c,#8e44ad);box-shadow:0 8px 18px rgba(59,58,156,.3)}
+body.hm .hm-qcard:nth-child(4) .hm-qicon{background:linear-gradient(135deg,#0f766e,#2563eb);box-shadow:0 8px 18px rgba(15,118,110,.3)}
+body.hm .hm-qtext{min-width:0;display:flex;flex-direction:column;gap:2px}
+body.hm .hm-qtext strong{font-size:1.02rem;line-height:1.25}
+body.hm .hm-qtext small{color:var(--hm-muted);font-size:.8rem;line-height:1.4}
+body.hm .hm-qarrow{margin-left:auto;flex:none;color:#b9a7c9;font-size:.85rem;transition:transform .3s ease,color .3s ease}
+body.hm .hm-qcard:hover .hm-qarrow{transform:translateX(4px);color:var(--hm-purple)}
+
+/* =========================================================
+   EVENTS
+========================================================= */
+body.hm #events{max-width:none;margin:0;padding:clamp(52px,8vw,92px) 0 clamp(36px,5vw,60px);background:transparent}
+body.hm .events-heading{max-width:720px;margin:0 auto clamp(24px,4vw,40px);padding-inline:20px;text-align:center}
+body.hm .events-grid{max-width:1200px;width:92%;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),360px));justify-content:center;gap:24px}
+body.hm .event-card{position:relative;display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid var(--hm-line);border-radius:22px;box-shadow:var(--hm-shadow);transition:transform .35s ease,box-shadow .35s ease}
+body.hm .event-card:hover{transform:translateY(-6px);box-shadow:var(--hm-shadow-lg)}
+body.hm .event-card::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;z-index:2;background:var(--hm-brand)}
+body.hm .event-card img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;transition:transform .6s ease}
+body.hm .event-card:hover img{transform:scale(1.05)}
+body.hm .event-card-content{display:flex;flex-direction:column;flex:1;padding:20px 22px 22px}
+body.hm .event-date{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;margin:0 0 12px;padding:6px 13px;border-radius:30px;background:rgba(142,68,173,.1);color:#7a3a9b;font-size:.82rem;font-weight:800;letter-spacing:.2px}
+body.hm .event-card h3{margin:0 0 8px;color:var(--hm-ink);font-size:1.28rem;line-height:1.3}
+body.hm .event-venue{margin:0 0 8px !important;color:var(--hm-muted) !important;font-size:.9rem;font-weight:600}
+body.hm .event-card p{margin:0 0 16px;color:var(--hm-text);line-height:1.6;font-size:.95rem}
+body.hm .event-reminder{align-self:flex-start;margin-top:auto;display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:30px;background:var(--hm-brand);color:#fff;font-weight:700;font-size:.9rem;text-decoration:none;box-shadow:0 8px 18px rgba(142,68,173,.28);transition:transform .25s ease,box-shadow .25s ease}
+body.hm .event-reminder:hover,body.hm .event-reminder:focus-visible{background:var(--hm-brand);transform:translateY(-2px);box-shadow:0 12px 24px rgba(142,68,173,.4)}
+body.hm .events-empty{grid-column:1/-1;padding:34px 22px;border:2px dashed rgba(142,68,173,.25);border-radius:22px;background:rgba(255,255,255,.7);color:var(--hm-muted);text-align:center}
+
+/* =========================================================
+   SERMONS
+========================================================= */
+body.hm #sermons{margin:clamp(20px,3vw,36px) clamp(0px,2vw,28px) 0;padding:clamp(48px,7vw,88px) clamp(16px,3vw,32px) clamp(40px,6vw,72px);background:#fff;border-radius:clamp(26px,4vw,46px);box-shadow:0 12px 40px rgba(36,33,59,.06);text-align:center;color:var(--hm-ink)}
+body.hm #sermons .sermons-list{max-width:1200px;margin:0 auto;gap:26px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+body.hm #sermons .sermon-card{border-radius:22px;border:1px solid var(--hm-line);box-shadow:var(--hm-shadow);transition:transform .35s ease,box-shadow .35s ease;text-align:left}
+body.hm #sermons .sermon-card:hover{transform:translateY(-6px);box-shadow:var(--hm-shadow-lg)}
+body.hm .more-sermons{margin:clamp(28px,4vw,44px) 0 0}
+
+/* =========================================================
+   ABOUT
+========================================================= */
+body.hm .about{display:flex;flex-direction:column;align-items:stretch;gap:clamp(26px,4vw,56px);max-width:1200px;width:92%;margin:clamp(48px,7vw,92px) auto;padding:clamp(22px,4vw,48px);background:#fff;border-radius:clamp(24px,3.5vw,36px);box-shadow:var(--hm-shadow);text-align:left}
+body.hm .about-image-wrapper{position:relative;flex:1 1 46%;width:100%;max-width:none;height:auto;aspect-ratio:4/3;overflow:visible;border-radius:0;box-shadow:none}
+body.hm .about-image-wrapper::before{content:"";position:absolute;inset:14px -14px -14px 14px;border-radius:26px;background:var(--hm-brand);opacity:.18}
+body.hm #about-carousel{position:relative;width:100%;height:100%;overflow:hidden;border-radius:24px;background:#e9e3f1;box-shadow:var(--hm-shadow-lg)}
+body.hm .about-image-wrapper img{width:100%;height:100%;object-fit:cover;border-radius:0}
+body.hm .about-text{flex:1 1 54%;padding:0;text-align:left}
+body.hm .about-text h3{margin:14px 0 14px;color:var(--hm-ink);font-size:clamp(1.5rem,3.2vw,2.1rem);line-height:1.25}
+body.hm .about-text>p{margin:0 0 22px;color:var(--hm-text);font-size:clamp(1rem,1.8vw,1.1rem);line-height:1.75}
+body.hm .about-details{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:0 0 22px;justify-content:stretch}
+body.hm .about-box{display:flex;flex-direction:column;gap:6px;min-width:0;padding:18px;text-align:left;background:#faf7fc;border:1px solid var(--hm-line);border-radius:18px;box-shadow:none;transition:transform .3s ease,box-shadow .3s ease}
+body.hm .about-box:hover{transform:translateY(-4px);box-shadow:var(--hm-shadow)}
+body.hm .hm-ico{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;margin-bottom:4px;border-radius:13px;background:var(--hm-brand);color:#fff;font-size:1.05rem}
+body.hm .about-box h4{margin:0;color:var(--hm-ink);font-size:1.02rem}
+body.hm .about-box p{margin:0;color:var(--hm-muted);font-size:.9rem;line-height:1.55}
+body.hm .hm-chips{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 24px;padding:0;list-style:none}
+body.hm .hm-chips li{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:30px;background:rgba(142,68,173,.08);color:#6c2f8a;font-size:.85rem;font-weight:700}
+
+/* =========================================================
+   GET INVOLVED (new)
+========================================================= */
+body.hm .hm-involved{padding:clamp(24px,4vw,40px) 0 clamp(36px,5vw,64px)}
+body.hm .hm-involved-grid{width:min(1200px,92%);margin:0 auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+body.hm .hm-icard{position:relative;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;min-height:320px;padding:24px;overflow:hidden;border-radius:26px;color:#fff;text-decoration:none;background:#2c1a3e;box-shadow:var(--hm-shadow);isolation:isolate;transition:transform .35s ease,box-shadow .35s ease}
+body.hm .hm-icard:hover{transform:translateY(-6px);box-shadow:var(--hm-shadow-lg)}
+body.hm .hm-icard-bg{position:absolute;inset:0;z-index:-2;background-size:cover;background-position:center;transition:transform .7s ease}
+body.hm .hm-icard:hover .hm-icard-bg{transform:scale(1.08)}
+body.hm .hm-icard::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(30,12,48,.05) 20%,rgba(30,12,48,.88) 100%)}
+body.hm .hm-bg-ministries{background-image:url("/community.jpg")}
+body.hm .hm-bg-projects{background-image:url("/academy.jpg")}
+body.hm .hm-bg-give{background-image:url("/family.jpg")}
+body.hm .hm-icard .hm-ico{margin-bottom:6px}
+body.hm .hm-icard h3{margin:0;font-size:1.4rem;line-height:1.25;text-shadow:0 2px 10px rgba(0,0,0,.35)}
+body.hm .hm-icard p{margin:0;color:rgba(255,255,255,.9);font-size:.95rem;line-height:1.55}
+body.hm .hm-icard .hm-more{display:inline-flex;align-items:center;gap:8px;margin-top:10px;font-weight:700;font-size:.92rem}
+body.hm .hm-icard .hm-more i{transition:transform .3s ease}
+body.hm .hm-icard:hover .hm-more i{transform:translateX(5px)}
+
+/* =========================================================
+   VISIT BAND (new)
+========================================================= */
+body.hm .hm-visit{position:relative;overflow:hidden;isolation:isolate;width:min(1200px,92%);margin:0 auto clamp(40px,6vw,72px);padding:clamp(30px,5vw,56px) clamp(22px,5vw,56px);border-radius:28px;color:#fff;background:linear-gradient(135deg,#5b2a86,#8e44ad 55%,#e74c3c);box-shadow:0 20px 50px rgba(142,68,173,.28)}
+body.hm .hm-visit::before,body.hm .hm-visit::after{content:"";position:absolute;z-index:-1;border-radius:50%;background:rgba(255,255,255,.09);pointer-events:none}
+body.hm .hm-visit::before{width:320px;height:320px;right:-80px;top:-140px}
+body.hm .hm-visit::after{width:200px;height:200px;left:30%;bottom:-120px}
+body.hm .hm-visit-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+body.hm .hm-visit h2{margin:0 0 8px;font-size:clamp(1.5rem,3.6vw,2.3rem);line-height:1.2}
+body.hm .hm-visit p{margin:0;max-width:52ch;color:rgba(255,255,255,.93);line-height:1.65}
+body.hm .hm-visit-actions{display:flex;flex-wrap:wrap;gap:12px}
+
+/* =========================================================
+   TABLETS
+========================================================= */
+@media(min-width:861px){
+  body.hm .about{flex-direction:row;align-items:center}
+}
+@media(max-width:1000px){
+  body.hm .hm-quick{grid-template-columns:repeat(2,minmax(0,1fr))}
+  body.hm .hm-involved-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  body.hm .hm-involved-grid .hm-icard:last-child{grid-column:1/-1;min-height:240px}
+}
+
+/* =========================================================
+   PHONES
+========================================================= */
+@media(max-width:800px){
+  /* hero: a full immersive slide, text anchored at the bottom */
+  body.hm .hero-stage{height:clamp(540px,86vh,720px);height:clamp(540px,86svh,720px)}
+  body.hm .hero-stage .carousel-slide::after{background:linear-gradient(180deg,rgba(24,9,40,.45) 0%,rgba(24,9,40,.08) 28%,rgba(24,9,40,.55) 62%,rgba(24,9,40,.92) 100%)}
+  body.hm .hero-stage .slide-content{justify-content:flex-end;align-items:flex-start;padding:calc(var(--hm-off) + 8px) 22px 86px;text-align:left}
+  body.hm .slide-eyebrow{margin-bottom:12px;padding:6px 12px;font-size:.7rem;letter-spacing:1.1px}
+  body.hm .hero-stage .slide-content h1,body.hm .hero-stage .slide-content h2{max-width:14ch;margin:0 0 10px;font-size:clamp(2rem,9.2vw,2.8rem)}
+  body.hm .hero-stage .slide-content p{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;margin:0 0 18px;font-size:1rem;line-height:1.55}
+  body.hm .hero-stage .slide-content .btn-more{min-height:46px;padding:11px 22px;font-size:.95rem}
+  body.hm .hero-stage .carousel-controls{display:none}
+  body.hm .hero-stage .carousel-indicators{bottom:26px;justify-content:flex-start;padding-left:22px;gap:7px}
+  body.hm .hero-stage .carousel-indicators button{width:9px;height:9px}
+  body.hm .hero-stage .carousel-indicators button[aria-current="true"]{width:30px}
+
+  /* the "Happening soon" ticker becomes a card that sits under the hero */
+  body.hm .hero-carousel .hero-floating-bubble{position:relative !important;inset:auto !important;left:auto !important;right:auto !important;top:auto !important;bottom:auto !important;transform:none !important;width:auto !important;max-width:none !important;margin:-34px 14px 0 !important;z-index:6;border-radius:20px;background:linear-gradient(135deg,#43245e,#6c2f8a);box-shadow:0 16px 36px rgba(36,15,60,.35);color:#fff}
+
+  /* quick actions: 2 x 2 tiles */
+  body.hm .hm-quick{gap:12px;margin-top:18px}
+  body.hm .hm-qcard{flex-direction:column;align-items:flex-start;gap:10px;padding:16px;border-radius:18px}
+  body.hm .hm-qicon{width:44px;height:44px;border-radius:14px;font-size:1.1rem}
+  body.hm .hm-qtext strong{font-size:.98rem}
+  body.hm .hm-qtext small{font-size:.76rem}
+  body.hm .hm-qarrow{position:absolute;top:16px;right:16px;margin:0}
+
+  /* events and sermons become swipeable rows */
+  body.hm .events-grid,body.hm #sermons .sermons-list{display:flex !important;width:auto;max-width:none;overflow-x:auto;gap:14px !important;margin-inline:0;padding:6px 16px 20px !important;scroll-snap-type:x mandatory;scroll-padding-inline:16px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  body.hm .events-grid::-webkit-scrollbar,body.hm #sermons .sermons-list::-webkit-scrollbar{display:none}
+  body.hm .events-grid>.event-card{flex:0 0 min(84%,340px);scroll-snap-align:center}
+  body.hm .events-grid>.event-card:only-child{flex-basis:100%}
+  body.hm .events-grid>.events-empty{flex:1 0 100%}
+  body.hm #sermons .sermons-list>.sermon-card{flex:0 0 min(86%,360px);scroll-snap-align:center}
+  body.hm #sermons .sermons-list>:not(.sermon-card){flex:1 0 100%}
+  body.hm #sermons{margin-inline:0;border-radius:28px;padding-inline:0}
+  body.hm #sermons .hm-head{padding-inline:20px}
+  body.hm .more-sermons{padding-inline:20px}
+
+  /* about + involved */
+  body.hm .about{width:calc(100% - 28px);padding:18px}
+  body.hm .about-image-wrapper::before{inset:10px -8px -10px 8px}
+  body.hm .about-details{grid-template-columns:1fr}
+  body.hm .about-text .btn-more{width:100%}
+  body.hm .hm-involved-grid{display:flex;overflow-x:auto;gap:14px;width:auto;padding:4px 16px 18px;scroll-snap-type:x mandatory;scroll-padding-inline:16px;scrollbar-width:none}
+  body.hm .hm-involved-grid::-webkit-scrollbar{display:none}
+  body.hm .hm-icard,body.hm .hm-involved-grid .hm-icard:last-child{flex:0 0 min(82%,320px);min-height:280px;scroll-snap-align:center;grid-column:auto}
+  body.hm .hm-visit{width:calc(100% - 28px);border-radius:24px}
+  body.hm .hm-visit-actions{width:100%}
+  body.hm .hm-visit-actions .hm-btn{flex:1 1 100%}
+}
+@media(max-width:380px){
+  body.hm .hm-qtext small{display:none}
+  body.hm .hm-qcard{padding:14px}
+}
+@media(prefers-reduced-motion:reduce){
+  body.hm .hero-stage .carousel-slide.is-active img,body.hm .carousel-slide.is-active .slide-content>*{animation:none}
+  body.hm .hero-stage .carousel-container,body.hm .hm-qcard,body.hm .event-card,body.hm #sermons .sermon-card,body.hm .hm-icard,body.hm .hm-icard-bg,body.hm .btn-more,body.hm .hm-btn{transition:none}
+  body.hm.hm-js [data-reveal]{opacity:1;transform:none;transition:none}
+}

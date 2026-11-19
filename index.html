@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="preload" href="/content-snapshot.json" as="fetch" crossorigin>
     <link rel="stylesheet" href="/site-chrome.css">
     <link rel="preconnect" href="https://cdn.contentful.com">
     <link rel="preconnect" href="https://images.ctfassets.net">
@@ -15,7 +14,6 @@
     <link rel="preconnect" href="https://maps.gstatic.com" crossorigin>
     <meta charset="UTF-8">
     <meta name="description" content="Welcome to AIC Egerton Chapel – a place of worship, spiritual growth, and fellowship. Join us for uplifting sermons, ministries, and community service.">
-    <meta name="google-site-verification" content="jSX6MHsPyuaZg6XkJBf1dORf4jXHfMTlhi5baXB20LU" />
     <meta name="google-site-verification" content="jSX6MHsPyuaZg6XkJBf1dORf4jXHfMTlhi5baXB20LU" />
     <meta name="google-site-verification" content="r1T1LaHxRaYcuvq9FE11a90tje9TwBYHY735uXCMsdw" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1187,89 +1185,7 @@
             }
         }
 
-        @media (max-width: 800px) {
-            .hero-carousel {
-                height: auto;
-                min-height: 0;
-                margin-top: 0;
-            }
 
-            .carousel-container {
-                height: auto;
-                align-items: stretch;
-            }
-
-            .carousel-slide {
-                display: flex;
-                flex-direction: column;
-                height: auto;
-                background: #171525;
-            }
-
-            .carousel-slide img {
-                position: relative;
-                inset: auto;
-                flex: 0 0 auto;
-                width: 100%;
-                height: auto;
-                aspect-ratio: auto;
-                object-fit: contain;
-                object-position: center;
-            }
-
-            .carousel-slide:nth-child(2) img {
-                object-position: center 24%;
-            }
-
-            .carousel-slide::after {
-                display: none;
-            }
-
-            .slide-content {
-                position: relative;
-                inset: auto;
-                flex: 0 0 auto;
-                min-height: auto;
-                justify-content: flex-start;
-                padding: 28px 24px 48px;
-                background: #171525;
-            }
-
-            .slide-content::before {
-                display: none;
-            }
-
-            .slide-content h1,
-            .slide-content h2 {
-                max-width: 18ch;
-                margin-bottom: 12px;
-                font-size: clamp(1.75rem, 6vw, 2.6rem);
-            }
-
-            .slide-content p {
-                max-width: 36ch;
-                margin-bottom: 20px;
-                font-size: clamp(0.98rem, 2.6vw, 1.12rem);
-            }
-
-            .slide-content h1,
-            .slide-content h2,
-            .slide-content p {
-                text-shadow: 0 1px 3px rgba(15, 23, 42, 0.62);
-            }
-
-            .carousel-controls {
-                top: clamp(100px, 28vw, 150px);
-                padding: 0 12px;
-            }
-
-            .carousel-control {
-                width: 44px;
-                height: 44px;
-                font-size: 1.2rem;
-            }
-
-        }
 
         @media (max-width: 600px) {
             .slide-content::before {
@@ -1334,10 +1250,63 @@
             color: #8e44ad;
             font-weight: 500;
         }
+        /* ===== Auto-scroll carousels (Sermons + Get Involved) ===== */
+.sermons-list.hm-autoscroll,
+.hm-involved-grid.hm-autoscroll {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    grid-template-columns: none !important;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    scroll-behavior: smooth;
+    gap: 24px;
+    padding: 4px 4px 14px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(124, 58, 237, 0.4) transparent;
+    -webkit-overflow-scrolling: touch;
+}
+.sermons-list.hm-autoscroll > *,
+.hm-involved-grid.hm-autoscroll > * {
+    flex: 0 0 clamp(280px, 30vw, 360px);
+    scroll-snap-align: start;
+    max-width: none !important;
+}
+.sermons-list.hm-autoscroll::-webkit-scrollbar,
+.hm-involved-grid.hm-autoscroll::-webkit-scrollbar {
+    height: 8px;
+}
+.sermons-list.hm-autoscroll::-webkit-scrollbar-track,
+.hm-involved-grid.hm-autoscroll::-webkit-scrollbar-track {
+    background: transparent;
+}
+.sermons-list.hm-autoscroll::-webkit-scrollbar-thumb,
+.hm-involved-grid.hm-autoscroll::-webkit-scrollbar-thumb {
+    background: rgba(124, 58, 237, 0.35);
+    border-radius: 4px;
+}
+@media (max-width: 900px) {
+    .sermons-list.hm-autoscroll,
+    .hm-involved-grid.hm-autoscroll {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        overflow-x: visible !important;
+        scroll-snap-type: none !important;
+        gap: 20px !important;
+        padding-bottom: 0 !important;
+    }
+    .sermons-list.hm-autoscroll > *,
+    .hm-involved-grid.hm-autoscroll > * {
+        flex: none !important;
+        max-width: none !important;
+        scroll-snap-align: none !important;
+    }
+}
 </style>
     <link rel="stylesheet" href="/sermon-cards.css">
+    <link rel="stylesheet" href="/home-modern.css">
+    <script src="/home-modern.js" defer></script>
 </head>
-<body>
+<body class="hm">
     <!-- Header Section -->
     <!--CHROME:HEADER:START-->
 <a href="#main" class="aic-skip-link">Skip to content</a>
@@ -1367,61 +1336,62 @@
 <!--CHROME:HEADER:END-->
 <main id="main">
 
-    <!-- Hero Carousel -->
+    <!-- Hero carousel (ids and classes used by index-1.js are unchanged) -->
     <section class="hero-carousel" aria-label="Welcome to AIC Egerton Chapel" aria-roledescription="carousel" tabindex="0">
-        <div class="carousel-container" id="carouselContainer">
-            <div class="carousel-slide">
-                <img src="/power.jpg" alt="Family celebrating together at sunset">
-                <div class="slide-content">
-                    <h1>GOD GIVES US POWER</h1>
-                    <p>Jesus is holy, loving, and worthy of all our worship and devotion...</p>
-                    <a href="/contact.html" class="btn-more">Plan Your Visit</a>
+        <div class="hero-stage">
+            <div class="carousel-container" id="carouselContainer">
+                <div class="carousel-slide">
+                    <img src="/power.jpg" alt="Congregation worshipping during Sunday service at AIC Egerton Chapel" fetchpriority="high" decoding="async">
+                    <div class="slide-content">
+                        <span class="slide-eyebrow"><i class="fas fa-church" aria-hidden="true"></i> Welcome to AIC Egerton Chapel</span>
+                        <h1>GOD GIVES US POWER</h1>
+                        <p>Jesus is holy, loving, and worthy of all our worship and devotion...</p>
+                        <a href="/contact.html" class="btn-more">Plan Your Visit <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    </div>
                 </div>
-            </div>
-            <div class="carousel-slide">
-                <img src="/community.jpg" alt="Rev. Dr. William Chesaine Kipkoros preaching">
-                <div class="slide-content">
-                    <h2>JOIN OUR COMMUNITY</h2>
-                    <p>Experience fellowship and spiritual growth with our vibrant community...</p>
-                    <a href="/ministries.html" class="btn-more">Explore Ministries</a>
+                <div class="carousel-slide">
+                    <img src="/community.jpg" alt="Rev. Dr. William Chesaine Kipkoros preaching from the pulpit during Sunday service" decoding="async">
+                    <div class="slide-content">
+                        <span class="slide-eyebrow"><i class="fas fa-people-group" aria-hidden="true"></i> Fellowship &amp; growth</span>
+                        <h2>JOIN OUR COMMUNITY</h2>
+                        <p>Experience fellowship and spiritual growth with our vibrant community...</p>
+                        <a href="/ministries.html" class="btn-more">Explore Ministries <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    </div>
                 </div>
-            </div>
-
 <div class="carousel-slide">
-    <img src="/family.jpg" alt="Family celebrating together at sunset">
+    <img src="/family.jpg" alt="Members of the AIC Egerton Chapel family gathered together" loading="lazy" decoding="async">
     <div class="slide-content">
+        <span class="slide-eyebrow"><i class="fas fa-clock" aria-hidden="true"></i> Every Sunday</span>
         <h2>SUNDAY SERVICES</h2>
-        <p>Join us every Sunday at 8:00 AM for uplifting worship and sermons...</p>
-        <a href="#" class="btn-more btn-get-directions" target="_blank" rel="noopener noreferrer" aria-label="Get directions to AIC Egerton Chapel"><i class="fas fa-location-arrow"></i> Get Directions</a>
+        <p>Join us every Sunday for Spirit-filled worship and life-transforming sermons. First service at 7:00 AM, second service at 10:00 AM.</p>
+        <a href="#" class="btn-more btn-get-directions" target="_blank" rel="noopener noreferrer" aria-label="Get directions to AIC Egerton Chapel"><i class="fas fa-location-arrow" aria-hidden="true"></i> Get Directions</a>
     </div>
 </div>
-
-<div class="carousel-slide">
-    <img src="/academy.jpg" alt="Family celebrating together at sunset">
-    <div class="slide-content">
-        <h2>Chapel Community Academy</h2>
-        <p>Bring the young toddlers so that they can be nurtured the Christian way...</p>
-        <a href="https://ecschools.netlify.app" class="btn-more">Join Us</a>
-    </div>
-</div>
+                <div class="carousel-slide">
+                    <img src="/academy.jpg" alt="Young learners at Chapel Community Academy" loading="lazy" decoding="async">
+                    <div class="slide-content">
+                        <span class="slide-eyebrow"><i class="fas fa-graduation-cap" aria-hidden="true"></i> Nurturing young hearts</span>
+                        <h2>Chapel Community Academy</h2>
+                        <p>Bring the young toddlers so that they can be nurtured the Christian way...</p>
+                        <a href="https://ecschools.netlify.app" class="btn-more">Join Us <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-controls">
+                <button type="button" class="carousel-control prev" aria-label="Previous slide"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+                <button type="button" class="carousel-control next" aria-label="Next slide"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
+            </div>
+            <div class="carousel-indicators" role="group" aria-label="Choose a slide">
+                <button type="button" data-carousel-slide="0" aria-label="Show slide 1" aria-current="true"></button>
+                <button type="button" data-carousel-slide="1" aria-label="Show slide 2" aria-current="false"></button>
+                <button type="button" data-carousel-slide="2" aria-label="Show slide 3" aria-current="false"></button>
+                <button type="button" data-carousel-slide="3" aria-label="Show slide 4" aria-current="false"></button>
+            </div>
+            <p class="aic-visually-hidden" id="heroSlideStatus" role="status" aria-live="polite"></p>
         </div>
-        <div class="carousel-controls">
-            <button type="button" class="carousel-control prev" aria-label="Previous slide"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
-            <button type="button" class="carousel-control next" aria-label="Next slide"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
-        </div>
-        <div class="carousel-indicators" role="group" aria-label="Choose a slide">
-            <button type="button" data-carousel-slide="0" aria-label="Show slide 1" aria-current="true"></button>
-            <button type="button" data-carousel-slide="1" aria-label="Show slide 2" aria-current="false"></button>
-            <button type="button" data-carousel-slide="2" aria-label="Show slide 3" aria-current="false"></button>
-            <button type="button" data-carousel-slide="3" aria-label="Show slide 4" aria-current="false"></button>
-        </div>
-        <p class="aic-visually-hidden" id="heroSlideStatus" role="status" aria-live="polite"></p>
         <!-- Floating Glassmorphic Events & Sermon Bubble Ticker -->
         <div class="hero-floating-bubble" id="heroEventsBubble" aria-label="Upcoming Events and Announcements">
-            <div class="bubble-header">
-                <span class="bubble-badge"><i class="fas fa-bullhorn"></i> HAPPENING SOON</span>
-                <span class="bubble-live-indicator"><span class="pulse-dot"></span> LIVE UPDATES</span>
-            </div>
+
             <div class="bubble-ticker-wrapper" id="bubbleTickerWrapper">
                 <div class="bubble-ticker-track" id="bubbleTickerTrack">
                     <!-- Populated dynamically by initHeroEventsTicker() -->
@@ -1433,13 +1403,23 @@
         </div>
     </section>
 
+    <!-- Quick actions -->
+    <section class="hm-quick" aria-label="Quick links">
+        <a class="hm-qcard" href="/contact.html"><span class="hm-qicon"><i class="fas fa-location-dot" aria-hidden="true"></i></span><span class="hm-qtext"><strong>Plan Your Visit</strong><small>Location, times and what to expect</small></span><i class="fas fa-arrow-right hm-qarrow" aria-hidden="true"></i></a>
+        <a class="hm-qcard" href="/live.html"><span class="hm-qicon"><i class="fas fa-circle-play" aria-hidden="true"></i></span><span class="hm-qtext"><strong>Watch Live</strong><small>Join our service online</small></span><i class="fas fa-arrow-right hm-qarrow" aria-hidden="true"></i></a>
+        <a class="hm-qcard" href="/prayer-wall.html"><span class="hm-qicon"><i class="fas fa-hands-praying" aria-hidden="true"></i></span><span class="hm-qtext"><strong>Prayer Wall</strong><small>Share a request, pray with us</small></span><i class="fas fa-arrow-right hm-qarrow" aria-hidden="true"></i></a>
+        <a class="hm-qcard" href="/give.html"><span class="hm-qicon"><i class="fas fa-hand-holding-heart" aria-hidden="true"></i></span><span class="hm-qtext"><strong>Give</strong><small>Support the work of the church</small></span><i class="fas fa-arrow-right hm-qarrow" aria-hidden="true"></i></a>
+    </section>
+
     <section id="events" aria-labelledby="events-title">
-        <div class="events-heading">
+        <div class="events-heading hm-head" data-reveal>
+            <span class="hm-eyebrow"><i class="fas fa-calendar-days" aria-hidden="true"></i> Gather with us</span>
             <h2 id="events-title">Upcoming Events</h2>
             <p>Stay connected with what's happening at AIC Egerton Chapel.</p>
         </div>
+
         <div id="eventsGrid" class="events-grid" aria-live="polite">
-            <!--CONTENT:EVENTS:START--><p class="events-empty">No upcoming events at the moment. Please check back soon.</p><!--CONTENT:EVENTS:END-->
+            <!--CONTENT:EVENTS:START--><p class="events-empty">No special events are scheduled right now. Join us for our weekly gatherings — Sunday worship, Wednesday mid-week prayer, and Friday youth fellowship. Check back soon for upcoming events.</p><!--CONTENT:EVENTS:END-->
         </div>
     </section>
 
@@ -1467,48 +1447,102 @@
         </div>
     </div>
 
-    <!-- Sermons Section -->
     <section id="sermons">
-        <h2>Recent Sermons</h2>
-        <p class="sermon-intro">Be nourished with God's word. Listen, reflect, and grow spiritually.</p>
+        <div class="hm-head" data-reveal>
+            <span class="hm-eyebrow"><i class="fas fa-book-bible" aria-hidden="true"></i> Be nourished</span>
+            <h2>Recent Sermons</h2>
+            <p class="sermon-intro">Be nourished with God's word. Listen, reflect, and grow spiritually.</p>
+        </div>
 
         <div id="sermons-container" class="sermons-list">
-            <!--CONTENT:INDEX_SERMONS:START--><article class="sermon-card"><div class="sermon-preview"><div class="sermon-preview-tag"><i class="fas fa-church" aria-hidden="true"></i><span>AIC Egerton</span></div><img src="https://images.ctfassets.net/em08252vzuh6/5W3Aq5I48GWsSBcCn5o3A7/68883881e4669d28e08b3b0f1119ec5d/image.png" alt="Trusting Jesus with Our Insufficiency sermon preview" width="640" height="360" loading="lazy" decoding="async"></div><div class="sermon-content"><div class="sermon-title-wrapper"><h3 class="sermon-card-title">Trusting Jesus with Our Insufficiency</h3></div><div class="sermon-meta"><div><strong>Preacher</strong><span>Rev. DR. William C Koros</span></div><div><strong>Date</strong><span>8 November 2026</span></div></div><p class="sermon-scripture-reference">Scripture: JOHN 6:1 - 13</p><div class="sermon-actions"><a class="sermon-download-link" href="https://assets.ctfassets.net/em08252vzuh6/2qYetMmegqVCKK9ZK69WXt/ff7b410f90d0eed65b04c65357191bde/AIC_EGERTON_CHAPEL_8th_November_2026.pptx" target="_blank" rel="noopener noreferrer" download="AIC EGERTON CHAPEL 8th November 2026.pptx"><i class="fas fa-download" aria-hidden="true"></i> Download</a></div></div></article><article class="sermon-card"><div class="sermon-preview"><div class="sermon-preview-tag"><i class="fas fa-church" aria-hidden="true"></i><span>AIC Egerton</span></div><div class="sermon-preview-placeholder">
-         <div class="sermon-placeholder-icon"><i class="fas fa-book-bible" aria-hidden="true"></i></div>
-         <span class="sermon-placeholder-label">Sunday Sermon</span>
-       </div></div><div class="sermon-content"><div class="sermon-title-wrapper"><h3 class="sermon-card-title">Knocked Down But Not Out</h3></div><div class="sermon-meta"><div><strong>Preacher</strong><span>Rev. DR. William C Koros</span></div><div><strong>Date</strong><span>1 November 2026</span></div></div><p class="sermon-scripture-reference">Scripture: ACTS 14:8 - 20</p><div class="sermon-actions"><a class="sermon-download-link" href="https://assets.ctfassets.net/em08252vzuh6/6FsD1j9Q820G92qQKERyqv/8b44dc93f9a4970e0e098808a61eb81c/AIC_EGERTON_CHAPEL_1st_November_2026.pptx" target="_blank" rel="noopener noreferrer" download="AIC EGERTON CHAPEL 1st November 2026.pptx"><i class="fas fa-download" aria-hidden="true"></i> Download</a></div></div></article><article class="sermon-card"><div class="sermon-preview"><div class="sermon-preview-tag"><i class="fas fa-church" aria-hidden="true"></i><span>AIC Egerton</span></div><img src="https://images.ctfassets.net/em08252vzuh6/7aZ4jpHYYODcLsZmVwW5Up/968efe7a8b6d826b68f0a6f1e4756240/image.png" alt="Is Your Faith Showing? sermon preview" width="640" height="360" loading="lazy" decoding="async"></div><div class="sermon-content"><div class="sermon-title-wrapper"><h3 class="sermon-card-title">Is Your Faith Showing?</h3></div><div class="sermon-meta"><div><strong>Preacher</strong><span>Rev. DR. William C Koros</span></div><div><strong>Date</strong><span>25 October 2026</span></div></div><p class="sermon-scripture-reference">Scripture: HEBREWS 13:1 - 8</p><div class="sermon-actions"><a class="sermon-download-link" href="https://assets.ctfassets.net/em08252vzuh6/EF7c1t0yRZZo8D9xwfH5D/87e79cbf4e619d3764103e68c2365607/AIC_EGERTON_CHAPEL_25th_October_2026__1_.pptx" target="_blank" rel="noopener noreferrer" download="AIC EGERTON CHAPEL 25th October 2026 (1).pptx"><i class="fas fa-download" aria-hidden="true"></i> Download</a></div></div></article><!--CONTENT:INDEX_SERMONS:END-->
+            <!--CONTENT:INDEX_SERMONS:START--><p class="sermon-empty">No sermons are available yet. Please check back soon.</p><!--CONTENT:INDEX_SERMONS:END-->
         </div>
 
         <div class="more-sermons">
-            <a href="/sermons.html" class="btn-more">More Sermons</a>
+            <a href="/sermons.html" class="btn-more">More Sermons <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about">
+    <!-- About -->
+    <section class="about" data-reveal>
         <div class="about-image-wrapper">
             <div id="about-carousel">
-                <!--CONTENT:INDEX_GALLERY:START--><img class="blinds" src="https://images.ctfassets.net/em08252vzuh6/bOGZ46lkaGGQIP9BBYHlo/c1b0d87b334131a23b61e66712211ec5/pulpit.png" alt="Carousel" width="640" height="400" loading="eager" decoding="async"><!--CONTENT:INDEX_GALLERY:END-->
+                <!--CONTENT:INDEX_GALLERY:START--><!--CONTENT:INDEX_GALLERY:END-->
             </div>
         </div>
         <div class="about-text">
+            <span class="hm-eyebrow"><i class="fas fa-heart" aria-hidden="true"></i> Who we are</span>
             <h3>We AIC Egerton Chapel, are Taking Small Steps to Make Earth a Better Place</h3>
             <p>The name of the Lord is a strong tower; the righteous run to it and are safe. Join us in our mission to spread love and faith throughout our community.</p>
             <div class="about-details">
                 <div class="about-box">
+                    <span class="hm-ico"><i class="fas fa-church" aria-hidden="true"></i></span>
                     <h4>Place of Heaven</h4>
                     <p>In AIC you will feel divinity and experience spiritual growth like never before.</p>
                 </div>
                 <div class="about-box">
+                    <span class="hm-ico"><i class="fas fa-book-open" aria-hidden="true"></i></span>
                     <h4>Study Bible</h4>
                     <p>Learn with us the Bible, enhance your wisdom and deepen your faith.</p>
                 </div>
             </div>
-            <a href="/about.html" class="btn-more">Learn More</a>
+            <ul class="hm-chips" aria-label="Highlights">
+                <li><i class="fas fa-church" aria-hidden="true"></i> Sunday worship</li>
+                <li><i class="fas fa-people-group" aria-hidden="true"></i> Ministries for every age</li>
+                <li><i class="fas fa-handshake" aria-hidden="true"></i> Everyone welcome</li>
+            </ul>
+            <a href="/about.html" class="btn-more">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
         </div>
     </section>
 
-    <!-- Enhanced Footer -->
+    <!-- Get involved -->
+    <section class="hm-involved" aria-labelledby="hm-involved-title">
+        <div class="hm-head" data-reveal>
+            <span class="hm-eyebrow"><i class="fas fa-hands-holding-circle" aria-hidden="true"></i> Get involved</span>
+            <h2 id="hm-involved-title">There is a place for you</h2>
+            <p>Serve, give and grow together with the AIC Egerton Chapel family.</p>
+        </div>
+        <div class="hm-involved-grid" data-reveal>
+            <a class="hm-icard" href="/ministries.html">
+                <span class="hm-icard-bg hm-bg-ministries" aria-hidden="true"></span>
+                <span class="hm-ico"><i class="fas fa-people-group" aria-hidden="true"></i></span>
+                <h3>Serve in a Ministry</h3>
+                <p>Find a team that matches your gifts and season of life.</p>
+                <span class="hm-more">Explore ministries <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+            </a>
+            <a class="hm-icard" href="/projects.html">
+                <span class="hm-icard-bg hm-bg-projects" aria-hidden="true"></span>
+                <span class="hm-ico"><i class="fas fa-helmet-safety" aria-hidden="true"></i></span>
+                <h3>Support Our Projects</h3>
+                <p>See what we are building together and how far each project has come.</p>
+                <span class="hm-more">View projects <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+            </a>
+            <a class="hm-icard" href="/give.html">
+                <span class="hm-icard-bg hm-bg-give" aria-hidden="true"></span>
+                <span class="hm-ico"><i class="fas fa-hand-holding-heart" aria-hidden="true"></i></span>
+                <h3>Give &amp; Partner</h3>
+                <p>Your generosity keeps the work of the church going.</p>
+                <span class="hm-more">Ways to give <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Visit band -->
+    <section class="hm-visit" aria-labelledby="hm-visit-title" data-reveal>
+        <div class="hm-visit-inner">
+            <div>
+                <h2 id="hm-visit-title">We would love to meet you</h2>
+                <p>Come as you are. Join us this Sunday at Egerton University, Njoro, and experience worship, fellowship and the Word together.</p>
+            </div>
+            <div class="hm-visit-actions">
+                <a class="hm-btn hm-btn-light" href="https://www.google.com/maps/dir/?api=1&amp;destination=-0.3688216353133254%2C35.94114277582281" target="_blank" rel="noopener noreferrer"><i class="fas fa-location-arrow" aria-hidden="true"></i> Get Directions</a>
+                <a class="hm-btn hm-btn-ghost" href="/contact.html"><i class="fas fa-envelope" aria-hidden="true"></i> Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    
+<!-- Enhanced Footer -->
     </main>
 <!--CHROME:FOOTER:START-->
 <footer class="site-footer">
@@ -1542,7 +1576,7 @@
     <div class="footer-col footer-services">
       <h4>Service Times</h4>
       <div class="footer-service-times" data-service-times>
-        <!--CONTENT:SERVICE_TIMES:START--><p><strong>Sunday</strong><br>2nd Sunday Service — 10:00 Am – 12:30 Pm EAT · Live</p><p><strong>Sunday</strong><br>1 st Sunday Services — 7:00 Am – 9:30 Am EAT · Live</p><p><strong>Tuesday</strong><br>Choir Practices — 4:00pm – 6:30pm EAT</p><p><strong>Wednesday</strong><br>Fellowships — 5:00pm – 6:30PM EAT</p><p><strong>Saturday</strong><br>Praise &amp; Worship Practices — 2:00pm – 6:30pm EAT</p><!--CONTENT:SERVICE_TIMES:END-->
+        <!--CONTENT:SERVICE_TIMES:START--><p><strong>Sunday</strong><br>Main Worship Service — 8:00 AM – 12:00 PM EAT</p><p><strong>Wednesday</strong><br>Mid-Week Prayer — 5:30 PM – 7:00 PM EAT</p><p><strong>Friday</strong><br>Youth Fellowship — 6:00 PM – 8:00 PM EAT</p><!--CONTENT:SERVICE_TIMES:END-->
       </div>
     </div>
     <div class="footer-col footer-contact">
@@ -1560,7 +1594,7 @@
       </div>
     </div>
   </div>
-  <!--CONTENT:ANNOUNCEMENTS:START--><section class="cms-announcements" data-cms-announcements aria-label="Church announcements" aria-live="off"><span class="cms-announcements__badge">Announcement</span><div class="cms-announcements__viewport"><div class="cms-announcements__track"><div class="cms-announcements__sequence"><article class="cms-announcement cms-announcement--info"><p>Call for service. Are you there and you feel the urge to Serve the Lord? This is the time we are inviting everyone to reach out to us on our socials or fill in the join ministry button to register for ministry. Don&#39;t hesitate.</p><a href="https://aicegertonchapel.netlify.app/ministries">Register Now</a></article><article class="cms-announcement cms-announcement--info"><p>Change of Giving Criteria. The church account number changes from 7506439 to 7506439#offering/ tithes respectively. pleas note this changes</p><a href="https://aicegertonchapel.netlify.app/give">more info</a></article></div><div class="cms-announcements__sequence" aria-hidden="true" inert><article class="cms-announcement cms-announcement--info"><p>Call for service. Are you there and you feel the urge to Serve the Lord? This is the time we are inviting everyone to reach out to us on our socials or fill in the join ministry button to register for ministry. Don&#39;t hesitate.</p><a href="https://aicegertonchapel.netlify.app/ministries">Register Now</a></article><article class="cms-announcement cms-announcement--info"><p>Change of Giving Criteria. The church account number changes from 7506439 to 7506439#offering/ tithes respectively. pleas note this changes</p><a href="https://aicegertonchapel.netlify.app/give">more info</a></article></div></div></div><button class="cms-announcements__close" type="button" aria-label="Dismiss announcements">×</button></section><!--CONTENT:ANNOUNCEMENTS:END-->
+  <!--CONTENT:ANNOUNCEMENTS:START--><!--CONTENT:ANNOUNCEMENTS:END-->
   <div class="copyright">
     <p>© <span id="copyrightYear"></span> AIC Egerton Chapel. All rights reserved. <a href="/privacy.html">Privacy</a> · <a href="/accessibility.html">Accessibility</a></p>
     <p class="site-attribution">Website maintained and developed by Eng. Jeremiah Thuita (Dip CE, BSC CS).</p>

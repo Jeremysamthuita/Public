@@ -1,0 +1,26 @@
+/* Modern Hero Mobile Fixes */
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: 75vh;
+    padding-top: 5rem;
+    padding-bottom: 3rem;
+  }
+  
+  /* Ensure banner images scale cleanly */
+  .hero-slider img, .hero-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+/* Polished Card & Button Hover States */
+.modern-card {
+  border-radius: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.modern-card:hover {
+  transform: translateY(-2px;);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+}

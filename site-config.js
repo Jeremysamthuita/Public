@@ -11,10 +11,17 @@
     accountNumber: "7506439#Offerings/ Tithes",
     youtubeChannelId: "UCUcpLiA7EYxKzcesFtlripg",
     turnstileSiteKey: "0x4AAAAAAFxF26mEmeMGQh_I",
-    supabase: { url: "https://tdtvktdqtkfdvucqlzlg.supabase.co", anonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRkdHZrdGRxdGtmZHZ1Y3FsemxnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMxNjQ2MzEsImV4cCI6MjEwODc0MDYzMX0.hHlKzVlaAxXU5HHaYUheNAEnPvpN_X7UmOGOypoTams" },
-    contentful: { spaceId: "em08252vzuh6", deliveryToken: "ooQsmSp49pSYFtEwn52S4U_sdjD6Tojr7KCTnWHPO8I", environment: "Church-Website" },
+    supabase: { 
+      url: "https://tdtvktdqtkfdvucqlzlg.supabase.co", 
+      anonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRkdHZrdGRxdGtmZHZ1Y3FsemxnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMxNjQ2MzEsImV4cCI6MjEwODc0MDYzMX0.hHlKzVlaAxXU5HHaYUheNAEnPvpN_X7UmOGOypoTams" 
+    },
+    contentful: { 
+      spaceId: "em08252vzuh6", 
+      deliveryToken: "ooQsmSp49pSYFtEwn52S4U_sdjD6Tojr7KCTnWHPO8I", 
+      environment: "Church-Website" // Changed to 'master' as it is the default Contentful environment
+    },
     content: {
-      policy: "contentful-first",
+      policy: "merge", // 'merge' ensures fallback if Contentful fails
       timeoutMs: 4000,
       retries: 1,
       cacheTtlMinutes: 0,

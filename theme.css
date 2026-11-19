@@ -1,0 +1,355 @@
+/* =========================================================
+   AIC EGERTON CHAPEL: COLOR THEME  (one file controls the site's colors)
+
+   PRIMARY    burgundy / maroon  - brand: header, headings, dark sections
+              red                - action: buttons, highlights, hover
+              black (warm)       - text, footer
+              cream + white      - backgrounds, cards
+   SECONDARY  gold / sunshine    - accents, Donate, badges, text on dark
+              forest green       - growth, Give, "completed", success
+   AUDIENCE   navy               - men
+              purple + pink      - women
+              light blue         - children and battalion
+              (audience colors are used ONLY to mark who a ministry or section is for,
+               never as general decoration, so they keep their meaning)
+
+   To change a color: edit its hex AND its -rgb line (same color as three numbers).
+   Easiest: run   node recolor-theme.mjs --print-theme   and paste the result over the token section.
+========================================================= */
+:root {
+  /* burgundy */
+  --aic-burgundy-50: #fbf1f2;
+  --aic-burgundy-50-rgb: 251 241 242;
+  --aic-burgundy-100: #f5e1e4;
+  --aic-burgundy-100-rgb: 245 225 228;
+  --aic-burgundy-200: #ebc3c9;
+  --aic-burgundy-200-rgb: 235 195 201;
+  --aic-burgundy-300: #dc97a2;
+  --aic-burgundy-300-rgb: 220 151 162;
+  --aic-burgundy-400: #c4667a;
+  --aic-burgundy-400-rgb: 196 102 122;
+  --aic-burgundy-500: #a63a4c;
+  --aic-burgundy-500-rgb: 166 58 76;
+  --aic-burgundy-600: #8f2a3b;
+  --aic-burgundy-600-rgb: 143 42 59;
+  --aic-burgundy-700: #7b1e2e;
+  --aic-burgundy-700-rgb: 123 30 46;
+  --aic-burgundy-800: #5e1623;
+  --aic-burgundy-800-rgb: 94 22 35;
+  --aic-burgundy-900: #3d0f17;
+  --aic-burgundy-900-rgb: 61 15 23;
+  --aic-burgundy-950: #2a0a10;
+  --aic-burgundy-950-rgb: 42 10 16;
+  /* red */
+  --aic-red-50: #fef2f2;
+  --aic-red-50-rgb: 254 242 242;
+  --aic-red-100: #fde2e4;
+  --aic-red-100-rgb: 253 226 228;
+  --aic-red-200: #fbc4c9;
+  --aic-red-200-rgb: 251 196 201;
+  --aic-red-300: #f593a0;
+  --aic-red-300-rgb: 245 147 160;
+  --aic-red-400: #e8586c;
+  --aic-red-400-rgb: 232 88 108;
+  --aic-red-500: #d62839;
+  --aic-red-500-rgb: 214 40 57;
+  --aic-red-600: #bd1c2c;
+  --aic-red-600-rgb: 189 28 44;
+  --aic-red-700: #9b1624;
+  --aic-red-700-rgb: 155 22 36;
+  --aic-red-800: #7a111c;
+  --aic-red-800-rgb: 122 17 28;
+  --aic-red-900: #520b13;
+  --aic-red-900-rgb: 82 11 19;
+  /* gold */
+  --aic-gold-50: #fffaeb;
+  --aic-gold-50-rgb: 255 250 235;
+  --aic-gold-100: #fdf0c4;
+  --aic-gold-100-rgb: 253 240 196;
+  --aic-gold-200: #f9e08a;
+  --aic-gold-200-rgb: 249 224 138;
+  --aic-gold-300: #f4cf55;
+  --aic-gold-300-rgb: 244 207 85;
+  --aic-gold-400: #efbd2e;
+  --aic-gold-400-rgb: 239 189 46;
+  --aic-gold-500: #e0a817;
+  --aic-gold-500-rgb: 224 168 23;
+  --aic-gold-600: #c58f0e;
+  --aic-gold-600-rgb: 197 143 14;
+  --aic-gold-700: #9f700a;
+  --aic-gold-700-rgb: 159 112 10;
+  --aic-gold-800: #7a5508;
+  --aic-gold-800-rgb: 122 85 8;
+  --aic-gold-900: #4d3606;
+  --aic-gold-900-rgb: 77 54 6;
+  /* green */
+  --aic-green-50: #eef6f0;
+  --aic-green-50-rgb: 238 246 240;
+  --aic-green-100: #dcece1;
+  --aic-green-100-rgb: 220 236 225;
+  --aic-green-200: #b9d9c4;
+  --aic-green-200-rgb: 185 217 196;
+  --aic-green-300: #8dbf9f;
+  --aic-green-300-rgb: 141 191 159;
+  --aic-green-400: #5ea178;
+  --aic-green-400-rgb: 94 161 120;
+  --aic-green-500: #3a8a5a;
+  --aic-green-500-rgb: 58 138 90;
+  --aic-green-600: #2a7048;
+  --aic-green-600-rgb: 42 112 72;
+  --aic-green-700: #1e5a3a;
+  --aic-green-700-rgb: 30 90 58;
+  --aic-green-800: #14402b;
+  --aic-green-800-rgb: 20 64 43;
+  --aic-green-900: #0d2b1d;
+  --aic-green-900-rgb: 13 43 29;
+  /* navy */
+  --aic-navy-50: #eef2f8;
+  --aic-navy-50-rgb: 238 242 248;
+  --aic-navy-100: #d9e2f0;
+  --aic-navy-100-rgb: 217 226 240;
+  --aic-navy-200: #b3c4e0;
+  --aic-navy-200-rgb: 179 196 224;
+  --aic-navy-300: #86a1cb;
+  --aic-navy-300-rgb: 134 161 203;
+  --aic-navy-400: #5379af;
+  --aic-navy-400-rgb: 83 121 175;
+  --aic-navy-500: #2f5590;
+  --aic-navy-500-rgb: 47 85 144;
+  --aic-navy-600: #1f4177;
+  --aic-navy-600-rgb: 31 65 119;
+  --aic-navy-700: #16325f;
+  --aic-navy-700-rgb: 22 50 95;
+  --aic-navy-800: #0f2347;
+  --aic-navy-800-rgb: 15 35 71;
+  --aic-navy-900: #0a1830;
+  --aic-navy-900-rgb: 10 24 48;
+  --aic-navy-950: #060e1d;
+  --aic-navy-950-rgb: 6 14 29;
+  /* pink */
+  --aic-pink-50: #fdf2f7;
+  --aic-pink-50-rgb: 253 242 247;
+  --aic-pink-100: #fbe1ee;
+  --aic-pink-100-rgb: 251 225 238;
+  --aic-pink-200: #f7c1db;
+  --aic-pink-200-rgb: 247 193 219;
+  --aic-pink-300: #f192bf;
+  --aic-pink-300-rgb: 241 146 191;
+  --aic-pink-400: #e8609f;
+  --aic-pink-400-rgb: 232 96 159;
+  --aic-pink-500: #d63384;
+  --aic-pink-500-rgb: 214 51 132;
+  --aic-pink-600: #b8266f;
+  --aic-pink-600-rgb: 184 38 111;
+  --aic-pink-700: #931d58;
+  --aic-pink-700-rgb: 147 29 88;
+  --aic-pink-800: #701644;
+  --aic-pink-800-rgb: 112 22 68;
+  --aic-pink-900: #4a0e2d;
+  --aic-pink-900-rgb: 74 14 45;
+  /* purple */
+  --aic-purple-50: #f6f1fb;
+  --aic-purple-50-rgb: 246 241 251;
+  --aic-purple-100: #ebe0f6;
+  --aic-purple-100-rgb: 235 224 246;
+  --aic-purple-200: #d6bfee;
+  --aic-purple-200-rgb: 214 191 238;
+  --aic-purple-300: #b994e0;
+  --aic-purple-300-rgb: 185 148 224;
+  --aic-purple-400: #9a68cf;
+  --aic-purple-400-rgb: 154 104 207;
+  --aic-purple-500: #7e44b8;
+  --aic-purple-500-rgb: 126 68 184;
+  --aic-purple-600: #65349b;
+  --aic-purple-600-rgb: 101 52 155;
+  --aic-purple-700: #4e2a7a;
+  --aic-purple-700-rgb: 78 42 122;
+  --aic-purple-800: #3a1f5c;
+  --aic-purple-800-rgb: 58 31 92;
+  --aic-purple-900: #261340;
+  --aic-purple-900-rgb: 38 19 64;
+  /* sky */
+  --aic-sky-50: #f0f8fe;
+  --aic-sky-50-rgb: 240 248 254;
+  --aic-sky-100: #dff0fc;
+  --aic-sky-100-rgb: 223 240 252;
+  --aic-sky-200: #bde0f8;
+  --aic-sky-200-rgb: 189 224 248;
+  --aic-sky-300: #8ecaf2;
+  --aic-sky-300-rgb: 142 202 242;
+  --aic-sky-400: #5db0e8;
+  --aic-sky-400-rgb: 93 176 232;
+  --aic-sky-500: #3a96d6;
+  --aic-sky-500-rgb: 58 150 214;
+  --aic-sky-600: #2478b8;
+  --aic-sky-600-rgb: 36 120 184;
+  --aic-sky-700: #1b5f93;
+  --aic-sky-700-rgb: 27 95 147;
+  --aic-sky-800: #154a72;
+  --aic-sky-800-rgb: 21 74 114;
+  --aic-sky-900: #0e334e;
+  --aic-sky-900-rgb: 14 51 78;
+  /* cream */
+  --aic-cream-50: #fffdf8;
+  --aic-cream-50-rgb: 255 253 248;
+  --aic-cream-100: #fdf9f0;
+  --aic-cream-100-rgb: 253 249 240;
+  --aic-cream-200: #faf5e9;
+  --aic-cream-200-rgb: 250 245 233;
+  --aic-cream-300: #f3ead6;
+  --aic-cream-300-rgb: 243 234 214;
+  --aic-cream-400: #e8dcc0;
+  --aic-cream-400-rgb: 232 220 192;
+  --aic-cream-500: #d9c9a3;
+  --aic-cream-500-rgb: 217 201 163;
+  /* ink */
+  --aic-ink-50: #f7f5f3;
+  --aic-ink-50-rgb: 247 245 243;
+  --aic-ink-100: #ece8e4;
+  --aic-ink-100-rgb: 236 232 228;
+  --aic-ink-200: #d9d3cd;
+  --aic-ink-200-rgb: 217 211 205;
+  --aic-ink-300: #b8b0a8;
+  --aic-ink-300-rgb: 184 176 168;
+  --aic-ink-400: #8f867d;
+  --aic-ink-400-rgb: 143 134 125;
+  --aic-ink-500: #6b6258;
+  --aic-ink-500-rgb: 107 98 88;
+  --aic-ink-600: #4a423a;
+  --aic-ink-600-rgb: 74 66 58;
+  --aic-ink-700: #3a322c;
+  --aic-ink-700-rgb: 58 50 44;
+  --aic-ink-800: #2b2420;
+  --aic-ink-800-rgb: 43 36 32;
+  --aic-ink-900: #1c1614;
+  --aic-ink-900-rgb: 28 22 20;
+  --aic-ink-950: #120d0c;
+  --aic-ink-950-rgb: 18 13 12;
+}
+
+/* =========================================================
+   ROLES: what each color is for
+   60%  cream + white      backgrounds and cards
+   25%  burgundy + red     brand and actions
+   10%  gold               accents (always with dark text; gold TEXT only on dark backgrounds)
+    5%  forest green       supporting
+   Navy, purple/pink and light blue appear only as audience colors.
+========================================================= */
+:root {
+  --aic-primary: var(--aic-burgundy-700);
+  --aic-primary-dark: var(--aic-burgundy-900);
+  --aic-action: var(--aic-red-600);
+  --aic-action-dark: var(--aic-red-700);
+  --aic-accent: var(--aic-gold-400);
+  --aic-support: var(--aic-green-700);
+  --aic-text: var(--aic-ink-800);
+  --aic-text-muted: var(--aic-ink-500);
+  --aic-border: var(--aic-cream-300);
+  --aic-surface: #ffffff;
+
+  /* the older names used inside site-chrome.css and the page styles now follow the palette */
+  --aic-purple: var(--aic-burgundy-700);
+  --aic-purple-dark: var(--aic-burgundy-900);
+  --aic-purple-light: var(--aic-burgundy-100);
+  --aic-coral: var(--aic-red-600);
+  --aic-coral-dark: var(--aic-red-700);
+  --aic-coral-light: var(--aic-red-100);
+  --aic-maroon: var(--aic-burgundy-800);
+  --aic-gold: var(--aic-gold-400);
+  --aic-green: var(--aic-green-700);
+  --aic-green-light: var(--aic-green-100);
+  --aic-ink: var(--aic-ink-900);
+  --aic-ink-2: var(--aic-ink-700);
+  --aic-muted: var(--aic-ink-500);
+  --aic-line: var(--aic-cream-300);
+  --aic-bg: var(--aic-cream-100);
+  --aic-bg-warm: var(--aic-cream-200);
+  --aic-grad-brand: linear-gradient(135deg, var(--aic-burgundy-800), var(--aic-red-600));
+  --aic-grad-brand-h: linear-gradient(90deg, var(--aic-burgundy-800), var(--aic-red-600));
+  --aic-grad-hero: linear-gradient(120deg, var(--aic-ink-950), var(--aic-burgundy-900) 45%, var(--aic-burgundy-700));
+  --aic-grad-warm: linear-gradient(135deg, var(--aic-gold-100), var(--aic-cream-200));
+  --aic-footer-bg-end: var(--aic-burgundy-950);
+  --aic-shadow-xl: 0 30px 70px rgb(var(--aic-burgundy-900-rgb) / .22);
+  --aic-shadow-focus: 0 0 0 4px rgb(var(--aic-gold-500-rgb) / .35);
+}
+
+/* =========================================================
+   AUDIENCE COLORS  -  add  data-audience="men | women | children | battalion"  to any card or section,
+   or the matching class (.aud-men ...), and use var(--aud-1) / var(--aud-2) / var(--aud-tint) / var(--aud-text).
+========================================================= */
+[data-audience="men"], .aud-men {
+  --aud-1: var(--aic-navy-700); --aud-2: var(--aic-navy-500); --aud-tint: var(--aic-navy-100); --aud-text: var(--aic-navy-800);
+}
+[data-audience="women"], .aud-women {
+  --aud-1: var(--aic-purple-600); --aud-2: var(--aic-pink-500); --aud-tint: var(--aic-pink-100); --aud-text: var(--aic-purple-800);
+}
+[data-audience="children"], [data-audience="battalion"], .aud-children, .aud-battalion {
+  --aud-1: var(--aic-sky-600); --aud-2: var(--aic-sky-400); --aud-tint: var(--aic-sky-100); --aud-text: var(--aic-sky-800);
+}
+.aud-badge { display: inline-block; padding: 4px 12px; border-radius: 999px; background: var(--aud-tint); color: var(--aud-text); font-size: .72rem; font-weight: 800; letter-spacing: .5px; text-transform: uppercase; }
+.aud-bar { height: 4px; border-radius: 4px; background: linear-gradient(90deg, var(--aud-1), var(--aud-2)); }
+
+/* contrast rules: gold = dark text, never white | gold text only on dark | white text is fine on burgundy, red, green, navy, purple, pink-600, sky-600 */
+
+body { background-color: var(--aic-cream-100); color: var(--aic-ink-800); }
+::selection { background: var(--aic-gold-200); color: var(--aic-burgundy-900); }
+
+/* ---------- footer (all pages): black into deep maroon, gold headings ---------- */
+body .site-footer { background: linear-gradient(180deg, var(--aic-ink-950), var(--aic-burgundy-950)) !important; border-top: 4px solid var(--aic-gold-500); }
+.site-footer h4 { color: var(--aic-gold-400); }
+.site-footer a:hover, .site-footer a:focus-visible { color: var(--aic-gold-300); }
+.site-footer .btn-get-directions { background: var(--aic-gold-400); color: var(--aic-ink-900); border-color: transparent; font-weight: 700; }
+.site-footer .btn-get-directions:hover { background: var(--aic-gold-300); color: var(--aic-ink-900); }
+
+/* ---------- HOME ---------- */
+body.hm .hm-eyebrow { background: var(--aic-gold-100); color: var(--aic-burgundy-800); box-shadow: inset 0 0 0 1px var(--aic-gold-300); }
+body.hm .hm-head h2, body.hm .events-heading h2 { color: var(--aic-burgundy-800); }
+body.hm .slide-eyebrow { background: rgb(var(--aic-gold-500-rgb) / .2); border-color: rgb(var(--aic-gold-400-rgb) / .65); color: var(--aic-gold-100); }
+body.hm .hero-stage .carousel-indicators button[aria-current="true"] { background: var(--aic-gold-400); }
+body.hm .hero-stage .slide-content .btn-more { background: linear-gradient(135deg, var(--aic-gold-300), var(--aic-gold-500)); color: var(--aic-ink-900); }
+body.hm .hero-stage .slide-content .btn-more:hover { background: linear-gradient(135deg, var(--aic-gold-200), var(--aic-gold-400)); }
+body.hm .hm-qcard:hover { border-color: var(--aic-gold-400); }
+body.hm .hm-qcard:nth-child(1) .hm-qicon { background: linear-gradient(135deg, var(--aic-burgundy-800), var(--aic-red-600)); color: #fff; }
+body.hm .hm-qcard:nth-child(2) .hm-qicon { background: linear-gradient(135deg, var(--aic-gold-300), var(--aic-gold-500)); color: var(--aic-ink-900); box-shadow: 0 8px 18px rgb(var(--aic-gold-500-rgb) / .35); }
+body.hm .hm-qcard:nth-child(3) .hm-qicon { background: linear-gradient(135deg, var(--aic-green-700), var(--aic-green-500)); color: #fff; box-shadow: 0 8px 18px rgb(var(--aic-green-700-rgb) / .3); }
+body.hm .hm-qcard:nth-child(4) .hm-qicon { background: linear-gradient(135deg, var(--aic-ink-950), var(--aic-ink-600)); color: var(--aic-gold-400); box-shadow: 0 8px 18px rgb(var(--aic-ink-900-rgb) / .3); }
+body.hm .event-card::before { background: linear-gradient(90deg, var(--aic-burgundy-800), var(--aic-red-600) 70%, var(--aic-gold-400)); }
+body.hm .event-date, body.hm .hm-chips li { background: var(--aic-gold-100); color: var(--aic-burgundy-800); }
+body.hm .about-image-wrapper::before { background: linear-gradient(135deg, var(--aic-burgundy-700), var(--aic-gold-400)); opacity: .22; }
+body.hm .about-box:nth-child(2) .hm-ico { background: linear-gradient(135deg, var(--aic-green-700), var(--aic-green-500)); }
+body.hm .hm-icard::before { background: linear-gradient(180deg, rgb(var(--aic-ink-950-rgb) / .05) 20%, rgb(var(--aic-burgundy-950-rgb) / .92) 100%); }
+body.hm .hm-icard .hm-ico { background: var(--aic-gold-400); color: var(--aic-ink-900); }
+body.hm .hm-visit { background: linear-gradient(135deg, var(--aic-burgundy-800), var(--aic-ink-950)); border-bottom: 5px solid var(--aic-gold-500); }
+body.hm .hm-visit::before { background: rgb(var(--aic-gold-500-rgb) / .14); }
+body.hm .hm-visit .hm-btn-light { background: linear-gradient(135deg, var(--aic-gold-300), var(--aic-gold-500)); color: var(--aic-ink-900); }
+
+/* ---------- PROJECTS ---------- */
+.pj-page .pj-eyebrow { background: rgb(var(--aic-gold-500-rgb) / .22); border-color: rgb(var(--aic-gold-400-rgb) / .7); color: var(--aic-gold-100); }
+.pj-page .pj-btn-light { background: linear-gradient(135deg, var(--aic-gold-300), var(--aic-gold-500)); color: var(--aic-ink-900); }
+.pj-page .pj-stat { border-top-color: var(--aic-burgundy-700); }
+.pj-page .pj-stat:nth-child(2) { border-top-color: var(--aic-green-600); }
+.pj-page .pj-stat:nth-child(3) { border-top-color: var(--aic-gold-500); }
+.pj-page .pj-stat:nth-child(4) { border-top-color: var(--aic-ink-700); }
+.pj-page .pj-stat:nth-child(5) { border-top-color: var(--aic-red-600); }
+.pj-page .st-ongoing { background: var(--aic-green-100); color: var(--aic-green-700); }
+.pj-page .st-proposed { background: var(--aic-gold-100); color: var(--aic-gold-800); }
+.pj-page .st-completed { background: var(--aic-ink-100); color: var(--aic-ink-700); }
+.pj-page .st-on-hold { background: var(--aic-red-100); color: var(--aic-red-700); }
+.pj-page .pj-ribbon { background: var(--aic-gold-400); color: var(--aic-ink-900); }
+.pj-page .pj-fill { background: linear-gradient(90deg, var(--aic-burgundy-800), var(--aic-red-600)); }
+.pj-page .pj-fill.is-done { background: linear-gradient(90deg, var(--aic-green-700), var(--aic-green-500)); }
+.pj-page .pj-fill.is-funds { background: linear-gradient(90deg, var(--aic-gold-500), var(--aic-gold-300)); }
+.pj-page .pj-timeline li.done .pj-dot { background: var(--aic-green-600); border-color: var(--aic-green-600); }
+.pj-page .pj-cta { background: linear-gradient(135deg, var(--aic-burgundy-800), var(--aic-ink-950)); border-bottom: 5px solid var(--aic-gold-500); }
+
+/* ---------- MINISTRIES (group colors live in ministries-modern.css) ---------- */
+.mn-page .mn-eyebrow { background: rgb(var(--aic-gold-500-rgb) / .22); border-color: rgb(var(--aic-gold-400-rgb) / .7); color: var(--aic-gold-100); }
+.mn-page .mn-btn-solid { background: linear-gradient(135deg, var(--aic-gold-300), var(--aic-gold-500)); color: var(--aic-ink-900); }
+.mn-page .mn-time, .mn-page .mn-d-cat { background: var(--aic-gold-100); color: var(--aic-burgundy-800); }
+.mn-page .mn-time.is-tba { background: var(--aic-ink-50); color: var(--aic-ink-500); }
+.mn-page .mn-cta { background: linear-gradient(135deg, var(--aic-burgundy-800), var(--aic-ink-950)); border-bottom: 5px solid var(--aic-gold-500); }
+.mn-page .mn-cta .mn-btn-solid { color: var(--aic-ink-900); }
+
+/* ---------- SERMONS ---------- */
+.sermon-toolbar #aiSermonSearch { background: linear-gradient(#fff, #fff) padding-box, linear-gradient(135deg, var(--aic-burgundy-700), var(--aic-gold-400)) border-box; }
+.sermon-card .sermon-download-link { background: var(--aic-green-700); }

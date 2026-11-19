@@ -113,7 +113,10 @@ export function normalizeRecord(type, record, {source = 'supabase', assets = []}
   const fields = record.fields || record;
   const id = record.sys?.id || record.id || '';
   const externalKey = record.contentful_id || record.externalKey || id || record.slug || '';
+  
+  // Added `type` to base so isVisible can correctly identify events
   const base = {
+    type, 
     id,
     source,
     externalKey,
@@ -180,7 +183,8 @@ export function normalizeRecord(type, record, {source = 'supabase', assets = []}
       flyerAlt: fieldValue(fields, 'flyerAlt', 'flyer_alt'),
       registrationUrl: cleanUrl(fieldValue(fields, 'registrationUrl', 'registration_url')),
       category: fieldValue(fields, 'category'),
-      active: fields.active !== false
+      // Hardened active check to handle strings
+      active: fields.active !== false && fields.active !== 'false'
     };
   }
 
@@ -233,6 +237,9 @@ export function normalizeRecord(type, record, {source = 'supabase', assets = []}
       category: fieldValue(fields, 'category'),
       description: fieldValue(fields, 'description', 'tagline'),
       leader: fieldValue(fields, 'leader'),
+      motto: fieldValue(fields, 'motto'),
+      vision: fieldValue(fields, 'vision'),
+      mission: fieldValue(fields, 'mission'),
       meetingTime: fieldValue(fields, 'meetingTime', 'meeting_time', 'meetingSchedule'),
       contact: fieldValue(fields, 'contact'),
       joiningInformation: fieldValue(fields, 'joiningInformation', 'joining_information'),
@@ -283,6 +290,7 @@ export function isVisible(record, now = Date.now()) {
   if (!Number.isNaN(unpublishAt) && unpublishAt <= now) return false;
   if (!Number.isNaN(startsAt) && startsAt > now) return false;
   if (!Number.isNaN(endsAt) && endsAt <= now) return false;
+  
   const today = normalizeDate(new Date(now).toLocaleString('sv-SE', {timeZone: 'Africa/Nairobi'}));
   if (record.type === 'events' && record.date && record.date < today) {
     return false;
