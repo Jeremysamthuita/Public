@@ -16,12 +16,13 @@
     "test": "node --test"
   },
   "dependencies": {
+    "@google/genai": "^3.6.1",
     "@supabase/supabase-js": "^2.45.0"
   },
   "devDependencies": {
     "netlify-cli": "^17.0.0"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   }
 }

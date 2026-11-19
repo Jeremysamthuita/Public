@@ -112,7 +112,7 @@ When enabled, M-Pesa uses `/api/mpesa-stkpush`, a secret-path callback and `/api
 
 ## Deployment
 
-Connect the repository to Netlify and configure the environment variables above. Netlify uses `netlify.toml` as the single header/redirect configuration, publishes the repository root, and runs Node 20 functions. Verify function routes and response headers on a deploy preview before promoting to production.
+Connect the repository to Netlify and configure the environment variables above. Netlify uses `netlify.toml` as the single header/redirect configuration, publishes the repository root, and runs Node 22 for builds and functions. Verify function routes and response headers on a deploy preview before promoting to production.
 
 Legacy filename redirects are configured in `netlify.toml`. The `/feed.xml` and `/sitemap.xml` routes use Netlify Functions.
 

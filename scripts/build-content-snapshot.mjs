@@ -38,7 +38,23 @@ async function fetchContentful(type) {
     });
     const url = `https://cdn.contentful.com/spaces/${encodeURIComponent(config.contentful.spaceId)}/environments/${encodeURIComponent(config.contentful.environment)}/entries?${params}`;
     const response = await fetch(url, {signal: AbortSignal.timeout(10000)});
-    if (!response.ok) throw new Error(`Contentful ${type} returned HTTP ${response.status}.`);
+    if (!response.ok) {
+      const body = await response.text().catch(() => '');
+      // A content type that has not been created in this Contentful space/environment is not an
+      // error for the build: treat it as "no entries" so Supabase (or the previous snapshot) can fill in.
+      if (response.status === 400 && body.includes('unknownContentType')) {
+        console.warn(`[snapshot] Contentful has no "${contentTypeName(type)}" content type in environment "${config.contentful.environment}"; treating ${type} as empty.`);
+        return [];
+      }
+      let detail = '';
+      try {
+        const parsed = JSON.parse(body);
+        detail = [parsed.message, ...(parsed.details?.errors || []).map(error => error.name)].filter(Boolean).join(' ');
+      } catch {
+        detail = body.slice(0, 300);
+      }
+      throw new Error(`Contentful ${type} returned HTTP ${response.status}${detail ? `: ${detail}` : '.'}`);
+    }
     const page = await response.json();
     if (!Array.isArray(page.items)) throw new Error(`Contentful returned invalid ${type} data.`);
     items.push(...page.items);
