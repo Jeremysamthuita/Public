@@ -32,7 +32,7 @@ async function loadEntries() {
   const config = {
     contentful: {
       spaceId: process.env.CONTENTFUL_SPACE_ID,
-      environment: process.env.CONTENTFUL_ENV || process.env.CONTENTFUL_ENVIRONMENT || "master",
+      environment: process.env.CONTENTFUL_ENV || process.env.CONTENTFUL_ENVIRONMENT || "",
       deliveryToken: process.env.CONTENTFUL_DELIVERY_TOKEN
     },
     supabase: {

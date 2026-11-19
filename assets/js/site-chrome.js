@@ -94,7 +94,7 @@
 
         if (contentfulLink) {
             const spaceId = encodeURIComponent(contentful.spaceId || '');
-            const environment = encodeURIComponent(contentful.environment || 'master');
+            const environment = encodeURIComponent(contentful.environment || 'Church-Website');
             contentfulLink.href = spaceId
                 ? `https://app.contentful.com/spaces/${spaceId}/environments/${environment}/content`
                 : 'https://app.contentful.com/';

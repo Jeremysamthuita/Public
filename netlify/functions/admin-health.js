@@ -41,7 +41,7 @@ export const handler=async event=>{
       lastSync:(sync||[])[0]||null,
       recentSync:sync||[],
       snapshotAgeMinutes:snapshotAge,
-      links:{supabase:projectRef?`https://supabase.com/dashboard/project/${encodeURIComponent(projectRef)}`:'https://supabase.com/dashboard/',contentful:process.env.CONTENTFUL_SPACE_ID?`https://app.contentful.com/spaces/${encodeURIComponent(process.env.CONTENTFUL_SPACE_ID)}/environments/${encodeURIComponent(process.env.CONTENTFUL_ENV||'master')}/content`:'https://app.contentful.com/'}
+      links:{supabase:projectRef?`https://supabase.com/dashboard/project/${encodeURIComponent(projectRef)}`:'https://supabase.com/dashboard/',contentful:process.env.CONTENTFUL_SPACE_ID?`https://app.contentful.com/spaces/${encodeURIComponent(process.env.CONTENTFUL_SPACE_ID)}/environments/${encodeURIComponent(process.env.CONTENTFUL_ENV||'Church-Website')}/content`:'https://app.contentful.com/'}
     };
     return response(event,200,result);
   }catch(error){

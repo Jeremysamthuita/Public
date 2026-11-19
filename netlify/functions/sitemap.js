@@ -27,7 +27,7 @@ async function latestSermonUpdatedAt() {
   const config = {
     contentful: {
       spaceId: process.env.CONTENTFUL_SPACE_ID,
-      environment: process.env.CONTENTFUL_ENV || process.env.CONTENTFUL_ENVIRONMENT || "master",
+      environment: process.env.CONTENTFUL_ENV || process.env.CONTENTFUL_ENVIRONMENT || "Church-Website",
       deliveryToken: process.env.CONTENTFUL_DELIVERY_TOKEN
     },
     supabase: {

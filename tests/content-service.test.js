@@ -15,7 +15,7 @@ function installBrowserConfig(t) {
     AIC_SITE_CONFIG: {
       contentful: {
         spaceId: 'space',
-        environment: 'master',
+        environment: 'Church-Website',
         deliveryToken: 'delivery-token'
       },
       supabase: {

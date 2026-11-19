@@ -16,7 +16,7 @@ const fromSiteConfig = key => siteConfigText.match(new RegExp(`${key}\\s*:\\s*["
 const config = {
   contentful: {
     spaceId: env.CONTENTFUL_SPACE_ID || fromSiteConfig('spaceId'),
-    environment: env.CONTENTFUL_ENV || env.CONTENTFUL_ENVIRONMENT || fromSiteConfig('environment') || 'master',
+    environment: env.CONTENTFUL_ENV || env.CONTENTFUL_ENVIRONMENT || fromSiteConfig('environment') || 'Church-Website',
     deliveryToken: env.CONTENTFUL_DELIVERY_TOKEN || fromSiteConfig('deliveryToken')
   },
   supabase: {url: env.SUPABASE_URL, anonKey: env.SUPABASE_ANON_KEY},
