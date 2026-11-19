@@ -129,7 +129,11 @@ for (const page of pages) {
   html = ensureMain(html);
   html = ensureCanonical(html, page);
   html = rootRelativeUrls(html);
-  await writeFile(file, html);
+  try {
+    await writeFile(file, html);
+  } catch (err) {
+    console.warn(`[sync-chrome] Could not write ${page}: ${err.message}`);
+  }
 }
 
 console.log(`Synchronized shared chrome in ${pages.length} HTML pages.`);

@@ -1,8 +1,9 @@
 {
-  "version": "4c36f1d18aaa275919c784a2d10c40b0ed9bac77d45eaa820ff69328f5434bea",
-  "generatedAt": "2026-11-10T04:43:25.348Z",
+  "version": "6ab1c28bb250c9a17fd386f45797df6b62f6333f519ba510572394467d3e4813",
+  "generatedAt": "2026-11-19T19:25:31.108Z",
   "sermons": [
     {
+      "type": "sermons",
       "id": "6pHAnh4Z8HtpY5OorQEbQo",
       "source": "contentful",
       "externalKey": "6pHAnh4Z8HtpY5OorQEbQo",
@@ -42,10 +43,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "34GXM5QtN49nVHznrZ9mPK",
       "source": "contentful",
       "externalKey": "34GXM5QtN49nVHznrZ9mPK",
@@ -85,10 +86,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "1aKp9I3CaBf4JVcJMi1tPc",
       "source": "contentful",
       "externalKey": "1aKp9I3CaBf4JVcJMi1tPc",
@@ -128,10 +129,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "4pIRKJVyDSzy8mREUIjudR",
       "source": "contentful",
       "externalKey": "4pIRKJVyDSzy8mREUIjudR",
@@ -171,10 +172,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "1clc8hnbnq9nxfgW6wuWkV",
       "source": "contentful",
       "externalKey": "1clc8hnbnq9nxfgW6wuWkV",
@@ -214,10 +215,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "7bQbOhJ8TrYtkS5oCiM5Aj",
       "source": "contentful",
       "externalKey": "7bQbOhJ8TrYtkS5oCiM5Aj",
@@ -257,10 +258,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "1M8bgWKdLtGnZnT554Hzcp",
       "source": "contentful",
       "externalKey": "1M8bgWKdLtGnZnT554Hzcp",
@@ -300,10 +301,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "3L46PYhDBYSAfroFcmBuT2",
       "source": "contentful",
       "externalKey": "3L46PYhDBYSAfroFcmBuT2",
@@ -343,10 +344,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "NtXOGtWSdlWKxBTyDA05W",
       "source": "contentful",
       "externalKey": "NtXOGtWSdlWKxBTyDA05W",
@@ -386,10 +387,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "3xoeo1tUdeZRW56uOKUE6Q",
       "source": "contentful",
       "externalKey": "3xoeo1tUdeZRW56uOKUE6Q",
@@ -429,10 +430,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "79Ai1zJJbiqXhPNHiuOfYz",
       "source": "contentful",
       "externalKey": "79Ai1zJJbiqXhPNHiuOfYz",
@@ -472,10 +473,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "516HPGTxmBz6HA4A73MMEJ",
       "source": "contentful",
       "externalKey": "516HPGTxmBz6HA4A73MMEJ",
@@ -515,10 +516,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "2eaqN2gKf1BI7kjEmPKmI2",
       "source": "contentful",
       "externalKey": "2eaqN2gKf1BI7kjEmPKmI2",
@@ -558,10 +559,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "6jngqNe1KFv6r0JSgoSiWu",
       "source": "contentful",
       "externalKey": "6jngqNe1KFv6r0JSgoSiWu",
@@ -601,10 +602,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "7evkOPo1hlgh6tR6zg5kFs",
       "source": "contentful",
       "externalKey": "7evkOPo1hlgh6tR6zg5kFs",
@@ -644,10 +645,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "1DOKOkLCiPXu11wIdkov7d",
       "source": "contentful",
       "externalKey": "1DOKOkLCiPXu11wIdkov7d",
@@ -687,10 +688,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "6JoDwSIXr2ZCVCcH2sZ29q",
       "source": "contentful",
       "externalKey": "6JoDwSIXr2ZCVCcH2sZ29q",
@@ -730,10 +731,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "2wuxvTgYtJmo5AsV0XqKEa",
       "source": "contentful",
       "externalKey": "2wuxvTgYtJmo5AsV0XqKEa",
@@ -773,10 +774,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "5nAG9Cjd6nOUzhnmOCX0th",
       "source": "contentful",
       "externalKey": "5nAG9Cjd6nOUzhnmOCX0th",
@@ -816,10 +817,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "4vEgRboy42pZhbO5YUJSx9",
       "source": "contentful",
       "externalKey": "4vEgRboy42pZhbO5YUJSx9",
@@ -859,10 +860,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "2sGqblQd8f6TIBvsDUTsRC",
       "source": "contentful",
       "externalKey": "2sGqblQd8f6TIBvsDUTsRC",
@@ -902,10 +903,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "1EgdtsxSYtr5SyUwj12xrX",
       "source": "contentful",
       "externalKey": "1EgdtsxSYtr5SyUwj12xrX",
@@ -945,10 +946,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "6iMDGVbGwTm4z4R24FU08R",
       "source": "contentful",
       "externalKey": "6iMDGVbGwTm4z4R24FU08R",
@@ -988,10 +989,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "DraIVNGnKY1RopdBJMEai",
       "source": "contentful",
       "externalKey": "DraIVNGnKY1RopdBJMEai",
@@ -1031,10 +1032,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "lDDNHtF9bod7RTizMvHbb",
       "source": "contentful",
       "externalKey": "lDDNHtF9bod7RTizMvHbb",
@@ -1074,10 +1075,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "3CuWsq1p6RISRSDoNwUjCA",
       "source": "contentful",
       "externalKey": "3CuWsq1p6RISRSDoNwUjCA",
@@ -1117,10 +1118,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "dnga4Qm9lLIPNm5GoilJ1",
       "source": "contentful",
       "externalKey": "dnga4Qm9lLIPNm5GoilJ1",
@@ -1160,10 +1161,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "5KOSiw8JHh3pfuRgVMHSvw",
       "source": "contentful",
       "externalKey": "5KOSiw8JHh3pfuRgVMHSvw",
@@ -1203,10 +1204,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "4C2huAAAcP0AhnfG8fTLNl",
       "source": "contentful",
       "externalKey": "4C2huAAAcP0AhnfG8fTLNl",
@@ -1246,10 +1247,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "6j6Q0OMRMVOvobm1kEV4g1",
       "source": "contentful",
       "externalKey": "6j6Q0OMRMVOvobm1kEV4g1",
@@ -1289,10 +1290,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "7xEoCQJujkAnwYtDZfeuIn",
       "source": "contentful",
       "externalKey": "7xEoCQJujkAnwYtDZfeuIn",
@@ -1332,10 +1333,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "5oXQwGK9m6bDMslp1NysQj",
       "source": "contentful",
       "externalKey": "5oXQwGK9m6bDMslp1NysQj",
@@ -1375,10 +1376,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "2r2lKLXpjmOL40FF27HdOg",
       "source": "contentful",
       "externalKey": "2r2lKLXpjmOL40FF27HdOg",
@@ -1418,10 +1419,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "8UNrQ0ACT91qeUMlMjuSA",
       "source": "contentful",
       "externalKey": "8UNrQ0ACT91qeUMlMjuSA",
@@ -1461,10 +1462,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "2SQUkjtK6V2mtymbVWgK80",
       "source": "contentful",
       "externalKey": "2SQUkjtK6V2mtymbVWgK80",
@@ -1504,10 +1505,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "72wK6GvWkAOWYWtzDdChEk",
       "source": "contentful",
       "externalKey": "72wK6GvWkAOWYWtzDdChEk",
@@ -1547,10 +1548,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "77ikhgWHUuDEwKxlyu6MJl",
       "source": "contentful",
       "externalKey": "77ikhgWHUuDEwKxlyu6MJl",
@@ -1590,10 +1591,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "7Eco7njSFP1Omze6qSwq1C",
       "source": "contentful",
       "externalKey": "7Eco7njSFP1Omze6qSwq1C",
@@ -1633,10 +1634,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "1qxkpCswK2sOjzMyB4wsD9",
       "source": "contentful",
       "externalKey": "1qxkpCswK2sOjzMyB4wsD9",
@@ -1676,10 +1677,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "56pQuCP7YsNLRFCpIentUk",
       "source": "contentful",
       "externalKey": "56pQuCP7YsNLRFCpIentUk",
@@ -1719,10 +1720,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "2W4XmIA2fSa9CPwXOtDkZW",
       "source": "contentful",
       "externalKey": "2W4XmIA2fSa9CPwXOtDkZW",
@@ -1762,10 +1763,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "30YRQJSqEFihGyJNiIejE1",
       "source": "contentful",
       "externalKey": "30YRQJSqEFihGyJNiIejE1",
@@ -1805,10 +1806,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "3LEgW3YW5gLnRMqtx3k4xz",
       "source": "contentful",
       "externalKey": "3LEgW3YW5gLnRMqtx3k4xz",
@@ -1848,10 +1849,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "4JX1GfgbtNRyCiO3PfYY5",
       "source": "contentful",
       "externalKey": "4JX1GfgbtNRyCiO3PfYY5",
@@ -1891,10 +1892,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "6tIB6Q5SuExOSIWtNvEY74",
       "source": "contentful",
       "externalKey": "6tIB6Q5SuExOSIWtNvEY74",
@@ -1934,10 +1935,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "yoarrxISq01zug5U5lo5Y",
       "source": "contentful",
       "externalKey": "yoarrxISq01zug5U5lo5Y",
@@ -1977,10 +1978,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "5MrMhEuCmiaasg8lLYEQ2s",
       "source": "contentful",
       "externalKey": "5MrMhEuCmiaasg8lLYEQ2s",
@@ -2020,10 +2021,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "7bkFyRXHlGxkQ9WlxhP9ro",
       "source": "contentful",
       "externalKey": "7bkFyRXHlGxkQ9WlxhP9ro",
@@ -2063,10 +2064,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "27JNBydAHJBnIrhg4QtVbJ",
       "source": "contentful",
       "externalKey": "27JNBydAHJBnIrhg4QtVbJ",
@@ -2106,10 +2107,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "1yBBdauzfMpKSqW3zuleA6",
       "source": "contentful",
       "externalKey": "1yBBdauzfMpKSqW3zuleA6",
@@ -2149,10 +2150,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "34RxPOdnm4tzeJXOWzliqy",
       "source": "contentful",
       "externalKey": "34RxPOdnm4tzeJXOWzliqy",
@@ -2192,10 +2193,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "4ibditxdgfps3cuO4aiAdv",
       "source": "contentful",
       "externalKey": "4ibditxdgfps3cuO4aiAdv",
@@ -2235,10 +2236,10 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     },
     {
+      "type": "sermons",
       "id": "33a00ecH3D0pLcRPuYhtgw",
       "source": "contentful",
       "externalKey": "33a00ecH3D0pLcRPuYhtgw",
@@ -2278,13 +2279,142 @@
           "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
         }
       ],
-      "pdfName": "sermon.pdf",
-      "type": "sermons"
+      "pdfName": "sermon.pdf"
     }
   ],
-  "events": [],
+  "events": [
+    {
+      "type": "events",
+      "id": "7bVRmZr2ZqEnmkuR1VXwl2",
+      "source": "contentful",
+      "externalKey": "7bVRmZr2ZqEnmkuR1VXwl2",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2026-11-19T14:02:14.061Z",
+      "title": "CED Graduation Service",
+      "date": "2026-12-06",
+      "endDate": "",
+      "time": "9:30 AM",
+      "location": "AIC Egerton Chapel Main Sanctuary",
+      "description": "Christian Education Department presents graduation for 2026 cohort Egerton Chapel LCC.",
+      "flyerUrl": "https://images.ctfassets.net/em08252vzuh6/65HMTy0vgkTOgcFXy69WtT/08f615edf48d66854a882384e1f6433b/CED.png",
+      "flyerAlt": "",
+      "registrationUrl": "",
+      "category": "",
+      "active": true
+    },
+    {
+      "type": "events",
+      "id": "58vlX6aUYocuBfWQmdy3to",
+      "source": "contentful",
+      "externalKey": "58vlX6aUYocuBfWQmdy3to",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 0,
+      "updatedAt": "2026-11-15T13:37:08.096Z",
+      "title": "CED Graduation Service",
+      "date": "2026-12-06",
+      "endDate": "",
+      "time": "9:00 AM",
+      "location": "AIC Egerton Chapel Main Sanctuary",
+      "description": "Christian Education Department (CED) Graduation service\n\"Let the wise listen and add to their learning, and let the discerning get guidance.\"\nInspired by Proverbs 1:5",
+      "flyerUrl": "https://images.ctfassets.net/em08252vzuh6/65HMTy0vgkTOgcFXy69WtT/08f615edf48d66854a882384e1f6433b/CED.png",
+      "flyerAlt": "",
+      "registrationUrl": "",
+      "category": "",
+      "active": true
+    }
+  ],
   "leadership": [
     {
+      "type": "leadership",
+      "id": "20yhjMhBS8kzpVezE7Z7sf",
+      "source": "contentful",
+      "externalKey": "20yhjMhBS8kzpVezE7Z7sf",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 1,
+      "updatedAt": "2026-11-19T17:12:23.660Z",
+      "group": "lcc",
+      "name": "Dr. stephine Mutie",
+      "role": "Chairman",
+      "bio": "",
+      "message": "",
+      "photoUrl": "https://images.ctfassets.net/em08252vzuh6/7yGxeiiUQ1KUqYZqRsjMpU/34f23d178afd10355a501c2fbc1a3d4c/leadersimages_mutie.jpeg",
+      "active": true
+    },
+    {
+      "type": "leadership",
+      "id": "55DLCEf2TWPZcLM8kBFsoR",
+      "source": "contentful",
+      "externalKey": "55DLCEf2TWPZcLM8kBFsoR",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 2,
+      "updatedAt": "2026-11-19T17:12:33.042Z",
+      "group": "lcc",
+      "name": "Jonathan M Nduati",
+      "role": "Secretary",
+      "bio": "",
+      "message": "",
+      "photoUrl": "https://images.ctfassets.net/em08252vzuh6/h3eovgxRaWUCQT2jNSatB/771e91a3d26ab312e1f2d56944c7b26d/leadersimages_nduati.jpeg",
+      "active": true
+    },
+    {
+      "type": "leadership",
+      "id": "0o5W7YxywTixkYhggMqwl",
+      "source": "contentful",
+      "externalKey": "0o5W7YxywTixkYhggMqwl",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 3,
+      "updatedAt": "2026-11-19T17:14:51.568Z",
+      "group": "lcc",
+      "name": "Patrick M. Mboma",
+      "role": "Treasurer",
+      "bio": "",
+      "message": "",
+      "photoUrl": "https://images.ctfassets.net/em08252vzuh6/6BW92juIgMtvp0lAJL7F7s/fa02b9079434063d09b45616db3be28c/leadersimages_mboma.jpeg",
+      "active": true
+    },
+    {
+      "type": "leadership",
+      "id": "2TX6svlKdcQv6Q3TuOL2LL",
+      "source": "contentful",
+      "externalKey": "2TX6svlKdcQv6Q3TuOL2LL",
+      "slug": "",
+      "publishAt": null,
+      "unpublishAt": null,
+      "isPublished": true,
+      "locallyHidden": false,
+      "sortOrder": 5,
+      "updatedAt": "2026-11-19T18:27:27.010Z",
+      "group": "lcc",
+      "name": "Richard Mose",
+      "role": "LCC Member",
+      "bio": "",
+      "message": "",
+      "photoUrl": "https://images.ctfassets.net/em08252vzuh6/6eODACmjKtQqCwZNAKYdBv/35977f88a6dd96bb3634cba6750d9919/leadersimages_moses.jpeg",
+      "active": true
+    },
+    {
+      "type": "leadership",
       "id": "44Nmv9OvH9eQRUeGGwgsro",
       "source": "contentful",
       "externalKey": "44Nmv9OvH9eQRUeGGwgsro",
@@ -2301,10 +2431,10 @@
       "bio": "",
       "message": "",
       "photoUrl": "https://images.ctfassets.net/em08252vzuh6/6Obg7a3ftHtwc5hCenj2VU/df79ac6b8320d33026fde1a86565ea9a/Canon_012.JPG",
-      "active": true,
-      "type": "leadership"
+      "active": true
     },
     {
+      "type": "leadership",
       "id": "6yMNGSVa5h1GOhfJrn0kjC",
       "source": "contentful",
       "externalKey": "6yMNGSVa5h1GOhfJrn0kjC",
@@ -2321,12 +2451,12 @@
       "bio": "",
       "message": "",
       "photoUrl": "https://images.ctfassets.net/em08252vzuh6/1YY2Fnj0Gd25sdFocNHWHB/45f130316e647ede29c104075b947975/image.png",
-      "active": true,
-      "type": "leadership"
+      "active": true
     }
   ],
   "gallery": [
     {
+      "type": "gallery",
       "id": "1LE2cnHiI4elJCnJLhgSN3",
       "source": "contentful",
       "externalKey": "1LE2cnHiI4elJCnJLhgSN3",
@@ -2369,12 +2499,12 @@
         "https://images.ctfassets.net/em08252vzuh6/25PBfsseNMDOhqPjgZJ51f/7321acb5f6075f3d86dcf0ce1e53162b/Cmf_Rally_IMG_5980.JPG"
       ],
       "alt": "",
-      "caption": "Carousel",
-      "type": "gallery"
+      "caption": "Carousel"
     }
   ],
   "announcements": [
     {
+      "type": "announcements",
       "id": "2ntr9ppDkO0H2vprHTkL6F",
       "source": "contentful",
       "externalKey": "2ntr9ppDkO0H2vprHTkL6F",
@@ -2384,16 +2514,16 @@
       "isPublished": true,
       "locallyHidden": false,
       "sortOrder": 0,
-      "updatedAt": "2026-11-09T09:00:59.230Z",
+      "updatedAt": "2026-11-19T18:31:36.457Z",
       "text": "Call for service. Are you there and you feel the urge to Serve the Lord? This is the time we are inviting everyone to reach out to us on our socials or fill in the join ministry button to register for ministry. Don't hesitate.",
       "linkUrl": "https://aicegertonchapel.netlify.app/ministries",
       "linkLabel": "Register Now",
       "severity": "info",
       "startsAt": "2026-11-09T00:00+03:00",
-      "endsAt": null,
-      "type": "announcements"
+      "endsAt": null
     },
     {
+      "type": "announcements",
       "id": "7Kw0s6BYnbtUw4r1CO0APf",
       "source": "contentful",
       "externalKey": "7Kw0s6BYnbtUw4r1CO0APf",
@@ -2403,19 +2533,19 @@
       "isPublished": true,
       "locallyHidden": false,
       "sortOrder": 0,
-      "updatedAt": "2026-11-09T08:30:41.894Z",
+      "updatedAt": "2026-11-19T18:31:22.206Z",
       "text": "Change of Giving Criteria. The church account number changes from 7506439 to 7506439#offering/ tithes respectively. pleas note this changes",
       "linkUrl": "https://aicegertonchapel.netlify.app/give",
       "linkLabel": "more info",
       "severity": "info",
       "startsAt": "2026-11-09T00:00+03:00",
-      "endsAt": null,
-      "type": "announcements"
+      "endsAt": null
     }
   ],
   "ministries": [],
   "service_times": [
     {
+      "type": "service_times",
       "id": "3fH8XuVMyzxnLERx2kDgjQ",
       "source": "contentful",
       "externalKey": "3fH8XuVMyzxnLERx2kDgjQ",
@@ -2430,10 +2560,10 @@
       "day": "Sunday",
       "start": "10:00 Am",
       "end": "12:30 Pm",
-      "isLive": true,
-      "type": "service_times"
+      "isLive": true
     },
     {
+      "type": "service_times",
       "id": "6DkknJwh6nXPeoZTxRsyfh",
       "source": "contentful",
       "externalKey": "6DkknJwh6nXPeoZTxRsyfh",
@@ -2448,10 +2578,10 @@
       "day": "Sunday",
       "start": "7:00 Am",
       "end": "9:30 Am",
-      "isLive": true,
-      "type": "service_times"
+      "isLive": true
     },
     {
+      "type": "service_times",
       "id": "jqPY2aCz6e9A7CUqzFlSb",
       "source": "contentful",
       "externalKey": "jqPY2aCz6e9A7CUqzFlSb",
@@ -2466,10 +2596,10 @@
       "day": "Tuesday",
       "start": "4:00pm",
       "end": "6:30pm",
-      "isLive": false,
-      "type": "service_times"
+      "isLive": false
     },
     {
+      "type": "service_times",
       "id": "7cIxXyXmq5BBCdt5bSfHqA",
       "source": "contentful",
       "externalKey": "7cIxXyXmq5BBCdt5bSfHqA",
@@ -2484,10 +2614,10 @@
       "day": "Wednesday",
       "start": "5:00pm",
       "end": "6:30PM",
-      "isLive": false,
-      "type": "service_times"
+      "isLive": false
     },
     {
+      "type": "service_times",
       "id": "2PVizaQcqtsoKH5QvvVO0X",
       "source": "contentful",
       "externalKey": "2PVizaQcqtsoKH5QvvVO0X",
@@ -2502,8 +2632,7 @@
       "day": "Saturday",
       "start": "2:00pm",
       "end": "6:30pm",
-      "isLive": false,
-      "type": "service_times"
+      "isLive": false
     }
   ],
   "settings": []

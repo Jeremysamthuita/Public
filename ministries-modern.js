@@ -306,12 +306,36 @@
       renderGrid();
     });
     let timer;
-    $('#mnSearch').addEventListener('input', event => {
-      clearTimeout(timer);
-      timer = setTimeout(() => { state.query = event.target.value; renderGrid(); }, 150);
-    });
+    const searchInput = $('#mnSearch');
+    const clearBtn = $('#mnSearchClear');
+    if (searchInput) {
+      searchInput.addEventListener('input', event => {
+        clearTimeout(timer);
+        if (clearBtn) clearBtn.hidden = !event.target.value;
+        timer = setTimeout(() => { state.query = event.target.value; renderGrid(); }, 150);
+      });
+    }
+    if (clearBtn) {
+      clearBtn.addEventListener('click', () => {
+        if (searchInput) {
+          searchInput.value = '';
+          searchInput.focus();
+        }
+        clearBtn.hidden = true;
+        state.query = '';
+        renderGrid();
+      });
+    }
     $('#ministryGrid').addEventListener('click', event => {
-      if (event.target.closest('[data-clear]')) { state.group = 'all'; state.query = ''; $('#mnSearch').value = ''; renderTabs(); renderGrid(); return; }
+      if (event.target.closest('[data-clear]')) {
+        state.group = 'all';
+        state.query = '';
+        if (searchInput) searchInput.value = '';
+        if (clearBtn) clearBtn.hidden = true;
+        renderTabs();
+        renderGrid();
+        return;
+      }
       const card = event.target.closest('.mn-card');
       if (!card) return;
       const ministry = state.all.find(m => m.id === card.dataset.id);

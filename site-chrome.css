@@ -92,121 +92,150 @@ html {
 .cms-announcements {
   position: fixed;
   z-index: 1200;
-  /* Span full width on large screens by removing horizontal margins/min constraints */
-  right: 0;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  margin-inline: 0;
   
-  padding: 1.45rem 2rem 1rem;
-  border-top: 1px solid rgba(51, 32, 90, .12);
-  border-bottom: none;
-  border-left: none;
-  border-right: none;
-  border-radius: 0; /* Remove rounded corners for a full-width bottom bar */
-  background: #fff;
-  color: #242033;
-  box-shadow: 0 -4px 24px rgba(23, 18, 38, .12);
-  animation: cms-announcements-enter 260ms ease-out both;
+  /* Floating Card Layout */
+  right: auto;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 32px);
+  max-width: 900px;
+  
+  /* Increased top padding to make room for the "ANNOUNCEMENT" label */
+  padding: 2.5rem 2rem 1.5rem 8rem; 
+  border-radius: 20px;
+  
+  /* The Purple Gradient */
+  background: linear-gradient(135deg, #a855f7 0%, #7e22ce 100%);
+  color: #ffffff;
+  box-shadow: 0 20px 40px rgba(126, 34, 206, 0.3);
+  animation: cms-announcements-enter 400ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
+/* =========================================================
+   THE "ANNOUNCEMENT" TOP-LEFT LABEL
+========================================================= */
+.cms-announcements::before {
+  content: "ANNOUNCEMENT";
+  position: absolute;
+  top: 1.25rem;
+  left: 8.5rem; /* Aligns with the text content, past the megaphone */
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.7);
+  pointer-events: none;
+}
+
+/* =========================================================
+   THE MEGAPHONE BADGE & HEARTBEAT
+========================================================= */
 .cms-announcements__badge {
   position: absolute;
-  top: 0;
+  top: 50%;
   left: 2rem;
   transform: translateY(-50%);
-  padding: .38rem .8rem;
-  border: 2px solid #fff;
-  border-radius: 999px;
-  background: #f5b942;
-  color: #33205a;
-  font-size: .72rem;
-  font-weight: 800;
-  letter-spacing: .04em;
-  text-transform: uppercase;
-  box-shadow: 0 3px 10px rgba(23, 18, 38, .18);
+  
+  /* Hide the original text but keep the element */
+  font-size: 0; 
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  z-index: 2;
 }
 
+/* The Font Awesome Megaphone Icon */
+.cms-announcements__badge::before {
+  content: "\f0a1"; /* Font Awesome Bullhorn/Megaphone unicode */
+  font-family: "Font Awesome 6 Free"; 
+  font-weight: 900; /* Required for solid icons in FA6 */
+  font-size: 4rem; 
+  color: #ffffff;
+  line-height: 1;
+  
+  /* The Heartbeat Animation */
+  animation: heartbeat 2s infinite ease-in-out;
+}
+
+/* =========================================================
+   TEXT & BUTTONS
+========================================================= */
 .cms-announcements__viewport {
   min-width: 0;
-  min-height: 3.25rem;
-  padding-right: 2.4rem;
-}
-
-.cms-announcement {
-  display: flex;
-  min-height: inherit;
-  align-items: center;
-  transition: opacity 180ms ease, transform 180ms ease;
-}
-
-.cms-announcement.is-changing {
-  opacity: 0;
-  transform: translateY(.35rem);
+  min-height: 3.5rem;
+  padding-right: 2.5rem;
 }
 
 .cms-announcement__text {
-  max-width: none; /* Allow text to utilize available space on wide screens */
   margin: 0;
-  font-size: 1rem;
-  font-weight: 550;
-  line-height: 1.65;
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #ffffff;
   overflow-wrap: anywhere;
 }
 
+/* Close Button */
 .cms-announcements__close {
   position: absolute;
-  top: .55rem;
-  right: 1.25rem;
+  top: 1rem;
+  right: 1rem;
   display: grid;
   width: 2rem;
   height: 2rem;
   place-items: center;
   padding: 0;
-  border: 1px solid #e6e2ec;
-  border-radius: .65rem;
-  background: #f8f6fa;
-  color: #46385e;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
   font-size: 1.25rem;
   line-height: 1;
   cursor: pointer;
-  transition: background 160ms ease, border-color 160ms ease;
+  transition: background 160ms ease, transform 160ms ease;
+  z-index: 10;
 }
 
 .cms-announcements__close:hover {
-  border-color: #d3cadf;
-  background: #efeaf4;
+  background: rgba(255, 255, 255, 0.35);
+  transform: scale(1.1);
 }
 
-.cms-announcements__footer,
-.cms-announcements__controls {
+/* Footer & Controls Layout */
+.cms-announcements__footer {
   display: flex;
   align-items: center;
-}
-
-.cms-announcements__footer {
-  min-height: 2.5rem;
   justify-content: space-between;
-  gap: .75rem;
-  margin-top: .55rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
 .cms-announcement__link {
   display: inline-flex;
-  min-height: 2.65rem;
+  min-height: 2.8rem;
   align-items: center;
   gap: .55rem;
-  padding: .55rem .9rem;
-  border: 1px solid #3e2b61;
-  border-radius: .7rem;
-  background: #3e2b61;
-  color: #fff;
-  font-size: .9rem;
+  padding: .6rem 1.2rem;
+  border: none;
+  border-radius: .75rem;
+  background: #ffffff;
+  color: #7e22ce;
+  font-size: .95rem;
   font-weight: 700;
   line-height: 1.25;
   text-decoration: none;
   transition: background 160ms ease, transform 160ms ease;
+}
+
+.cms-announcement__link:hover {
+  transform: translateY(-2px);
+  background: #f8fafc;
 }
 
 .cms-announcement__link::after {
@@ -214,48 +243,42 @@ html {
   font-size: 1.1rem;
 }
 
-.cms-announcement__link:hover {
-  transform: translateY(-1px);
-  background: #2f204a;
-}
-
 .cms-announcement__link[hidden] {
   display: none;
 }
 
 .cms-announcements__controls {
-  gap: .45rem;
-}
-
-.cms-announcements__controls[hidden] {
-  display: none;
+  display: flex;
+  align-items: center;
+  gap: .75rem;
 }
 
 .cms-announcements__nav {
   display: grid;
-  width: 2.3rem;
-  height: 2.3rem;
+  width: 2.5rem;
+  height: 2.5rem;
   place-items: center;
   padding: 0;
-  border: 1px solid #e2dce9;
-  border-radius: .7rem;
-  background: #fff;
-  color: #3e2b61;
-  font-size: 1.55rem;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: .75rem;
+  background: transparent;
+  color: #ffffff;
+  font-size: 1.5rem;
   line-height: 1;
   cursor: pointer;
   transition: background 160ms ease, border-color 160ms ease;
 }
 
 .cms-announcements__nav:hover {
-  border-color: #c9bdd8;
-  background: #f7f4fa;
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #ffffff;
 }
 
 .cms-announcements__position {
   min-width: 2.7rem;
-  color: #625a6e;
-  font-size: .78rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: .85rem;
+  font-weight: 600;
   font-variant-numeric: tabular-nums;
   text-align: center;
 }
@@ -263,73 +286,86 @@ html {
 .cms-announcements__close:focus-visible,
 .cms-announcements__nav:focus-visible,
 .cms-announcement__link:focus-visible {
-  outline: 3px solid #d99a18;
+  outline: 3px solid #f5b942;
   outline-offset: 3px;
 }
 
+/* =========================================================
+   ANIMATIONS
+========================================================= */
 @keyframes cms-announcements-enter {
-  from { opacity: 0; transform: translateY(.65rem); }
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translate(-50%, 20px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
 }
 
-/* Small screen adjustments: compact spacing and smaller text */
-@media (max-width: 520px) {
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  14% { transform: scale(1.1); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.1); }
+  70% { transform: scale(1); }
+}
+
+/* =========================================================
+   MOBILE RESPONSIVENESS (Megaphone stays visible)
+========================================================= */
+@media (max-width: 768px) {
   .cms-announcements {
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 1.1rem .85rem .7rem;
-    border-radius: 0;
+    /* Reduced left padding and top padding for smaller screens */
+    padding: 2rem 1.25rem 1.5rem 4.5rem; 
+    bottom: 16px;
+    width: calc(100% - 24px);
   }
 
+  /* Adjust the label position to match smaller padding */
+  .cms-announcements::before {
+    top: 1rem;
+    left: 4.5rem;
+    font-size: 0.65rem;
+  }
+  
+  /* Keep megaphone visible, just scale it down */
   .cms-announcements__badge {
-    left: .8rem;
-    font-size: .6rem;
-    padding: .25rem .6rem;
+    left: 1rem;
+    width: 50px;
+    height: 50px;
+  }
+
+  .cms-announcements__badge::before {
+    font-size: 2.5rem;
   }
 
   .cms-announcements__viewport {
     padding-right: 2rem;
-    min-height: 2.5rem;
+    min-height: auto;
   }
 
-  /* Smaller text styling for small screens */
   .cms-announcement__text {
-    font-size: 0.82rem;
-    line-height: 1.45;
+    font-size: 1rem;
+    line-height: 1.4;
   }
 
   .cms-announcements__close {
-    top: .4rem;
-    right: .5rem;
+    top: .75rem;
+    right: .75rem;
     width: 1.75rem;
     height: 1.75rem;
     font-size: 1rem;
   }
 
   .cms-announcements__footer {
-    align-items: center;
-    margin-top: .35rem;
-    min-height: 2rem;
+    flex-direction: column;
+    align-items: stretch;
+    gap: .75rem;
   }
 
   .cms-announcement__link {
-    min-height: 2.1rem;
-    max-width: min(65%, 15rem);
-    font-size: .75rem;
-    padding: .35rem .7rem;
+    justify-content: center;
+    width: 100%;
   }
 
-  .cms-announcements__nav {
-    width: 1.9rem;
-    height: 1.9rem;
-    font-size: 1.25rem;
-  }
-  
-  .cms-announcements__position {
-    font-size: .7rem;
-    min-width: 2.2rem;
+  .cms-announcements__controls {
+    justify-content: center;
   }
 }
 
@@ -338,7 +374,8 @@ html {
   .cms-announcement,
   .cms-announcement__link,
   .cms-announcements__nav,
-  .cms-announcements__close {
+  .cms-announcements__close,
+  .cms-announcements__badge::before {
     animation: none;
     transition: none;
   }
@@ -763,20 +800,33 @@ button:focus-visible {
 }
 
 /* ===== Cards (page-wide) ===== */
-.sermon-item, .sermon-card, .leader-card, .ministry, .about-box, .event-card {
+.sermon-item, 
+.sermon-card, 
+.leader-card, 
+.cms-leader-card, 
+.leader-name, 
+.ministry, 
+.about-box, 
+.event-card {
   border-radius: var(--aic-r-lg) !important;
   border: 1px solid rgba(15, 23, 42, 0.06) !important;
   background: var(--aic-surface) !important;
   box-shadow: var(--aic-shadow-sm) !important;
   transition: transform var(--aic-transition), box-shadow var(--aic-transition), border-color var(--aic-transition) !important;
 }
-.sermon-item:hover, .sermon-card:hover, .leader-card:hover,
-.ministry:hover, .about-box:hover, .event-card:hover {
+
+.sermon-item:hover, 
+.sermon-card:hover, 
+.leader-card:hover,
+.cms-leader-card:hover,
+.leader-name:hover,
+.ministry:hover, 
+.about-box:hover, 
+.event-card:hover {
   transform: translateY(-4px) !important;
   box-shadow: var(--aic-shadow-lg) !important;
   border-color: rgba(124, 58, 237, 0.18) !important;
 }
-
 /* ===== Form inputs (page-wide) ===== */
 input[type="text"],
 input[type="email"],
@@ -796,6 +846,13 @@ textarea {
   font-size: 0.98rem !important;
   transition: border-color var(--aic-transition), box-shadow var(--aic-transition) !important;
   margin-top: 6px;
+}
+/* Search inputs with leading icons: prevent icon/placeholder overlap */
+.mn-search input,
+.pj-field input,
+.st-search input {
+  padding-left: 44px !important;
+  margin-top: 0 !important;
 }
 input:focus, select:focus, textarea:focus {
   outline: none !important;

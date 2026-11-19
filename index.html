@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="preload" href="/content-snapshot.json" as="fetch" crossorigin>
     <link rel="stylesheet" href="/site-chrome.css">
     <link rel="preconnect" href="https://cdn.contentful.com">
     <link rel="preconnect" href="https://images.ctfassets.net">
     <link rel="preconnect" href="https://assets.ctfassets.net">
     <link rel="preconnect" href="https://tdtvktdqtkfdvucqlzlg.supabase.co">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <meta name="content-version" content="4c36f1d18aaa275919c784a2d10c40b0ed9bac77d45eaa820ff69328f5434bea">
-    <meta name="content-generated-at" content="2026-11-10T04:43:25.348Z">
+    <meta name="content-version" content="6ab1c28bb250c9a17fd386f45797df6b62f6333f519ba510572394467d3e4813">
+    <meta name="google-site-verification" content="oYx6eEhFulL8v5voua_tfL8rLavXsvbUtuv3O4DODOg" />
+    <meta name="content-generated-at" content="2026-11-19T19:25:31.108Z">
     <script defer src="/assets/js/content/content-bootstrap.js"></script>
     <link rel="preconnect" href="https://www.google.com">
     <link rel="preconnect" href="https://maps.gstatic.com" crossorigin>
@@ -650,6 +652,115 @@
             transform: translateY(-2px);
         }
 
+        .event-card-media {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            background: #f4f2f8;
+            aspect-ratio: 16 / 10;
+        }
+
+        .event-card-media img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            aspect-ratio: 16 / 10;
+            object-fit: cover;
+            transition: transform 0.45s ease;
+        }
+
+        .event-card-media:hover img,
+        .event-card-media:focus-visible img {
+            transform: scale(1.04);
+        }
+
+        .event-media-badge {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: rgba(20, 16, 34, 0.78);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: #fff;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.2px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            transition: background 0.2s ease, transform 0.2s ease;
+            pointer-events: none;
+        }
+
+        .event-card-media:hover .event-media-badge,
+        .event-card-media:focus-visible .event-media-badge {
+            background: #8e44ad;
+            transform: translateY(-2px);
+        }
+
+        .event-card-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: auto;
+            padding-top: 14px;
+            border-top: 1px solid rgba(36, 33, 59, 0.08);
+        }
+
+        .event-image-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .event-action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            border: 1px solid rgba(142, 68, 173, 0.28);
+            background: rgba(142, 68, 173, 0.06);
+            color: #7a3a9b;
+            font-size: 0.84rem;
+            font-weight: 700;
+            cursor: pointer;
+            line-height: 1;
+            transition: all 0.2s ease;
+        }
+
+        .event-action-btn:hover {
+            background: #8e44ad;
+            color: #fff;
+            border-color: #8e44ad;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 14px rgba(142, 68, 173, 0.25);
+        }
+
+        .event-action-btn:focus-visible {
+            outline: 3px solid #f5b942;
+            outline-offset: 2px;
+        }
+
+        .event-download-btn {
+            border-color: rgba(36, 33, 59, 0.18);
+            background: #f8f7fb;
+            color: #24213b;
+        }
+
+        .event-download-btn:hover {
+            background: #24213b;
+            border-color: #24213b;
+            color: #fff;
+            box-shadow: 0 4px 14px rgba(36, 33, 59, 0.25);
+        }
+
         .events-empty {
             grid-column: 1 / -1;
             padding: 28px;
@@ -1252,9 +1363,10 @@
             color: #8e44ad;
             font-weight: 500;
         }
-        /* ===== Auto-scroll carousels (Sermons + Get Involved) ===== */
+        /* ===== Auto-scroll carousels (Sermons + Get Involved + Events) ===== */
 .sermons-list.hm-autoscroll,
-.hm-involved-grid.hm-autoscroll {
+.hm-involved-grid.hm-autoscroll,
+.events-grid.hm-autoscroll {
     display: flex !important;
     flex-wrap: nowrap !important;
     grid-template-columns: none !important;
@@ -1268,27 +1380,32 @@
     -webkit-overflow-scrolling: touch;
 }
 .sermons-list.hm-autoscroll > *,
-.hm-involved-grid.hm-autoscroll > * {
+.hm-involved-grid.hm-autoscroll > *,
+.events-grid.hm-autoscroll > * {
     flex: 0 0 clamp(280px, 30vw, 360px);
     scroll-snap-align: start;
     max-width: none !important;
 }
 .sermons-list.hm-autoscroll::-webkit-scrollbar,
-.hm-involved-grid.hm-autoscroll::-webkit-scrollbar {
+.hm-involved-grid.hm-autoscroll::-webkit-scrollbar,
+.events-grid.hm-autoscroll::-webkit-scrollbar {
     height: 8px;
 }
 .sermons-list.hm-autoscroll::-webkit-scrollbar-track,
-.hm-involved-grid.hm-autoscroll::-webkit-scrollbar-track {
+.hm-involved-grid.hm-autoscroll::-webkit-scrollbar-track,
+.events-grid.hm-autoscroll::-webkit-scrollbar-track {
     background: transparent;
 }
 .sermons-list.hm-autoscroll::-webkit-scrollbar-thumb,
-.hm-involved-grid.hm-autoscroll::-webkit-scrollbar-thumb {
+.hm-involved-grid.hm-autoscroll::-webkit-scrollbar-thumb,
+.events-grid.hm-autoscroll::-webkit-scrollbar-thumb {
     background: rgba(124, 58, 237, 0.35);
     border-radius: 4px;
 }
 @media (max-width: 900px) {
     .sermons-list.hm-autoscroll,
-    .hm-involved-grid.hm-autoscroll {
+    .hm-involved-grid.hm-autoscroll,
+    .events-grid.hm-autoscroll {
         display: grid !important;
         grid-template-columns: 1fr !important;
         overflow-x: visible !important;
@@ -1297,7 +1414,8 @@
         padding-bottom: 0 !important;
     }
     .sermons-list.hm-autoscroll > *,
-    .hm-involved-grid.hm-autoscroll > * {
+    .hm-involved-grid.hm-autoscroll > *,
+    .events-grid.hm-autoscroll > * {
         flex: none !important;
         max-width: none !important;
         scroll-snap-align: none !important;
@@ -1323,7 +1441,7 @@
     </button>
     <nav aria-label="Main navigation">
       <ul class="nav-links" id="navLinks">
-        <li><a href="/index.html">Home</a></li>
+        <li><a href="/index.html" class="active" aria-current="page">Home</a></li>
         <li><a href="/about.html">About</a></li>
         <li><a href="https://ecschools.netlify.app" target="_blank" rel="noopener noreferrer">Academy</a></li>
         <li><a href="/sermons.html">Sermons</a></li>
@@ -1421,7 +1539,9 @@
         </div>
 
         <div id="eventsGrid" class="events-grid" aria-live="polite">
-            <!--CONTENT:EVENTS:START--><p class="events-empty">No special events are scheduled right now. Join us for our weekly gatherings — Sunday worship, Wednesday mid-week prayer, and Friday youth fellowship. Check back soon for upcoming events.</p><!--CONTENT:EVENTS:END-->
+            <!--CONTENT:EVENTS:START--><article class="event-card"><div class="event-card-media" role="button" tabindex="0" aria-label="Preview full flyer for CED Graduation Service" title="Click to preview full uncropped flyer" data-flyer-url="https://images.ctfassets.net/em08252vzuh6/65HMTy0vgkTOgcFXy69WtT/08f615edf48d66854a882384e1f6433b/CED.png" data-event-title="CED Graduation Service" data-event-date="6 December 2026 · 9:30 AM"><img src="https://images.ctfassets.net/em08252vzuh6/65HMTy0vgkTOgcFXy69WtT/08f615edf48d66854a882384e1f6433b/CED.png" alt="CED Graduation Service event flyer" width="640" height="400" loading="lazy" decoding="async"><span class="event-media-badge"><i class="fas fa-expand" aria-hidden="true"></i> View Flyer</span></div><div class="event-card-content"><p class="event-date">6 December 2026 · 9:30 AM</p><h3>CED Graduation Service</h3><p class="event-venue">📍 AIC Egerton Chapel Main Sanctuary</p><p>Christian Education Department presents graduation for 2026 cohort Egerton Chapel LCC.</p><div class="event-card-actions"><a class="event-reminder" href="https://wa.me/254799522418?text=Hello%2C%20please%20remind%20me%20about%20CED%20Graduation%20Service%20on%202026-12-06%20at%209%3A30%20AM." target="_blank" rel="noopener noreferrer">Remind Me</a><div class="event-image-actions"><button type="button" class="event-action-btn event-preview-btn" aria-label="Preview full flyer for CED Graduation Service" title="View full uncropped flyer" data-action="preview-flyer" data-flyer-url="https://images.ctfassets.net/em08252vzuh6/65HMTy0vgkTOgcFXy69WtT/08f615edf48d66854a882384e1f6433b/CED.png" data-event-title="CED Graduation Service" data-event-date="6 December 2026 · 9:30 AM"><i class="fas fa-eye" aria-hidden="true"></i> Preview</button><button type="button" class="event-action-btn event-download-btn" aria-label="Download flyer for CED Graduation Service" title="Download flyer image file" data-action="download-flyer" data-flyer-url="https://images.ctfassets.net/em08252vzuh6/65HMTy0vgkTOgcFXy69WtT/08f615edf48d66854a882384e1f6433b/CED.png" data-event-title="CED Graduation Service"><i class="fas fa-download" aria-hidden="true"></i> Download</button></div></div></div></article><article class="event-card"><div class="event-card-media" role="button" tabindex="0" aria-label="Preview full flyer for CED Graduation Service" title="Click to preview full uncropped flyer" data-flyer-url="https://images.ctfassets.net/em08252vzuh6/65HMTy0vgkTOgcFXy69WtT/08f615edf48d66854a882384e1f6433b/CED.png" data-event-title="CED Graduation Service" data-event-date="6 December 2026 · 9:00 AM"><img src="https://images.ctfassets.net/em08252vzuh6/65HMTy0vgkTOgcFXy69WtT/08f615edf48d66854a882384e1f6433b/CED.png" alt="CED Graduation Service event flyer" width="640" height="400" loading="lazy" decoding="async"><span class="event-media-badge"><i class="fas fa-expand" aria-hidden="true"></i> View Flyer</span></div><div class="event-card-content"><p class="event-date">6 December 2026 · 9:00 AM</p><h3>CED Graduation Service</h3><p class="event-venue">📍 AIC Egerton Chapel Main Sanctuary</p><p>Christian Education Department (CED) Graduation service
+&quot;Let the wise listen and add to their learning, and let the discerning get guidance.&quot;
+Inspired by Proverbs 1:5</p><div class="event-card-actions"><a class="event-reminder" href="https://wa.me/254799522418?text=Hello%2C%20please%20remind%20me%20about%20CED%20Graduation%20Service%20on%202026-12-06%20at%209%3A00%20AM." target="_blank" rel="noopener noreferrer">Remind Me</a><div class="event-image-actions"><button type="button" class="event-action-btn event-preview-btn" aria-label="Preview full flyer for CED Graduation Service" title="View full uncropped flyer" data-action="preview-flyer" data-flyer-url="https://images.ctfassets.net/em08252vzuh6/65HMTy0vgkTOgcFXy69WtT/08f615edf48d66854a882384e1f6433b/CED.png" data-event-title="CED Graduation Service" data-event-date="6 December 2026 · 9:00 AM"><i class="fas fa-eye" aria-hidden="true"></i> Preview</button><button type="button" class="event-action-btn event-download-btn" aria-label="Download flyer for CED Graduation Service" title="Download flyer image file" data-action="download-flyer" data-flyer-url="https://images.ctfassets.net/em08252vzuh6/65HMTy0vgkTOgcFXy69WtT/08f615edf48d66854a882384e1f6433b/CED.png" data-event-title="CED Graduation Service"><i class="fas fa-download" aria-hidden="true"></i> Download</button></div></div></div></article><!--CONTENT:EVENTS:END-->
         </div>
     </section>
 
@@ -1457,7 +1577,10 @@
         </div>
 
         <div id="sermons-container" class="sermons-list">
-            <!--CONTENT:INDEX_SERMONS:START--><p class="sermon-empty">No sermons are available yet. Please check back soon.</p><!--CONTENT:INDEX_SERMONS:END-->
+            <!--CONTENT:INDEX_SERMONS:START--><article class="sermon-card"><div class="sermon-preview"><div class="sermon-preview-tag"><i class="fas fa-church" aria-hidden="true"></i><span>AIC Egerton</span></div><img src="https://images.ctfassets.net/em08252vzuh6/5W3Aq5I48GWsSBcCn5o3A7/68883881e4669d28e08b3b0f1119ec5d/image.png" alt="Trusting Jesus with Our Insufficiency sermon preview" width="640" height="360" loading="lazy" decoding="async"></div><div class="sermon-content"><div class="sermon-title-wrapper"><h3 class="sermon-card-title">Trusting Jesus with Our Insufficiency</h3></div><div class="sermon-meta"><div><strong>Preacher</strong><span>Rev. DR. William C Koros</span></div><div><strong>Date</strong><span>8 November 2026</span></div></div><p class="sermon-scripture-reference">Scripture: JOHN 6:1 - 13</p><div class="sermon-actions"><a class="sermon-download-link" href="https://assets.ctfassets.net/em08252vzuh6/2qYetMmegqVCKK9ZK69WXt/ff7b410f90d0eed65b04c65357191bde/AIC_EGERTON_CHAPEL_8th_November_2026.pptx" target="_blank" rel="noopener noreferrer" download="AIC EGERTON CHAPEL 8th November 2026.pptx"><i class="fas fa-download" aria-hidden="true"></i> Download</a></div></div></article><article class="sermon-card"><div class="sermon-preview"><div class="sermon-preview-tag"><i class="fas fa-church" aria-hidden="true"></i><span>AIC Egerton</span></div><div class="sermon-preview-placeholder">
+         <div class="sermon-placeholder-icon"><i class="fas fa-book-bible" aria-hidden="true"></i></div>
+         <span class="sermon-placeholder-label">Sunday Sermon</span>
+       </div></div><div class="sermon-content"><div class="sermon-title-wrapper"><h3 class="sermon-card-title">Knocked Down But Not Out</h3></div><div class="sermon-meta"><div><strong>Preacher</strong><span>Rev. DR. William C Koros</span></div><div><strong>Date</strong><span>1 November 2026</span></div></div><p class="sermon-scripture-reference">Scripture: ACTS 14:8 - 20</p><div class="sermon-actions"><a class="sermon-download-link" href="https://assets.ctfassets.net/em08252vzuh6/6FsD1j9Q820G92qQKERyqv/8b44dc93f9a4970e0e098808a61eb81c/AIC_EGERTON_CHAPEL_1st_November_2026.pptx" target="_blank" rel="noopener noreferrer" download="AIC EGERTON CHAPEL 1st November 2026.pptx"><i class="fas fa-download" aria-hidden="true"></i> Download</a></div></div></article><article class="sermon-card"><div class="sermon-preview"><div class="sermon-preview-tag"><i class="fas fa-church" aria-hidden="true"></i><span>AIC Egerton</span></div><img src="https://images.ctfassets.net/em08252vzuh6/7aZ4jpHYYODcLsZmVwW5Up/968efe7a8b6d826b68f0a6f1e4756240/image.png" alt="Is Your Faith Showing? sermon preview" width="640" height="360" loading="lazy" decoding="async"></div><div class="sermon-content"><div class="sermon-title-wrapper"><h3 class="sermon-card-title">Is Your Faith Showing?</h3></div><div class="sermon-meta"><div><strong>Preacher</strong><span>Rev. DR. William C Koros</span></div><div><strong>Date</strong><span>25 October 2026</span></div></div><p class="sermon-scripture-reference">Scripture: HEBREWS 13:1 - 8</p><div class="sermon-actions"><a class="sermon-download-link" href="https://assets.ctfassets.net/em08252vzuh6/EF7c1t0yRZZo8D9xwfH5D/87e79cbf4e619d3764103e68c2365607/AIC_EGERTON_CHAPEL_25th_October_2026__1_.pptx" target="_blank" rel="noopener noreferrer" download="AIC EGERTON CHAPEL 25th October 2026 (1).pptx"><i class="fas fa-download" aria-hidden="true"></i> Download</a></div></div></article><!--CONTENT:INDEX_SERMONS:END-->
         </div>
 
         <div class="more-sermons">
@@ -1469,7 +1592,7 @@
     <section class="about" data-reveal>
         <div class="about-image-wrapper">
             <div id="about-carousel">
-                <!--CONTENT:INDEX_GALLERY:START--><!--CONTENT:INDEX_GALLERY:END-->
+                <!--CONTENT:INDEX_GALLERY:START--><img class="blinds" src="https://images.ctfassets.net/em08252vzuh6/bOGZ46lkaGGQIP9BBYHlo/c1b0d87b334131a23b61e66712211ec5/pulpit.png" alt="Carousel" width="640" height="400" loading="eager" decoding="async"><!--CONTENT:INDEX_GALLERY:END-->
             </div>
         </div>
         <div class="about-text">
@@ -1566,19 +1689,23 @@
       <ul class="quick-links">
         <li><a href="/index.html">Home</a></li>
         <li><a href="/about.html">About</a></li>
-        <li><a href="/ministries.html">Ministries</a></li>
         <li><a href="/sermons.html">Sermons</a></li>
+        <li><a href="/ministries.html">Ministries</a></li>
+        <li><a href="/projects.html">Projects</a></li>
         <li><a href="/live.html">Live Stream</a></li>
         <li><a href="/prayer-wall.html">Prayer Wall</a></li>
-        <li><a href="/projects.html">Projects</a></li>
-        <li><a href="/contact.html">Contact Us</a></li>
         <li><a href="/give.html">Give</a></li>
+        <li><a href="/contact.html">Contact Us</a></li>
       </ul>
     </div>
     <div class="footer-col footer-services">
       <h4>Service Times</h4>
       <div class="footer-service-times" data-service-times>
-        <!--CONTENT:SERVICE_TIMES:START--><p><strong>Sunday</strong><br>Main Worship Service — 8:00 AM – 12:00 PM EAT</p><p><strong>Wednesday</strong><br>Mid-Week Prayer — 5:30 PM – 7:00 PM EAT</p><p><strong>Friday</strong><br>Youth Fellowship — 6:00 PM – 8:00 PM EAT</p><!--CONTENT:SERVICE_TIMES:END-->
+        <!--CONTENT:SERVICE_TIMES:START-->
+        <p><strong>Sunday</strong><br>Main Worship Service — 8:00 AM – 12:00 PM EAT</p>
+        <p><strong>Wednesday</strong><br>Mid-Week Prayer — 5:30 PM – 7:00 PM EAT</p>
+        <p><strong>Friday</strong><br>Youth Fellowship — 6:00 PM – 8:00 PM EAT</p>
+        <!--CONTENT:SERVICE_TIMES:END-->
       </div>
     </div>
     <div class="footer-col footer-contact">

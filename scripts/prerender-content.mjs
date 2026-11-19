@@ -76,13 +76,17 @@ function renderEvent(item) {
   const title = escapeHtml(item.title);
   const flyerUrl = safeHttpsUrl(item.flyerUrl);
   const registrationUrl = safeHttpsUrl(item.registrationUrl);
+  const dateFormatted = escapeHtml([formattedDate(item.date), item.time].filter(Boolean).join(' · '));
   const reminder = registrationUrl
     ? `<a class="event-reminder" href="${escapeHtml(registrationUrl)}" target="_blank" rel="noopener noreferrer">Register</a>`
     : `<a class="event-reminder" href="https://wa.me/254799522418?text=${encodeURIComponent(`Hello, please remind me about ${item.title} on ${item.date}${item.time ? ` at ${item.time}` : ''}.`)}" target="_blank" rel="noopener noreferrer">Remind Me</a>`;
   const flyer = flyerUrl
-    ? `<img src="${escapeHtml(flyerUrl)}" alt="${escapeHtml(item.flyerAlt || `${item.title} event flyer`)}" width="640" height="400" loading="lazy" decoding="async">`
+    ? `<div class="event-card-media" role="button" tabindex="0" aria-label="Preview full flyer for ${title}" title="Click to preview full uncropped flyer" data-flyer-url="${escapeHtml(flyerUrl)}" data-event-title="${title}" data-event-date="${dateFormatted}"><img src="${escapeHtml(flyerUrl)}" alt="${escapeHtml(item.flyerAlt || `${item.title} event flyer`)}" width="640" height="400" loading="lazy" decoding="async"><span class="event-media-badge"><i class="fas fa-expand" aria-hidden="true"></i> View Flyer</span></div>`
     : '';
-  return `<article class="event-card">${flyer}<div class="event-card-content"><p class="event-date">${escapeHtml([formattedDate(item.date), item.time].filter(Boolean).join(' · '))}</p><h3>${title}</h3>${item.location ? `<p class=\"event-venue\">📍 ${escapeHtml(item.location)}</p>` : ''}${item.description ? `<p>${escapeHtml(item.description)}</p>` : ''}${reminder}</div></article>`;
+  const imageActions = flyerUrl
+    ? `<div class="event-image-actions"><button type="button" class="event-action-btn event-preview-btn" aria-label="Preview full flyer for ${title}" title="View full uncropped flyer" data-action="preview-flyer" data-flyer-url="${escapeHtml(flyerUrl)}" data-event-title="${title}" data-event-date="${dateFormatted}"><i class="fas fa-eye" aria-hidden="true"></i> Preview</button><button type="button" class="event-action-btn event-download-btn" aria-label="Download flyer for ${title}" title="Download flyer image file" data-action="download-flyer" data-flyer-url="${escapeHtml(flyerUrl)}" data-event-title="${title}"><i class="fas fa-download" aria-hidden="true"></i> Download</button></div>`
+    : '';
+  return `<article class="event-card">${flyer}<div class="event-card-content"><p class="event-date">${dateFormatted}</p><h3>${title}</h3>${item.location ? `<p class="event-venue">📍 ${escapeHtml(item.location)}</p>` : ''}${item.description ? `<p>${escapeHtml(item.description)}</p>` : ''}<div class="event-card-actions">${reminder}${imageActions}</div></div></article>`;
 }
 
 export function renderServiceTimes(items) {
@@ -162,19 +166,23 @@ export async function buildContentHtml() {
 
   for (const page of pages) {
     const file = path.join(root, page);
-    let html = await readFile(file, 'utf8');
-    html = addContentVersion(html, snapshot.version, snapshot.generatedAt);
-    html = replaceMarker(html, 'EVENTS', events.join('') ||
-      '<p class="events-empty">No upcoming events at the moment. Please check back soon.</p>');
-    html = replaceMarker(html, 'INDEX_SERMONS', sermons.slice(0, 3).map(renderSermon).join('') ||
-      '<p class="sermon-empty">No sermons are available yet. Please check back soon.</p>');
-    html = replaceMarker(html, 'SERMONS', sermons.map(renderSermon).join('') ||
-      '<p class="sermon-empty">No sermons are available yet. Please check back soon.</p>');
-    html = replaceMarker(html, 'ABOUT_GALLERY', renderGallery(photos));
-    html = replaceMarker(html, 'INDEX_GALLERY', renderIndexGallery(photos));
-    html = replaceMarker(html, 'SERVICE_TIMES', renderServiceTimes(content('service_times')));
-    html = replaceMarker(html, 'ANNOUNCEMENTS', renderAnnouncements(content('announcements')));
-    await writeFile(file, html);
+    try {
+      let html = await readFile(file, 'utf8');
+      html = addContentVersion(html, snapshot.version, snapshot.generatedAt);
+      html = replaceMarker(html, 'EVENTS', events.join('') ||
+        '<p class="events-empty">No upcoming events at the moment. Please check back soon.</p>');
+      html = replaceMarker(html, 'INDEX_SERMONS', sermons.slice(0, 3).map(renderSermon).join('') ||
+        '<p class="sermon-empty">No sermons are available yet. Please check back soon.</p>');
+      html = replaceMarker(html, 'SERMONS', sermons.map(renderSermon).join('') ||
+        '<p class="sermon-empty">No sermons are available yet. Please check back soon.</p>');
+      html = replaceMarker(html, 'ABOUT_GALLERY', renderGallery(photos));
+      html = replaceMarker(html, 'INDEX_GALLERY', renderIndexGallery(photos));
+      html = replaceMarker(html, 'SERVICE_TIMES', renderServiceTimes(content('service_times')));
+      html = replaceMarker(html, 'ANNOUNCEMENTS', renderAnnouncements(content('announcements')));
+      await writeFile(file, html);
+    } catch (err) {
+      console.warn(`[prerender] Could not update ${page}:`, err.message);
+    }
   }
   console.log(`[prerender] Injected public snapshot content into ${pages.length} pages.`);
 }

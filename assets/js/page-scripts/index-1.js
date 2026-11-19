@@ -11,9 +11,173 @@ if (copyrightYear) copyrightYear.textContent = new Date().getFullYear();
 
         const eventGrid = document.getElementById('eventsGrid');
         window.upcomingEvents = Array.isArray(window.upcomingEvents) ? window.upcomingEvents : [];
+
+        // Global flyer modal state
+        let currentFlyerEvent = null;
+        let lastFlyerFocusedElement = null;
+
+        function getFlyerFilename(event) {
+            const safeTitle = (event?.title || 'event')
+                .toLowerCase()
+                .replace(/[^a-z0-9]+/g, '-')
+                .replace(/^-|-$/g, '');
+            let ext = 'png';
+            try {
+                const url = new URL(event?.flyer || '', window.location.href);
+                const match = url.pathname.match(/\.(png|jpe?g|webp|gif|svg|avif)($|\?)/i);
+                if (match) ext = match[1].toLowerCase().replace('jpeg', 'jpg');
+            } catch {}
+            return `${safeTitle || 'event'}-flyer.${ext}`;
+        }
+
+        async function downloadFlyerFile(url, filename) {
+            if (!url) return;
+            try {
+                const response = await fetch(url, { mode: 'cors' });
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                const blob = await response.blob();
+                const blobUrl = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = blobUrl;
+                link.download = filename || 'event-flyer.png';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                setTimeout(() => URL.revokeObjectURL(blobUrl), 2000);
+            } catch (error) {
+                console.warn('[events] Direct blob download failed, falling back to direct link:', error);
+                const link = document.createElement('a');
+                link.href = url;
+                link.target = '_blank';
+                link.rel = 'noopener noreferrer';
+                link.download = filename || 'event-flyer.png';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+        }
+
+        function ensureFlyerModal() {
+            let modal = document.getElementById('eventFlyerModal');
+            if (!modal) {
+                modal = document.createElement('div');
+                modal.id = 'eventFlyerModal';
+                modal.className = 'event-flyer-modal';
+                modal.setAttribute('role', 'dialog');
+                modal.setAttribute('aria-modal', 'true');
+                modal.setAttribute('aria-labelledby', 'eventFlyerModalTitle');
+                modal.hidden = true;
+                modal.innerHTML = `
+                    <div class="event-flyer-modal-backdrop" data-flyer-close></div>
+                    <div class="event-flyer-modal-dialog">
+                        <div class="event-flyer-modal-header">
+                            <div class="event-flyer-modal-meta">
+                                <span class="event-flyer-modal-eyebrow"><i class="fas fa-calendar-check" aria-hidden="true"></i> Event Flyer</span>
+                                <h3 id="eventFlyerModalTitle" class="event-flyer-modal-title">Event Flyer</h3>
+                                <p id="eventFlyerModalDate" class="event-flyer-modal-date"></p>
+                            </div>
+                            <div class="event-flyer-modal-actions">
+                                <button type="button" id="eventFlyerModalDownloadBtn" class="event-flyer-btn-download" aria-label="Download full flyer image">
+                                    <i class="fas fa-download" aria-hidden="true"></i> <span>Download</span>
+                                </button>
+                                <button type="button" class="event-flyer-modal-close" data-flyer-close aria-label="Close flyer preview">&times;</button>
+                            </div>
+                        </div>
+                        <div class="event-flyer-modal-body">
+                            <div class="event-flyer-spinner" id="eventFlyerSpinner" aria-hidden="true"><i class="fas fa-spinner fa-spin"></i></div>
+                            <img id="eventFlyerModalImage" src="" alt="" class="event-flyer-modal-image">
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(modal);
+
+                modal.addEventListener('click', (e) => {
+                    if (e.target.hasAttribute('data-flyer-close') || e.target.closest('[data-flyer-close]')) {
+                        closeEventFlyerModal();
+                    }
+                });
+
+                const modalDownloadBtn = modal.querySelector('#eventFlyerModalDownloadBtn');
+                if (modalDownloadBtn) {
+                    modalDownloadBtn.addEventListener('click', async () => {
+                        if (!currentFlyerEvent || !currentFlyerEvent.flyer) return;
+                        modalDownloadBtn.disabled = true;
+                        const originalHtml = modalDownloadBtn.innerHTML;
+                        modalDownloadBtn.innerHTML = '<i class="fas fa-spinner fa-spin" aria-hidden="true"></i> <span>Saving...</span>';
+                        await downloadFlyerFile(currentFlyerEvent.flyer, getFlyerFilename(currentFlyerEvent));
+                        modalDownloadBtn.disabled = false;
+                        modalDownloadBtn.innerHTML = originalHtml;
+                    });
+                }
+            }
+            return modal;
+        }
+
+        function openEventFlyerModal(event) {
+            if (!event || !event.flyer) return;
+            currentFlyerEvent = event;
+            lastFlyerFocusedElement = document.activeElement;
+            const modal = ensureFlyerModal();
+            const titleEl = modal.querySelector('#eventFlyerModalTitle');
+            const dateEl = modal.querySelector('#eventFlyerModalDate');
+            const imgEl = modal.querySelector('#eventFlyerModalImage');
+            const spinner = modal.querySelector('#eventFlyerSpinner');
+
+            if (titleEl) titleEl.textContent = event.title || 'Event Flyer';
+            if (dateEl) {
+                const details = [event.date, event.time, event.location].filter(Boolean).join(' · ');
+                dateEl.textContent = details;
+                dateEl.style.display = details ? 'block' : 'none';
+            }
+
+            if (spinner) spinner.style.display = 'flex';
+            if (imgEl) {
+                imgEl.style.display = 'none';
+                imgEl.onload = () => {
+                    if (spinner) spinner.style.display = 'none';
+                    imgEl.style.display = 'block';
+                };
+                imgEl.onerror = () => {
+                    if (spinner) spinner.style.display = 'none';
+                    imgEl.style.display = 'block';
+                };
+                imgEl.src = event.flyer;
+                imgEl.alt = event.flyerAlt || `${event.title || 'Event'} full flyer`;
+            }
+
+            modal.hidden = false;
+            document.body.style.overflow = 'hidden';
+            const closeBtn = modal.querySelector('.event-flyer-modal-close');
+            if (closeBtn) closeBtn.focus();
+        }
+
+        function closeEventFlyerModal() {
+            const modal = document.getElementById('eventFlyerModal');
+            if (modal) {
+                modal.hidden = true;
+                const imgEl = modal.querySelector('#eventFlyerModalImage');
+                if (imgEl) imgEl.src = '';
+            }
+            document.body.style.overflow = '';
+            currentFlyerEvent = null;
+            if (lastFlyerFocusedElement && typeof lastFlyerFocusedElement.focus === 'function') {
+                lastFlyerFocusedElement.focus();
+            }
+        }
+
         function renderUpcomingEvents(events) {
+            if (!eventGrid) return;
             eventGrid.replaceChildren();
             events = Array.isArray(events) ? events : [];
+
+            // Filter out events that have expired (past midnight EAT after event date)
+            const todayEAT = new Date().toLocaleString('sv-SE', { timeZone: 'Africa/Nairobi' }).slice(0, 10);
+            events = events.filter(event => {
+                if (!event || !event.title) return false;
+                // Keep if no date (can't determine expiry), or if date >= today EAT
+                if (!event._rawDate) return true;
+                return event._rawDate >= todayEAT;
+            });
 
             if (events.length === 0) {
                 const emptyState = document.createElement('p');
@@ -30,11 +194,33 @@ if (copyrightYear) copyrightYear.textContent = new Date().getFullYear();
                 card.className = 'event-card';
 
                 if (event.flyer) {
+                    const media = document.createElement('div');
+                    media.className = 'event-card-media';
+                    media.setAttribute('role', 'button');
+                    media.setAttribute('tabindex', '0');
+                    media.setAttribute('aria-label', `Preview full flyer for ${event.title}`);
+                    media.title = 'Click to preview full uncropped flyer';
+
                     const flyer = document.createElement('img');
                     flyer.src = event.flyer;
                     flyer.alt = event.flyerAlt || `${event.title} event flyer`;
                     flyer.loading = 'lazy';
-                    card.appendChild(flyer);
+                    media.appendChild(flyer);
+
+                    const badge = document.createElement('span');
+                    badge.className = 'event-media-badge';
+                    badge.innerHTML = '<i class="fas fa-expand" aria-hidden="true"></i> View Flyer';
+                    media.appendChild(badge);
+
+                    media.addEventListener('click', () => openEventFlyerModal(event));
+                    media.addEventListener('keydown', (e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            openEventFlyerModal(event);
+                        }
+                    });
+
+                    card.appendChild(media);
                 }
 
                 const content = document.createElement('div');
@@ -62,6 +248,9 @@ if (copyrightYear) copyrightYear.textContent = new Date().getFullYear();
                     content.appendChild(description);
                 }
 
+                const actions = document.createElement('div');
+                actions.className = 'event-card-actions';
+
                 const reminder = document.createElement('a');
                 const message = `Hello, please remind me about ${event.title}${event.date ? ` on ${event.date}` : ''}${event.time ? ` at ${event.time}` : ''}.`;
                 reminder.className = 'event-reminder';
@@ -70,8 +259,45 @@ if (copyrightYear) copyrightYear.textContent = new Date().getFullYear();
                 reminder.target = '_blank';
                 reminder.rel = 'noopener noreferrer';
                 reminder.textContent = event.registrationUrl ? 'Register' : 'Remind Me';
-                content.appendChild(reminder);
+                actions.appendChild(reminder);
 
+                if (event.flyer) {
+                    const imageActions = document.createElement('div');
+                    imageActions.className = 'event-image-actions';
+
+                    const previewBtn = document.createElement('button');
+                    previewBtn.type = 'button';
+                    previewBtn.className = 'event-action-btn event-preview-btn';
+                    previewBtn.innerHTML = '<i class="fas fa-eye" aria-hidden="true"></i> Preview';
+                    previewBtn.setAttribute('aria-label', `Preview full flyer for ${event.title}`);
+                    previewBtn.title = 'View full uncropped flyer';
+                    previewBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        openEventFlyerModal(event);
+                    });
+
+                    const downloadBtn = document.createElement('button');
+                    downloadBtn.type = 'button';
+                    downloadBtn.className = 'event-action-btn event-download-btn';
+                    downloadBtn.innerHTML = '<i class="fas fa-download" aria-hidden="true"></i> Download';
+                    downloadBtn.setAttribute('aria-label', `Download flyer for ${event.title}`);
+                    downloadBtn.title = 'Download flyer image file';
+                    downloadBtn.addEventListener('click', async (e) => {
+                        e.stopPropagation();
+                        downloadBtn.disabled = true;
+                        const origHtml = downloadBtn.innerHTML;
+                        downloadBtn.innerHTML = '<i class="fas fa-spinner fa-spin" aria-hidden="true"></i> Saving...';
+                        await downloadFlyerFile(event.flyer, getFlyerFilename(event));
+                        downloadBtn.disabled = false;
+                        downloadBtn.innerHTML = origHtml;
+                    });
+
+                    imageActions.appendChild(previewBtn);
+                    imageActions.appendChild(downloadBtn);
+                    actions.appendChild(imageActions);
+                }
+
+                content.appendChild(actions);
                 card.appendChild(content);
                 eventGrid.appendChild(card);
             });
@@ -84,17 +310,103 @@ if (copyrightYear) copyrightYear.textContent = new Date().getFullYear();
             }
         }
 
+        // Handle clicks on static/prerendered action buttons via delegation
+        if (eventGrid) {
+            eventGrid.addEventListener('click', (e) => {
+                const previewBtn = e.target.closest('[data-action="preview-flyer"]');
+                if (previewBtn) {
+                    e.preventDefault();
+                    const flyerUrl = previewBtn.dataset.flyerUrl;
+                    const title = previewBtn.dataset.eventTitle;
+                    const date = previewBtn.dataset.eventDate;
+                    if (flyerUrl) {
+                        openEventFlyerModal({ flyer: flyerUrl, title, date });
+                    }
+                    return;
+                }
+                const downloadBtn = e.target.closest('[data-action="download-flyer"]');
+                if (downloadBtn) {
+                    e.preventDefault();
+                    const flyerUrl = downloadBtn.dataset.flyerUrl;
+                    const title = downloadBtn.dataset.eventTitle;
+                    if (flyerUrl) {
+                        downloadFlyerFile(flyerUrl, getFlyerFilename({ flyer: flyerUrl, title }));
+                    }
+                    return;
+                }
+                const media = e.target.closest('.event-card-media[data-flyer-url]');
+                if (media) {
+                    e.preventDefault();
+                    const flyerUrl = media.dataset.flyerUrl;
+                    const title = media.dataset.eventTitle;
+                    const date = media.dataset.eventDate;
+                    if (flyerUrl) {
+                        openEventFlyerModal({ flyer: flyerUrl, title, date });
+                    }
+                }
+            });
+        }
+
         if (window.upcomingEvents.length) renderUpcomingEvents(window.upcomingEvents);
         window.addEventListener('aic:content-updated', event => {
             if (event.detail?.type === 'events') loadUpcomingEvents();
         });
 
+        // Purge any pre-rendered event cards that have already expired (date < today EAT).
+        // Runs immediately so stale snapshot cards are removed before loadUpcomingEvents resolves.
+        (function pruneExpiredPrerenderedEvents() {
+            if (!eventGrid) return;
+            const todayEAT = new Date().toLocaleString('sv-SE', { timeZone: 'Africa/Nairobi' }).slice(0, 10);
+            const cards = [...eventGrid.querySelectorAll('article.event-card')];
+            cards.forEach(card => {
+                const mediaEl = card.querySelector('[data-event-date]');
+                if (!mediaEl) return;
+                // data-event-date format: "6 December 2026 · 9:30 AM"
+                const datePart = (mediaEl.dataset.eventDate || '').split('\u00b7')[0].trim();
+                if (!datePart) return;
+                const parsed = new Date(datePart);
+                if (Number.isNaN(parsed.getTime())) return;
+                const cardDateEAT = parsed.toLocaleString('sv-SE', { timeZone: 'Africa/Nairobi' }).slice(0, 10);
+                if (cardDateEAT < todayEAT) card.remove();
+            });
+            if (!eventGrid.querySelector('article.event-card') && !eventGrid.querySelector('.events-empty')) {
+                const empty = document.createElement('p');
+                empty.className = 'events-empty';
+                empty.textContent = 'No upcoming events at the moment. Please check back soon.';
+                eventGrid.appendChild(empty);
+            }
+        })();
+
+        // Schedule auto-refresh at midnight EAT so expired events vanish without a page reload.
+        (function scheduleMidnightRefresh() {
+            function msUntilMidnightEAT() {
+                const nowEAT = new Date(new Date().toLocaleString('en-US', { timeZone: 'Africa/Nairobi' }));
+                const midnight = new Date(nowEAT);
+                midnight.setHours(24, 0, 0, 0);
+                return midnight - nowEAT;
+            }
+            function refreshAtMidnight() {
+                loadUpcomingEvents();
+                setTimeout(refreshAtMidnight, msUntilMidnightEAT());
+            }
+            setTimeout(refreshAtMidnight, msUntilMidnightEAT());
+        })();
+
+        let renderedEventsCount = 0;
         async function loadUpcomingEvents() {
             try {
                 const {getContent} = await import('/assets/js/content/content-service.js');
                 const events = await getContent('events');
-                renderUpcomingEvents(events.map(event => ({
+                const list = Array.isArray(events) ? events : [];
+                // Prevent temporary empty response from wiping out already displayed events
+                if (list.length === 0 && renderedEventsCount > 0) {
+                    console.warn('[events] Received empty events list after previously rendering events; keeping current display.');
+                    return;
+                }
+                renderedEventsCount = list.length;
+                renderUpcomingEvents(list.map(event => ({
                     ...event,
+                    _rawDate: event.date || '',
                     date: event.date
                         ? new Date(`${event.date}T12:00:00`).toLocaleDateString('en-KE', {year: 'numeric', month: 'long', day: 'numeric'})
                         : '',
@@ -134,7 +446,10 @@ if (copyrightYear) copyrightYear.textContent = new Date().getFullYear();
         };
         
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeDonationModal();
+            if (e.key === 'Escape') {
+                closeDonationModal();
+                closeEventFlyerModal();
+            }
         });
 
         // Sticky header effect

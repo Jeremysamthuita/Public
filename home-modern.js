@@ -104,6 +104,7 @@
 
   autoScroll(document.querySelector('#sermons-container'), 6000);
   autoScroll(document.querySelector('.hm-involved-grid'), 7000);
+  autoScroll(document.querySelector('#eventsGrid'), 5000);
 
   // 4. copyright year
   const year = document.getElementById('copyrightYear');

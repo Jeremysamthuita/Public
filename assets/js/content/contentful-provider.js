@@ -19,9 +19,14 @@ export async function fetchContentful(type, {signal, config = window.AIC_SITE_CO
       skip: String(skip)
     });
     if (type === 'sermons') params.set('order', '-fields.date');
-    if (type === 'events') params.set('order', 'fields.date');
+    if (type === 'events') params.set('order', 'fields.startDate');
     const url = `https://cdn.contentful.com/spaces/${encodeURIComponent(settings.spaceId)}/environments/${encodeURIComponent(settings.environment)}/entries?${params}`;
-    const response = await fetch(url, {signal, cache: 'no-store'});
+    let response = await fetch(url, {signal, cache: 'no-store'});
+    if (response.status === 422 && params.has('order')) {
+      params.delete('order');
+      const fallbackUrl = `https://cdn.contentful.com/spaces/${encodeURIComponent(settings.spaceId)}/environments/${encodeURIComponent(settings.environment)}/entries?${params}`;
+      response = await fetch(fallbackUrl, {signal, cache: 'no-store'});
+    }
     if (!response.ok) throw new Error(`Contentful request failed with HTTP ${response.status}.`);
     const data = await response.json();
     if (!Array.isArray(data.items)) throw new Error('Contentful returned an invalid content response.');

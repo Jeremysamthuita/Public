@@ -186,8 +186,9 @@ async function refreshFromProviders(type) {
   const previous = previousCache?.items || [];
   const contentfulConfigured = Boolean(settings.contentful?.spaceId && settings.contentful?.environment &&
     settings.contentful?.deliveryToken) && (!mode || mode === 'contentful');
-  if (policy === 'contentful-first' && contentfulConfigured && !sources.includes('contentful') &&
-      previous.some(item => item.source === 'contentful')) {
+  if (contentfulConfigured && !sources.includes('contentful') &&
+      previous.some(item => item.source === 'contentful') &&
+      (!merged.length || policy === 'contentful-first')) {
     lastSources.set(type, 'cache');
     return previous.filter(item => isVisible(item));
   }
@@ -205,7 +206,9 @@ async function applyBootstrapSnapshot() {
   const data = bootstrap.snapshot;
   if (!data?.version || data.version === bootstrapAppliedVersion) return;
   for (const [type, items] of Object.entries(data)) {
-    if (Array.isArray(items)) writeCache(type, items);
+    if (Array.isArray(items) && (items.length > 0 || !readCache(type)?.items?.length)) {
+      writeCache(type, items);
+    }
   }
   bootstrapAppliedVersion = data.version;
 }

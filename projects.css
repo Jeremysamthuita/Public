@@ -126,9 +126,9 @@ body.pj-lock{overflow:hidden}
 .pj-toolbar{background:#fff;border-radius:16px;padding:16px;box-shadow:0 8px 20px rgba(0,0,0,.07);display:grid;gap:14px}
 .pj-controls{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,1fr);gap:12px}
 .pj-field{position:relative;min-width:0}
-.pj-field i{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:#9a8aa8;pointer-events:none}
-.pj-field input,.pj-field select{width:100%;min-height:46px;padding:11px 14px;border:2px solid #e6e1ec;border-radius:12px;background:#fff;color:#333;font:inherit;font-size:.95rem;transition:border-color .2s,box-shadow .2s}
-.pj-field input{padding-left:40px}
+.pj-field i{position:absolute;left:15px;top:50%;transform:translateY(-50%);color:#8e44ad;font-size:.95rem;line-height:1;pointer-events:none;z-index:2}
+.pj-field input,.pj-field select{width:100%;min-height:46px;margin:0 !important;padding:11px 14px;border:2px solid #e6e1ec;border-radius:12px;background:#fff;color:#333;font:inherit;font-size:.95rem;transition:border-color .2s,box-shadow .2s}
+.pj-field input{padding:0 14px 0 44px !important}
 .pj-field input:focus,.pj-field select:focus{border-color:#8e44ad;box-shadow:0 0 0 3px rgba(142,68,173,.18);outline:none}
 .pj-chips{display:flex;flex-wrap:wrap;gap:8px}
 .pj-chip{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:8px 16px;border:2px solid #e6e1ec;border-radius:30px;background:#fff;color:#4b4558;font:inherit;font-weight:700;font-size:.88rem;cursor:pointer;transition:all .2s ease}

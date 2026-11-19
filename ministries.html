@@ -8,8 +8,8 @@
     <link rel="preconnect" href="https://tdtvktdqtkfdvucqlzlg.supabase.co">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <meta name="content-version" content="1">
-    <meta name="content-generated-at" content="2026-11-01T22:05:55.807Z">
+    <meta name="content-version" content="6ab1c28bb250c9a17fd386f45797df6b62f6333f519ba510572394467d3e4813">
+    <meta name="content-generated-at" content="2026-11-19T19:25:31.108Z">
     <script defer src="/assets/js/content/content-bootstrap.js"></script>
     <link rel="preconnect" href="https://www.google.com">
     <link rel="preconnect" href="https://maps.gstatic.com" crossorigin>
@@ -917,7 +917,7 @@
         <li><a href="/about.html">About</a></li>
         <li><a href="https://ecschools.netlify.app" target="_blank" rel="noopener noreferrer">Academy</a></li>
         <li><a href="/sermons.html">Sermons</a></li>
-        <li><a href="/ministries.html">Ministries</a></li>
+        <li><a href="/ministries.html" class="active" aria-current="page">Ministries</a></li>
         <li><a href="/projects.html">Projects</a></li>
         <li><a href="/contact.html">Contact</a></li>
         <li><a class="donate-btn" href="/give.html" data-open-donate><i class="fas fa-donate" aria-hidden="true"></i> Donate</a></li>
@@ -951,7 +951,7 @@
         </div>
     </div>
 
-    <main id="main" class="mn-page">
+    <main class="mn-page" id="main">
         <div class="mn-wrap">
 
             <section class="mn-hero" aria-labelledby="mn-title">
@@ -977,6 +977,9 @@
                         <label class="mn-sr" for="mnSearch">Search ministries</label>
                         <i class="fas fa-magnifying-glass" aria-hidden="true"></i>
                         <input type="search" id="mnSearch" placeholder="Search ministries..." autocomplete="off">
+                        <button type="button" class="mn-search-clear" id="mnSearchClear" aria-label="Clear search" hidden>
+                            <i class="fas fa-circle-xmark" aria-hidden="true"></i>
+                        </button>
                     </div>
                 </div>
                 <p class="mn-status" id="mnStatus" role="status" aria-live="polite"></p>
@@ -1260,19 +1263,23 @@
       <ul class="quick-links">
         <li><a href="/index.html">Home</a></li>
         <li><a href="/about.html">About</a></li>
-        <li><a href="/ministries.html">Ministries</a></li>
         <li><a href="/sermons.html">Sermons</a></li>
+        <li><a href="/ministries.html">Ministries</a></li>
+        <li><a href="/projects.html">Projects</a></li>
         <li><a href="/live.html">Live Stream</a></li>
         <li><a href="/prayer-wall.html">Prayer Wall</a></li>
-        <li><a href="/projects.html">Projects</a></li>
-        <li><a href="/contact.html">Contact Us</a></li>
         <li><a href="/give.html">Give</a></li>
+        <li><a href="/contact.html">Contact Us</a></li>
       </ul>
     </div>
-    <div class="footer-col footer-services" id="service-times">
+    <div class="footer-col footer-services">
       <h4>Service Times</h4>
       <div class="footer-service-times" data-service-times>
-        <!--CONTENT:SERVICE_TIMES:START--><p><strong>Sunday</strong><br>Main Worship Service — 8:00 AM – 12:00 PM EAT</p><p><strong>Wednesday</strong><br>Mid-Week Prayer — 5:30 PM – 7:00 PM EAT</p><p><strong>Friday</strong><br>Youth Fellowship — 6:00 PM – 8:00 PM EAT</p><!--CONTENT:SERVICE_TIMES:END-->
+        <!--CONTENT:SERVICE_TIMES:START-->
+        <p><strong>Sunday</strong><br>Main Worship Service — 8:00 AM – 12:00 PM EAT</p>
+        <p><strong>Wednesday</strong><br>Mid-Week Prayer — 5:30 PM – 7:00 PM EAT</p>
+        <p><strong>Friday</strong><br>Youth Fellowship — 6:00 PM – 8:00 PM EAT</p>
+        <!--CONTENT:SERVICE_TIMES:END-->
       </div>
     </div>
     <div class="footer-col footer-contact">

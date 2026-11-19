@@ -10,6 +10,7 @@ function stableFooter(html, page) {
   const matches = [...html.matchAll(/<footer class="site-footer">[\s\S]*?<\/footer>/g)];
   assert.equal(matches.length, 1, `${page} should have exactly one shared footer`);
   return matches[0][0]
+    .replace(/\r\n/g, '\n')
     .replace(/<!--CONTENT:SERVICE_TIMES:START-->[\s\S]*?<!--CONTENT:SERVICE_TIMES:END-->/, '<!--SERVICE_TIMES-->')
     .replace(/<!--CONTENT:ANNOUNCEMENTS:START-->[\s\S]*?<!--CONTENT:ANNOUNCEMENTS:END-->/, '<!--ANNOUNCEMENTS-->');
 }
