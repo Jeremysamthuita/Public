@@ -1,13 +1,59 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://aicegertonchapel.netlify.app/</loc><lastmod>2026-10-30</lastmod></url>
-  <url><loc>https://aicegertonchapel.netlify.app/about.html</loc><lastmod>2026-10-30</lastmod></url>
-  <url><loc>https://aicegertonchapel.netlify.app/contact.html</loc><lastmod>2026-10-30</lastmod></url>
-  <url><loc>https://aicegertonchapel.netlify.app/ministries.html</loc><lastmod>2026-10-30</lastmod></url>
-  <url><loc>https://aicegertonchapel.netlify.app/sermons.html</loc><lastmod>2026-10-30</lastmod></url>
-  <url><loc>https://aicegertonchapel.netlify.app/live.html</loc><lastmod>2026-10-30</lastmod></url>
-  <url><loc>https://aicegertonchapel.netlify.app/prayer-wall.html</loc><lastmod>2026-10-30</lastmod></url>
-  <url><loc>https://aicegertonchapel.netlify.app/give.html</loc><lastmod>2026-10-30</lastmod></url>
-  <url><loc>https://aicegertonchapel.netlify.app/privacy.html</loc><lastmod>2026-10-30</lastmod></url>
-  <url><loc>https://aicegertonchapel.netlify.app/accessibility.html</loc><lastmod>2026-10-30</lastmod></url>
+﻿<?xml version="1.0" encoding="UTF-8"?>
+		<!--	created with www.mysitemapgenerator.com	-->
+		<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+	<loc>https://aicegertonchapel.org/</loc>
+	<lastmod>2026-11-20T18:27:54+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<url>
+	<loc>https://aicegertonchapel.org/about</loc>
+	<lastmod>2026-11-20T18:27:54+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<url>
+	<loc>https://aicegertonchapel.org/sermons</loc>
+	<lastmod>2026-11-20T18:27:54+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<url>
+	<loc>https://aicegertonchapel.org/ministries</loc>
+	<lastmod>2026-11-20T18:27:54+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<url>
+	<loc>https://aicegertonchapel.org/projects</loc>
+	<lastmod>2026-11-20T18:27:54+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<url>
+	<loc>https://aicegertonchapel.org/contact</loc>
+	<lastmod>2026-11-20T18:27:54+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<url>
+	<loc>https://aicegertonchapel.org/give</loc>
+	<lastmod>2026-11-20T18:27:54+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<url>
+	<loc>https://aicegertonchapel.org/live</loc>
+	<lastmod>2026-11-20T18:27:54+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<url>
+	<loc>https://aicegertonchapel.org/prayer-wall</loc>
+	<lastmod>2026-11-20T18:27:54+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<url>
+	<loc>https://aicegertonchapel.org/privacy</loc>
+	<lastmod>2026-11-20T18:27:54+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<url>
+	<loc>https://aicegertonchapel.org/accessibility</loc>
+	<lastmod>2026-11-20T18:27:54+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
 </urlset>

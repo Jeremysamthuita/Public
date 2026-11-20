@@ -9,6 +9,12 @@
 [build.environment]
   NODE_VERSION = "20"
 
+  [[redirects]]
+  from = "https://aicegertonchapel.netlify.app/*"
+  to = "https://www.aicegertonchapel.org/:splat"
+  status = 301
+  force = true
+
 # ── Redirect order matters: feed/sitemap BEFORE /api/* generic rule ──
 [[redirects]]
   from = "/feed.xml"
