@@ -287,3 +287,160 @@ body.hm .hm-visit-actions{display:flex;flex-wrap:wrap;gap:12px}
   body.hm .hero-stage .carousel-container,body.hm .hm-qcard,body.hm .event-card,body.hm #sermons .sermon-card,body.hm .hm-icard,body.hm .hm-icard-bg,body.hm .btn-more,body.hm .hm-btn{transition:none}
   body.hm.hm-js [data-reveal]{opacity:1;transform:none;transition:none}
 }
+/* =========================================================
+   EVENT CARD HARDENING
+   • permanently hide the legacy preview/download pair
+     (the flyer modal already provides preview + download)
+   • guarantee horizontal swipe on phones
+========================================================= */
+
+/* Hide legacy buttons — the modal on the media already previews + downloads */
+.event-card .event-image-actions { display: none !important; }
+
+/* Mobile: one event visible, swipe to the next */
+@media (max-width: 800px) {
+  body.hm .events-grid,
+  body.hm .events-grid.hm-autoscroll {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    grid-template-columns: none !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    width: auto !important;
+    max-width: none !important;
+    margin-inline: 0 !important;
+    padding: 6px 16px 20px !important;
+    gap: 14px !important;
+    justify-content: flex-start !important;
+    scroll-snap-type: x mandatory !important;
+    scroll-padding-inline: 16px !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+  }
+  body.hm .events-grid::-webkit-scrollbar,
+  body.hm .events-grid.hm-autoscroll::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+  body.hm .events-grid > .event-card,
+  body.hm .events-grid.hm-autoscroll > .event-card {
+    flex: 0 0 min(84%, 340px) !important;
+    scroll-snap-align: center !important;
+    max-width: none !important;
+    min-width: 0 !important;
+  }
+  body.hm .events-grid > .event-card:only-child,
+  body.hm .events-grid.hm-autoscroll > .event-card:only-child {
+    flex-basis: 100% !important;
+  }
+  body.hm .events-grid > .events-empty {
+    flex: 1 0 100% !important;
+  }
+
+  /* Keep the share icon compact (right-aligned), not stretched */
+  body.hm .event-share-btn { align-self: flex-end; }
+}
+/* =========================================================
+   EVENT CARD — chromeless bell (left) + share (right)
+   ========================================================= */
+
+/* Legacy preview/download buttons: hidden — the flyer modal covers both */
+.event-card .event-image-actions { display: none !important; }
+
+/* Actions row: single horizontal line, bell bottom-left, share bottom-right */
+.event-card .event-card-actions,
+body.hm .event-card-actions {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid rgba(36, 33, 59, 0.08);
+}
+
+/* ---------- Remind Me link → chromeless bell ---------- */
+.event-card .event-reminder,
+body.hm .event-reminder {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: auto;
+  height: auto;
+  min-height: 0;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: #7c3aed !important;
+  font-size: 0 !important;              /* hides "Remind Me" text */
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: color 160ms ease, transform 160ms ease;
+}
+
+/* Bell glyph — FontAwesome 6 solid */
+.event-card .event-reminder::before,
+body.hm .event-reminder::before {
+  content: "\f0f3";                    /* fa-bell */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  font-size: 1.15rem;
+  line-height: 1;
+  display: inline-block;
+  pointer-events: none;
+}
+
+.event-card .event-reminder:hover,
+body.hm .event-reminder:hover {
+  background: transparent !important;
+  box-shadow: none !important;
+  color: #5b21b6 !important;
+  transform: translateY(-1px) scale(1.12);
+}
+
+.event-card .event-reminder:active,
+body.hm .event-reminder:active {
+  transform: translateY(0) scale(0.96);
+}
+
+.event-card .event-reminder:focus-visible,
+body.hm .event-reminder:focus-visible {
+  outline: 2px solid #fbbf24;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Share stays on the right, compact */
+body.hm .event-share-btn { align-self: center; }
+
+/* ---------- Mobile: keep both icons at the corners, one row ---------- */
+@media (max-width: 800px) {
+  body.hm .event-card-actions {
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
+  body.hm .event-reminder,
+  body.hm .event-share-btn {
+    align-self: center;
+    flex: 0 0 auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .event-card .event-reminder,
+  body.hm .event-reminder,
+  body.hm .event-share-btn {
+    transition: none;
+  }
+}

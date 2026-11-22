@@ -22,7 +22,7 @@
     <meta name="keywords" content="AIC Egerton Chapel, Christian Church Kenya, Sermons, Ministries, Worship, Fellowship, Egerton University">
     <meta name="author" content="Eng. Jeremiah Thuita and AIC Egerton Chapel Team">
     <!-- Open Graph Meta Tags for Netlify Preview -->
-    <meta property="og:image" content="https://aicegertonchapel.org/family.jpg">
+    <meta property="og:image" content="https://aicegertonchapel.org/favicon.ico">
     <meta property="og:type" content="website">
     <meta property="og:title" content="AIC Egerton Chapel">
     <meta property="og:description" content="Join us for worship, spiritual growth, and fellowship. Experience uplifting sermons, ministries, and community service.">
@@ -31,30 +31,12 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="stylesheet" href="/nav-modern.css">
-    <script src="/nav-modern.js" defer></script>
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "Church",
-            "name": "AIC Egerton Chapel",
-            "url": "https://aicegertonchapel.org/",
-            "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Njoro",
-                "addressRegion": "Nakuru County",
-                "addressCountry": "KE"
-            },
-            "sameAs": [
-                "https://www.fb.com/@aicegertonchapel",
-                "https://www.youtube.com/@aicegertonchapel",
-                "https://www.tiktok.com/@aicegertonchapel"
-            ]
-        }
-    </script>
-    <!-- 1. Fast pre-render from snapshot (do not change) -->
-<script defer src="/assets/js/content/content-bootstrap.js"></script>
-<style>
+    <link rel="stylesheet" href="/nav-modern.css">
+    <link rel="stylesheet" href="/sermon-cards.css">
+    <link rel="stylesheet" href="/home-modern.css">
+    <link rel="stylesheet" href="/home-modern.css">
+    <link rel="stylesheet" href="/sermon-card-actions.css">
+    <style>
         /* Global Styles */
         * {
             margin: 0;
@@ -760,6 +742,70 @@
             color: #fff;
             box-shadow: 0 4px 14px rgba(36, 33, 59, 0.25);
         }
+        /* ---------- Event share — bare icon ---------- */
+.event-share-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: #7c3aed;
+  font-size: 1.15rem;
+  line-height: 1;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: color 160ms ease, transform 160ms ease;
+}
+.event-share-btn i { pointer-events: none; }
+
+.event-share-btn:hover {
+  color: #6d28d9;
+  transform: translateY(-1px) scale(1.12);
+}
+.event-share-btn:active {
+  transform: translateY(0) scale(.96);
+}
+.event-share-btn:focus-visible {
+  outline: 2px solid #fbbf24;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Copy-fallback toast */
+.event-share-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 28px;
+  z-index: 1500;
+  max-width: min(92vw, 480px);
+  padding: 13px 20px;
+  border-radius: 999px;
+  background: #0f172a;
+  color: #fff;
+  font-size: .9rem;
+  font-weight: 600;
+  box-shadow: 0 14px 40px rgba(2, 6, 23, .4);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 20px);
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+.event-share-toast.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .event-share-btn,
+  .event-share-toast {
+    transition: none;
+  }
+}
 
         .events-empty {
             grid-column: 1 / -1;
@@ -1421,10 +1467,29 @@
         scroll-snap-align: none !important;
     }
 }
-</style>
-    <link rel="stylesheet" href="/sermon-cards.css">
-    <link rel="stylesheet" href="/home-modern.css">
+    </style>
+    <script defer src="/assets/js/content/content-bootstrap.js"></script>
     <script src="/home-modern.js" defer></script>
+    <script src="/nav-modern.js" defer></script>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Church",
+            "name": "AIC Egerton Chapel",
+            "url": "https://aicegertonchapel.org/",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Njoro",
+                "addressRegion": "Nakuru County",
+                "addressCountry": "KE"
+            },
+            "sameAs": [
+                "https://www.fb.com/@aicegertonchapel",
+                "https://www.youtube.com/@aicegertonchapel",
+                "https://www.tiktok.com/@aicegertonchapel"
+            ]
+        }
+    </script>
 </head>
 <body class="hm">
     <!-- Header Section -->
@@ -1733,11 +1798,13 @@ Inspired by Proverbs 1:5</p><div class="event-card-actions"><a class="event-remi
 <!--CHROME:FOOTER:END-->
 
     <!-- Supabase CDN, Config & Dynamic Features -->
-    <script src="/site-config.js"></script>
-    <script src="/sermon-cards.js"></script>
-    <script type="module" src="/assets/js/main-app.js"></script>
-    <script src="/assets/js/forms.js"></script>
-    <script src="/assets/js/page-scripts/index-1.js"></script>
-    <script src="/assets/js/site-chrome.js"></script>
+<script src="/site-config.js"></script>
+<script src="/sermon-cards.js"></script>
+<script src="/sermon-card-actions.js" defer></script>   <!-- ← new -->
+<script type="module" src="/assets/js/main-app.js"></script>
+<script src="/assets/js/forms.js"></script>
+<script src="/assets/js/page-scripts/index-1.js"></script>
+<script src="/assets/js/site-chrome.js"></script>
+<script src="/event-card-actions.js" defer></script> 
 </body>
 </html>
